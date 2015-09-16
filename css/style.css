@@ -6,6 +6,11 @@ body {
 
 .container {
     background: #38cc80;
+    margin-top: 20px;
+    padding: 20px;
+
+    border-radius: 25px;
+    /*border: 0px solid #666;*/
 }
 
 h1 {text-align: center;}
