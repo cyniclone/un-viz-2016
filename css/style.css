@@ -1,0 +1,17 @@
+body {
+    background: #ccc;
+    font-family: 'PT Serif', serif;
+    font-size: 14px;
+}
+
+.container {
+    background: #38cc80;
+}
+
+h1 {text-align: center;}
+
+h1, h2 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+
+}
