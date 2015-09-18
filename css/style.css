@@ -2,15 +2,22 @@ body {
     background: #ccc;
     font-family: 'PT Serif', serif;
     font-size: 14px;
+    color: #fff;
 }
 
 .container {
-    background: #38cc80;
+    background: #48a034;
+
     margin-top: 20px;
     padding: 20px;
 
-    border-radius: 25px;
+    border-radius: 15px;
     /*border: 0px solid #666;*/
+}
+
+.searchButton {
+    color: #000;
+    margin-left: 15px;
 }
 
 h1 {text-align: center;}
