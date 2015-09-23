@@ -1,166 +1,162 @@
+
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+    <link href="http://fonts.googleapis.com/css?family=Fira+Sans:300,400,700" rel="stylesheet" type="text/css">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    
+    <style>
+       .content {
+        background: white;
+        padding-top:2%;
+      }
+    
+      .axis path,
+      .axis line {
+      fill: none;
+      stroke: #FFF;
+      shape-rendering: crispEdges;
+      }
 
-<!-- Example based on http://bl.ocks.org/mbostock/3887118 -->
-<!-- Tooltip example from http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html -->
+      #tweetText {
+      border: 2px solid red;
+      width: 400px;
+      height: 150px;
+      position: relative;
+      float: right;
+      margin-top: 0;
+      }
 
-<style>
-body {
-  font: 11px sans-serif;
-}
+      .d3-tip{
+      /*
+      top: 0px !important;
+      left: 850px !important;
+      float: left;
+      */
+      width: 150px;
+      
+      /* twitter blue background-color: #3cf;
+      background-color: #c0deed;*/
+      padding: 5px;
+      border-radius: 10px;
+      font-size: 0.8em;
+      font-family: sans-serif;
+      }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
+     .viz {
+       margin:2%;
+     }
+     
+    </style>
+  </head>
 
-.dot {
-  stroke: #000;
-}
+  <body>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script>
 
-.tooltip {
-  position: absolute;
-  width: 200px;
-  height: 28px;
-  pointer-events: none;
-}
-</style>
-<body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
+      var margin = {top: 60, right: 20, bottom: 30, left: 40},
+      width = 800 - margin.left - margin.right,
+      height = 700 - margin.top - margin.bottom;
 
-<script>
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+      var x = d3.scale.linear()
+      .range([0, width]);
+
+      var y = d3.scale.linear()
+      .range([height, 0]);
+
+      var color = d3.scale.category20();
 
 
-/* 
- * value accessor - returns the value to encode for a given data object.
- * scale - maps value to a visual display encoding, such as a pixel position.
- * map function - maps from data value to display value
- * axis - sets up axis
- */ 
+      //var color = d3.scale.linear()
+      //.domain([1,0,-1])
+      //.range(["#3182bd", "#d9d9d9", "#e6550d"]);
 
-// setup x 
-var xValue = function(d) { return d.Year;}, // data -> value
-    xScale = d3.scale.linear().range([0, width]), // value -> display
-    xMap = function(d) { return xScale(xValue(d));}, // data -> display
-    xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+      var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
 
-// setup y
-var yValue = function(d) { return d.Value;}, // data -> value
-    yScale = d3.scale.linear().range([height, 0]), // value -> display
-    yMap = function(d) { return yScale(yValue(d));}, // data -> display
-    yAxis = d3.svg.axis().scale(yScale).orient("left");
+      var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+      
+      var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+      return d.CountryName;
+      });
 
-// setup fill color
-var cValue = function(d) { return d.Value;},
-    color = d3.scale.category10();
 
-// add the graph canvas to the body of the webpage
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var svg = d3.select("body").append("svg")
+      .attr("class", "viz")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      
+      svg.call(tip);
 
-// add the tooltip area to the webpage
-var tooltip = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
 
-// load data
-d3.json("data.json", function(error, data) {
+      d3.csv("2DataCHILDLongFormat.csv", function(error, data) {
+      data.forEach(function(d) {
+        console.log(d.Year);
+      d.Score = +d.Score;
+      //d.Year = +d.Year;
+      });
 
-  // change string (from CSV) into number format
-  data.forEach(function(d) {
-    //console.log(d.Year);
-    d.Year = +d.Year;
-    d.Value = +d.Value;
-//    console.log(d);
-      console.log(d.Value);
-      console.log(d.Year);
-  });
+      x.domain(d3.extent(data, function(d) { return d.Year; })).nice();
+      y.domain(d3.extent(data, function(d) { return d.Score; })).nice();
 
-  // don't want dots overlapping axis, so add in buffer to data domain
-  xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
-  yScale.domain([d3.min(data, yValue)-1, d3.max(data, yValue)+1]);
-
-  // x-axis
-  svg.append("g")
+      svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
-    .append("text")
+      .append("text")
       .attr("class", "label")
       .attr("x", width)
       .attr("y", -6)
       .style("text-anchor", "end")
       .text("Year");
 
-  // y-axis
-  svg.append("g")
+      svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
-    .append("text")
+      .append("text")
       .attr("class", "label")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Value");
+      .text("Score")
 
-  // draw dots
-  svg.selectAll(".dot")
+      svg.selectAll(".dot")
       .data(data)
-    .enter().append("circle")
+      .enter().append("circle")
       .attr("class", "dot")
-      .attr("r", 3.5)
-      .attr("cx", xValue)
-      .attr("cy", yValue)
-      //.style("fill", function(d) { return color(cValue(d));}) 
-      .style("fill", function(d) { return color(cValue(d));}) 
-      .on("mouseover", function(d) {
-          tooltip.transition()
-               .duration(200)
-               .style("opacity", .9);
-          tooltip.html(d["Country.Name"] + "<br/> (" + xValue(d) 
-          + ", " + yValue(d) + ")")
-               .style("left", (d3.event.pageX + 5) + "px")
-               .style("top", (d3.event.pageY - 28) + "px");
-      })
-      .on("mouseout", function(d) {
-          tooltip.transition()
-               .duration(500)
-               .style("opacity", 0);
-      });
+      .attr("r", 6)
+      .attr("cx", function(d) { return x(d.Year); })
+      .attr("cy", function(d) { return y(d.Score); })
+      //.style("fill", function(d) { return color(d.Score); })
+      .style("fill", "black")
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
+      ;
 
-  // draw legend
-  var legend = svg.selectAll(".legend")
+      var legend = svg.selectAll(".legend")
       .data(color.domain())
-    .enter().append("g")
+      .enter().append("g")
       .attr("class", "legend")
       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-  // draw legend colored rectangles
-  legend.append("rect")
-      .attr("x", width - 18)
-      .attr("width", 18)
-      .attr("height", 18)
-      .style("fill", color);
+      });
 
-  // draw legend text
-  legend.append("text")
-      .attr("x", width - 24)
-      .attr("y", 9)
-      .attr("dy", ".35em")
-      .style("text-anchor", "end")
-      .text(function(d) { return d;})
-});
 
-</script>
-</body>
+
+    </script>
+
+  </body>
+
 </html>
