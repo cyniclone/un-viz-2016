@@ -2,7 +2,7 @@
 
 var margin = {top: 60, right: 20, bottom: 30, left: 40},
     width = 800 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    height = 800 - margin.top - margin.bottom;
 
 var x = d3.scale.linear()
     .range([0, width]);
@@ -51,6 +51,37 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
 
     x.domain(d3.extent(data, function(d) { return d.Year; })).nice();
     y.domain(d3.extent(data, function(d) { return d.Score; })).nice();
+
+    // Draw gridlines for x axis
+    svg.selectAll("line.verticalGrid").data(x.ticks(10)).enter()
+        .append("line")
+        .attr(
+        {
+            "class": "verticalGrid",
+            "x1" : function(d) { return x(d); },
+            "x2" : function(d) { return x(d); },
+            "y1" : height,
+            "y2" : 0,
+            "fill" : "none",
+            "stroke" : "#ccc",
+            "stroke-width" : "0.75px"
+        });
+
+    // Draw gridlines for y axis
+    svg.selectAll('line.horizontalGrid').data(y.ticks(10)).enter()
+        .append('line')
+        .attr(
+        {
+            "class": "horizontalGrid",
+            "x1" : 0,
+            "x2" : width,
+            "y1" : function(d) { return y(d); },
+            "y2" : function(d) { return y(d); },
+            "fill" : "none",
+            "stroke" : "#ccc",
+            "stroke-width" : "0.75px"
+        }
+    );
 
     svg.append("g")
         .attr("class", "x axis")

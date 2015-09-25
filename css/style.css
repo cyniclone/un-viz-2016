@@ -36,6 +36,11 @@ h1, h2 {
 }
 
 .axis { font-family: "Helvetica Neue", Helvetica, sans-serif; }
+
+/*.tick text {*/
+    /*color: #fff;*/
+/*}*/
+
 .axis path,
 .axis line {
     fill: none;
