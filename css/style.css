@@ -27,3 +27,47 @@ h1, h2 {
     text-transform: uppercase;
 
 }
+
+/* Visualization  *********/
+
+.content {
+    background: white;
+    padding-top:2%;
+}
+
+.axis { font-family: "Helvetica Neue", Helvetica, sans-serif; }
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #FFF;
+    shape-rendering: crispEdges;
+}
+
+.d3-tip{
+    /*
+    top: 0px !important;
+    left: 850px !important;
+    float: left;
+    */
+    width: 150px;
+
+    /* twitter blue background-color: #3cf;
+    background-color: #c0deed;*/
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-family: sans-serif;
+    color: #478D2E;
+}
+
+.viz {
+    margin:2%;
+    /*background-color: #478D2E;*/
+}
+
+.dot {
+    stroke: #E0E0E0;
+    stroke-width: 2px;
+    opacity: 0.7;
+}

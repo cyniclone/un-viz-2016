@@ -1,3 +1,120 @@
+
+
+var margin = {top: 60, right: 20, bottom: 30, left: 40},
+    width = 800 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
+
+var x = d3.scale.linear()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var color = d3.scale.category20();
+
+
+//var color = d3.scale.linear()
+//.domain([1,0,-1])
+//.range(["#3182bd", "#d9d9d9", "#e6550d"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .tickFormat(d3.format("d"));
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+        return d.CountryName + "<br>" + d.Score;
+    });
+
+
+var svg = d3.select("#chart").append("svg")
+    .attr("class", "viz")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.call(tip);
+
+
+d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
+    data.forEach(function(d) {
+        d.Score = +d.Score;
+    });
+
+    x.domain(d3.extent(data, function(d) { return d.Year; })).nice();
+    y.domain(d3.extent(data, function(d) { return d.Score; })).nice();
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .append("text");
+
+
+
+    /*
+     .attr("class", "label")
+     .attr("x", width/2)
+     .attr("y", 30)
+     .style("text-anchor", "end")
+     .style('fill', 'white')
+     .text("Year");*/
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text");
+
+    /*
+     .attr("class", "label")
+     .attr("transform", "rotate(-90)")
+     .attr("y", -30)
+     .attr("dy", ".71em")
+     .style("text-anchor", "end")
+     .style('fill', 'white')
+     .text("Score")
+     */
+    svg.selectAll(".dot")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "dot")
+        .attr("r", 3.5)
+        .attr("cx", function(d) {
+            if (isNaN(d.Score)) {
+                return x(-1000);
+            }
+            return x(d.Year);
+        })
+        .attr("cy", function(d) {
+            if (isNaN(d.Score)) {
+                return y(-1000);
+            }
+            return y(d.Score);
+        })
+        //.style("fill", function(d) { return color(d.Score); })
+        .style("fill", "none")
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide)
+    ;
+
+    var legend = svg.selectAll(".legend")
+        .data(color.domain())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+});
+
+
+/*
 var margin = {top: 60, right: 20, bottom: 30, left: 40},
     width = 900 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
@@ -34,7 +151,4 @@ d3.csv('data/child-mortality-long.csv', function(error, data) {
         d.Value     = +d.Value;
         d.Year      = +d.Year;
     })
-
-
-
-});
+}); */
