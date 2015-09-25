@@ -1,5 +1,5 @@
 body {
-    background: #ccc;
+    background: #e6e6e6;
     font-family: 'PT Serif', serif;
     font-size: 14px;
     color: #fff;
@@ -7,12 +7,7 @@ body {
 
 .container {
     background: #48a034;
-
-    margin-top: 20px;
     padding: 20px;
-
-    border-radius: 15px;
-    /*border: 0px solid #666;*/
 }
 
 .searchButton {
@@ -37,10 +32,6 @@ h1, h2 {
 
 .axis { font-family: "Helvetica Neue", Helvetica, sans-serif; }
 
-/*.tick text {*/
-    /*color: #fff;*/
-/*}*/
-
 .axis path,
 .axis line {
     fill: none;
@@ -61,9 +52,10 @@ h1, h2 {
     background-color: white;
     padding: 5px;
     border-radius: 10px;
-    font-size: 0.8em;
+    font-size: 12px;
     font-family: sans-serif;
-    color: #478D2E;
+    /*color: #478D2E;*/
+    color: #222;
 }
 
 .viz {
@@ -73,6 +65,10 @@ h1, h2 {
 
 .dot {
     stroke: #E0E0E0;
+    stroke-width: 1px;
+    opacity: 0.5;
+}
+
+.goal {
     stroke-width: 2px;
-    opacity: 0.7;
 }

@@ -30,7 +30,7 @@ var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function(d) {
-        return d.CountryName + "<br>" + d.Score;
+        return "<b>" + d.CountryName + "</b><br>" + d.Score;
     });
 
 
@@ -83,13 +83,12 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
         }
     );
 
+
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
         .append("text");
-
-
 
     /*
      .attr("class", "label")
@@ -113,6 +112,8 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
      .style('fill', 'white')
      .text("Score")
      */
+
+    // Render circles
     svg.selectAll(".dot")
         .data(data)
         .enter().append("circle")
@@ -120,22 +121,29 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
         .attr("r", 3.5)
         .attr("cx", function(d) {
             if (isNaN(d.Score)) {
-                return x(-1000);
+                return x(0);
             }
             return x(d.Year);
         })
         .attr("cy", function(d) {
             if (isNaN(d.Score)) {
-                return y(-1000);
+                return y(0);
             }
             return y(d.Score);
         })
-        //.style("fill", function(d) { return color(d.Score); })
+        .style("visibility", function(d) {
+            if (isNaN(d.Score) || isNaN(d.Year)) {
+                return "hidden";
+            }
+        })
         .style("fill", "none")
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
     ;
 
+
+
+    // Render legend
     var legend = svg.selectAll(".legend")
         .data(color.domain())
         .enter().append("g")
@@ -144,42 +152,14 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
 
 });
 
-
-/*
-var margin = {top: 60, right: 20, bottom: 30, left: 40},
-    width = 900 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
-
-
-var x = d3.scale.linear()
-    .range([0, width]);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient('bottom');
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient('left');
-
-// need to add d3 tip
-
-var svg = d3.select('#chart').append('svg')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom)
-    .append('g')
-    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-d3.csv('data/child-mortality-long.csv', function(error, data) {
-
-    // Coerce values to numeric
-    data.forEach(function(d) {
-        console.log(d);
-        d.Country   = +d.Country;
-        d.Value     = +d.Value;
-        d.Year      = +d.Year;
-    })
-}); */
+// Render goal line
+svg.select("#chart").append("line")
+    .attr({
+        "class" : "goal-line",
+        "stroke-width" : "2px",
+        "color" : "#222",
+        "y1" : y(25),
+        "y2" : y(25),
+        "x1" : x(0),
+        "x2" : x(width)
+    });
