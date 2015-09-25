@@ -58,7 +58,10 @@ h1, h2 {
 .dot {
     stroke: #E0E0E0;
     stroke-width: 1px;
-    opacity: 0.5;
+    opacity: 0.6;
+    fill: #fff;
+    fill-opacity: 0.25;
+
 }
 
 .goal {

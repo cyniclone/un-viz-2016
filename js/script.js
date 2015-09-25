@@ -1,5 +1,4 @@
 
-
 var margin = {top: 20, right: 40, bottom: 30, left: 40},
     width = 800 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom;
@@ -10,12 +9,9 @@ var x = d3.scale.linear()
 var y = d3.scale.linear()
     .range([height, 0]);
 
-var color = d3.scale.category20();
-
-
-//var color = d3.scale.linear()
-//.domain([1,0,-1])
-//.range(["#3182bd", "#d9d9d9", "#e6550d"]);
+// Define scales
+xScale = d3.time.scale().range([0, width]);
+yScale = d3.scale.linear().range([height, 0]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -43,14 +39,17 @@ var svg = d3.select("#chart").append("svg")
 
 svg.call(tip);
 
-
-d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
+d3.csv("data/childmortalitylong.csv", function(error, data) {
     data.forEach(function(d) {
         d.Score = +d.Score;
     });
 
     x.domain(d3.extent(data, function(d) { return d.Year; })).nice();
     y.domain(d3.extent(data, function(d) { return d.Score; })).nice();
+
+    // Set scale domains
+    xScale.domain(d3.extent(data, x));
+    yScale.domain([0, d3.max(data, y)]);
 
     // Draw gridlines for x axis
     svg.selectAll("line.verticalGrid").data(x.ticks(10)).enter()
@@ -117,7 +116,7 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
                 return "hidden";
             }
         })
-        .style("fill", "none")
+        //.style("fill", "none")
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
     ;
@@ -152,7 +151,7 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
         .attr("dx", width - 70)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Goal for 2030 : ");
+        .text("Goal for 2030");
 
 
     //svg.append("g")
