@@ -1,6 +1,6 @@
 
 
-var margin = {top: 60, right: 20, bottom: 30, left: 40},
+var margin = {top: 20, right: 40, bottom: 30, left: 40},
     width = 800 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom;
 
@@ -30,7 +30,7 @@ var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function(d) {
-        return "<b>" + d.CountryName + "</b><br>" + d.Score;
+        return "<b>" + d.CountryName + " - " + d.Year + "</b><br>" + d.Score;
     });
 
 
@@ -83,35 +83,16 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
         }
     );
 
-
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
         .append("text");
 
-    /*
-     .attr("class", "label")
-     .attr("x", width/2)
-     .attr("y", 30)
-     .style("text-anchor", "end")
-     .style('fill', 'white')
-     .text("Year");*/
-
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
         .append("text");
-
-    /*
-     .attr("class", "label")
-     .attr("transform", "rotate(-90)")
-     .attr("y", -30)
-     .attr("dy", ".71em")
-     .style("text-anchor", "end")
-     .style('fill', 'white')
-     .text("Score")
-     */
 
     // Render circles
     svg.selectAll(".dot")
@@ -141,6 +122,50 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
         .on('mouseout', tip.hide)
     ;
 
+    // Render goal line
+    svg.append("svg:line")
+        .attr({
+            "class" : "goal-line",
+            "x1" : 0,
+            "x2" : width + 5,
+            "y1" : y(25),
+            "y2" : y(25),
+            "stroke-width" : "2px"
+        })
+        .style("stroke", "#222");
+
+    // Goal Number
+    svg.append("g")
+        .attr("class", "goal-num")
+        .append("text")
+        .attr("y", y(25))
+        //.attr("dy", "-0.71em")
+        .attr("dx", width + 10)
+        .style("text-align", "center")
+        .text("25");
+
+    svg.append("g") // Goal line description
+        .attr("class", "goal-line-text")
+        .append("text")
+        .attr("transform", "rotate(90)")
+        .attr("y", -height)
+        .attr("dx", width - 70)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Goal for 2030 : ");
+
+
+    //svg.append("g")
+    //    .attr("class", "y axis")
+    //    .call(yAxis)
+    //    .append("text")
+    //    .attr("transform", "rotate(-90)")
+    //    .attr("y", 6)
+    //    .attr("dy", ".71em")
+    //    .attr("dx", -250)
+    //    .style("text-align", "end")
+    //    .text("Population");
+
 
 
     // Render legend
@@ -152,14 +177,3 @@ d3.csv("data/2DataCHILDLongFormat.csv", function(error, data) {
 
 });
 
-// Render goal line
-svg.select("#chart").append("line")
-    .attr({
-        "class" : "goal-line",
-        "stroke-width" : "2px",
-        "color" : "#222",
-        "y1" : y(25),
-        "y2" : y(25),
-        "x1" : x(0),
-        "x2" : x(width)
-    });
