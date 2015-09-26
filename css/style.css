@@ -64,11 +64,12 @@ h1, h2 {
 }
 
 .dot.active {
-    stroke: #E0E0E0;
-    stroke-width: 1px;
+    stroke: #ff7b00;
+    stroke-width: 2px;
     opacity: 0.6;
-    fill: #f1a;
+    fill: #000;
     fill-opacity: 1;
+    z-index: -1;
 }
 
 .goal {
@@ -77,14 +78,14 @@ h1, h2 {
 
 
 .goal-num {
-    fill: #aaa;
+    fill: #222;
     font-size: 24px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
 }
 
 .goal-line-text {
-    fill: white;
+    fill: #ddd;
     font-size: 18px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
