@@ -19,9 +19,10 @@
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-    <!-- Placed at end for quicker loading -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 <body>
 
@@ -31,27 +32,45 @@
     </div>
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
+
+            <h4>Select a country:</h4>
+            <div id="select-country"></div>
+            <script>
+                d3.csv("data/countrynames.csv", function(error, data) {
+                    var selection = d3.select("#select-country").append("select")
+
+                    selection
+                            .on("load", function(d) {
+                                var value = d3.select(this).property("value");
+                            });
+
+                    selection.selectAll("option")
+                            .data(data)
+                            .enter()
+                            .append("option")
+                            .attr("value", function (d) { return d.CountryCode; })
+                            .text(function (d) { return d.CountryName; });
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
 
             <!-- CHART GOES HERE -->
             <div id="chart"></div>
 
         </div>
-        <div class="col-md-3">
-            <h2>Search:</h2>
-            <form>
-                <input type="text" name="search">
 
-                <input class="searchButton" type="submit" value="Go">
-            </form>
-        </div>
     </div>
 </div>
 
 <!-- Load Libraries -->
 <script src="js/science.v1.min.js"></script>
 <!--<script src="js/loess.js"></script>-->
-<script src="http://d3js.org/d3.v3.min.js"></script>
+
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script src="js/script.js"></script>
 

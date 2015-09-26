@@ -123,11 +123,13 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
         //.style("fill", "none")
         .on('mouseover', function(d) {
             tip.show(d);
-            d3.selectAll('.dot-' + d.CountryCode).classed('active', true).transition();
+            d3.selectAll('.dot-' + d.CountryCode)
+                .classed('active', true);
         })
         .on('mouseout', function(d) {
             tip.hide(d);
-            d3.selectAll('.dot-' + d.CountryCode).classed('active', false).transition();
+            d3.selectAll('.dot-' + d.CountryCode)
+                .classed('active', false);
         })
     ;
 
