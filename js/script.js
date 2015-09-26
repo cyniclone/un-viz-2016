@@ -105,7 +105,7 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
         .data(data)
         .enter().append("circle")
         .attr("class", function(d) {
-            return "dot";
+            return "dot " + "dot-" + d.CountryCode;
         })
         .attr("r", 3.5)
         .attr("cx", function(d) {
@@ -121,9 +121,14 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
             return y(d.Score);
         })
         //.style("fill", "none")
-        .on('mouseover', tip.show)
-        .on('mouseout', tip.hide)
-
+        .on('mouseover', function(d) {
+            tip.show(d);
+            d3.select(this).classed('active', true);
+        })
+        .on('mouseout', function(d) {
+            tip.hide(d);
+            d3.select(this).classed('active', false);
+        })
     ;
 
     // Render goal line

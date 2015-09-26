@@ -63,13 +63,21 @@ h1, h2 {
     fill-opacity: 0.25;
 }
 
+.dot.active {
+    stroke: #E0E0E0;
+    stroke-width: 1px;
+    opacity: 0.6;
+    fill: #f1a;
+    fill-opacity: 1;
+}
+
 .goal {
     stroke-width: 2px;
 }
 
 
 .goal-num {
-    fill: #222;
+    fill: #aaa;
     font-size: 24px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
