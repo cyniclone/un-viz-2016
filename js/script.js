@@ -2,25 +2,22 @@ var margin = {top: 20, right: 40, bottom: 30, left: 40},
     width = 800 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom;
 
+// Define scales
 var x = d3.scale.linear()
     .range([0, width]);
-
 var y = d3.scale.linear()
     .range([height, 0]);
 
-// Define scales
-xScale = d3.time.scale().range([0, width]);
-yScale = d3.scale.linear().range([height, 0]);
-
+// Define axes
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
     .tickFormat(d3.format("d"));
-
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
 
+// Initialize d3 tip
 var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0])
@@ -48,15 +45,11 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
 
     data.forEach(function(d) {
         d.Score = +d.Score;
-        if(isNaN(d.Score)) console.log("d.Score not a number");
     });
 
+    // Set scale domains
     x.domain(d3.extent(data, function(d) { return d.Year; })).nice();
     y.domain(d3.extent(data, function(d) { return d.Score; })).nice();
-
-    // Set scale domains
-    xScale.domain(d3.extent(data, x));
-    yScale.domain([0, d3.max(data, y)]);
 
     // Draw gridlines for x axis
     svg.selectAll("line.verticalGrid").data(x.ticks(10)).enter()
@@ -128,13 +121,13 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
         .on('mouseout', function(d) {
             tip.hide(d);
             deactivate(d3.selectAll('.dot-' + d.CountryCode));
-        })
-    ;
+
+        });
 
     // Render goal line
-    svg.append("svg:line")
+    svg.append("g").attr("id", "goal")
+        .append("svg:line")
         .attr({
-            "class" : "goal-line",
             "x1" : 0,
             "x2" : width + 5,
             "y1" : y(25),
@@ -164,25 +157,23 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
 
     // Render the fitted line
 
-    svg.append('path')
-        .datum(function() {
-            var loess = science.stats.loess();
-            loess.bandwidth(0.25);
-
-            var xValues = data.map(x);
-            var xValues = Math.random()*50;
-            var yValues = data.map(y);
-            var yValues = Math.random()*50;
-
-            var yValuesSmoothed = loess(xValues, yValues);
-
-            return d3.zip(xValues, yValuesSmoothed);
-        })
-        .attr('class', 'line')
-        .attr('d', d3.svg.line()
-            .interpolate('basis')
-            .x(function(d) { return d[0]; })
-            .y(function(d) { return d[1]; }))
+    //svg.append('path')
+    //    .datum(function() {
+    //        var loess = science.stats.loess();
+    //        loess.bandwidth(0.25);
+    //
+    //        var xValues = data.map(x);
+    //        var yValues = data.map(y);
+    //
+    //        var yValuesSmoothed = loess(xValues, yValues);
+    //
+    //        return d3.zip(xValues, yValuesSmoothed);
+    //    })
+    //    .attr('class', 'loess-line')
+    //    .attr('d', d3.svg.line()
+    //        .interpolate('basis')
+    //        .x(function(d) { return d[0]; })
+    //        .y(function(d) { return d[1]; }))
 
 });
 
@@ -195,6 +186,7 @@ function activate(selector) {
 
 function deactivate(selector) {
     selector.classed("active", false);
+    d3.select('#goal').moveToFront();
 }
 
 d3.selection.prototype.moveToFront = function() {
