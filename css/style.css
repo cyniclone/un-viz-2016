@@ -1,6 +1,7 @@
 body {
     background: #e6e6e6;
-    font-family: 'PT Serif', serif;
+    /*font-family: 'PT Serif', serif;*/
+    font-family: 'Droid Sans', sans-serif;
     font-size: 14px;
     color: #fff;
 }
@@ -21,6 +22,10 @@ h1, h2 {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
 
+}
+
+select {
+    color: black;
 }
 
 /* Visualization  *********/

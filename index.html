@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
-    <link href="http://fonts.googleapis.com/css?family=Fira+Sans:300,400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>-->
+    <!--<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>-->
+    <!--<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>-->
+    <!--<link href="http://fonts.googleapis.com/css?family=Fira+Sans:300,400,700" rel="stylesheet" type="text/css">-->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -37,20 +38,25 @@
             <h4>Select a country:</h4>
             <div id="select-country"></div>
             <script>
+                // Read country names and populate select menu
                 d3.csv("data/countrynames.csv", function(error, data) {
-                    var selection = d3.select("#select-country").append("select")
+                    var select = d3.select("#select-country").append("select");
 
-                    selection
-                            .on("load", function(d) {
-                                var value = d3.select(this).property("value");
+                    select
+//                            .on("load", function(d) {
+//                                var value = d3.select(this).property("value");
+//                            })
+                            .on("change", function() {
+                                console.log(d3.select(this).property("value"));
                             });
 
-                    selection.selectAll("option")
+                    select.selectAll("option")
                             .data(data)
                             .enter()
                             .append("option")
                             .attr("value", function (d) { return d.CountryCode; })
-                            .text(function (d) { return d.CountryName; });
+                            .text(function (d) { return d.CountryName; })
+                            ;
                 });
             </script>
         </div>
