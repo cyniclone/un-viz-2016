@@ -42,21 +42,16 @@
                 d3.csv("data/countrynames.csv", function(error, data) {
                     var select = d3.select("#select-country").append("select");
 
-                    select
-//                            .on("load", function(d) {
-//                                var value = d3.select(this).property("value");
-//                            })
-                            .on("change", function() {
-                                console.log(d3.select(this).property("value"));
-                            });
+                    select.on("change", function() {
+                        console.log(d3.select(this).property("value"));
+                    });
 
                     select.selectAll("option")
-                            .data(data)
-                            .enter()
-                            .append("option")
-                            .attr("value", function (d) { return d.CountryCode; })
-                            .text(function (d) { return d.CountryName; })
-                            ;
+                        .data(data)
+                        .enter()
+                        .append("option")
+                        .attr("value", function (d) { return d.CountryCode; })
+                        .text(function (d) { return d.CountryName; });
                 });
             </script>
         </div>

@@ -123,13 +123,11 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
         //.style("fill", "none")
         .on('mouseover', function(d) {
             tip.show(d);
-            d3.selectAll('.dot-' + d.CountryCode)
-                .classed('active', true);
+            activate(d3.selectAll('.dot-' + d.CountryCode));
         })
         .on('mouseout', function(d) {
             tip.hide(d);
-            d3.selectAll('.dot-' + d.CountryCode)
-                .classed('active', false);
+            deactivate(d3.selectAll('.dot-' + d.CountryCode));
         })
     ;
 
@@ -186,3 +184,12 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
 */
 });
 
+
+// Util functions
+function activate(selector) {
+    selector.classed("active", true);
+}
+
+function deactivate(selector) {
+    selector.classed("active", false);
+}

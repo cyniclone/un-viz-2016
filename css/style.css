@@ -63,6 +63,7 @@ select {
 .dot {
     stroke: #E0E0E0;
     stroke-width: 1px;
+    stroke-opacity: 0.8;
     opacity: 0.6;
     fill: #fff;
     fill-opacity: 0.25;
@@ -72,6 +73,7 @@ select {
 .dot.active {
     stroke: #ff7b00;
     stroke-width: 2px;
+    stroke-opacity: 1;
     opacity: 0.6;
     fill: #000;
     fill-opacity: 1;
