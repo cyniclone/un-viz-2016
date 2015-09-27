@@ -43,7 +43,10 @@
                     var select = d3.select("#select-country").append("select");
 
                     select.on("change", function() {
-                        console.log(d3.select(this).property("value"));
+                        deactivate(d3.selectAll(".dot"));
+
+                        var s = ".dot-" + d3.select(this).property("value");
+                        activate(d3.selectAll(s));
                     });
 
                     select.selectAll("option")
