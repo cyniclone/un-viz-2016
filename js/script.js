@@ -163,14 +163,16 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
         .text("Goal for 2030");
 
     // Render the fitted line
-/*
+
     svg.append('path')
         .datum(function() {
             var loess = science.stats.loess();
             loess.bandwidth(0.25);
 
             var xValues = data.map(x);
+            var xValues = Math.random()*50;
             var yValues = data.map(y);
+            var yValues = Math.random()*50;
 
             var yValuesSmoothed = loess(xValues, yValues);
 
@@ -181,15 +183,22 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
             .interpolate('basis')
             .x(function(d) { return d[0]; })
             .y(function(d) { return d[1]; }))
-*/
+
 });
 
 
 // Util functions
 function activate(selector) {
     selector.classed("active", true);
+    selector.moveToFront();
 }
 
 function deactivate(selector) {
     selector.classed("active", false);
 }
+
+d3.selection.prototype.moveToFront = function() {
+    return this.each(function(){
+        this.parentNode.appendChild(this);
+    });
+};
