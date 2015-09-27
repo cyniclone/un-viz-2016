@@ -92,7 +92,8 @@ select {
     letter-spacing: 1px;
 }
 
-.loess-line {
+#trend {
     stroke-width: 3px;
-    stroke: black;
+    stroke: #222;
+    fill: none;
 }

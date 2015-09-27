@@ -165,7 +165,7 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
 
             return d3.zip(xValues, yValuesSmoothed);
         })
-        .attr('class', 'loess-line')
+        .attr('id', 'trend')
         .attr('d', d3.svg.line()
             .interpolate('basis')
             .x(function(d) { return d[0]; })
@@ -183,6 +183,7 @@ function activate(selector) {
 function deactivate(selector) {
     selector.classed("active", false);
     d3.select('#goal').moveToFront();
+    d3.select('#trend').moveToFront()
 }
 
 d3.selection.prototype.moveToFront = function() {
