@@ -8,19 +8,10 @@ var x = d3.scale.linear()
 var y = d3.scale.linear()
     .range([height, 0]);
 
-// Value maps
-var xMap = function(d) {
-        if (isNaN(d.Score)) {
-            return x(-100);
-        }
-        return x(d.Year);
-    };
-var yMap = function(d) {
-        if (isNaN(d.Year)) {
-            return y(-100);
-        }
-        return y(d.Score);
-    };
+// Define value maps
+var xMap = function(d) { return x(d.Year) };
+var yMap = function(d) { return y(d.Score) };
+
 
 // Define axes
 var xAxis = d3.svg.axis()
@@ -116,19 +107,7 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
             return "dot " + "dot-" + d.CountryCode;
         })
         .attr("r", 3.5)
-        //.attr("cx", function(d) {
-        //    if (isNaN(d.Score)) {
-        //        return x(-100);
-        //    }
-        //    return xMap(d);
-        //})
         .attr('cx', xMap)
-        //.attr("cy", function(d) {
-        //    if (isNaN(d.Score)) {
-        //        return y(-100);
-        //    }
-        //    return yMap(d);
-        //})
         .attr('cy', yMap)
         //.style("fill", "none")
         .on('mouseover', function(d) {
@@ -174,23 +153,23 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
 
     // Render the fitted line
 
-    //svg.append('path')
-    //    .datum(function() {
-    //        var loess = science.stats.loess();
-    //        loess.bandwidth(0.25);
-    //
-    //        var xValues = data.map(x);
-    //        var yValues = data.map(y);
-    //
-    //        var yValuesSmoothed = loess(xValues, yValues);
-    //
-    //        return d3.zip(xValues, yValuesSmoothed);
-    //    })
-    //    .attr('class', 'loess-line')
-    //    .attr('d', d3.svg.line()
-    //        .interpolate('basis')
-    //        .x(function(d) { return d[0]; })
-    //        .y(function(d) { return d[1]; }))
+    svg.append('path')
+        .datum(function() {
+            var loess = science.stats.loess();
+            loess.bandwidth(0.25);
+
+            var xValues = data.map(xMap);
+            var yValues = data.map(yMap);
+
+            var yValuesSmoothed = loess(xValues, yValues);
+
+            return d3.zip(xValues, yValuesSmoothed);
+        })
+        .attr('class', 'loess-line')
+        .attr('d', d3.svg.line()
+            .interpolate('basis')
+            .x(function(d) { return d[0]; })
+            .y(function(d) { return d[1]; }))
 
 });
 
