@@ -8,6 +8,20 @@ var x = d3.scale.linear()
 var y = d3.scale.linear()
     .range([height, 0]);
 
+// Value maps
+var xMap = function(d) {
+        if (isNaN(d.Score)) {
+            return x(-100);
+        }
+        return x(d.Year);
+    };
+var yMap = function(d) {
+        if (isNaN(d.Year)) {
+            return y(-100);
+        }
+        return y(d.Score);
+    };
+
 // Define axes
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -16,6 +30,7 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
+
 
 // Initialize d3 tip
 var tip = d3.tip()
@@ -101,18 +116,20 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
             return "dot " + "dot-" + d.CountryCode;
         })
         .attr("r", 3.5)
-        .attr("cx", function(d) {
-            if (isNaN(d.Score)) {
-                return x(-100);
-            }
-            return x(d.Year);
-        })
-        .attr("cy", function(d) {
-            if (isNaN(d.Score)) {
-                return y(-100);
-            }
-            return y(d.Score);
-        })
+        //.attr("cx", function(d) {
+        //    if (isNaN(d.Score)) {
+        //        return x(-100);
+        //    }
+        //    return xMap(d);
+        //})
+        .attr('cx', xMap)
+        //.attr("cy", function(d) {
+        //    if (isNaN(d.Score)) {
+        //        return y(-100);
+        //    }
+        //    return yMap(d);
+        //})
+        .attr('cy', yMap)
         //.style("fill", "none")
         .on('mouseover', function(d) {
             tip.show(d);
