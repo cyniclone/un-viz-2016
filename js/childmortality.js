@@ -153,7 +153,6 @@ function initChildMort() {
         ;
 
         // Render the fitted line
-
         svg.append('path')
             .datum(function() {
                 var loess = science.stats.loess();

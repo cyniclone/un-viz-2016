@@ -30,9 +30,6 @@ function initPov() {
         .orient("left")
         .tickFormat(function(d) { return d + "%"; });
 
-
-
-
 // Initialize d3 tip
     var tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -128,9 +125,16 @@ function initPov() {
 
             });
 
-        // Render trend line
-
+        // Render the fitted line
+        svg
+            .append("line")
+            .attr("class", "trendline")
+            .attr("x1", function(d) { return x(1981); })
+            .attr("y1", function(d) { return y(33.67); })
+            .attr("x2", function(d) { return x(2012); })
+            .attr("y2", function(d) { return y(10); })
+            .attr("stroke", "#222")
+            .attr("stroke-width", 2);
 
     });
 }
-

@@ -52,7 +52,10 @@ select {
 }
 
 .axis.pov {
-    fill:white;
+    fill: #222;
+}
+.pov text {
+    font-weight: bold;
 }
 
 .d3-tip{
