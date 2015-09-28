@@ -14,6 +14,11 @@ body {
     background: #48a034;
 }
 
+.container.poverty {
+    background: #e72a3c;
+}
+
+
 h1 {text-align: center;}
 
 h1, h2 {
