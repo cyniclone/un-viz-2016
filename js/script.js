@@ -1,6 +1,6 @@
 var margin = {top: 20, right: 40, bottom: 30, left: 40},
     width = 800 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+    height = 700 - margin.top - margin.bottom;
 
 // Define scales
 var x = d3.scale.linear()
@@ -136,10 +136,10 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
     svg.append("g")
         .attr("class", "goal-num")
         .append("text")
-        .attr("y", y(25))
+        .attr("y", y(10))
         .attr("dx", width + 10)
         .style("text-align", "center")
-        .text("25");
+        //.text("25");
 
     svg.append("g") // Goal line description
         .attr("class", "goal-line-text")
@@ -149,7 +149,7 @@ d3.csv("data/childmortalitylong.csv", function(error, data) {
         .attr("dx", width - 70)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Goal for 2030");
+        .text("");
 
     // Render the fitted line
 

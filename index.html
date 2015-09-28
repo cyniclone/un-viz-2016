@@ -35,8 +35,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h4>Select a country:</h4>
-            <div id="select-country"></div>
+            
             <script>
                 // Read country names and populate select menu
                 d3.csv("data/countrynames.csv", function(error, data) {
@@ -63,8 +62,25 @@
     <div class="row">
         <div class="col-md-12">
 
+            <h4 id="top-label">&#10553;Child mortality rate, under-5 per 1,000 live births</h4>
+
             <!-- CHART GOES HERE -->
             <div id="chart"></div>
+
+            <h4 id="select-title">Select a country:</h4>
+            <div id="select-country"></div>
+
+            <div id="info-box"> 
+                <h3>HOW TO READ THIS CHART</h3>
+                <br />
+                <ol id="info-panel">
+                    <li>Each circle is a country</li>
+                    <br />
+                    <li>The position of each country on the vertical axis is the child mortality rate, under-5 per 1,000 live births.</li>
+                </ol>
+            </div>
+
+            <h4 id="bottom-labels">Trend<br />&#10550;<br />25: Goal for 2030</h4>
 
         </div>
 

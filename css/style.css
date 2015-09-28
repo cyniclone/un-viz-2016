@@ -18,6 +18,10 @@ h1, h2 {
     text-transform: uppercase;
 }
 
+h4 {
+    text-align: left;
+}
+
 select {
     color: black;
 }
@@ -88,7 +92,6 @@ select {
     font-size: 18px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-
     letter-spacing: 1px;
 }
 
@@ -96,4 +99,39 @@ select {
     stroke-width: 3px;
     stroke: #222;
     fill: none;
+}
+
+#select-title{
+    font-family: 'Oswald', sans-serif;
+    float: right;
+    display: inline-block;
+}
+
+#select-country{
+    display: inline-block;
+    float: right;
+}
+
+#chart {
+    float: left;
+}
+
+#info-box{
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    margin-top: 150px;
+}
+
+#info-panel{
+    font-family: 'Oswald', sans-serif;
+    text-align: left;
+    font-size: 18px;
+}
+#top-label {
+    margin-left: 30px;
+}
+
+#bottom-labels {
+    text-align: left;
+    margin-top: 270px;
 }
