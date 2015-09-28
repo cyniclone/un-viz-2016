@@ -27,7 +27,10 @@ function initPov() {
         .tickFormat(d3.format("d"));
     var yAxis = d3.svg.axis()
         .scale(y)
-        .orient("left");
+        .orient("left")
+        .tickFormat(function(d) { return d + "%"; });
+
+
 
 
 // Initialize d3 tip
@@ -96,15 +99,13 @@ function initPov() {
         );
 
         svg.append("g")
-            .attr("class", "x axis")
+            .attr("class", "x axis pov")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis)
-            .append("text");
+            .call(xAxis);
 
         svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis)
-            .append("text");
+            .attr("class", "y axis pov")
+            .call(yAxis);
 
         // Render circles
         svg.selectAll(".dot")

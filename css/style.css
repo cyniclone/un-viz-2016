@@ -31,6 +31,7 @@ h4 {
 }
 
 select {
+    font-size: 14px;
     color: black;
 }
 
@@ -48,6 +49,10 @@ select {
     fill: none;
     stroke: #FFF;
     shape-rendering: crispEdges;
+}
+
+.axis.pov {
+    fill:white;
 }
 
 .d3-tip{
