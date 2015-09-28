@@ -1,5 +1,5 @@
 // Read country names and populate select menu
-d3.csv("data/countrynames.csv", function(error, data) {
+d3.csv("data/countrynameschild.csv", function(error, data) {
     var select = d3.select("#select-country").append("select");
 
     select.on("change", function() {
