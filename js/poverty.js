@@ -8,8 +8,16 @@ function initPov() {
         .range([height, 0]);
 
 // Define value maps
-    var xMap = function(d) { return x(d.Year) };
-    var yMap = function(d) { return y(d.Value) };
+    var xMap = function(d) {
+        if (isNaN(d.Year)) return x(-100);
+
+        return x(d.Year);
+    };
+    var yMap = function(d) {
+        if (isNaN(d.Value)) return y(-100);
+
+        return y(d.Value);
+    };
 
 
 // Define axes
@@ -27,7 +35,7 @@ function initPov() {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-            return "<b>" + d.CountryName + " - " + d.Year + "</b><br>" + d.Value;
+            return "<b>" + d.CountryName + " - " + d.Year + "</b><br>" + d.Value + " %";
         });
 
     var svg = d3.select("#chart").append("svg")
@@ -40,13 +48,13 @@ function initPov() {
     svg.call(tip);
 
     d3.csv("data/povertylong.csv", function(error, data) {
-        data = data.filter(function(d){
-            if(isNaN(d.Value)){
-                return false;
-            }
-            d.Value = parseInt(d.Value, 10);
-            return true;
-        });
+        //data = data.filter(function(d){
+        //    if(isNaN(d.Value)){
+        //        return false;
+        //    }
+        //    d.Value = parseInt(d.Value, 10);
+        //    return true;
+        //});
 
         data.forEach(function(d) {
             d.Value = +d.Value;
@@ -103,7 +111,7 @@ function initPov() {
             .data(data)
             .enter().append("circle")
             .attr("class", function(d) {
-                return "dot " + "dot-" + d.CountryCode;
+                return "dot pov " + "dot-" + d.CountryCode;
             })
             .attr("r", 3.5)
             .attr('cx', xMap)
