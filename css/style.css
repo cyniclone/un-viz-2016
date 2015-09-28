@@ -7,8 +7,11 @@ body {
 }
 
 .container {
-    background: #48a034;
     padding: 20px;
+}
+
+.container.child-mortality {
+    background: #48a034;
 }
 
 h1 {text-align: center;}
@@ -118,6 +121,7 @@ select {
 
 #info-box{
     font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
     text-align: center;
     margin-top: 150px;
 }

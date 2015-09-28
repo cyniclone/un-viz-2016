@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/child-mortality.iml" filepath="$PROJECT_DIR$/.idea/child-mortality.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/un-viz.iml" filepath="$PROJECT_DIR$/.idea/un-viz.iml" />
     </modules>
   </component>
 </project>
