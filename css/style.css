@@ -54,6 +54,12 @@ select {
 .axis.pov {
     fill: #222;
 }
+
+.x.axis.pov path {
+    stroke: #222;
+    stroke-width: 1px;
+    fill: none;
+}
 .pov text {
     font-weight: bold;
 }
