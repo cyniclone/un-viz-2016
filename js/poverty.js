@@ -87,8 +87,15 @@ function initPov() {
                 "class": "horizontalGrid",
                 "x1" : 0,
                 "x2" : width,
-                "y1" : function(d) { return y(d); },
-                "y2" : function(d) { return y(d); },
+                "y1" : function(d) {
+                    // Don't render line if it's at 0%
+                    if (y(d) == 650) return -100;
+                    return y(d);
+                },
+                "y2" : function(d) {
+                    if (y(d) == 650) return -100;
+                    return y(d);
+                },
                 "fill" : "none",
                 "stroke" : "#ccc",
                 "stroke-width" : "0.75px"
