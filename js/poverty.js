@@ -9,7 +9,7 @@ function initPov() {
 
 // Define value maps
     var xMap = function(d) {
-        if (isNaN(d.Year)) return x(-100);
+        if (isNaN(d.Year)) return x(-100); // Filter out NaNs
 
         return x(d.Year);
     };
