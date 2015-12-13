@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <title>Child Mortality</title>
+    <title>Visualization</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -16,56 +16,50 @@
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
     <script src="http://d3js.org/d3.v3.min.js"></script>
+
 </head>
 <body>
 
-<div class="container child-mortality">
+<div class="container">
     <div class="row">
-        <div class="col-md-12"><h1>Good Health and Well-Being</h1></div>
+        <div class="col-md-12"><h1>Header</h1></div>
     </div>
 
+
     <div class="row">
-        <div class="col-md-12">
-            <script src="js/selectmenuchild.js"></script>
-        </div>
+
     </div>
-
     <div class="row">
-        <div class="col-md-12">
-
-            <h4 class="col-md-9" id="top-label">&#10553;Child mortality rate, under-5 per 1,000 live births</h4>
-
+        <div class="col-md-9 col-sm-12">
+            <h4>Chart Title</h4>
             <!-- CHART GOES HERE -->
             <div id="chart"></div>
-
-            <h4 class="col-md-3" id="select-title">Select a country:</h4>
-            <div class="col-md-3" id="select-country"></div>
-
-            <div id="info-box"> 
-                <h3 class="col-md-3">HOW TO READ THIS CHART</h3>
-                <br />
-                <ol class="col-md-3" id="info-panel">
-                    <li>Each circle is a country</li>
-                    <br />
-                    <li>The position of each country on the vertical axis is the child mortality rate, under-5 per 1,000 live births.</li>
-                </ol>
-            </div>
-
-            <h4 class="col-md-3" id="bottom-labels" style="margin-top: 250px;">Trend<br />&#10550;<br /><br />25: Goal for 2030</h4>
-
         </div>
+
+        <div class="col-md-3 col-sm-12">
+
+            <h4>Select a country:</h4>
+            <div id="select-country">
+
+            </div>
+        </div>
+
+        <!--<h4 class="col-md-3" id="bottom-labels" style="margin-top: 250px;">Trend<br />&#10550;<br /><br />25: Goal for 2030</h4>-->
+
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 <!-- Load Libraries -->
-<script src="js/science.v1.min.js"></script>
+<!--<script src="js/science.v1.min.js"></script>-->
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-<script src="js/globalsutils.js"></script>
-<script src="js/childmortality.js"></script>
+<!--<script src="js/globalsutils.js"></script>-->
+<!--<script src="js/childmortality.js"></script>-->
+<script src="js/selectmenuchild.js"></script>
+
 
 </body>
 </html>

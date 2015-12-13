@@ -1,0 +1,179 @@
+$color1 = #333;
+$font1 = 'Droid Sans';
+
+
+
+body {
+    background: #e6e6e6;
+    /*font-family: 'PT Serif', serif;*/
+    font-family: $font1;
+    font-size: 14px;
+    color $color1
+}
+
+.container {
+    padding: 20px;
+}
+
+.container.child-mortality {
+    background: #48a034;
+}
+
+.container.poverty {
+    background: #e72a3c;
+}
+
+
+h1 {text-align: center;}
+
+h1, h2 {
+    //font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+}
+
+h4 {
+    text-align: left;
+}
+
+select {
+    font-size: 14px;
+    color: black;
+}
+
+/*********** Visualization  *********/
+
+.content {
+    background: white;
+    padding-top:2%;
+}
+
+.axis { font-family: "Helvetica Neue", Helvetica, sans-serif; }
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #FFF;
+    shape-rendering: crispEdges;
+}
+
+.axis.pov {
+    fill: #222;
+}
+
+.x.axis.pov path {
+    stroke: #222;
+    stroke-width: 1px;
+    fill: none;
+}
+.pov text {
+    font-weight: bold;
+}
+
+.d3-tip{
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.85);
+
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: sans-serif;
+    /*color: #478D2E;*/
+    color: #222;
+}
+
+.viz {
+    margin:2%;
+    /*background-color: #478D2E;*/
+}
+
+
+/* Style data points */
+circle.active {
+    r: 5px;
+}
+
+.dot {
+    stroke: #E0E0E0;
+    stroke-width: 1px;
+    stroke-opacity: 0.8;
+    opacity: 0.6;
+    fill: #fff;
+    fill-opacity: 0.25;
+}
+
+.dot.pov {
+    stroke-opacity: 0.8;
+    stroke: white;
+    fill-opacity: 0.75;
+}
+
+.dot.active {
+    stroke: #ff7b00;
+    stroke-width: 2px;
+    stroke-opacity: 1;
+    opacity: 0.6;
+    fill: #000;
+    fill-opacity: 1;
+}
+
+.dot.pov.active {
+    fill: #008faa;
+    stroke: black;
+    opacity: 1;
+    fill-opacity: 1;
+    stroke-opacity: 1;
+}
+
+/****************/
+
+#goal {
+    stroke-width: 2px;
+}
+
+.goal-num {
+    fill: #222;
+    font-size: 24px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+}
+
+.goal-line-text {
+    fill: #ddd;
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#trend {
+    stroke-width: 3px;
+    stroke: #222;
+    fill: none;
+}
+
+#select-title{
+    float: right;
+    display: inline-block;
+}
+
+#chart {
+    float: left;
+}
+
+#info-box{
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#info-panel{
+    font-family: 'Oswald', sans-serif;
+    text-align: left;
+    font-size: 18px;
+}
+#top-label {
+    margin-left: 30px;
+}
+
+#bottom-labels {
+    text-align: left;
+}
