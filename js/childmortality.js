@@ -10,8 +10,7 @@ function initChildMort() {
 // Define value maps
     var xMap = function(d) { return x(d.Year) };
     var yMap = function(d) { return y(d.Score) };
-
-
+    
 // Define axes
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -20,7 +19,6 @@ function initChildMort() {
     var yAxis = d3.svg.axis()
         .scale(y)
         .orient("left");
-
 
 // Initialize d3 tip
     var tip = d3.tip()

@@ -1,8 +1,3 @@
-// Global variables
-var margin = {top: 20, right: 40, bottom: 30, left: 50},
-    width = 800 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
-
 // Util functions
 function activate(selector) {
     selector.classed("active", true);
