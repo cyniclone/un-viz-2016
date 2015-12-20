@@ -1,17 +1,12 @@
-// Global variables
-
-/***** Chart dimensions ************/
-var margin = {top: 20, right: 40, bottom: 30, left: 50},
-    width = 800 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
-/**********************************/
-
 /***** Static Content ************/
-// ZERO HUNGER
 
-var charts = {};
+var charts = {}; // Object to hold all chart objects
 
-charts.hunger = {
+// 1.) ZERO HUNGER
+charts["hunger"] = {
+    "value" : "hunger",
+    "navText" : "Zero Hunger",
+    "color" : "#DDA63B",
     "dimensions" : {
         "margin" : {
             top : 20,
@@ -23,7 +18,7 @@ charts.hunger = {
         "height" : 700
     },
     "header" : "ZERO HUNGER",
-    "countryNamesPath" : "data/countrylist-hunger.csv",
+    "countryNamesPath" : "data/countrylist/list-hunger.csv",
     "data" : "data/hunger.csv",
     "howToRead" : {},
     "info" : ""

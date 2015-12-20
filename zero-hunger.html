@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <title>Visualization</title>
+    <title>Zero Hunger</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -21,9 +21,10 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container zero-hunger"> <!-- Top level for Lumira viz -->
     <div class="row">
-        <div class="col-md-12"><h1 id="page-header">Header</h1></div>
+        <div class="col-md-12 col-sm-12"><h1 id="page-header">Zero Hunger</h1></div>
+        <!--<div class="col-md-3 col-sm-12"><select id="nav"></select></div>-->
     </div>
 
     <div class="row">
@@ -44,14 +45,15 @@
     </div>
 </div>
 
+<!-- Load Libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<!-- Load Libraries -->
-<!--<script src="js/science.v1.min.js"></script>-->
 <script src="js/globals.js"></script>
+<script src="js/populate-static-content.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
+<script>populateSelect("data/country_list/list-zero-hunger.csv")</script>
 
 </body>
 </html>

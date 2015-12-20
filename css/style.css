@@ -2,13 +2,15 @@
 /**********************************/
 body {
   background: #e6e6e6;
-/*font-family: 'PT Serif', serif;*/
-  font-family: 'Apex', 'Droid Sans';
+  font-family: 'Droid Sans';
   font-size: 14px;
   color: #333;
 }
 .container {
   padding: 20px;
+}
+select {
+  margin-right: 20px;
 }
 /* Individual Chart Styles *****/
 .container.child-mortality {
@@ -16,6 +18,9 @@ body {
 }
 .container.poverty {
   background: #e72a3c;
+}
+.container.zero-hunger {
+  background: #dda63b;
 }
 /*******************************/
 h1 {
