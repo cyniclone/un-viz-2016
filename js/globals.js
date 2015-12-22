@@ -18,8 +18,8 @@ charts["hunger"] = {
         "height" : 700
     },
     "header" : "ZERO HUNGER",
-    "countryNamesPath" : "data/countrylist/list-hunger.csv",
-    "data" : "data/hunger.csv",
+    "countryNamesPath" : "data/countrylist/list-zero-hunger.csv",
+    "dataPath" : "data/zero-hunger.csv",
     "howToRead" : {},
     "info" : ""
 };

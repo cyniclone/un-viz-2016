@@ -19,7 +19,6 @@ function initPov() {
         return y(d.Value);
     };
 
-
 // Define axes
     var xAxis = d3.svg.axis()
         .scale(x)

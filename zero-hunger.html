@@ -48,12 +48,20 @@
 <!-- Load Libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-<script src="js/globals.js"></script>
-<script src="js/populate-static-content.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
-<script>populateSelect("data/country_list/list-zero-hunger.csv")</script>
+<script src="js/globals.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/populate-static-content.js"></script>
+<script src="js/render.js"></script>
+
+<script>
+    $(document).ready(function() {
+        populateSelect(charts.hunger.countryNamesPath);
+        drawScatter(charts.hunger.dataPath);
+    });
+</script>
+
 
 </body>
 </html>

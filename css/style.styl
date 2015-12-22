@@ -1,8 +1,6 @@
 /*****    TEXT STYLING    *********/
-
 $color1 = #333;
 $font1 = 'Droid Sans';
-
 
 /**********************************/
 
@@ -26,10 +24,11 @@ select
 .container.poverty
   background: #e72a3c
 
+/***** 1.) ZERO HUNGER ************/
 .container.zero-hunger
-  background: #DDA63B
+  background: #dda63a
+/**********************************/
 
-/*******************************/
 
 h1 {text-align: center;}
 
@@ -63,19 +62,6 @@ select {
   shape-rendering: crispEdges;
 }
 
-.axis.pov {
-  fill: #222;
-}
-
-.x.axis.pov path {
-  stroke: #222;
-  stroke-width: 1px;
-  fill: none;
-}
-.pov text {
-  font-weight: bold;
-}
-
 .d3-tip{
   width: 150px;
   background-color: rgba(255, 255, 255, 0.85);
@@ -96,67 +82,24 @@ select {
 
 /* Style data points */
 circle.active {
-  r: 5px;
+  r: 6px;
 }
 
-.dot {
+.scatterdot
   stroke: #E0E0E0;
   stroke-width: 1px;
-  stroke-opacity: 0.8;
-  opacity: 0.6;
+  stroke-opacity: 1;
+  opacity: 0.8;
   fill: #fff;
-  fill-opacity: 0.25;
-}
+  fill-opacity: 0.8;
 
-.dot.pov {
-  stroke-opacity: 0.8;
-  stroke: white;
-  fill-opacity: 0.75;
-}
-
-.dot.active {
-  stroke: #ff7b00;
+.scatterdot.active
+  stroke #C66611
   stroke-width: 2px;
   stroke-opacity: 1;
-  opacity: 0.6;
+  opacity: 1;
   fill: #000;
   fill-opacity: 1;
-}
-
-.dot.pov.active {
-  fill: #008faa;
-  stroke: black;
-  opacity: 1;
-  fill-opacity: 1;
-  stroke-opacity: 1;
-}
-
-/****************/
-
-#goal {
-  stroke-width: 2px;
-}
-
-.goal-num {
-  fill: #222;
-  font-size: 24px;
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-}
-
-.goal-line-text {
-  fill: #ddd;
-  font-size: 18px;
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-#trend {
-  stroke-width: 3px;
-  stroke: #222;
-  fill: none;
-}
 
 #select-title{
   float: right;
@@ -165,22 +108,4 @@ circle.active {
 
 #chart {
   float: left;
-}
-
-#info-box{
-  letter-spacing: 1px;
-  text-align: center;
-}
-
-#info-panel{
-  font-family: 'Oswald', sans-serif;
-  text-align: left;
-  font-size: 18px;
-}
-#top-label {
-  margin-left: 30px;
-}
-
-#bottom-labels {
-  text-align: left;
 }
