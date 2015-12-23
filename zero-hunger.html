@@ -40,10 +40,12 @@
         </div>
 
         <div class="col-md-3 col-sm-12">
-            <h4>Select a country:</h4>
+            <h3>Select a country:</h3>
             <div id="select-country"></div> <br />
 
-            <h4 style="font-size:24px">How to Read This Chart</h4>
+            <hr>
+
+            <h3>How to Read This Chart</h3>
             <div id="how-to-read">
                 <ol>
                     <li>Each circle is a country</li>
@@ -51,8 +53,9 @@
                 </ol>
             </div> <br />
 
+
             <hr>
-            <h4 style="font-size:24px;">Target for 2030</h4>
+            <h3>Target for 2030</h3>
             <div id="info-box">By 2030, end all forms of malnutrition, including achieving, by 2025, the internationally agreed targets on stunting and wasting in children under 5 years of age, and address the nutritional needs of adolescent girls, pregnant and lactating women and older persons
             </div> <br />
         </div>
@@ -72,7 +75,7 @@
 <script>
     $(document).ready(function() {
         populateSelect(charts.hunger.countryNamesPath);
-        drawScatter(charts.hunger.dataPath);
+        drawScatter(charts.hunger);
     });
 </script>
 

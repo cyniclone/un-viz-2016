@@ -1,4 +1,4 @@
-function drawScatter (path) {
+function drawScatter (chartObj) {
     /*
      * value accessor - returns the value to encode for a given data object.
      * scale          - maps value to a visual display encoding, such as a pixel position.
@@ -7,9 +7,10 @@ function drawScatter (path) {
      */
 
     // Chart dimensions
-    var margin = {top: 20, right: 20, bottom: 20, left: 60},
-        width = 800 - margin.left - margin.right,
-        height = 800 - margin.top - margin.bottom;
+    var dim = chartObj.dimensions;
+    var margin = dim.margin
+        width = 800 - dim.margin.left - dim.margin.right,
+        height = 800 - dim.margin.top - dim.margin.bottom;
 
     // setup x
     var xValue = function (d) { return d.Year; },                    // data  -> value
@@ -42,7 +43,7 @@ function drawScatter (path) {
 
     svg.call(tip);
 
-    d3.csv(path, function (error, data) {
+    d3.csv(chartObj.dataPath, function (error, data) {
 
         data = data.filter(function(d){
             if(isNaN(d.Value)){
