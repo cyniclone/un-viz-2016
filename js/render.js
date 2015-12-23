@@ -43,7 +43,7 @@ function drawScatter (path) {
     svg.call(tip);
 
     d3.csv(path, function (error, data) {
-        console.log(data);
+
         data = data.filter(function(d){
             if(isNaN(d.Value)){
                 return false;
@@ -51,8 +51,6 @@ function drawScatter (path) {
             //d.Value = parseInt(d.Value, 10);
             return true;
         });
-
-
 
         data.forEach(function (d) {
             d.Value = +d.Value; // Force numeric
@@ -120,7 +118,7 @@ function drawScatter (path) {
             .data(data)
             .enter().append("circle")
             .attr("class", function (d) {
-                return "scatterdot " + "scatterdot-" + d.CountryName;
+                return "scatterdot " + "scatterdot-" + d.CountryCode;
             })
             .attr("r", 5)
             .attr('cx', xMap)
@@ -128,11 +126,11 @@ function drawScatter (path) {
             //.style("fill", "none")
             .on('mouseover', function (d) {
                 tip.show(d);
-                activate(d3.selectAll('.scatterdot-' + d.CountryName));
+                activate(d3.selectAll('.scatterdot-' + d.CountryCode));
             })
             .on('mouseout', function (d) {
                 tip.hide(d);
-                deactivate(d3.selectAll('.scatterdot-' + d.CountryName));
+                deactivate(d3.selectAll('.scatterdot-' + d.CountryCode));
 
             });
 

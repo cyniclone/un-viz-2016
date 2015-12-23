@@ -31,14 +31,12 @@ h1,
 h2 {
   text-transform: uppercase;
 }
-h4 {
-  text-align: left;
-}
-select {
-  font-size: 14px;
-  color: #000;
-}
-/*********** Visualization  *********/
+h4 text-align left,
+#axis-description margin-left 80px,
+#how-to-read          font-size 16px,
+#how-to-read ol li    margin-bottom 12px,
+#info-box             font-size 14px,
+select font-size 14px  color black,
 .content {
   background: #fff;
   padding-top: 2%;
@@ -74,9 +72,9 @@ circle.active {
   stroke: #e0e0e0;
   stroke-width: 1px;
   stroke-opacity: 1;
-  opacity: 0.8;
+  opacity: 0.6;
   fill: #fff;
-  fill-opacity: 0.8;
+  fill-opacity: 0.6;
 }
 .scatterdot.active {
   stroke: #c66611;
