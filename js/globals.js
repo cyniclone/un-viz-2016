@@ -7,6 +7,7 @@ charts["hunger"] = {
     "value" : "hunger",
     "navText" : "Zero Hunger",
     "color" : "#DDA63B",
+    "targetDiv" : "#chart",
     "dimensions" : {
         "margin" : {
             top : 20,
@@ -20,7 +21,14 @@ charts["hunger"] = {
     "header" : "ZERO HUNGER",
     "countryNamesPath" : "data/countrylist/list-zero-hunger.csv",
     "dataPath" : "data/zero-hunger.csv",
-    "howToRead" : {},
-    "info" : ""
+    "howToRead" : "",
+    "info" : "",
+    "lm" : {
+        _x1 : 0,
+        _x2 : 710,
+        _y1 : 464.97,
+        _y2 : 550.96
+    }
+
 };
 /**********************************/

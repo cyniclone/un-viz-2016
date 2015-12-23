@@ -1,3 +1,11 @@
+/***** Globals        ************/
+// Chart dimensions
+var margin, width, height;
+var xValue, xScale, xMap, xAxis;
+var yValue, yScale, yMap, yAxis;
+
+var svg;
+
 function drawScatter (chartObj) {
     /*
      * value accessor - returns the value to encode for a given data object.
@@ -6,24 +14,24 @@ function drawScatter (chartObj) {
      * axis           - sets up axis
      */
 
-    // Chart dimensions
+    // Assign chart dimensions from object
     var dim = chartObj.dimensions;
-    var margin = dim.margin
-        width = 800 - dim.margin.left - dim.margin.right,
-        height = 800 - dim.margin.top - dim.margin.bottom;
+    margin = dim.margin;
+    width = dim.width - dim.margin.left - dim.margin.right;
+    height = dim.height - dim.margin.top - dim.margin.bottom;
 
     // setup x
-    var xValue = function (d) { return d.Year; },                    // data  -> value
-        xScale = d3.scale.linear().range([0, width]),                // value -> display
-        xMap = function (d) { return xScale(xValue(d)); },           // data  -> display
-        xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));    // Remove commas from axis
+    xValue = function (d) { return d.Year; };                    // data  -> value
+    xScale = d3.scale.linear().range([0, width]);                // value -> display
+    xMap = function (d) { return xScale(xValue(d)); };           // data  -> display
+    xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));    // Remove commas from axis
 
     // setup y
-    var yValue = function (d) { return d.Value; },                   // data  -> value
-        yScale = d3.scale.linear().range([height, 0]),               // value -> display
-        yMap = function (d) { return yScale(yValue(d)); },           // data  -> display
-        yAxis = d3.svg.axis().scale(yScale).orient("left").tickFormat(
-            function (d) { return d + "%"; });    // Percents on axes
+    yValue = function (d) { return d.Value; };                   // data  -> value
+    yScale = d3.scale.linear().range([height, 0]);               // value -> display
+    yMap = function (d) { return yScale(yValue(d)); };           // data  -> display
+    yAxis = d3.svg.axis().scale(yScale).orient("left").tickFormat(
+        function (d) { return d + "%"; });    // Percents on axes
 
     // Initialize d3 tip
     var tip = d3.tip()
@@ -34,8 +42,8 @@ function drawScatter (chartObj) {
         });
 
     // Make chart SVG
-    var svg = d3.select("#chart").append("svg")
-        .attr("class", "viz")
+    svg = d3.select(chartObj.targetDiv).append("svg")
+        .attr("id", "viz")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -135,19 +143,24 @@ function drawScatter (chartObj) {
 
             });
 
-        // Render trend line
-        /*
-        svg.append("g").attr("id", "goal")
-            .append("svg:line")
-            .attr({
-                "x1": 0,
-                "x2": width + 5,
-                "y1": yScale(25),
-                "y2": yScale(25),
-                "stroke-width": "2px"
-            })
-            .style("stroke", "#222");
-        */
-
+        drawLine(chartObj);
     });
+}
+
+function drawLine (chartObj) {
+    // Takes a given trendline and draws it to the #chart div
+    var lm = chartObj.lm;   // Get coordinates from linear model
+
+    svg.append("g").attr("id", "trend")
+        .append("svg:line")
+        .attr({
+            "x1" : lm._x1,
+            "x2" : lm._x2,
+            "y1" : lm._y1,
+            "y2" : lm._y2,
+            "stroke-width": "2px"
+        })
+        .style("stroke", "#222");
+
+    d3.select('#trend').moveToFront();
 }
