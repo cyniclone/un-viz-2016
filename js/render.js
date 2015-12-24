@@ -43,7 +43,7 @@ function drawScatter (chartObj) {
 
     // Make chart SVG
     svg = d3.select(chartObj.targetDiv).append("svg")
-        .attr("id", "viz")
+        .attr("class", "viz")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -129,7 +129,7 @@ function drawScatter (chartObj) {
             .attr("class", function (d) {
                 return "scatterdot " + "scatterdot-" + d.CountryCode;
             })
-            .attr("r", 5)
+            .attr("r", chartObj.radius)
             .attr('cx', xMap)
             .attr('cy', yMap)
             //.style("fill", "none")
@@ -143,7 +143,9 @@ function drawScatter (chartObj) {
 
             });
 
-        drawLine(chartObj);
+        if (chartObj.hasTrend) {
+            drawLine(chartObj);
+        }
     });
 }
 

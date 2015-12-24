@@ -1,7 +1,7 @@
 library(tidyr)
 library(ggplot2)
 
-data <-read.csv(file.choose(), header = T) # choose the long data
+data <-read.csv("~/Code/un-viz-2016/data/zero-hunger.csv", header = T) # choose the long data
 
 
 str(data)
@@ -11,4 +11,4 @@ str(data)
 #Let's do a quick plot
 #ggplot(data_long, aes(x=Year, y=Value))+geom_jitter(alpha=I(1/3), color="slategray4")+geom_smooth(method="lm")
 
-#p <- qplot ()#
+p <- qplot (Year, Value, data = data)

@@ -33,6 +33,7 @@
             <div id="select-country"></div> <br />
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div id="info-box">
@@ -46,10 +47,11 @@
                     Percentages below can exceed 100% due to the inclusion of over-aged and under-aged
                     students because of early or late school entrance and grade repetition.
                 </p>
+                <hr>
             </div>
-
         </div>
     </div>
+
     <div class="row">
         <!-- Female -->
         <div class="col-md-6 col-sm-12">
@@ -70,20 +72,6 @@
             <div id="chart2"></div>
         </div>
     </div>
-    <!--
-    <div class="col-md-3 col-sm-12">
-        <hr>
-        <h3>How to Read This Chart</h3>
-        <div id="how-to-read">
-            <ol>
-                <li>Each circle is a country</li>
-                <li>The position of each country on the vertical axis is the percentage of the population who doesn’t get enough calories regularly</li>
-            </ol>
-        </div> <br />
-        <hr>
-    </div>
-    -->
-
 </div>
 
 <!-- Load Libraries -->
@@ -94,12 +82,13 @@
 <script src="js/globals.js"></script>
 <script src="js/helpers.js"></script>
 <script src="js/populate-static-content.js"></script>
-<!--<script src="js/render.js"></script>-->
+<script src="js/render.js"></script>
 
 <script>
     $(document).ready(function() {
-        //populateSelect(charts.hunger.countryNamesPath);
-        //drawScatter(charts.hunger);
+        populateSelect("data/countrylist/list-education.csv");
+        drawScatter(charts.educationf);
+        drawScatter(charts.educationm);
 //        drawLine(charts.hunger);
     });
 </script>
