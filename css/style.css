@@ -9,9 +9,6 @@ body {
 .container {
   padding: 20px;
 }
-select {
-  margin-right: 20px;
-}
 /* Individual Chart Styles *****/
 .container.child-mortality {
   background: #48a034;
@@ -23,24 +20,27 @@ select {
 .container.zero-hunger {
   background: #dda63a;
 }
+/***** 2.) QUALITY EDUCATION ************/
+.container.education {
+  color: #000;
+  background: #c51c2d;
+}
 /**********************************/
-h1 {
-  text-align: center;
+h1 text-align center,
+h3 font-size 24px,
+p.axis-description {
+  color: #fff;
 }
-h1,
-h2 {
-  text-transform: uppercase;
+#how-to-read > ol > li    font-size 18px margin-bottom 12px,
+#info-box {
+  font-size: 14px;
 }
-h4 text-align left,
-#axis-description margin-left 80px,
-#how-to-read          font-size 16px,
-#how-to-read ol li    margin-bottom 12px,
-#info-box             font-size 14px,
-select font-size 14px  color black,
-.content {
-  background: #fff;
-  padding-top: 2%;
+select {
+  font-size: 14px;
+  color: #000;
+  margin-right: 20px;
 }
+/*********** Visualization  *********/
 .axis {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
@@ -59,10 +59,6 @@ select font-size 14px  color black,
   font-family: sans-serif;
 /*color: #478D2E;*/
   color: #222;
-}
-.viz {
-  margin: 2%;
-/*background-color: #478D2E;*/
 }
 /* Style data points */
 circle.active {
@@ -87,7 +83,4 @@ circle.active {
 #select-title {
   float: right;
   display: inline-block;
-}
-#chart {
-  float: left;
 }

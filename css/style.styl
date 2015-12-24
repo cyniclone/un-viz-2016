@@ -1,6 +1,6 @@
 /*****    TEXT STYLING    *********/
-$color1 = #333;
-$font1 = 'Droid Sans';
+$color1 = #333
+$font1 = 'Droid Sans'
 
 /**********************************/
 
@@ -13,9 +13,6 @@ body
 .container
   padding 20px
 
-select
-  margin-right 20px
-
 
 /* Individual Chart Styles *****/
 .container.child-mortality
@@ -27,20 +24,33 @@ select
 /***** 1.) ZERO HUNGER ************/
 .container.zero-hunger
   background: #dda63a
+
+/***** 2.) QUALITY EDUCATION ************/
+.container.education
+  color #000
+  background: #c51c2d
+
 /**********************************/
 
 h1 text-align center
+
 h3 font-size 24px
 
-#axis-description     margin-left 80px
+p.axis-description
+  color #fff
+
 #how-to-read > ol > li    font-size 18px margin-bottom 12px
 #info-box
   font-size 14px
 
 
-select                font-size 14px  color black
+select
+  font-size 14px
+  color black
+  margin-right 20px
 /*********** Visualization  *********/
-.axis  font-family: "Helvetica Neue", Helvetica, sans-serif;
+.axis
+  font-family "Helvetica Neue", Helvetica, sans-serif
 
 .axis path,
 .axis line
@@ -49,7 +59,7 @@ select                font-size 14px  color black
   shape-rendering: crispEdges;
 
 
-.d3-tip{
+.d3-tip
   width: 150px;
   background-color: rgba(255, 255, 255, 0.85);
 
@@ -85,9 +95,7 @@ circle.active
   fill: #000;
   fill-opacity: 1;
 
+
 #select-title
   float right
   display inline-block
-
-#chart
-  float left
