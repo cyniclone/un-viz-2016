@@ -40,9 +40,9 @@ charts["educationf"] = {
     "dimensions" : {
         "margin" : {
             top : 20,
-            right: 0,
+            right: 20,
             bottom: 30,
-            left: 40
+            left: 50
         },
         "width" : 500,
         "height" : 500
@@ -60,14 +60,15 @@ charts["educationf"] = {
     }
 };
 charts["educationm"] = {
+    "secondary" : true,
     "value" : "educationm",
     "targetDiv" : "#chart2",
     "dimensions" : {
         "margin" : {
             top : 20,
-            right: 0,
+            right: 20,
             bottom: 30,
-            left: 40
+            left: 50
         },
         "width" : 500,
         "height" : 500

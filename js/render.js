@@ -1,11 +1,3 @@
-/***** Globals        ************/
-// Chart dimensions
-var margin, width, height;
-var xValue, xScale, xMap, xAxis;
-var yValue, yScale, yMap, yAxis;
-
-var svg;
-
 function drawScatter (chartObj) {
     /*
      * value accessor - returns the value to encode for a given data object.
@@ -15,23 +7,24 @@ function drawScatter (chartObj) {
      */
 
     // Assign chart dimensions from object
-    var dim = chartObj.dimensions;
-    margin = dim.margin;
-    width = dim.width - dim.margin.left - dim.margin.right;
-    height = dim.height - dim.margin.top - dim.margin.bottom;
+    var dim = chartObj.dimensions,
+        margin = dim.margin,
+        width = dim.width - dim.margin.left - dim.margin.right,
+        height = dim.height - dim.margin.top - dim.margin.bottom;
 
     // setup x
-    xValue = function (d) { return d.Year; };                    // data  -> value
-    xScale = d3.scale.linear().range([0, width]);                // value -> display
-    xMap = function (d) { return xScale(xValue(d)); };           // data  -> display
-    xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));    // Remove commas from axis
+    var xValue = function (d) { return d.Year; },                    // data  -> value
+        xScale = d3.scale.linear().range([0, width]),                // value -> display
+        xMap = function (d) { return xScale(xValue(d));},           // data  -> display
+        xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+            .tickFormat(d3.format("d"));    // Remove commas from axis
 
     // setup y
-    yValue = function (d) { return d.Value; };                   // data  -> value
-    yScale = d3.scale.linear().range([height, 0]);               // value -> display
-    yMap = function (d) { return yScale(yValue(d)); };           // data  -> display
-    yAxis = d3.svg.axis().scale(yScale).orient("left").tickFormat(
-        function (d) { return d + "%"; });    // Percents on axes
+    var yValue = function (d) { return d.Value; },                   // data  -> value
+        yScale = d3.scale.linear().range([height, 0]),               // value -> display
+        yMap = function (d) { return yScale(yValue(d));},           // data  -> display
+        yAxis = d3.svg.axis().scale(yScale).orient("left")
+            .tickFormat(function (d) { return d + "%"; });    // Percents on axes
 
     // Initialize d3 tip
     var tip = d3.tip()
@@ -42,7 +35,7 @@ function drawScatter (chartObj) {
         });
 
     // Make chart SVG
-    svg = d3.select(chartObj.targetDiv).append("svg")
+    var svg = d3.select(chartObj.targetDiv).append("svg")
         .attr("class", "viz")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -52,6 +45,7 @@ function drawScatter (chartObj) {
     svg.call(tip);
 
     d3.csv(chartObj.dataPath, function (error, data) {
+        var s = (chartObj.secondary) ? "2" : "";    // Used to control classing of second chart
 
         data = data.filter(function(d){
             if(isNaN(d.Value)){
@@ -74,11 +68,11 @@ function drawScatter (chartObj) {
         })).nice();
 
         // Draw gridlines for x axis
-        svg.selectAll("line.verticalGrid").data(xScale.ticks(10)).enter()
+        svg.selectAll("line.verticalGrid" + s).data(xScale.ticks(10)).enter()
             .append("line")
             .attr(
                 {
-                    "class": "verticalGrid",
+                    "class": "verticalGrid" + s,
                     "x1": function (d) {
                         return xScale(d);
                     },
@@ -92,11 +86,11 @@ function drawScatter (chartObj) {
                     "stroke-width": "0.75px"
                 });
         // Draw gridlines for y axis
-        svg.selectAll('line.horizontalGrid').data(yScale.ticks(10)).enter()
-            .append('line')
+        svg.selectAll("line.horizontalGrid" + s).data(yScale.ticks(10)).enter()
+            .append("line")
             .attr(
                 {
-                    "class": "horizontalGrid",
+                    "class": "horizontalGrid" + s,
                     "x1": 0,
                     "x2": width,
                     "y1": function (d) {
@@ -123,11 +117,11 @@ function drawScatter (chartObj) {
             .append("text");
 
         // Render dots
-        svg.selectAll(".scatterdot")
+        svg.selectAll(".scatterdot" + s)
             .data(data)
             .enter().append("circle")
             .attr("class", function (d) {
-                return "scatterdot " + "scatterdot-" + d.CountryCode;
+                return "scatterdot" + s + " c" + d.hash;
             })
             .attr("r", chartObj.radius)
             .attr('cx', xMap)
@@ -135,12 +129,11 @@ function drawScatter (chartObj) {
             //.style("fill", "none")
             .on('mouseover', function (d) {
                 tip.show(d);
-                activate(d3.selectAll('.scatterdot-' + d.CountryCode));
+                activate(d3.selectAll(".c" + d.hash));
             })
             .on('mouseout', function (d) {
                 tip.hide(d);
-                deactivate(d3.selectAll('.scatterdot-' + d.CountryCode));
-
+                deactivate(d3.selectAll(".c" + d.hash));
             });
 
         if (chartObj.hasTrend) {

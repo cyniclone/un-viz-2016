@@ -5,9 +5,10 @@ function populateSelect(path) {
 
         select.on("change", function() {
             deactivate(d3.selectAll(".scatterdot"));
+            deactivate(d3.selectAll(".scatterdot2"));
 
-            var s = ".scatterdot-" + d3.select(this).property("value");
-            activate(d3.selectAll(s));
+            var element = d3.select(this).property("value");
+            activate(d3.selectAll(element));
         });
 
         $('#dropdown').html("<option>Select a country</option>");
@@ -17,7 +18,7 @@ function populateSelect(path) {
             .data(data)
             .enter()
             .append("option")
-            .attr("value", function (d) { return d.CountryCode; })
+            .attr("value", function (d) { return ".c" + d.hash; })
             .text(function (d) { return d.CountryName; });
     });
 };

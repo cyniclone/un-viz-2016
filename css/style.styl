@@ -30,14 +30,21 @@ body
   color #000
   background: #c51c2d
 
+.education g.tick
+  font-size 12px
+  fill white
+
+.education line.verticalGrid, .education line.verticalGrid2,
+.education line.horizontalGrid, .education line.horizontalGrid2
+  stroke #ccc
+
+
+
 /**********************************/
 
 h1 text-align center
 
 h3 font-size 24px
-
-p.axis-description
-  color #fff
 
 #how-to-read > ol > li    font-size 18px margin-bottom 12px
 #info-box
@@ -79,7 +86,7 @@ select
 circle.active
   r 6px
 
-.scatterdot
+.scatterdot, .scatterdot2
   stroke: #E0E0E0;
   stroke-width: 1px;
   stroke-opacity: 1;
@@ -87,7 +94,7 @@ circle.active
   fill: #fff;
   fill-opacity: 0.6;
 
-.scatterdot.active
+.scatterdot.active, .scatterdot2.active
   stroke #C66611
   stroke-width: 2px;
   stroke-opacity: 1;
