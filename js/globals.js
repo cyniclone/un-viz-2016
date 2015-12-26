@@ -1,4 +1,5 @@
 /***** Static Content ************/
+var xs, ys, debug = { debug : true, xs : xs, ys : ys }; // Object for debugging and calculating trend lines
 
 var charts = {}; // Object to hold all chart objects
 
@@ -34,7 +35,12 @@ charts["hunger"] = {
 };
 
 // 2.) QUALITY EDUCATION
+
+//Coefficients:
+//(Intercept)        Value
+//1983.3630       0.1534
 charts["educationf"] = {
+    "secondary" : false,
     "value" : "educationf",
     "targetDiv" : "#chart",
     "dimensions" : {
@@ -51,14 +57,19 @@ charts["educationf"] = {
     "header" : "QUALITY EDUCATION",
     "countryNamesPath" : "data/countrylist/list-education.csv",
     "dataPath" : "data/education-f.csv",
-    "hasTrend" : false,
+    "hasTrend" : true,
     "lm" : {
         _x1 : 0,
-        _x2 : 710,
-        _y1 : 464.97,
-        _y2 : 550.96
+        _x2 : 430,
+        _y1 : 376.75,
+        _y2 : 241.75
     }
 };
+
+//Coefficients:
+//(Intercept)        Value
+//1982.1074       0.1674
+
 charts["educationm"] = {
     "secondary" : true,
     "value" : "educationm",
@@ -77,12 +88,12 @@ charts["educationm"] = {
     "header" : "QUALITY EDUCATION",
     "countryNamesPath" : "data/countrylist/list-education.csv",
     "dataPath" : "data/education-m.csv",
-    "hasTrend" : false,
+    "hasTrend" : true,
     "lm" : {
         _x1 : 0,
-        _x2 : 710,
-        _y1 : 464.97,
-        _y2 : 550.96
+        _x2 : 430,
+        _y1 : 346.65,
+        _y2 : 229.76
     }
 };
 

@@ -34,10 +34,18 @@ body
   font-size 12px
   fill white
 
+.container.education > circle
+  r 12px
+
 .education line.verticalGrid, .education line.verticalGrid2,
 .education line.horizontalGrid, .education line.horizontalGrid2
   stroke #ccc
 
+div.container.education circle.scatterdot.active,
+div.container.education circle.scatterdot2.active
+  stroke-width 2px
+  stroke #68f
+  r 4px
 
 
 /**********************************/
@@ -77,11 +85,6 @@ select
   /*color: #478D2E;*/
   color: #222;
 
-
-.viz
-  /*background-color: #478D2E;*/
-
-
 /* Style data points */
 circle.active
   r 6px
@@ -101,6 +104,8 @@ circle.active
   opacity: 1;
   fill: #000;
   fill-opacity: 1;
+
+
 
 
 #select-title

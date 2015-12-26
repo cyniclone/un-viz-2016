@@ -1,4 +1,5 @@
 function drawScatter (chartObj) {
+    var s = (chartObj.secondary) ? "2" : "";    // Used to control classing of second chart
     /*
      * value accessor - returns the value to encode for a given data object.
      * scale          - maps value to a visual display encoding, such as a pixel position.
@@ -26,6 +27,8 @@ function drawScatter (chartObj) {
         yAxis = d3.svg.axis().scale(yScale).orient("left")
             .tickFormat(function (d) { return d + "%"; });    // Percents on axes
 
+    if (debug.debug) { debug.xs = xScale; debug.ys = yScale; }
+
     // Initialize d3 tip
     var tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -36,7 +39,7 @@ function drawScatter (chartObj) {
 
     // Make chart SVG
     var svg = d3.select(chartObj.targetDiv).append("svg")
-        .attr("class", "viz")
+        .attr("class", "viz" + s)
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -45,9 +48,7 @@ function drawScatter (chartObj) {
     svg.call(tip);
 
     d3.csv(chartObj.dataPath, function (error, data) {
-        var s = (chartObj.secondary) ? "2" : "";    // Used to control classing of second chart
-
-        data = data.filter(function(d){
+        data = data.filter(function(d) {
             if(isNaN(d.Value)){
                 return false;
             }
@@ -145,8 +146,10 @@ function drawScatter (chartObj) {
 function drawLine (chartObj) {
     // Takes a given trendline and draws it to the #chart div
     var lm = chartObj.lm;   // Get coordinates from linear model
+    var s = (chartObj.secondary) ? "2" : "";
+    console.log("s " + s);
 
-    svg.append("g").attr("id", "trend")
+    d3.select(".viz" + s +" g").attr("id", "trend")
         .append("svg:line")
         .attr({
             "x1" : lm._x1,

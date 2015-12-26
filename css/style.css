@@ -29,11 +29,20 @@ body {
   font-size: 12px;
   fill: #fff;
 }
+.container.education > circle {
+  r: 12px;
+}
 .education line.verticalGrid,
 .education line.verticalGrid2,
 .education line.horizontalGrid,
 .education line.horizontalGrid2 {
   stroke: #ccc;
+}
+div.container.education circle.scatterdot.active,
+div.container.education circle.scatterdot2.active {
+  stroke-width: 2px;
+  stroke: #68f;
+  r: 4px;
 }
 /**********************************/
 h1 text-align center,
