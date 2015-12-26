@@ -23,8 +23,6 @@ charts["hunger"] = {
     "header" : "ZERO HUNGER",
     "countryNamesPath" : "data/countrylist/list-zero-hunger.csv",
     "dataPath" : "data/zero-hunger.csv",
-    "howToRead" : "",
-    "info" : "",
     "hasTrend" : true,
     "lm" : {
         _x1 : 0,

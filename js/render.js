@@ -58,6 +58,7 @@ function drawScatter (chartObj) {
 
         data.forEach(function (d) {
             d.Value = +d.Value; // Force numeric
+            console.log("hash " + d.hash);
         });
 
         // Set scale domains
@@ -149,7 +150,7 @@ function drawLine (chartObj) {
     var s = (chartObj.secondary) ? "2" : "";
     console.log("s " + s);
 
-    d3.select(".viz" + s +" g").attr("id", "trend")
+    d3.select(".viz" + s +" g")
         .append("svg:line")
         .attr({
             "x1" : lm._x1,
@@ -158,7 +159,8 @@ function drawLine (chartObj) {
             "y2" : lm._y2,
             "stroke-width": "2px"
         })
+        .attr("class", "trend")
         .style("stroke", "#222");
 
-    d3.select('#trend').moveToFront();
+    d3.selectAll('.trend').moveToFront();
 }
