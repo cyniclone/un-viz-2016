@@ -1,5 +1,5 @@
 function drawScatter (chartObj) {
-    var s = (chartObj.secondary) ? "2" : "";    // Used to control classing of second chart
+    var n = (chartObj.n > 1) ? chartObj.n : "";    // Used to control classing of second chart
     /*
      * value accessor - returns the value to encode for a given data object.
      * scale          - maps value to a visual display encoding, such as a pixel position.
@@ -34,12 +34,13 @@ function drawScatter (chartObj) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (d) {
-            return "<b>" + d.CountryName + " - " + d.Year + "</b><br>" + d.Value + " %";
+            return "<b>" + d.CountryName + " - " + d.Year + "</b><br>"
+                + d3.round(d.Value, 1) + " %";
         });
 
     // Make chart SVG
     var svg = d3.select(chartObj.targetDiv).append("svg")
-        .attr("class", "viz" + s)
+        .attr("class", "viz" + n)
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -58,7 +59,6 @@ function drawScatter (chartObj) {
 
         data.forEach(function (d) {
             d.Value = +d.Value; // Force numeric
-            console.log("hash " + d.hash);
         });
 
         // Set scale domains
@@ -70,11 +70,11 @@ function drawScatter (chartObj) {
         })).nice();
 
         // Draw gridlines for x axis
-        svg.selectAll("line.verticalGrid" + s).data(xScale.ticks(10)).enter()
+        svg.selectAll("line.verticalGrid" + n).data(xScale.ticks(10)).enter()
             .append("line")
             .attr(
                 {
-                    "class": "verticalGrid" + s,
+                    "class": "verticalGrid" + n,
                     "x1": function (d) {
                         return xScale(d);
                     },
@@ -88,11 +88,11 @@ function drawScatter (chartObj) {
                     "stroke-width": "0.75px"
                 });
         // Draw gridlines for y axis
-        svg.selectAll("line.horizontalGrid" + s).data(yScale.ticks(10)).enter()
+        svg.selectAll("line.horizontalGrid" + n).data(yScale.ticks(10)).enter()
             .append("line")
             .attr(
                 {
-                    "class": "horizontalGrid" + s,
+                    "class": "horizontalGrid" + n,
                     "x1": 0,
                     "x2": width,
                     "y1": function (d) {
@@ -119,11 +119,11 @@ function drawScatter (chartObj) {
             .append("text");
 
         // Render dots
-        svg.selectAll(".scatterdot" + s)
+        svg.selectAll(".scatterdot" + n)
             .data(data)
             .enter().append("circle")
             .attr("class", function (d) {
-                return "scatterdot" + s + " c" + d.hash;
+                return "scatterdot" + n + " c" + d.hash;
             })
             .attr("r", chartObj.radius)
             .attr('cx', xMap)
@@ -147,17 +147,17 @@ function drawScatter (chartObj) {
 function drawLine (chartObj) {
     // Takes a given trendline and draws it to the #chart div
     var lm = chartObj.lm;   // Get coordinates from linear model
-    var s = (chartObj.secondary) ? "2" : "";
-    console.log("s " + s);
+    var n = (chartObj.n > 1) ? chartObj.n : "";
 
-    d3.select(".viz" + s +" g")
+
+    d3.select(".viz" + n +" g")
         .append("svg:line")
         .attr({
             "x1" : lm._x1,
             "x2" : lm._x2,
             "y1" : lm._y1,
             "y2" : lm._y2,
-            "stroke-width": "2px"
+            "stroke-width": "3px"
         })
         .attr("class", "trend")
         .style("stroke", "#222");

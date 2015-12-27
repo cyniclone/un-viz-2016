@@ -5,6 +5,7 @@ var charts = {}; // Object to hold all chart objects
 
 // 1.) ZERO HUNGER
 charts["hunger"] = {
+    "n"     : 1,
     "value" : "hunger",
     "navText" : "Zero Hunger",
     "color" : "#DDA63B",
@@ -38,7 +39,8 @@ charts["hunger"] = {
 //(Intercept)        Value
 //1983.3630       0.1534
 charts["educationf"] = {
-    "secondary" : false,
+    "n"     : 1,
+    //"secondary" : false,
     "value" : "educationf",
     "targetDiv" : "#chart",
     "dimensions" : {
@@ -67,9 +69,9 @@ charts["educationf"] = {
 //Coefficients:
 //(Intercept)        Value
 //1982.1074       0.1674
-
 charts["educationm"] = {
-    "secondary" : true,
+    "n"     : 2,
+    //"secondary" : true,
     "value" : "educationm",
     "targetDiv" : "#chart2",
     "dimensions" : {
