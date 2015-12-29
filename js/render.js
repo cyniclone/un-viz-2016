@@ -164,3 +164,60 @@ function drawLine (chartObj) {
 
     d3.selectAll('.trend').moveToFront();
 }
+
+function drawBars (chartObj) {
+    //var dim = chartObj.dimensions;
+    //var margin = {top: dim.top, right: dim.right, bottom: dim.bottom, left: dim.left},
+    //    width = dim.width - margin.left - margin.right,
+    //    height = dim.height - margin.top - margin.bottom;
+    //// setup x
+
+    //// setup y
+    //var yValue = function(d) { return d.; },                  // data  -> value
+    //    yScale = d3.scale.linear().range([height, 0]),              // value -> display
+    //    yMap   = function(d) { return yScale(yValue(d)) ; },        // data  -> display
+    //    yAxis  = d3.svg.axis().scale(yScale).orient("left");
+
+    var margin = {top: 20, right: 20, bottom: 20, left: 20},
+        width = 800 - margin.left - margin.right,
+        height = 1600 - margin.top - margin.bottom;
+
+    var xValue = function(d) { return d.Value; },                  // data  -> value
+        xScale = d3.scale.linear().range([0, width]),               // value -> display
+        xMap   = function(d) { return xScale(xValue(d)) ; },        // data  -> display
+        xAxis  = d3.svg.axis().scale(xScale).orient("top");
+
+    var yValue = function(d) { return d.Country},
+        yScale = d3.scale.ordinal().rangeRoundBands([0, width], .1),
+        yMap   = function(d) { return yScale(yValue(d));},
+        yAxis  = d3.svg.axis().scale(yScale).orient("left");
+
+    // Make chart SVG
+    var svg = d3.select(chartObj.targetDiv).append("svg")
+        .attr("class", "viz" + n)
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.csv(chartObj.dataPath, function(error, data) {
+
+        // Set Scale domains
+        yScale.domain(data.map(function(d) { return d.Country; } ));
+        xScale.domain([-4, 12]);
+
+        // Render axes
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .append("text");
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text");
+
+
+    });
+
+}

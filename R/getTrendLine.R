@@ -11,12 +11,12 @@ str(data)
 
 model <- lm(Value ~ Year, data = data)
 coef(model)
-intercept <- 1983.3630
-slope <- 0.1534 
+intercept <- -2005.49
+slope <- 1.039 
 
 #Let's do a quick plot
 #ggplot(data_long, aes(x=Year, y=Value))+geom_jitter(alpha=I(1/3), color="slategray4")+geom_smooth(method="lm")
 
-p <- qplot (Year, Value, data = data)
-p + geom_abline(intercept = intercept, slope = slope, colour = "red", size = 2)
+p <- qplot (Year, Value, data = data, alpha = 0.3)
+p + geom_abline(intercept = intercept, slope = slope, colour = "blue", size = 2)
 
