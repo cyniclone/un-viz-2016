@@ -4,7 +4,10 @@ var xs, ys, debug = { debug : true, xs : xs, ys : ys }; // Object for debugging 
 var charts = {}; // Object to hold all chart objects
 
 // 1.) ZERO HUNGER
+//(Intercept)         Year
+//1012.8755183   -0.4961083
 charts["hunger"] = {
+    "year" : { begin : "1990", end: "2015"},
     "n"     : 1,
     "value" : "hunger",
     "navText" : "Zero Hunger",
@@ -27,19 +30,18 @@ charts["hunger"] = {
     "hasTrend" : true,
     "trendStroke" : "#222",
     "lm" : {
-        _x1 : 0,
-        _x2 : 710,
-        _y1 : 464.97,
-        _y2 : 550.96
+        slope : -0.4961083,
+        intercept : 1012.8755183
     }
 };
 
 // 2.) QUALITY EDUCATION
 
 //Coefficients:
-//(Intercept)        Value
-//1983.3630       0.1534
+//(Intercept)         Year
+//-2334.707610     1.203078
 charts["educationf"] = {
+    "year" : { begin : "1970", end: "2015"},
     "n"     : 1,
     //"secondary" : false,
     "value" : "educationf",
@@ -51,8 +53,8 @@ charts["educationf"] = {
             bottom: 30,
             left: 50
         },
-        "width" : 500,
-        "height" : 500
+        "width" : 550,
+        "height" : 600
     },
     "radius" : 3,
     "header" : "QUALITY EDUCATION",
@@ -61,17 +63,16 @@ charts["educationf"] = {
     "hasTrend" : true,
     "trendStroke" : "#222",
     "lm" : {
-        _x1 : 0,
-        _x2 : 430,
-        _y1 : 376.75,
-        _y2 : 241.75
+        slope : 1.203078,
+        intercept : -2334.707610
     }
 };
 
 //Coefficients:
-// (Intercept)        Value
-// 1982.1074       0.1674
+//(Intercept)         Year
+//-2005.485657     1.039033
 charts["educationm"] = {
+    "year" : { begin : "1970", end: "2015"},
     "n"     : 2,
     //"secondary" : true,
     "value" : "educationm",
@@ -83,8 +84,8 @@ charts["educationm"] = {
             bottom: 30,
             left: 50
         },
-        "width" : 500,
-        "height" : 500
+        "width" : 550,
+        "height" : 600
     },
     "radius" : 3,
     "header" : "QUALITY EDUCATION",
@@ -93,10 +94,8 @@ charts["educationm"] = {
     "hasTrend" : true,
     "trendStroke" : "#222",
     "lm" : {
-        _x1 : 0,
-        _x2 : 430,
-        _y1 : 346.65,
-        _y2 : 229.76
+        slope : 1.039033,
+        intercept : -2005.485657
     }
 };
 
@@ -104,6 +103,7 @@ charts["educationm"] = {
 // (Intercept)         Year
 // -719.5411747    0.4014397
 charts["waterg"] = {
+    "year" : { begin : "1990", end: "2016"},
     "n"     : 1,
     "value" : "waterg",
     "targetDiv" : "#chart",
@@ -123,16 +123,15 @@ charts["waterg"] = {
     "hasTrend" : true,
     "trendStroke" : "#e9432e",
     "lm" : {
-        _x1 : 0,
-        _x2 : 430,
-        _y1 : 124.52,
-        _y2 : 61.91
+        slope : 0.4014397,
+        intercept : -719.5411747,
     }
 };
 
 // (Intercept)         Year
 // -972.5403630    0.5245499
 charts["waterr"] = {
+    "year" : { begin : "1990", end: "2016"},
     "n"     : 2,
     "value" : "waterr",
     "targetDiv" : "#chart2",
@@ -152,10 +151,8 @@ charts["waterr"] = {
     "hasTrend" : true,
     "trendStroke" : "#e9432e",
     "lm" : {
-        _x1 : 0,
-        _x2 : 430,
-        _y1 : 172.11,
-        _y2 : 90.28
+        slope : 0.5245499,
+        intercept : -972.5403630,
     }
 };
 /**********************************/

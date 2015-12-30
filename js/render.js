@@ -16,14 +16,14 @@ function drawScatter (chartObj) {
     // setup x
     var xValue = function (d) { return d.Year; },                    // data  -> value
         xScale = d3.scale.linear().range([0, width]),                // value -> display
-        xMap = function (d) { return xScale(xValue(d));},           // data  -> display
+        xMap = function (d) { return xScale(xValue(d)); },           // data  -> display
         xAxis = d3.svg.axis().scale(xScale).orient("bottom")
             .tickFormat(d3.format("d"));    // Remove commas from axis
 
     // setup y
     var yValue = function (d) { return d.Value; },                   // data  -> value
         yScale = d3.scale.linear().range([height, 0]),               // value -> display
-        yMap = function (d) { return yScale(yValue(d));},           // data  -> display
+        yMap = function (d) { return yScale(yValue(d)); },           // data  -> display
         yAxis = d3.svg.axis().scale(yScale).orient("left")
             .tickFormat(function (d) { return d + "%"; });    // Percents on axes
 
@@ -139,24 +139,26 @@ function drawScatter (chartObj) {
             });
 
         if (chartObj.hasTrend) {
-            drawLine(chartObj);
+            drawLine(chartObj, yScale);
         }
     });
 }
 
-function drawLine (chartObj) {
+function drawLine (chartObj, _yScale) {
     // Takes a given trendline and draws it to the #chart div
     var lm = chartObj.lm;   // Get coordinates from linear model
+    var dim = chartObj.dimensions;
+    var year = chartObj.year;
     var n = (chartObj.n > 1) ? chartObj.n : "";
 
 
     d3.select(".viz" + n +" g")
         .append("svg:line")
         .attr({
-            "x1" : lm._x1,
-            "x2" : lm._x2,
-            "y1" : lm._y1,
-            "y2" : lm._y2,
+            "x1" : 0,
+            "x2" : dim.width - dim.margin.left - dim.margin.right,
+            "y1" : _yScale(lm.slope * year.begin + lm.intercept),
+            "y2" : _yScale(lm.slope * year.end + lm.intercept),
             "stroke-width": "3px"
         })
         .attr("class", "trend")

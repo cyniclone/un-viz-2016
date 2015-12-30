@@ -2,10 +2,8 @@ library(tidyr)
 library(ggplot2)
 library(gdata)
 
-filename <- "water-rural.csv"
+filename <- "education-f.csv"
 data <-read.csv(paste("~/Code/un-viz-2016/data/", filename, sep='') , header = T) # choose the long data
-
-str(data)
 
 #write.csv(data_long, "~/Desktop/output.csv")
 
