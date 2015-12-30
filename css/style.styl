@@ -7,7 +7,7 @@ $font1 = 'Droid Sans'
 body
   background  #e6e6e6
   font-family $font1
-  font-size   14px
+  font-size   16px
   color       $color1
 
 .container
@@ -30,23 +30,9 @@ body
   color #000
   background: #c51c2d
 
-.education g.tick
-  font-size 12px
-  fill white
-
-.container.education > circle
-  r 12px
-
-.education line.verticalGrid, .education line.verticalGrid2,
-.education line.horizontalGrid, .education line.horizontalGrid2
-  stroke #ccc
-
-div.container.education circle.scatterdot.active,
-div.container.education circle.scatterdot2.active
-  stroke-width 2px
-  stroke #68f
-  r 4px
-
+/***** WATER ACCESS ************/
+.container.water
+  background #2bbbdd
 
 /**********************************/
 
@@ -63,6 +49,7 @@ select
   font-size 14px
   color black
   margin-right 20px
+
 /*********** Visualization  *********/
 .axis
   font-family "Helvetica Neue", Helvetica, sans-serif
@@ -82,7 +69,6 @@ select
   border-radius: 10px;
   font-size: 12px;
   font-family: sans-serif;
-  /*color: #478D2E;*/
   color: #222;
 
 /* Style data points */
@@ -105,7 +91,27 @@ circle.active
   fill: #000;
   fill-opacity: 1;
 
+/***** These affect multiple charts ****/
 
+.education g.tick, .water g.tick
+  font-size 12px
+  fill white
+
+.education line.verticalGrid, .education line.verticalGrid2,
+.education line.horizontalGrid, .education line.horizontalGrid2
+  stroke #ccc
+
+div.container.education circle.scatterdot.active,
+div.container.education circle.scatterdot2.active
+  stroke-width 2px
+  stroke #68f
+  r 4px
+
+div.container.water circle.scatterdot.active,
+div.container.water circle.scatterdot2.active
+  stroke-width 2px
+  stroke #E9432E
+  r 4px
 
 
 #select-title

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <title>Water Access</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
+
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+</head>
+<body>
+
+<div class="container water"> <!-- Top level for Lumira viz -->
+    <div class="row">
+        <div class="col-md-12 col-sm-12"><h1 id="page-header">Water Access</h1></div>
+        <!--<div class="col-md-3 col-sm-12"><select id="nav"></select></div>-->
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <h3>Select a country:</h3>
+            <div id="select-country"></div> <br />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div id="info-box">
+                <p>
+                    <strong>TARGET: </strong>
+                    By 2030, achieve universal and equitable access to safe and
+                    affordable drinking water for all
+                </p>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Female -->
+        <div class="col-md-6 col-sm-12">
+            <p style="color:white;">Percentage of
+                <span style="color:#e9432e;font-size:20px;">ALL POPULATION</span>
+                who use safe drinking water sources
+            </p>
+            <!-- CHART GOES HERE -->
+            <div id="chart"></div>
+        </div>
+
+        <!-- Male -->
+        <div class="col-md-6 col-sm-12">
+            <p style="color:white;">Percentage of
+                <span style="color:#e9432e;font-size:20px;">RURAL POPULATION</span>
+                who use safe drinking water sources
+            </p>
+            <!-- CHART GOES HERE -->
+            <div id="chart2"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Load Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+<script src="js/globals.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/populate-static-content.js"></script>
+<script src="js/render.js"></script>
+
+<script>
+    $(document).ready(function() {
+        populateSelect("data/countrylist/list-water.csv");
+        drawScatter(charts.waterg);
+        drawScatter(charts.waterr);
+    });
+</script>
+
+
+</body>
+</html>
+

@@ -219,5 +219,4 @@ function drawBars (chartObj) {
 
 
     });
-
 }

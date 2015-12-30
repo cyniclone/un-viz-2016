@@ -97,4 +97,56 @@ charts["educationm"] = {
     }
 };
 
+// WATER ACCESS
+charts["waterg"] = {
+    "n"     : 1,
+    "value" : "waterg",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 500,
+        "height" : 650
+    },
+    "radius" : 3,
+    "countryNamesPath" : "data/countrylist/list-water.csv",
+    "dataPath" : "data/water-general.csv",
+    "hasTrend" : true,
+    "lm" : {
+        _x1 : 0,
+        _x2 : 0,
+        _y1 : 0,
+        _y2 : 0
+    }
+};
+
+charts["waterr"] = {
+    "n"     : 2,
+    "value" : "waterr",
+    "targetDiv" : "#chart2",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 500,
+        "height" : 650
+    },
+    "radius" : 3,
+    "countryNamesPath" : "data/countrylist/list-water.csv",
+    "dataPath" : "data/water-rural.csv",
+    "hasTrend" : true,
+    "lm" : {
+        _x1 : 0,
+        _x2 : 0,
+        _y1 : 0,
+        _y2 : 0
+    }
+};
 /**********************************/
