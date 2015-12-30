@@ -2,7 +2,7 @@ library(tidyr)
 library(ggplot2)
 library(gdata)
 
-filename <- "education-m.csv"
+filename <- "water-rural.csv"
 data <-read.csv(paste("~/Code/un-viz-2016/data/", filename, sep='') , header = T) # choose the long data
 
 str(data)

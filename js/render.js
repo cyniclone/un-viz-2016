@@ -160,7 +160,8 @@ function drawLine (chartObj) {
             "stroke-width": "3px"
         })
         .attr("class", "trend")
-        .style("stroke", "#222");
+        //.style("stroke", "#222");
+        .style("stroke", chartObj.trendStroke);
 
     d3.selectAll('.trend').moveToFront();
 }

@@ -25,6 +25,7 @@ charts["hunger"] = {
     "countryNamesPath" : "data/countrylist/list-zero-hunger.csv",
     "dataPath" : "data/zero-hunger.csv",
     "hasTrend" : true,
+    "trendStroke" : "#222",
     "lm" : {
         _x1 : 0,
         _x2 : 710,
@@ -58,6 +59,7 @@ charts["educationf"] = {
     "countryNamesPath" : "data/countrylist/list-education.csv",
     "dataPath" : "data/education-f.csv",
     "hasTrend" : true,
+    "trendStroke" : "#222",
     "lm" : {
         _x1 : 0,
         _x2 : 430,
@@ -67,8 +69,8 @@ charts["educationf"] = {
 };
 
 //Coefficients:
-//(Intercept)        Value
-//1982.1074       0.1674
+// (Intercept)        Value
+// 1982.1074       0.1674
 charts["educationm"] = {
     "n"     : 2,
     //"secondary" : true,
@@ -89,6 +91,7 @@ charts["educationm"] = {
     "countryNamesPath" : "data/countrylist/list-education.csv",
     "dataPath" : "data/education-m.csv",
     "hasTrend" : true,
+    "trendStroke" : "#222",
     "lm" : {
         _x1 : 0,
         _x2 : 430,
@@ -98,6 +101,8 @@ charts["educationm"] = {
 };
 
 // WATER ACCESS
+// (Intercept)         Year
+// -719.5411747    0.4014397
 charts["waterg"] = {
     "n"     : 1,
     "value" : "waterg",
@@ -107,23 +112,26 @@ charts["waterg"] = {
             top : 20,
             right: 20,
             bottom: 30,
-            left: 50
+            left: 40
         },
-        "width" : 500,
+        "width" : 550,
         "height" : 650
     },
     "radius" : 3,
     "countryNamesPath" : "data/countrylist/list-water.csv",
     "dataPath" : "data/water-general.csv",
     "hasTrend" : true,
+    "trendStroke" : "#e9432e",
     "lm" : {
         _x1 : 0,
-        _x2 : 0,
-        _y1 : 0,
-        _y2 : 0
+        _x2 : 430,
+        _y1 : 124.52,
+        _y2 : 61.91
     }
 };
 
+// (Intercept)         Year
+// -972.5403630    0.5245499
 charts["waterr"] = {
     "n"     : 2,
     "value" : "waterr",
@@ -133,20 +141,21 @@ charts["waterr"] = {
             top : 20,
             right: 20,
             bottom: 30,
-            left: 50
+            left: 40
         },
-        "width" : 500,
+        "width" : 550,
         "height" : 650
     },
     "radius" : 3,
     "countryNamesPath" : "data/countrylist/list-water.csv",
     "dataPath" : "data/water-rural.csv",
     "hasTrend" : true,
+    "trendStroke" : "#e9432e",
     "lm" : {
         _x1 : 0,
-        _x2 : 0,
-        _y1 : 0,
-        _y2 : 0
+        _x2 : 430,
+        _y1 : 172.11,
+        _y2 : 90.28
     }
 };
 /**********************************/
