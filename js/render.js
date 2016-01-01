@@ -1,5 +1,8 @@
 function drawScatter (chartObj) {
     var n = (chartObj.n > 1) ? chartObj.n : "";    // Used to control classing of second chart
+
+    var xTicks = !(chartObj.xTicks >= 0) ? 10 : chartObj.xTicks;
+    var yTicks = !(chartObj.yTicks >= 0) ? 10 : chartObj.yTicks;
     /*
      * value accessor - returns the value to encode for a given data object.
      * scale          - maps value to a visual display encoding, such as a pixel position.
@@ -18,7 +21,11 @@ function drawScatter (chartObj) {
         xScale = d3.scale.linear().range([0, width]),                // value -> display
         xMap = function (d) { return xScale(xValue(d)); },           // data  -> display
         xAxis = d3.svg.axis().scale(xScale).orient("bottom")
-            .tickFormat(d3.format("d"));    // Remove commas from axis
+            .tickFormat(d3.format("d"))  // Remove commas from axis
+            .ticks(xTicks)
+            .tickSize(10)
+            .outerTickSize(0)
+            .tickPadding(5);
 
     // setup y
     var yValue = function (d) { return d.Value; },                   // data  -> value
@@ -70,7 +77,7 @@ function drawScatter (chartObj) {
         })).nice();
 
         // Draw gridlines for x axis
-        svg.selectAll("line.verticalGrid" + n).data(xScale.ticks(10)).enter()
+        svg.selectAll("line.verticalGrid" + n).data(xScale.ticks(xTicks)).enter()
             .append("line")
             .attr(
                 {
@@ -88,7 +95,7 @@ function drawScatter (chartObj) {
                     "stroke-width": "0.75px"
                 });
         // Draw gridlines for y axis
-        svg.selectAll("line.horizontalGrid" + n).data(yScale.ticks(10)).enter()
+        svg.selectAll("line.horizontalGrid" + n).data(yScale.ticks(yTicks)).enter()
             .append("line")
             .attr(
                 {

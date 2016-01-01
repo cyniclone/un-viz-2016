@@ -117,6 +117,7 @@ charts["waterg"] = {
         "width" : 550,
         "height" : 650
     },
+    "xTicks" : 5,
     "radius" : 3,
     "countryNamesPath" : "data/countrylist/list-water.csv",
     "dataPath" : "data/water-general.csv",
@@ -145,6 +146,7 @@ charts["waterr"] = {
         "width" : 550,
         "height" : 650
     },
+    "xTicks" : 5,
     "radius" : 3,
     "countryNamesPath" : "data/countrylist/list-water.csv",
     "dataPath" : "data/water-rural.csv",
