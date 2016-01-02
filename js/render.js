@@ -182,18 +182,11 @@ function drawBars (chartObj) {
         width = dim.width - dim.margin.left - dim.margin.right,
         height = dim.height - dim.margin.top - dim.margin.bottom;
 
-    var xValue = function(d) { return d.Value },                    // data  -> value
-        xScale = d3.scale.linear().range([0, width]),               // value -> display
-        xMap   = function(d) { return xScale(xValue(d)) },          // data  -> display
+    var xScale = d3.scale.linear().range([0, width]),               // value -> display
         xAxis  = d3.svg.axis().scale(xScale).orient("top");
 
-    var yValue = function(d) { return d.Index },
-        yScale = d3.scale.ordinal().rangeRoundBands([0, height], .1),
-        yMap   = function(d) { return yScale(yValue(d)) },
+    var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .2),
         yAxis  = d3.svg.axis().scale(yScale).orient("left").ticks(8, "%");
-
-    var populationScale = d3.scale.ordinal();
-    var color = d3.scale.ordinal().range(["#98abc5", "#7b6888"]);
 
     // Make chart SVG
     var svg = d3.select(chartObj.targetDiv).append("svg")
@@ -207,12 +200,14 @@ function drawBars (chartObj) {
         if (error) throw error;
 
         data.forEach(function (d) {
-            d.Value = +d.Value; // Force numeric
+            //d.ValueG = +d.ValueG; // Force numeric
+            //d.ValueB = +d.ValueB; // Force numeric
         });
 
         // Set Scale domains
-        yScale.domain(data.map(function(d) { return d.Index; } ));
-        xScale.domain([-4, 12]);
+        //yScale.domain(data.map(function(d) { return d.Label; } ));
+        yScale.domain(data.map(function(d) { return d.Label; } ));
+        xScale.domain([-5, 12]);
 
         // Render axes
         svg.append("g")
@@ -223,12 +218,24 @@ function drawBars (chartObj) {
             .attr("class", "y axis")
             .call(yAxis);
 
-        svg.selectAll(".bar")
+        svg.selectAll(".bottom.bar") // Draw bars for bottom 40
             .data(data)
             .enter().append("rect")
-            .attr("y", function(d) { return yScale(d.Index) })
-            .attr("height", yScale.rangeBand())
-            .attr("x", function(d) { return xScale(0) })
-            .attr("width", function(d) { return width - xScale(d.Value); });
+            .attr("y", function(d) { return yScale(d.Label) })
+            .attr("height", yScale.rangeBand()/2)
+            .attr("x", function(d) { return xScale(Math.min(0, d.ValueB)) })
+            //.attr("width", function(d) { return xScale(d.ValueB); })
+            .attr("width", function(d) { return Math.abs(xScale(d.ValueB) - xScale(0)); })
+            .attr("fill", "white");
+
+        svg.selectAll(".general.bar") // Draw bars for general population
+            .data(data)
+            .enter().append("rect")
+            .attr("y", function(d) { return yScale(d.Label) + yScale.rangeBand()/2 + 1 })
+            .attr("height", yScale.rangeBand()/2)
+            .attr("x", function(d) { return xScale(Math.min(0, d.ValueG)) })
+            //.attr("width", function(d) { return xScale(d.ValueG); })
+            .attr("width", function(d) { return Math.abs(xScale(d.ValueG) - xScale(0)); })
+            .attr("fill", "#8b1c34");
     });
 }

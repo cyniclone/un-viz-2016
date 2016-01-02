@@ -169,10 +169,10 @@ charts["inequality"] = {
             top : 20,
             right: 20,
             bottom: 20,
-            left: 30
+            left: 80
         },
         "width" : 600,
-        "height" : 800
+        "height" : 900
     },
     //"xTicks" : 5,
     "radius" : 3,
