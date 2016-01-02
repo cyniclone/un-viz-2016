@@ -157,4 +157,30 @@ charts["waterr"] = {
         intercept : -972.5403630,
     }
 };
+
+// INEQUALITY
+charts["inequality"] = {
+    //"year" : { begin : "1990", end: "2016"},
+    "n"     : 1,
+    "value" : "inequality",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 20,
+            left: 30
+        },
+        "width" : 600,
+        "height" : 800
+    },
+    //"xTicks" : 5,
+    "radius" : 3,
+    //"countryNamesPath" : "data/countrylist/list-inequality.csv",
+    "dataPath" : "data/inequality.csv",
+    "lm" : {
+        //slope : 0.5245499,
+        //intercept : -972.5403630,
+    }
+};
 /**********************************/

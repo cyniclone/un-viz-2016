@@ -29,6 +29,11 @@ body {
 .container.water {
   background: #2bbbdd;
 }
+/**** REDUCED INEQUALITIES ********/
+.container.inequality {
+  color: #000;
+  background: #dd1e66;
+}
 /**********************************/
 h1 text-align center,
 h3 font-size 24px,

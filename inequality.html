@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <title>Quality Education</title>
+    <title>Reduced Inequalities</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -21,9 +21,9 @@
 </head>
 <body>
 
-<div class="container education"> <!-- Top level for Lumira viz -->
+<div class="container inequality"> <!-- Top level for Lumira viz -->
     <div class="row">
-        <div class="col-md-12 col-sm-12"><h1 id="page-header">Quality Education</h1></div>
+        <div class="col-md-12 col-sm-12"><h1 id="page-header">Reduced Inequalities</h1></div>
         <!--<div class="col-md-3 col-sm-12"><select id="nav"></select></div>-->
     </div>
 
@@ -38,14 +38,19 @@
         <div class="col-md-12 col-sm-12">
             <div id="info-box">
                 <p>
-                    <strong>TARGET: </strong>
-                    By 2030, ensure that all girls and boys complete free, equitable and quality primary
-                    and secondary education leading to relevant and effective learning outcomes
+                    <strong style="color:black;">TARGET: </strong>
+                    <span style="color:white;">
+                        By 2030, progressively achieve and sustain income growth of the
+                        bottom 40 per cent of the population at a rate higher than the national average
+                    </span>
                 </p>
                 <p>
-                    <strong>NOTE:</strong>
-                    Percentages below can exceed 100% due to the inclusion of over-aged and under-aged
-                    students because of early or late school entrance and grade repetition.
+                    <strong style="color:black;">HOW TO READ THIS CHART:</strong>
+                    <span style="color:white;">
+                        The position on the horizontal scale represents the
+                        rate of growth of the income of either the entire population ( bar) or the
+                        poorest 40% ( bar) of people on each country.
+                    </span>
                 </p>
                 <hr>
             </div>
@@ -56,21 +61,13 @@
         <!-- Female -->
         <div class="col-md-6 col-sm-12">
             <p style="color:white;">Percentage of
-                <span style="color:yellow;">WOMEN</span>
-                of any age who are enrolled, or have completed, secondary education
+                <span style="color:yellow;">STUFF</span>
+                fill this in later
             </p>
             <!-- CHART GOES HERE -->
             <div id="chart"></div>
         </div>
 
-        <!-- Male -->
-        <div class="col-md-6 col-sm-12">
-            <p style="color:white;">Percentage of
-                <span style="color:yellow;">MEN</span> of any age who are enrolled, or have completed, secondary education
-            </p>
-            <!-- CHART GOES HERE -->
-            <div id="chart2"></div>
-        </div>
     </div>
 </div>
 
@@ -86,9 +83,10 @@
 
 <script>
     $(document).ready(function() {
-        populateSelect("data/countrylist/list-education.csv");
-        drawScatter(charts.educationf);
-        drawScatter(charts.educationm);
+//        populateSelect("data/countrylist/list-education.csv");
+//        drawScatter(charts.educationf);
+//        drawScatter(charts.educationm);
+        drawBars(charts.inequality);
     });
 </script>
 
