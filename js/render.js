@@ -3,6 +3,10 @@ function drawScatter (chartObj) {
 
     var xTicks = !(chartObj.xTicks >= 0) ? 10 : chartObj.xTicks;
     var yTicks = !(chartObj.yTicks >= 0) ? 10 : chartObj.yTicks;
+
+    var yMin = isNaN(chartObj.yMin) ? 0 : chartObj.yMin;
+    var yMax = isNaN(chartObj.yMin) ? 100 : chartObj.yMax;
+
     /*
      * value accessor - returns the value to encode for a given data object.
      * scale          - maps value to a visual display encoding, such as a pixel position.
@@ -72,9 +76,8 @@ function drawScatter (chartObj) {
         xScale.domain(d3.extent(data, function (d) {
             return d.Year;
         })).nice();
-        yScale.domain(d3.extent(data, function (d) {
-            return d.Value;
-        })).nice();
+        //yScale.domain(d3.extent(data, function (d) { return d.Value; })).nice();
+        yScale.domain([yMin, yMax]);
 
         // Draw gridlines for x axis
         svg.selectAll("line.verticalGrid" + n).data(xScale.ticks(xTicks)).enter()

@@ -35,12 +35,16 @@ charts["hunger"] = {
     }
 };
 
+/***** DUAL SCATTERS ************/
+
 // 2.) QUALITY EDUCATION
 
 //Coefficients:
 //(Intercept)         Year
 //-2334.707610     1.203078
 charts["educationf"] = {
+    "yMin" : 0,
+    "yMax" : 180,
     "year" : { begin : "1970", end: "2015"},
     "n"     : 1,
     //"secondary" : false,
@@ -72,6 +76,8 @@ charts["educationf"] = {
 //(Intercept)         Year
 //-2005.485657     1.039033
 charts["educationm"] = {
+    "yMin" : 0,
+    "yMax" : 180,
     "year" : { begin : "1970", end: "2015"},
     "n"     : 2,
     //"secondary" : true,
@@ -158,6 +164,65 @@ charts["waterr"] = {
     }
 };
 
+// LABOR FORCE PARTICIPATION
+//(Intercept)         Year
+//-316.4548911    0.1836041
+charts["laborf"] = {
+    "year" : { begin : "1990", end: "2015"},
+    "n"     : 1,
+    "value" : "laborf",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 550,
+        "height" : 600
+    },
+    "radius" : 3,
+    "countryNamesPath" : "data/countrylist/list-labor.csv",
+    "dataPath" : "data/labor-f.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#fbb900",
+    "lm" : {
+        slope : 0.1836041,
+        intercept : -316.4548911
+    }
+};
+
+//(Intercept)        Year
+//314.7779211  -0.1194259
+charts["laborm"] = {
+    "year" : { begin : "1990", end: "2015"},
+    "n"     : 2,
+    "value" : "laborm",
+    "targetDiv" : "#chart2",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 550,
+        "height" : 600
+    },
+    "radius" : 3,
+    "countryNamesPath" : "data/countrylist/list-education.csv",
+    "dataPath" : "data/labor-m.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#fbb900",
+    "lm" : {
+        slope : -0.1194259,
+        intercept : 314.7779211
+    }
+};
+
+/***** bar charts ************/
+
 // INEQUALITY
 charts["inequality"] = {
     //"year" : { begin : "1990", end: "2016"},
@@ -169,9 +234,9 @@ charts["inequality"] = {
             top : 20,
             right: 20,
             bottom: 20,
-            left: 80
+            left: 120
         },
-        "width" : 600,
+        "width" : 800,
         "height" : 900
     },
     //"xTicks" : 5,
