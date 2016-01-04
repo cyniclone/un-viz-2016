@@ -34,9 +34,18 @@ body {
   color: #000;
   background: #dd1e66;
 }
+.container.inequality #chart g.tick {
+  font-size: 12px;
+}
+.container.inequality #chart .x.axis g.tick {
+  color: #ccc;
+  stroke-dasharray: 1, 1;
+  stroke-opacity: 0.8;
+}
 /***** LABOR *********************/
 .container.labor {
   background: #a21b43;
+  color: #000;
 }
 /**********************************/
 h1 text-align center,
@@ -93,7 +102,8 @@ circle.active {
 }
 /***** These affect multiple charts ****/
 .education g.tick,
-.water g.tick {
+.water g.tick,
+.labor g.tick {
   font-size: 12px;
   fill: #fff;
 }

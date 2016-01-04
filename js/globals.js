@@ -182,7 +182,7 @@ charts["laborf"] = {
         "width" : 550,
         "height" : 600
     },
-    "radius" : 3,
+    "radius" : 4,
     "countryNamesPath" : "data/countrylist/list-labor.csv",
     "dataPath" : "data/labor-f.csv",
     "hasTrend" : true,
@@ -210,7 +210,7 @@ charts["laborm"] = {
         "width" : 550,
         "height" : 600
     },
-    "radius" : 3,
+    "radius" : 4,
     "countryNamesPath" : "data/countrylist/list-education.csv",
     "dataPath" : "data/labor-m.csv",
     "hasTrend" : true,

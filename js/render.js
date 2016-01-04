@@ -162,7 +162,7 @@ function drawLine (chartObj, _yScale) {
     var n = (chartObj.n > 1) ? chartObj.n : "";
 
 
-    d3.select(".viz" + n +" g")
+    d3.select(".viz" + n + " g")
         .append("svg:line")
         .attr({
             "x1" : 0,
@@ -241,4 +241,119 @@ function drawBars (chartObj) {
             .attr("width", function(d) { return Math.abs(xScale(d.ValueG) - xScale(0)); })
             .attr("fill", "#8b1c34");
     });
+}
+
+function drawBars2 () {
+    var outerWidth = 1000;
+    var outerHeight = 800;
+    var margin = { left: 200, top: 0, right: 100, bottom: 90 };
+    var barPadding = 0.6
+    var barPaddingOuter = 0.3;
+    var innerWidth = outerWidth - margin.left - margin.right;
+    var innerHeight = outerHeight - margin.top - margin.bottom;
+
+    // Create SVG
+    var svg = d3.select("#chart").append("svg")
+        .attr("width", outerWidth)
+        .attr("height", outerHeight);
+    var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + ", " + margin.top + 30 + ")");
+
+    // The axis is on the right
+    var xAxisG = g.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + 10 + ")");
+
+    // Common y axis for all
+    var yAxisG = g.append("g")
+        .attr("class", "y axis");
+
+    var xScale = d3.scale.linear().range([0, innerWidth]);
+    var yScale = d3.scale.ordinal()
+        .rangeRoundBands([0, innerHeight], barPadding, barPaddingOuter);
+
+    var yAxis = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
+
+    function render(data) {
+        var xAxis = d3.svg.axis().scale(xScale).orient("top")
+            .tickValues([-4, -2, 0, 2, 4, 6, 8, 10, 12])
+            .outerTickSize(0)
+            .innerTickSize(-1 * outerHeight);
+
+        xScale.domain([-5, 15]);
+
+        // Make y Axis labels
+        var country = "";
+        data.forEach(function(d) {
+            if (d.CountryName == country) {
+                d.label = d.Period;
+            } else {
+                d.label = d.Period;
+                d.heading = d.CountryName;
+            }
+            country = d.CountryName;
+        });
+
+        var labels = data.map(function(d) {
+            return d.label;
+        });
+
+        // Set domain for all Y labels
+        yScale.domain(labels);
+        xAxisG.call(xAxis);
+        yAxisG.call(yAxis);
+
+        // Make bar chart for general population
+        var bars = g.selectAll(".ValueG").data(data);
+        bars.enter().append("rect")
+            .attr("height", yScale.rangeBand() / 2);
+        bars.attr("x", function(d) { return xScale(0); })
+            .attr("y", function(d) { return yScale(d.label); })
+            .attr("width", function(d) { return xScale(d.ValueG) - xScale(0); })
+            .style("fill", "#8b1c34")
+            .attr("class", "ValueG");
+
+        // Make bars for bottom 40% population
+        var bars = g.selectAll(".ValueB").data(data);
+        bars.enter().append("rect")
+            .attr("height", yScale.rangeBand() / 2)
+            .attr("x", function(d) { return xScale(0); })
+            .attr("y", function(d) { return yScale.rangeBand() / 2 + yScale(d.label); })
+            .attr("width", function(d) { return xScale(d.ValueB) - xScale(0); })
+            .style("fill", "white")
+            .attr("class", "ValueB")
+
+        // Make grid lines for those data that have headings
+        var lines = g.selectAll(".xLine").data(filter(function(d) { return !(d.heading == undefined) }));
+        lines.enter().append("line")
+        lines
+            .attr("x1", 0)
+            .attr("y1", function(d) { return (yScale(d.label) - yScale.rangeBand()) })
+            .attr("x2", outerWidth)
+            .attr("y2", function(d) { return (yScale(d.label) - yScale.rangeBand()) })
+            .style("stroke", "blue")
+            .attr("class", "xLine")
+            .style("display", function(s) {
+                if ((yScale(s.label) - yScale.rangeBand()) < 0) {
+                    return "none"; // Don't show grids when y is negative
+                }
+            });
+
+        // Make heading filtering data only for those which have headings
+        var headings = g.selectAll(".heading").data(data.filter(function(d) { return !(d.heading == undefined )}));
+        headings.enter().append("text")
+            .text(function(d) { return d.heading })
+            .attr("x", 0)
+            .attr("y", function(d) {
+                return (yScale(d.label) - yScale.rangeBand() + 30 )
+            });
+    }
+
+    function type(d) {
+        d.ValueA = +d.ValueA;
+        d.ValueB = +d.ValueB;
+        console.log(d);
+        return d;
+    }
+    d3.csv("data/inequality.csv", type, render);
 }
