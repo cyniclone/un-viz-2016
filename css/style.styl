@@ -1,8 +1,24 @@
+/****** DOM ELEMENTS **********************/
+
+h1 text-align center
+h3 font-size 24px
+
+#how-to-read > ol > li    font-size 18px margin-bottom 12px
+#info-box
+  font-size 14px
+
+select
+  font-size 14px
+  color black
+  margin-right 20px
+
+#select-title
+  float right
+  display inline-block
+
 /*****    TEXT STYLING    *********/
 $color1 = #333
 $font1 = 'Droid Sans'
-
-/**********************************/
 
 body
   background  #e6e6e6
@@ -10,32 +26,55 @@ body
   font-size   16px
   color       $color1
 
+/********* VISUALIZATION *************/
 .container
   padding 20px
 
-
-/* Individual Chart Styles *****/
-.container.child-mortality
+.child-mortality /* CHILD MORTALITY */
   background: #48a034
 
-.container.poverty
+.poverty /* POVERTY */
   background: #e72a3c
 
-/***** 1.) ZERO HUNGER ************/
-.container.zero-hunger
+.zero-hunger /* ZERO HUNGER */
   background: #dda63a
 
-/***** 2.) QUALITY EDUCATION ************/
-.container.education
+.water /* WATER ACCESS */
+  background #2bbbdd
+  g.tick
+    font-size 12px
+    fill white
+
+  circle.scatterdot.active,
+  circle.scatterdot2.active
+    stroke-width 2px
+    stroke #E9432E
+    r 4px
+
+.education /* EDUCATION */
   color #000
   background: #c51c2d
+  g.tick
+    font-size 12px
+    fill white
 
-/***** WATER ACCESS ************/
-.container.water
-  background #2bbbdd
+  line.verticalGrid, line.verticalGrid2, line.horizontalGrid, line.horizontalGrid2
+    stroke #ccc
 
-/**** REDUCED INEQUALITIES ********/
-.container.inequality
+  circle.scatterdot.active,
+  circle.scatterdot2.active
+    stroke-width 2px
+    stroke #68f
+    r 4px
+
+.labor /* LABOR */
+  background #a21b43
+  color #000
+  g.tick
+    font-size 12px
+    fill white
+
+.inequality /* INEQUALITY */
   color #000000
   background #dd1e66
 
@@ -48,28 +87,7 @@ body
         stroke-dasharray 1, 1
         stroke-opacity 0.8
 
-
-/***** LABOR *********************/
-.container.labor
-  background #a21b43
-  color #000
-/**********************************/
-
-h1 text-align center
-
-h3 font-size 24px
-
-#how-to-read > ol > li    font-size 18px margin-bottom 12px
-#info-box
-  font-size 14px
-
-
-select
-  font-size 14px
-  color black
-  margin-right 20px
-
-/*********** Visualization  *********/
+/*********** global viz  *********/
 .axis
   font-family "Helvetica Neue", Helvetica, sans-serif
 
@@ -78,7 +96,6 @@ select
   fill: none;
   stroke: #FFF;
   shape-rendering: crispEdges;
-
 
 .d3-tip
   width: 150px;
@@ -109,30 +126,3 @@ circle.active
   opacity: 1;
   fill: #000;
   fill-opacity: 1;
-
-/***** These affect multiple charts ****/
-
-.education g.tick, .water g.tick, .labor g.tick
-  font-size 12px
-  fill white
-
-.education line.verticalGrid, .education line.verticalGrid2,
-.education line.horizontalGrid, .education line.horizontalGrid2
-  stroke #ccc
-
-div.container.education circle.scatterdot.active,
-div.container.education circle.scatterdot2.active
-  stroke-width 2px
-  stroke #68f
-  r 4px
-
-div.container.water circle.scatterdot.active,
-div.container.water circle.scatterdot2.active
-  stroke-width 2px
-  stroke #E9432E
-  r 4px
-
-
-#select-title
-  float right
-  display inline-block

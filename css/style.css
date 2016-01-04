@@ -1,53 +1,4 @@
-/*****    TEXT STYLING    *********/
-/**********************************/
-body {
-  background: #e6e6e6;
-  font-family: 'Droid Sans';
-  font-size: 16px;
-  color: #333;
-}
-.container {
-  padding: 20px;
-}
-/* Individual Chart Styles *****/
-.container.child-mortality {
-  background: #48a034;
-}
-.container.poverty {
-  background: #e72a3c;
-}
-/***** 1.) ZERO HUNGER ************/
-.container.zero-hunger {
-  background: #dda63a;
-}
-/***** 2.) QUALITY EDUCATION ************/
-.container.education {
-  color: #000;
-  background: #c51c2d;
-}
-/***** WATER ACCESS ************/
-.container.water {
-  background: #2bbbdd;
-}
-/**** REDUCED INEQUALITIES ********/
-.container.inequality {
-  color: #000;
-  background: #dd1e66;
-}
-.container.inequality #chart g.tick {
-  font-size: 12px;
-}
-.container.inequality #chart .x.axis g.tick {
-  color: #ccc;
-  stroke-dasharray: 1, 1;
-  stroke-opacity: 0.8;
-}
-/***** LABOR *********************/
-.container.labor {
-  background: #a21b43;
-  color: #000;
-}
-/**********************************/
+/****** DOM ELEMENTS **********************/
 h1 text-align center,
 h3 font-size 24px,
 #how-to-read > ol > li    font-size 18px margin-bottom 12px,
@@ -59,7 +10,84 @@ select {
   color: #000;
   margin-right: 20px;
 }
-/*********** Visualization  *********/
+#select-title {
+  float: right;
+  display: inline-block;
+}
+/*****    TEXT STYLING    *********/
+body {
+  background: #e6e6e6;
+  font-family: 'Droid Sans';
+  font-size: 16px;
+  color: #333;
+}
+/********* VISUALIZATION *************/
+.container {
+  padding: 20px;
+}
+.child-mortality {
+  background: #48a034;
+}
+.poverty {
+  background: #e72a3c;
+}
+.zero-hunger {
+  background: #dda63a;
+}
+.water {
+  background: #2bbbdd;
+}
+.water g.tick {
+  font-size: 12px;
+  fill: #fff;
+}
+.water circle.scatterdot.active,
+.water circle.scatterdot2.active {
+  stroke-width: 2px;
+  stroke: #e9432e;
+  r: 4px;
+}
+.education {
+  color: #000;
+  background: #c51c2d;
+}
+.education g.tick {
+  font-size: 12px;
+  fill: #fff;
+}
+.education line.verticalGrid,
+.education line.verticalGrid2,
+.education line.horizontalGrid,
+.education line.horizontalGrid2 {
+  stroke: #ccc;
+}
+.education circle.scatterdot.active,
+.education circle.scatterdot2.active {
+  stroke-width: 2px;
+  stroke: #68f;
+  r: 4px;
+}
+.labor {
+  background: #a21b43;
+  color: #000;
+}
+.labor g.tick {
+  font-size: 12px;
+  fill: #fff;
+}
+.inequality {
+  color: #000;
+  background: #dd1e66;
+}
+.inequality #chart g.tick {
+  font-size: 12px;
+}
+.inequality #chart .x.axis g.tick {
+  color: #ccc;
+  stroke-dasharray: 1, 1;
+  stroke-opacity: 0.8;
+}
+/*********** global viz  *********/
 .axis {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
@@ -99,33 +127,4 @@ circle.active {
   opacity: 1;
   fill: #000;
   fill-opacity: 1;
-}
-/***** These affect multiple charts ****/
-.education g.tick,
-.water g.tick,
-.labor g.tick {
-  font-size: 12px;
-  fill: #fff;
-}
-.education line.verticalGrid,
-.education line.verticalGrid2,
-.education line.horizontalGrid,
-.education line.horizontalGrid2 {
-  stroke: #ccc;
-}
-div.container.education circle.scatterdot.active,
-div.container.education circle.scatterdot2.active {
-  stroke-width: 2px;
-  stroke: #68f;
-  r: 4px;
-}
-div.container.water circle.scatterdot.active,
-div.container.water circle.scatterdot2.active {
-  stroke-width: 2px;
-  stroke: #e9432e;
-  r: 4px;
-}
-#select-title {
-  float: right;
-  display: inline-block;
 }
