@@ -1,5 +1,12 @@
 /****** DOM ELEMENTS **********************/
 h1 text-align center,
+#page-header {
+  font-family: "Oswald";
+  font-weight: 400;
+  font-size: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 h3 font-size 24px,
 #how-to-read > ol > li    font-size 18px margin-bottom 12px,
 #info-box {
@@ -75,6 +82,12 @@ body {
   font-size: 12px;
   fill: #fff;
 }
+/*.gender
+  background #e9432e
+  color #000
+  g.tick
+    font-size 12px
+    fill white */
 .inequality {
   color: #000;
   background: #dd1e66;
@@ -86,6 +99,14 @@ body {
   color: #ccc;
   stroke-dasharray: 1, 1;
   stroke-opacity: 0.8;
+}
+.innovation {
+  background: #ee6b2f;
+  color: #fff;
+}
+.innovation g.tick {
+  font-size: 12px;
+  fill: #fff;
 }
 /*********** global viz  *********/
 .axis {

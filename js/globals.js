@@ -3,7 +3,8 @@ var xs, ys, debug = { debug : true, xs : xs, ys : ys }; // Object for debugging 
 
 var charts = {}; // Object to hold all chart objects
 
-// 1.) ZERO HUNGER
+/***** 2 ZERO HUNGER ************/
+
 //(Intercept)         Year
 //1012.8755183   -0.4961083
 charts["hunger"] = {
@@ -37,7 +38,7 @@ charts["hunger"] = {
 
 /***** DUAL SCATTERS ************/
 
-// 2.) QUALITY EDUCATION
+/***** 4 QUALITY EDUCATION ************/
 
 //Coefficients:
 //(Intercept)         Year
@@ -105,7 +106,8 @@ charts["educationm"] = {
     }
 };
 
-// WATER ACCESS
+/***** 6 WATER ACCESS  ************/
+
 // (Intercept)         Year
 // -719.5411747    0.4014397
 charts["waterg"] = {
@@ -164,6 +166,8 @@ charts["waterr"] = {
     }
 };
 
+/***** 8 DecentWorkandEconomicGrowth ************/
+
 // LABOR FORCE PARTICIPATION
 //(Intercept)         Year
 //-316.4548911    0.1836041
@@ -183,7 +187,6 @@ charts["laborf"] = {
         "height" : 600
     },
     "radius" : 4,
-    "countryNamesPath" : "data/countrylist/list-labor.csv",
     "dataPath" : "data/labor-f.csv",
     "hasTrend" : true,
     "trendStroke" : "#fbb900",
@@ -211,13 +214,117 @@ charts["laborm"] = {
         "height" : 600
     },
     "radius" : 4,
-    "countryNamesPath" : "data/countrylist/list-education.csv",
     "dataPath" : "data/labor-m.csv",
     "hasTrend" : true,
     "trendStroke" : "#fbb900",
     "lm" : {
         slope : -0.1194259,
         intercept : 314.7779211
+    }
+};
+
+/***** 9 INNOVATION ************/
+charts["innovationl"] = {
+    "year" : { begin : "1995", end: "2015"},
+    "n"     : 1,
+    "value" : "innovationl",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 550,
+        "height" : 600
+    },
+    "radius" : 4,
+    "dataPath" : "data/innovation-fte.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#164767",
+    "lm" : {
+        slope : 0.1836041,
+        intercept : -316.4548911
+    }
+};
+
+//(Intercept)        Year
+//314.7779211  -0.1194259
+charts["innovationr"] = {
+    "year" : { begin : "1995", end: "2015"},
+    "n"     : 2,
+    "value" : "innovationr",
+    "targetDiv" : "#chart2",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 550,
+        "height" : 600
+    },
+    "radius" : 4,
+    "dataPath" : "data/innovation-pct.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#164767",
+    "lm" : {
+        slope : -0.1194259,
+        intercept : 314.7779211
+    }
+};
+
+/****** GENDER EQUALITY ***********/
+// IS THIS THE SAME AS LABOR?
+//(Intercept)         Year
+//-316.4548911    0.1836041
+charts["genderf"] = {
+    "year" : { begin : "1995", end: "2012"},
+    "n"     : 1,
+    "value" : "genderf",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 550,
+        "height" : 600
+    },
+    "radius" : 4,
+    "dataPath" : "data/gender-f.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#000",
+    "lm" : {
+
+    }
+};
+
+charts["genderm"] = {
+    "year" : { begin : "1995", end: "2012"},
+    "n"     : 2,
+    "value" : "genderm",
+    "targetDiv" : "#chart2",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 550,
+        "height" : 600
+    },
+    "radius" : 4,
+    "dataPath" : "data/gender-m.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#000",
+    "lm" : {
+
     }
 };
 
