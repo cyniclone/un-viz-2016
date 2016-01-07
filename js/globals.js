@@ -224,10 +224,13 @@ charts["laborm"] = {
 };
 
 /***** 9 INNOVATION ************/
-charts["innovationl"] = {
-    "year" : { begin : "1995", end: "2015"},
+//(Intercept)        Year
+//-86639.1766     44.7679
+charts["innovation1"] = {
+    "year" : { begin : "1995", end: "2015" },
     "n"     : 1,
-    "value" : "innovationl",
+    "xTicks" : 4,
+    "value" : "innovation1",
     "targetDiv" : "#chart",
     "dimensions" : {
         "margin" : {
@@ -237,24 +240,25 @@ charts["innovationl"] = {
             left: 50
         },
         "width" : 550,
-        "height" : 600
+        "height" : 700
     },
     "radius" : 4,
-    "dataPath" : "data/innovation-fte.csv",
+    "dataPath" : "data/innovation-1.csv",
     "hasTrend" : true,
     "trendStroke" : "#164767",
     "lm" : {
-        slope : 0.1836041,
-        intercept : -316.4548911
+        slope : 44.7679,
+        intercept : -86639.1766
     }
 };
 
 //(Intercept)        Year
-//314.7779211  -0.1194259
-charts["innovationr"] = {
-    "year" : { begin : "1995", end: "2015"},
+//321.3985181  -0.1411941
+charts["innovation2"] = {
+    "year" : { begin : "1995", end: "2015" },
     "n"     : 2,
-    "value" : "innovationr",
+    "xTicks" : 4,
+    "value" : "innovation2",
     "targetDiv" : "#chart2",
     "dimensions" : {
         "margin" : {
@@ -264,15 +268,15 @@ charts["innovationr"] = {
             left: 50
         },
         "width" : 550,
-        "height" : 600
+        "height" : 700
     },
     "radius" : 4,
-    "dataPath" : "data/innovation-pct.csv",
+    "dataPath" : "data/innovation-2.csv",
     "hasTrend" : true,
     "trendStroke" : "#164767",
     "lm" : {
-        slope : -0.1194259,
-        intercept : 314.7779211
+        slope : -0.1411941,
+        intercept : 321.398518
     }
 };
 
