@@ -230,6 +230,10 @@ charts["innovation1"] = {
     "year" : { begin : "1995", end: "2015" },
     "n"     : 1,
     "xTicks" : 4,
+    "yTicks" : 5,
+    "yMin" : 0,
+    "yMax" : 12000,
+    "notPercent" : true,
     "value" : "innovation1",
     "targetDiv" : "#chart",
     "dimensions" : {
@@ -258,6 +262,9 @@ charts["innovation2"] = {
     "year" : { begin : "1995", end: "2015" },
     "n"     : 2,
     "xTicks" : 4,
+    "yTicks" : 3,
+    "yMin" : 0,
+    "yMax" : 60,
     "value" : "innovation2",
     "targetDiv" : "#chart2",
     "dimensions" : {

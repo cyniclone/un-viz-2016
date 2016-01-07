@@ -36,7 +36,15 @@ function drawScatter (chartObj) {
         yScale = d3.scale.linear().range([height, 0]),               // value -> display
         yMap = function (d) { return yScale(yValue(d)); },           // data  -> display
         yAxis = d3.svg.axis().scale(yScale).orient("left")
-            .tickFormat(function (d) { return d + "%"; });    // Percents on axes
+            .tickFormat(function (d) {
+                if (chartObj.notPercent == undefined)
+                    return d + "%";   // Percents on axes
+                else {
+                    var format = d3.format("0,000");
+                    return format(d)
+                }
+            })
+            .ticks(yTicks);
 
     if (debug.debug) { debug.xs = xScale; debug.ys = yScale; }
 
@@ -45,8 +53,15 @@ function drawScatter (chartObj) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (d) {
-            return "<b>" + d.CountryName + " - " + d.Year + "</b><br>"
-                + d3.round(d.Value, 1) + " %";
+            var s = "<b>" + d.CountryName + " - " + d.Year + "</b><br>";
+            if (chartObj.notPercent == undefined) {
+                s += d3.round(d.Value, 1) + " %";
+                return s;
+            }
+            var format = d3.format("0,000");
+            s += format(d.Value);
+            return s;
+
         });
 
     // Make chart SVG
