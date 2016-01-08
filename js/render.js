@@ -44,7 +44,8 @@ function drawScatter (chartObj) {
                     return format(d)
                 }
             })
-            .ticks(yTicks);
+            .ticks(yTicks)
+            .tickPadding(5);
 
     if (debug.debug) { debug.xs = xScale; debug.ys = yScale; }
 
