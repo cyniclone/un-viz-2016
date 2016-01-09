@@ -106,6 +106,57 @@ charts["educationm"] = {
     }
 };
 
+/***** 5 GENDER EQUALITY **********/
+charts["genderf"] = {
+    "year" : { begin : "1970", end: "2015"},
+    "n"     : 1,
+    "value" : "genderf",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 550,
+        "height" : 600
+    },
+    "radius" : 3,
+    "dataPath" : "data/gender-f.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#222",
+    "lm" : {
+        slope : 078,
+        intercept : -210
+    }
+};
+charts["genderm"] = {
+    "year" : { begin : "1970", end: "2015"},
+    "n"     : 2,
+    "value" : "genderm",
+    "targetDiv" : "#chart2",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 550,
+        "height" : 600
+    },
+    "radius" : 3,
+    "dataPath" : "data/gender-m.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#222",
+    "lm" : {
+        slope : 078,
+        intercept : -210
+    }
+};
+
+
 /***** 6 WATER ACCESS  ************/
 
 // (Intercept)         Year
@@ -166,35 +217,56 @@ charts["waterr"] = {
     }
 };
 
-/***** 8 DecentWorkandEconomicGrowth ************/
-
-// LABOR FORCE PARTICIPATION
-//(Intercept)         Year
-//-316.4548911    0.1836041
-charts["laborf"] = {
-    "year" : { begin : "1990", end: "2015"},
-    "n"     : 1,
-    "value" : "laborf",
-    "targetDiv" : "#chart",
-    "dimensions" : {
-        "margin" : {
-            top : 20,
+/***** 7 Access to Energy ************/
+charts["energy"] = {
+    "year": {begin: "1990", end: "2015"},
+    "n": 1,
+    "value": "energy",
+    "targetDiv": "#chart",
+    "dimensions": {
+        "margin": {
+            top: 20,
             right: 20,
             bottom: 30,
             left: 50
         },
-        "width" : 550,
-        "height" : 600
+        "width": 800,
+        "height": 800
     },
-    "radius" : 4,
-    "dataPath" : "data/labor-f.csv",
-    "hasTrend" : true,
-    "trendStroke" : "#fbb900",
-    "lm" : {
-        slope : 0.1836041,
-        intercept : -316.4548911
-    }
-};
+    "radius": 4,
+    "dataPath": "data/energy.csv",
+    "hasTrend": false,
+}
+
+    /***** 8 DecentWorkandEconomicGrowth ************/
+
+// LABOR FORCE PARTICIPATION
+//(Intercept)         Year
+//-316.4548911    0.1836041
+    charts["laborf"] = {
+        "year" : { begin : "1990", end: "2015"},
+        "n"     : 1,
+        "value" : "laborf",
+        "targetDiv" : "#chart",
+        "dimensions" : {
+            "margin" : {
+                top : 20,
+                right: 20,
+                bottom: 30,
+                left: 50
+            },
+            "width" : 550,
+            "height" : 600
+        },
+        "radius" : 4,
+        "dataPath" : "data/labor-f.csv",
+        "hasTrend" : true,
+        "trendStroke" : "#fbb900",
+        "lm" : {
+            slope : 0.1836041,
+            intercept : -316.4548911
+        }
+    };
 
 //(Intercept)        Year
 //314.7779211  -0.1194259

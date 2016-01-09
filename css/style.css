@@ -32,17 +32,27 @@ body {
 .container {
   padding: 20px;
 }
-.child-mortality {
-  background: #48a034;
-}
 .poverty {
   background: #e72a3c;
 }
 .zero-hunger {
   background: #dda63a;
 }
+.child-mortality {
+  background: #48a034;
+}
+.education {
+  color: #000;
+  background: #c51c2d;
+}
+.education g.tick {
+  font-size: 12px;
+  fill: #fff;
+}
+/* 5 GENDER EQUALITY */
 .water {
   background: #2bbbdd;
+/* 7 ENERGY ACCESS */
 }
 .water g.tick {
   font-size: 12px;
@@ -54,22 +64,14 @@ body {
   stroke: #e9432e;
   r: 4px;
 }
-.education {
-  color: #000;
-  background: #c51c2d;
-}
-.education g.tick {
-  font-size: 12px;
-  fill: #fff;
-}
-.education line.verticalGrid,
-.education line.verticalGrid2,
-.education line.horizontalGrid,
-.education line.horizontalGrid2 {
+.water line.verticalGrid,
+.water line.verticalGrid2,
+.water line.horizontalGrid,
+.water line.horizontalGrid2 {
   stroke: #ccc;
 }
-.education circle.scatterdot.active,
-.education circle.scatterdot2.active {
+.water circle.scatterdot.active,
+.water circle.scatterdot2.active {
   stroke-width: 2px;
   stroke: #68f;
   r: 4px;
@@ -82,12 +84,6 @@ body {
   font-size: 12px;
   fill: #fff;
 }
-/*.gender
-  background #e9432e
-  color #000
-  g.tick
-    font-size 12px
-    fill white */
 .inequality {
   color: #000;
   background: #dd1e66;
@@ -116,6 +112,13 @@ body {
 .innovation circle.scatterdot2.active {
   fill: #164767;
   stroke: #68f;
+}
+.energy {
+  background: #fbbf0f;
+  color: #000;
+}
+.energy #page-header {
+  color: #fff;
 }
 /*********** global viz  *********/
 .axis {

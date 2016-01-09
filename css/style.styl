@@ -37,16 +37,26 @@ body
 .container
   padding 20px
 
-.child-mortality /* CHILD MORTALITY */
-  background: #48a034
-
-.poverty /* POVERTY */
+.poverty /* 1 POVERTY */
   background: #e72a3c
 
-.zero-hunger /* ZERO HUNGER */
+.zero-hunger /* 2 ZERO HUNGER */
   background: #dda63a
 
-.water /* WATER ACCESS */
+.child-mortality /* 3 CHILD MORTALITY */
+  background: #48a034
+
+.education /* 4 EDUCATION */
+  color #000
+  background: #c51c2d
+  g.tick
+    font-size 12px
+    fill white
+
+
+/* 5 GENDER EQUALITY */
+
+.water /* 6 WATER ACCESS */
   background #2bbbdd
   g.tick
     font-size 12px
@@ -58,13 +68,6 @@ body
     stroke #E9432E
     r 4px
 
-.education /* EDUCATION */
-  color #000
-  background: #c51c2d
-  g.tick
-    font-size 12px
-    fill white
-
   line.verticalGrid, line.verticalGrid2, line.horizontalGrid, line.horizontalGrid2
     stroke #ccc
 
@@ -74,34 +77,20 @@ body
     stroke #68f
     r 4px
 
-.labor /* LABOR */
+.energy /* 7 ENERGY ACCESS */
+  background #fbbf0f
+  color #000
+  #page-header
+    color white
+
+.labor /* 8 DECENT ECONOMIC WORK AND GROWTH */
   background #a21b43
   color #000
   g.tick
     font-size 12px
     fill white
 
-/*.gender
-  background #e9432e
-  color #000
-  g.tick
-    font-size 12px
-    fill white */
-
-.inequality /* INEQUALITY */
-  color #000000
-  background #dd1e66
-
-  #chart
-    g.tick
-      font-size 12px
-    .x.axis
-      g.tick
-        color #ccc
-        stroke-dasharray 1, 1
-        stroke-opacity 0.8
-
-.innovation /* INNOVATION */
+.innovation /* 9 INNOVATION */
   background #ee6b2f
   color #fff
   g.tick
@@ -113,6 +102,19 @@ body
     fill #164767
     stroke #68f
 
+.inequality /* 10 REDUCED INEQUALITIES */
+  color #000000
+  background #dd1e66
+
+  #chart
+    g.tick
+      font-size 12px
+    .x.axis
+      g.tick
+      color #ccc
+      stroke-dasharray 1, 1
+      stroke-opacity 0.8
+
 
 
 /*********** global viz  *********/
@@ -121,9 +123,9 @@ body
 
 .axis path,
 .axis line
-  fill: none;
-  stroke: #FFF;
-  shape-rendering: crispEdges;
+  fill none
+  stroke #FFF
+  shape-rendering crispEdges
 
 .d3-tip
   width: 150px;
