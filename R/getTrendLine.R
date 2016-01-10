@@ -2,7 +2,7 @@ library(tidyr)
 library(ggplot2)
 library(gdata)
 
-filename <- "innovation-2.csv"
+filename <- "gender-m.csv"
 data <-read.csv(paste("~/Code/un-viz-2016/data/", filename, sep='') , header = T) # choose the long data
 
 #write.csv(data_long, "~/Desktop/output.csv")

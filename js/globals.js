@@ -107,9 +107,14 @@ charts["educationm"] = {
 };
 
 /***** 5 GENDER EQUALITY **********/
+//(Intercept)         Year
+//142.11647817  -0.06818827
 charts["genderf"] = {
-    "year" : { begin : "1970", end: "2015"},
+    "year" : { begin : "2000", end: "2013" },
     "n"     : 1,
+    "xTicks" : 3,
+    "yTicks" : 5,
+    "yMax" : 25,
     "value" : "genderf",
     "targetDiv" : "#chart",
     "dimensions" : {
@@ -122,18 +127,23 @@ charts["genderf"] = {
         "width" : 550,
         "height" : 600
     },
-    "radius" : 3,
+    "radius" : 5,
     "dataPath" : "data/gender-f.csv",
     "hasTrend" : true,
     "trendStroke" : "#222",
     "lm" : {
-        slope : 078,
-        intercept : -210
+        slope : -0.06818827,
+        intercept : 142.11647817
     }
 };
+//(Intercept)        Year
+//346.898836   -0.168159
 charts["genderm"] = {
-    "year" : { begin : "1970", end: "2015"},
+    "year" : { begin : "2000", end: "2013" },
     "n"     : 2,
+    "xTicks" : 3,
+    "yTicks" : 5,
+    "yMax" : 25,
     "value" : "genderm",
     "targetDiv" : "#chart2",
     "dimensions" : {
@@ -146,13 +156,13 @@ charts["genderm"] = {
         "width" : 550,
         "height" : 600
     },
-    "radius" : 3,
+    "radius" : 5,
     "dataPath" : "data/gender-m.csv",
     "hasTrend" : true,
     "trendStroke" : "#222",
     "lm" : {
-        slope : 078,
-        intercept : -210
+        slope : -0.168159,
+        intercept : 346.898836
     }
 };
 
@@ -238,7 +248,7 @@ charts["energy"] = {
     "hasTrend": false,
 }
 
-    /***** 8 DecentWorkandEconomicGrowth ************/
+/***** 8 DecentWorkandEconomicGrowth ************/
 
 // LABOR FORCE PARTICIPATION
 //(Intercept)         Year
@@ -359,57 +369,6 @@ charts["innovation2"] = {
     }
 };
 
-/****** GENDER EQUALITY ***********/
-// IS THIS THE SAME AS LABOR?
-//(Intercept)         Year
-//-316.4548911    0.1836041
-charts["genderf"] = {
-    "year" : { begin : "1995", end: "2012"},
-    "n"     : 1,
-    "value" : "genderf",
-    "targetDiv" : "#chart",
-    "dimensions" : {
-        "margin" : {
-            top : 20,
-            right: 20,
-            bottom: 30,
-            left: 50
-        },
-        "width" : 550,
-        "height" : 600
-    },
-    "radius" : 4,
-    "dataPath" : "data/gender-f.csv",
-    "hasTrend" : true,
-    "trendStroke" : "#000",
-    "lm" : {
-
-    }
-};
-
-charts["genderm"] = {
-    "year" : { begin : "1995", end: "2012"},
-    "n"     : 2,
-    "value" : "genderm",
-    "targetDiv" : "#chart2",
-    "dimensions" : {
-        "margin" : {
-            top : 20,
-            right: 20,
-            bottom: 30,
-            left: 50
-        },
-        "width" : 550,
-        "height" : 600
-    },
-    "radius" : 4,
-    "dataPath" : "data/gender-m.csv",
-    "hasTrend" : true,
-    "trendStroke" : "#000",
-    "lm" : {
-
-    }
-};
 
 /***** bar charts ************/
 

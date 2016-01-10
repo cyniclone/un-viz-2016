@@ -5,7 +5,7 @@ function drawScatter (chartObj) {
     var yTicks = !(chartObj.yTicks >= 0) ? 10 : chartObj.yTicks;
 
     var yMin = isNaN(chartObj.yMin) ? 0 : chartObj.yMin;
-    var yMax = isNaN(chartObj.yMin) ? 100 : chartObj.yMax;
+    var yMax = isNaN(chartObj.yMax) ? 100 : chartObj.yMax;
 
     /*
      * value accessor - returns the value to encode for a given data object.
@@ -76,6 +76,7 @@ function drawScatter (chartObj) {
     svg.call(tip);
 
     d3.csv(chartObj.dataPath, function (error, data) {
+        console.log(data);
         data = data.filter(function(d) {
             if(isNaN(d.Value)){
                 return false;
@@ -188,7 +189,6 @@ function drawLine (chartObj, _yScale) {
             "stroke-width": "3px"
         })
         .attr("class", "trend")
-        //.style("stroke", "#222");
         .style("stroke", chartObj.trendStroke);
 
     d3.selectAll('.trend').moveToFront();
