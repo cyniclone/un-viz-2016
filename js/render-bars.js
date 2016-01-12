@@ -216,8 +216,6 @@ function drawBars (chartObj) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    svg.call(tip);
-
     d3.csv(chartObj.dataPath, function (error, data) {
         data.forEach(function(d) {d.Value = +d.Value;}); // Force numeric
 
@@ -264,22 +262,43 @@ function drawBars (chartObj) {
             .attr("fill", "white")
             .text(function(d) { return d.Value + "%" });
 
-        //TODO draw OECD average
-        var averageLine = svg.selectAll("line.averageLine")
+
+
+        // Draw OECD average
+        var averageLine = d3.select(".bar-chart g")
             .append("svg:line")
             .attr({
-                "class" : "verticalGrid",
-                "x1": function(d) { return xScale(d); },
-                "x2": function(d) { return xScale(d); },
+                "class" : "line averageLine",
+                "x1": function() { return xScale(18); },
+                "x2": function() { return xScale(18); },
                 "y1": height,
                 "y2": 0,
                 "fill": "none",
                 "stroke": "#fff",
-                "stroke-width": "2px"
-            });
+                "stroke-width": "2px",
+                "stroke-opacity": 0.5,
+            })
+            .style("stroke-dasharray","2, 2");
 
+        svg.append("text")
+            .text("OECD Average: 18%")
+            .attr({
+                "class" : "text-label",
+                //"x" : function() { return xScale(18) + 2; },
+                //"y" : 600,
+                "fill" : "white",
+                dy: "-0.35em",
+                "font-size" : "18px"
+            })
+            .attr("transform", function() {
+                var s = "translate(" + xScale(18) + ", 600)";
+                s += " rotate(90)"
+                return s;
+            })
 
 
 
     });
+
+    svg.call(tip);
 }

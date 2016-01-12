@@ -171,7 +171,7 @@ charts["genderBars"] = {
     "dimensions" : {
         "margin" : {
             top : 20,
-            right: 20,
+            right: 60,
             bottom: 10,
             left: 100
         },
