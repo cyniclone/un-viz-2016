@@ -189,13 +189,15 @@ function drawBars (chartObj) {
 // setup x
     var xValue = function (d) { return d.Value; },                   // data  -> value
         xScale = d3.scale.linear().range([0, width]),                // value -> display
-        xMap = function (d) { return xScale(xValue(d)); };           // data  -> display
-
+        xMap = function (d) { return xScale(xValue(d));},           // data  -> display
+        xAxis = d3.svg.axis().scale(xScale).orient("top")
+            .tickFormat(d3.format("d"));
 
     // setup y
-    var yValue = function (d) { return d.CountryName; },             // data  -> value
-        yScale = d3.scale.ordinal().range([height, 0]),              // value -> display
-        yMap = function (d) { return yScale(yValue(d)); };           // data  -> display
+    var yValue = function (d) { return d.CountryName; },              // data  -> value
+        yScale = d3.scale.ordinal().rangeRoundBands([height, 0], .4), // value -> display
+        yMap = function (d) { return yScale(yValue(d));},             // data  -> display
+        yAxis = d3.svg.axis().scale(yScale).orient("left");
 
     // Initialize d3 tip
     var tip = d3.tip()
@@ -220,11 +222,55 @@ function drawBars (chartObj) {
         data.forEach(function(d) {d.Value = +d.Value;}); // Force numeric
 
         // Sort data
-        data.sort(function(a, b) {
-            return d3.descending(a.Value, b.Value);
-        });
-
+        data.sort(function(a, b) { return d3.ascending(a.Value, b.Value); });
 
         console.log(data);
+
+        // Set scale domains
+        xScale.domain(d3.extent(data, function(d) { return d.Value; })).nice();
+        yScale.domain(data.map(function(d) { return d.CountryName; }));
+
+        // Render Axes
+        svg.append("g")
+            .attr("class", "x axis")
+            //.attr("transform", "translate(0," + 0 + ")")
+            .call(xAxis)
+            .append("text");
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text");
+
+        // Render bars
+        svg.selectAll(".forbesBar")
+            .data(data)
+            .enter().append("rect")
+            .attr({
+                "class" : "forbesBar",
+                "x" : 0 ,
+                "width" : function(d) { return xScale(d.Value); },
+                "y" : function(d) { return yScale(d.CountryName); },
+                "height" : yScale.rangeBand(),
+                "fill" : "white",
+                "opacity" : 0.75
+            })
+
+        // TODO draw OECD average
+        var averageLine = svg.selectAll("line.averageLine")
+            .append("svg:line")
+            .attr({
+                "class" : "verticalGrid",
+                "x1": function(d) { return xScale(d); },
+                "x2": function(d) { return xScale(d); },
+                "y1": height,
+                "y2": 0,
+                "fill": "none",
+                "stroke": "#fff",
+                "stroke-width": "2px"
+            });
+
+
+
+
     });
 }

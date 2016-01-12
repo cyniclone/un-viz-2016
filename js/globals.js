@@ -170,13 +170,13 @@ charts["genderBars"] = {
     "targetDiv" : "#bar-chart",
     "dimensions" : {
         "margin" : {
-            top : 10,
+            top : 20,
             right: 20,
             bottom: 10,
-            left: 50
+            left: 100
         },
-        "width" : 800,
-        "height" : 1200
+        "width" : 1100,
+        "height" : 1100
     },
 };
 
