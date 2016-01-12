@@ -176,7 +176,7 @@ charts["genderBars"] = {
             left: 100
         },
         "width" : 1100,
-        "height" : 1100
+        "height" : 900
     },
 };
 

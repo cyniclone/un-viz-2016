@@ -195,7 +195,7 @@ function drawBars (chartObj) {
 
     // setup y
     var yValue = function (d) { return d.CountryName; },              // data  -> value
-        yScale = d3.scale.ordinal().rangeRoundBands([height, 0], .4), // value -> display
+        yScale = d3.scale.ordinal().rangeRoundBands([height, 0], .5), // value -> display
         yMap = function (d) { return yScale(yValue(d));},             // data  -> display
         yAxis = d3.svg.axis().scale(yScale).orient("left");
 
@@ -253,9 +253,18 @@ function drawBars (chartObj) {
                 "height" : yScale.rangeBand(),
                 "fill" : "white",
                 "opacity" : 0.75
-            })
+            });
 
-        // TODO draw OECD average
+        svg.selectAll(".forbesBarText")
+            .data(data)
+            .enter().append("text")
+            .attr("x", function(d) { return xScale(d.Value) + 5; })
+            .attr("y", function(d) { return yScale(d.CountryName) + yScale.rangeBand() / 2; })
+            .attr("dy", ".35em")
+            .attr("fill", "white")
+            .text(function(d) { return d.Value + "%" });
+
+        //TODO draw OECD average
         var averageLine = svg.selectAll("line.averageLine")
             .append("svg:line")
             .attr({
