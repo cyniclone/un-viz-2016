@@ -57,6 +57,13 @@ body {
   font-size: 12px;
   fill: #fff;
 }
+.gender circle.scatterdot.active,
+.gender circle.scatterdot2.active {
+  stroke-width: 1px;
+  stroke: #4682b4;
+  r: 6px;
+  fill: #222;
+}
 .water {
   background: #2bbbdd;
 }

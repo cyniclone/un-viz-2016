@@ -165,6 +165,21 @@ charts["genderm"] = {
         intercept : 346.898836
     }
 };
+charts["genderBars"] = {
+    "dataPath" : "data/gender-forbes.csv",
+    "targetDiv" : "#bar-chart",
+    "dimensions" : {
+        "margin" : {
+            top : 10,
+            right: 20,
+            bottom: 10,
+            left: 50
+        },
+        "width" : 800,
+        "height" : 1200
+    },
+};
+
 
 
 /***** 6 WATER ACCESS  ************/
