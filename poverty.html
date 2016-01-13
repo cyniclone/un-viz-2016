@@ -8,16 +8,13 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.styl">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
@@ -25,54 +22,62 @@
 
 <div class="container poverty">
     <div class="row">
-
-        <div class="col-md-12">
-            <h1>No Poverty</h1>
-        </div>
+        <div class="col-md-12 col-sm-12"><h1 id="page-header">No Poverty</h1></div>
     </div>
 
+    <!-- &#10553; arrow thing -->
     <div class="row">
-        <div class="col-md-12">
-            <script src="js/unused/selectmenupov.js"></script>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-
-            <h4 class="col-md-9" id="top-label">&#10553;Percentage of the population
-                who lives with $1.25 a day or less</h4>
-
+        <div class="col-md-9 col-sm-12">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h4 class="axis-description">&emsp;Percentage of the population who lives with
+                        <br/>
+                        &#10553;$1.25 a day or less</h4>
+                </div>
+            </div>
+            </h4>
             <!-- CHART GOES HERE -->
             <div id="chart"></div>
+        </div>
 
-            <h4 class="col-md-3" id="select-title">Select a country:</h4>
-            <div class="col-md-3" id="select-country"></div>
+        <div class="col-md-3 col-sm-12">
+            <h3>Select a country:</h3>
+            <div id="select-country"></div> <br />
 
-            <div id="info-box">
-                <h3 class="col-md-3">HOW TO READ THIS CHART</h3>
-                <br />
-                <ol class="col-md-3" id="info-panel">
+            <hr>
+
+            <h3>How to Read This Chart</h3>
+            <div id="how-to-read">
+                <ol>
                     <li>Each circle is a country</li>
-                    <br />
-                    <li>The position of each country on the vertical axis is the population living on $1.25
-                        a day or less.</li>
+                    <li>The position of each country on the vertical axis is the population living on $1.25 a day or less</li>
                 </ol>
-            </div>
+            </div> <br />
 
-            <h4 class="col-md-3" id="bottom-labels" style="margin-top: 230px;">Trend<br />&#10550;<br /><br /><br />
-                <span style="color: #222;">0%:</span> Target for 2030</h4>
 
+            <hr>
+            <h3>Target for 2030:</h3>
+            <div id="info-box">0% Poverty
+            </div> <br />
         </div>
     </div>
 </div>
 
 <!-- Load Libraries -->
-<script src="js/unused/science.v1.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
 <script src="js/globals.js"></script>
-<script src="js/unused/poverty.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/render-scatter.js"></script>
+
+<script>
+    $(document).ready(function() {
+        populateSelect(charts.poverty.countryNamesPath);
+        drawScatter(charts.poverty);
+    });
+</script>
 
 </body>
 </html>

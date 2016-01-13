@@ -25,14 +25,13 @@
 
     <div class="row">
         <div class="col-md-12 col-sm-12"><h1 id="page-header">Zero Hunger</h1></div>
-        <!--<div class="col-md-3 col-sm-12"><select id="nav"></select></div>-->
     </div>
 
     <div class="row">
         <div class="col-md-9 col-sm-12">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <h4 class="axis-description">Percentage of the population below minimum level of dietary energy consumption
+                    <h4 class="axis-description">Percentage of the population below minimum level of dietary energy consumption</h4>
                 </div>
             </div>
                 </h4>
@@ -70,14 +69,12 @@
 
 <script src="js/globals.js"></script>
 <script src="js/helpers.js"></script>
-<script src="js/populate-static-content.js"></script>
 <script src="js/render-scatter.js"></script>
 
 <script>
     $(document).ready(function() {
         populateSelect(charts.hunger.countryNamesPath);
         drawScatter(charts.hunger);
-//        drawLine(charts.hunger);
     });
 </script>
 

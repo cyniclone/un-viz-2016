@@ -38,7 +38,26 @@ body
   padding 20px
 
 .poverty /* 1 POVERTY */
+  color black
   background: #e72a3c
+  circle.scatterdot,
+  circle.scatterdot2
+    opacity 0.8
+  circle.scatterdot.active,
+  circle.scatterdot2.active
+    stroke-width 1px
+    stroke steelblue
+    r 5px
+    fill #222
+  #chart
+  g.tick
+    font-size 13px
+    fill white
+  .x.axis
+    g.tick
+      color #ccc
+      stroke-opacity 0.8
+
 
 .zero-hunger /* 2 ZERO HUNGER */
   background: #dda63a

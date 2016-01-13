@@ -3,6 +3,36 @@ var xs, ys, debug = { debug : true, xs : xs, ys : ys }; // Object for debugging 
 
 var charts = {}; // Object to hold all chart objects
 
+/***** 1 NO POVERTY ************/
+
+charts["poverty"] = {
+    "year" : { begin : "1990", end: "2015"},
+    "n"     : 1,
+    "value" : "poverty",
+    "color" : "#DDA63B",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 40,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 800,
+        "height" : 700
+    },
+    "radius" : 5,
+    "header" : "ZERO HUNGER",
+    "countryNamesPath" : "data/countrylist/list-poverty.csv",
+    "dataPath" : "data/poverty.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#222",
+    "lm" : {
+        slope : -0.4961083,
+        intercept : 1012.8755183
+    }
+};
+
 /***** 2 ZERO HUNGER ************/
 
 //(Intercept)         Year
@@ -128,6 +158,7 @@ charts["genderf"] = {
         "height" : 600
     },
     "radius" : 5,
+    "countryNamesPath" : "data/countrylist/list-gender.csv",
     "dataPath" : "data/gender-f.csv",
     "hasTrend" : true,
     "trendStroke" : "#222",
@@ -157,6 +188,7 @@ charts["genderm"] = {
         "height" : 600
     },
     "radius" : 5,
+    "countryNamesPath" : "data/countrylist/list-gender.csv",
     "dataPath" : "data/gender-m.csv",
     "hasTrend" : true,
     "trendStroke" : "#222",
@@ -259,6 +291,7 @@ charts["energy"] = {
         "height": 800
     },
     "radius": 4,
+    "countryNamesPath" : "data/countrylist/list-energy.csv",
     "dataPath": "data/energy.csv",
     "hasTrend": false,
 }
@@ -284,6 +317,7 @@ charts["energy"] = {
             "height" : 600
         },
         "radius" : 4,
+        "countryNamesPath" : "data/countrylist/list-labor.csv",
         "dataPath" : "data/labor-f.csv",
         "hasTrend" : true,
         "trendStroke" : "#fbb900",
@@ -311,6 +345,7 @@ charts["laborm"] = {
         "height" : 600
     },
     "radius" : 4,
+    "countryNamesPath" : "data/countrylist/list-labor.csv",
     "dataPath" : "data/labor-m.csv",
     "hasTrend" : true,
     "trendStroke" : "#fbb900",
@@ -344,6 +379,7 @@ charts["innovation1"] = {
         "height" : 700
     },
     "radius" : 4,
+    "countryNamesPath" : "data/countrylist/list-innovation.csv",
     "dataPath" : "data/innovation-1.csv",
     "hasTrend" : true,
     "trendStroke" : "#164767",
@@ -375,6 +411,7 @@ charts["innovation2"] = {
         "height" : 700
     },
     "radius" : 4,
+    "countryNamesPath" : "data/countrylist/list-innovation.csv",
     "dataPath" : "data/innovation-2.csv",
     "hasTrend" : true,
     "trendStroke" : "#164767",
@@ -407,9 +444,5 @@ charts["inequality"] = {
     "radius" : 3,
     //"countryNamesPath" : "data/countrylist/list-inequality.csv",
     "dataPath" : "data/inequality.csv",
-    "lm" : {
-        //slope : 0.5245499,
-        //intercept : -972.5403630,
-    }
 };
 /**********************************/

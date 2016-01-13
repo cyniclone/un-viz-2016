@@ -33,7 +33,28 @@ body {
   padding: 20px;
 }
 .poverty {
+  color: #000;
   background: #e72a3c;
+}
+.poverty circle.scatterdot,
+.poverty circle.scatterdot2 {
+  opacity: 0.8;
+}
+.poverty circle.scatterdot.active,
+.poverty circle.scatterdot2.active {
+  stroke-width: 1px;
+  stroke: #4682b4;
+  r: 5px;
+  fill: #222;
+}
+.poverty #chart,
+.poverty g.tick {
+  font-size: 13px;
+  fill: #fff;
+}
+.poverty .x.axis g.tick {
+  color: #ccc;
+  stroke-opacity: 0.8;
 }
 .zero-hunger {
   background: #dda63a;
