@@ -62,6 +62,18 @@ body {
 }
 .child-mortality {
   background: #48a034;
+  color: #000;
+}
+.child-mortality circle.scatterdot,
+.child-mortality circle.scatterdot2 {
+  opacity: 0.25;
+}
+.child-mortality circle.scatterdot.active,
+.child-mortality circle.scatterdot2.active {
+  stroke-width: 2px;
+  r: 6px;
+  fill: #222;
+  opacity: 1;
 }
 .education {
   color: #000;

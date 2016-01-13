@@ -59,12 +59,21 @@ body
       color #ccc
       stroke-opacity 0.8
 
-
 .zero-hunger /* 2 ZERO HUNGER */
   background: #dda63a
 
 .child-mortality /* 3 CHILD MORTALITY */
   background: #48a034
+  color black
+  circle.scatterdot,
+  circle.scatterdot2
+    opacity 0.25
+  circle.scatterdot.active,
+  circle.scatterdot2.active
+    stroke-width 2px
+    r 6px
+    fill #222
+    opacity 1
 
 .education /* 4 EDUCATION */
   color #000
@@ -144,8 +153,7 @@ body
         color #ccc
         stroke-dasharray 1, 1
         stroke-opacity 0.8
-
-
+        
 
 /*********** global viz  *********/
 .axis

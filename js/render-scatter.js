@@ -168,6 +168,9 @@ function drawScatter (chartObj) {
         if (chartObj.hasTrend) {
             drawLine(chartObj, yScale);
         }
+        if (chartObj.hasLoess) {
+            //drawLoess(data, chartObj, xMap, yMap);
+        }
     });
 }
 
@@ -192,4 +195,25 @@ function drawLine (chartObj, _yScale) {
         .style("stroke", chartObj.trendStroke);
 
     d3.selectAll('.trend').moveToFront();
+}
+
+function drawLoess(_data, chartObj, _xMap, _yMap) {
+    // Render the fitted line
+    d3.select("#chart svg").append('path')
+        .datum(function() {
+            var loess = science.stats.loess();
+            loess.bandwidth(0.25);
+
+            var xValues = _data.map(_xMap);
+            var yValues = _data.map(_yMap);
+
+            var yValuesSmoothed = loess(xValues, yValues);
+
+            return d3.zip(xValues, yValuesSmoothed);
+        })
+        .attr('id', 'trend')
+        .attr('d', d3.svg.line()
+            .interpolate('basis')
+            .x(function(d) { return d[0]; })
+            .y(function(d) { return d[1]; }))
 }

@@ -90,13 +90,14 @@ charts["childMortality"] = {
             bottom: 30,
             left: 50
         },
-        "width" : 800,
-        "height" : 700
+        "width" : 850,
+        "height" : 800
     },
     "radius" : 5,
     "countryNamesPath" : "data/countrylist/list-child-mortality.csv",
     "dataPath" : "data/child-mortality.csv",
-    "hasTrend" : false
+    "hasTrend" : false,
+    "hasLoess" : true
 };
 
 /*******************************************
