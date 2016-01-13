@@ -3,10 +3,16 @@ var xs, ys, debug = { debug : true, xs : xs, ys : ys }; // Object for debugging 
 
 var charts = {}; // Object to hold all chart objects
 
+/*******************************************
+ *  SINGLE SCATTERS
+ *******************************************/
+
 /***** 1 NO POVERTY ************/
+//(Intercept)         Year
+//1488.8455333   -0.7350615
 
 charts["poverty"] = {
-    "year" : { begin : "1990", end: "2015"},
+    "year" : { begin : "1980", end: "2015"},
     "n"     : 1,
     "value" : "poverty",
     "color" : "#DDA63B",
@@ -28,8 +34,8 @@ charts["poverty"] = {
     "hasTrend" : true,
     "trendStroke" : "#222",
     "lm" : {
-        slope : -0.4961083,
-        intercept : 1012.8755183
+        slope : -0.7350615,
+        intercept : 1488.8455333
     }
 };
 
@@ -66,7 +72,38 @@ charts["hunger"] = {
     }
 };
 
-/***** DUAL SCATTERS ************/
+/***** 3 GOOD HEALTH AND WELL-BEING ************/
+
+charts["childMortality"] = {
+    "year" : { begin : "1960", end: "2015"},
+    "n"     : 1,
+    "notPercent" : true,
+    "yMin" : 0,
+    "yMax" : 450,
+    "value" : "child-mortality",
+    "color" : "#DDA63B",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 40,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 800,
+        "height" : 700
+    },
+    "radius" : 5,
+    "countryNamesPath" : "data/countrylist/list-child-mortality.csv",
+    "dataPath" : "data/child-mortality.csv",
+    "hasTrend" : false
+};
+
+/*******************************************
+*  DUAL SCATTERS
+*******************************************/
+
+
 
 /***** 4 QUALITY EDUCATION ************/
 

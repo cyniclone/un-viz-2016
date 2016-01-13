@@ -8,16 +8,13 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.styl">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
@@ -25,38 +22,48 @@
 
 <div class="container child-mortality">
     <div class="row">
-        <div class="col-md-12"><h1>Good Health and Well-Being</h1></div>
+        <div class="col-md-12 col-sm-12"><h1 id="page-header">Good health and well-being</h1></div>
     </div>
 
+    <!-- &#10553; arrow thing -->
     <div class="row">
-        <div class="col-md-12">
-            <script src="js/lib/selectmenuchild.js"></script>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-
-            <h4 class="col-md-9" id="top-label">&#10553;Child mortality rate, under-5 per 1,000 live births</h4>
-
+        <div class="col-md-9 col-sm-12">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h4 class="axis-description">&emsp;Child mortality rate, under-5
+                        <br/>
+                        &#10553;per 1,000 live births</h4>
+                </div>
+            </div>
+            </h4>
             <!-- CHART GOES HERE -->
             <div id="chart"></div>
+        </div>
 
-            <h4 class="col-md-3" id="select-title">Select a country:</h4>
-            <div class="col-md-3" id="select-country"></div>
+        <div class="col-md-3 col-sm-12">
+            <h3>Select a country:</h3>
+            <div id="select-country"></div> <br />
 
-            <div id="info-box"> 
-                <h3 class="col-md-3">HOW TO READ THIS CHART</h3>
-                <br />
-                <ol class="col-md-3" id="info-panel">
+            <hr>
+
+            <h3>How to Read This Chart</h3>
+            <div id="how-to-read">
+                <ol>
                     <li>Each circle is a country</li>
-                    <br />
-                    <li>The position of each country on the vertical axis is the child mortality rate, under-5 per 1,000 live births.</li>
+                    <li>The position of each
+                        country on the vertical axis
+                        is the number of children
+                        per 1,000 live births who
+                        die before the age of 5.</li>
                 </ol>
-            </div>
+            </div> <br />
 
-            <h4 class="col-md-3" id="bottom-labels" style="margin-top: 250px;">Trend<br />&#10550;<br /><br />25: Goal for 2030</h4>
 
+            <hr>
+            <h3>Target for 2030:</h3>
+            <div id="info-box">
+                By 2030, end preventable deaths of newborns and children under 5 years of age, with all countries aiming to reduce neonatal mortality to no more than 12 per 1,000 live births and mortality of children under 5 to no more than 25 per 1,000 live births
+            </div> <br />
         </div>
     </div>
 </div>
@@ -72,8 +79,8 @@
 
 <script>
     $(document).ready(function() {
-        populateSelect(charts.hunger.countryNamesPath);
-        drawScatter(charts.hunger);
+        populateSelect(charts.childMortality.countryNamesPath);
+        drawScatter(charts.childMortality);
     });
 </script>
 

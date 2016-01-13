@@ -42,10 +42,11 @@ body {
 }
 .poverty circle.scatterdot.active,
 .poverty circle.scatterdot2.active {
-  stroke-width: 1px;
+  stroke-width: 2px;
   stroke: #4682b4;
-  r: 5px;
+  r: 6px;
   fill: #222;
+  opacity: 1;
 }
 .poverty #chart,
 .poverty g.tick {
