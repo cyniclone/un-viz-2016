@@ -1,22 +1,25 @@
-function drawScatter (chartObj) {
-    var n = (chartObj.n > 1) ? chartObj.n : "";    // Used to control classing of second chart
+function drawScatter (obj) {
+    // obj is our chart object - contains all information about how to
+    //    organize data and render chart
 
-    var xTicks = !(chartObj.xTicks >= 0) ? 10 : chartObj.xTicks;
-    var yTicks = !(chartObj.yTicks >= 0) ? 10 : chartObj.yTicks;
+    var n = (obj.n > 1) ? obj.n : "";    // Used to control classing for dual charts
 
-    var xMin = isNaN(chartObj.xMin) ? 0 : chartObj.xMin;
-    var xMax = isNaN(chartObj.xMax) ? 100 : chartObj.xMax;
+    var xTicks = !(obj.xTicks >= 0) ? 10 : obj.xTicks;
+    var yTicks = !(obj.yTicks >= 0) ? 10 : obj.yTicks;
 
-    var yMin = isNaN(chartObj.yMin) ? 0 : chartObj.yMin;
-    var yMax = isNaN(chartObj.yMax) ? 100 : chartObj.yMax;
+    var xMin = isNaN(obj.xMin) ? 0 : obj.xMin;
+    var xMax = isNaN(obj.xMax) ? 100 : obj.xMax;
 
-    var xParam = (chartObj.xParam == undefined) ? "Year" : chartObj.xParam;
-    var yParam = (chartObj.yParam == undefined) ? "Value" : chartObj.yParam;
-    if (chartObj.useCustomR) { var rParam = chartObj.rParam; }
+    var yMin = isNaN(obj.yMin) ? 0 : obj.yMin;
+    var yMax = isNaN(obj.yMax) ? 100 : obj.yMax;
+
+    var xParam = (obj.xParam == undefined) ? "Year" : obj.xParam;
+    var yParam = (obj.yParam == undefined) ? "Value" : obj.yParam;
+    if (obj.useCustomR) { var rParam = obj.rParam; }
 
     var format;
-    if (chartObj.customFormat != undefined)  {
-        format = chartObj.customFormat;
+    if (obj.customFormat != undefined)  {
+        format = obj.customFormat;
     }
 
     /*
@@ -27,7 +30,7 @@ function drawScatter (chartObj) {
      */
 
     // Assign chart dimensions from object
-    var dim = chartObj.dimensions,
+    var dim = obj.dimensions,
         margin = dim.margin,
         width = dim.width - dim.margin.left - dim.margin.right,
         height = dim.height - dim.margin.top - dim.margin.bottom;
@@ -49,20 +52,19 @@ function drawScatter (chartObj) {
         yMap = function (d) { return yScale(yValue(d)); },           // data  -> display
         yAxis = d3.svg.axis().scale(yScale).orient("left")
             .tickFormat(function (d) {
-                if (chartObj.customFormat == undefined)
+                if (obj.customFormat == undefined)
                     return d + "%";   // Percents on axes
                 else {
-                    return chartObj.customFormat(d);
+                    return obj.customFormat(d);
                 }
             })
             .ticks(yTicks)
             .tickPadding(5);
 
     // If we use variable radius, set up accessors
-    if (chartObj.useCustomR) {
+    if (obj.useCustomR) {
         var rValue = function (d) { return d[rParam]; },
-            rScale = d3.scale.linear().range(chartObj.rRange);
-            //rMap = function (d) { return rScale(rValue(d)); };
+            rScale = d3.scale.linear().range(obj.rRange);
     }
 
     if (debug.debug) { debug.xs = xScale; debug.ys = yScale; debug.rs = rScale;}
@@ -74,13 +76,10 @@ function drawScatter (chartObj) {
         .html(function (d) {
             //TODO make this different for charts["consumption"]
             var s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br>";
-            if (chartObj.customFormat != undefined) {
-                //console.log("custom format");
-                //var format = d3.format("0,000");
-                s += chartObj.customFormat(d[yParam]);
+            if (obj.customFormat != undefined) {
+                s += obj.customFormat(d[yParam]);
                 return s;
             } else {
-                //console.log("not custom");
                 s += d3.round(d[yParam], 1) + " %";
                 return s;
             }
@@ -88,7 +87,7 @@ function drawScatter (chartObj) {
         });
 
     // Make chart SVG
-    var svg = d3.select(chartObj.targetDiv).append("svg")
+    var svg = d3.select(obj.targetDiv).append("svg")
         .attr("class", "viz" + n)
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -97,7 +96,7 @@ function drawScatter (chartObj) {
 
     svg.call(tip);
 
-    d3.csv(chartObj.dataPath, function (error, data) {
+    d3.csv(obj.dataPath, function (error, data) {
         console.log(data);
         data = data.filter(function(d) {
             if(isNaN(d[yParam])){
@@ -109,16 +108,16 @@ function drawScatter (chartObj) {
 
         data.forEach(function (d) {
             d[yParam] = +d[yParam]; // Force numeric
-            if (chartObj.useCustomR) d[rParam] = +d[rParam];
+            if (obj.useCustomR) d[rParam] = +d[rParam];
         });
 
         // Set scale domains
-        if (chartObj.useCustomX) {
+        if (obj.useCustomX) {
             xScale.domain([xMin, xMax]);
         } else {
             xScale.domain(d3.extent(data, function (d) { return d[xParam]; })).nice();
         }
-        if (chartObj.useCustomR) {
+        if (obj.useCustomR) {
             rScale.domain(d3.extent(data, function (d) { return d[rParam]; })).nice();
             debug.rdomain = rScale.domain();
         }
@@ -181,15 +180,14 @@ function drawScatter (chartObj) {
                 return "scatterdot" + n + " c" + d.hash;
             })
             .attr("r", function(d) {
-                if (chartObj.useCustomR) {
+                if (obj.useCustomR) {
                     return rScale(rValue(d));
                 } else {
-                    return chartObj.radius;
+                    return obj.radius;
                 }
             })
             .attr('cx', xMap)
             .attr('cy', yMap)
-            //.style("fill", "none")
             .on('mouseover', function (d) {
                 tip.show(d);
                 activate(d3.selectAll(".c" + d.hash));
@@ -199,11 +197,11 @@ function drawScatter (chartObj) {
                 deactivate(d3.selectAll(".c" + d.hash));
             });
 
-        if (chartObj.hasTrend) {
-            drawLine(chartObj, yScale);
+        if (obj.hasTrend) {
+            drawLine(obj, yScale);
         }
-        if (chartObj.hasLoess) {
-            //drawLoess(data, chartObj, xMap, yMap);
+        if (obj.hasLoess) {
+            //drawLoess(data, obj, xMap, yMap);
         }
     });
 }
