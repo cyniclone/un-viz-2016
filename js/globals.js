@@ -15,7 +15,6 @@ charts["poverty"] = {
     "year" : { begin : "1980", end: "2015"},
     "n"     : 1,
     "value" : "poverty",
-    "color" : "#DDA63B",
     "targetDiv" : "#chart",
     "dimensions" : {
         "margin" : {
@@ -48,7 +47,6 @@ charts["hunger"] = {
     "n"     : 1,
     "value" : "hunger",
     "navText" : "Zero Hunger",
-    "color" : "#DDA63B",
     "targetDiv" : "#chart",
     "dimensions" : {
         "margin" : {
@@ -81,7 +79,6 @@ charts["childMortality"] = {
     "yMin" : 0,
     "yMax" : 450,
     "value" : "child-mortality",
-    "color" : "#DDA63B",
     "targetDiv" : "#chart",
     "dimensions" : {
         "margin" : {
@@ -98,6 +95,31 @@ charts["childMortality"] = {
     "dataPath" : "data/child-mortality.csv",
     "hasTrend" : false,
     "hasLoess" : true
+};
+
+/***** 12 RESPONSIBLE CONSUMPTION AND PRODUCTION ************/
+
+charts["consumption"] = {
+    "n"     : 1,
+    //"notPercent" : true,
+    "xMin" : 0,
+    "xMax" : 3000,
+    "value" : "consumption",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 40,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 850,
+        "height" : 800
+    },
+    "radius" : 5, // TODO get dynamic radii
+    "countryNamesPath" : "data/countrylist/list-consumption.csv",
+    "dataPath" : "data/consumption.csv",
+    "hasTrend" : false,
 };
 
 /*******************************************

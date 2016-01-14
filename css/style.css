@@ -167,6 +167,13 @@ body {
   stroke-dasharray: 1, 1;
   stroke-opacity: 0.8;
 }
+.consumption {
+  color: #000;
+  background: #b98831;
+}
+.consumption #page-header {
+  color: #fff;
+}
 /*********** global viz  *********/
 .axis {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
