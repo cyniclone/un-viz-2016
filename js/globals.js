@@ -102,8 +102,12 @@ charts["childMortality"] = {
 charts["consumption"] = {
     "n"     : 1,
     //"notPercent" : true,
+    "useCustomX" : true,
     "xMin" : 0,
     "xMax" : 3000,
+    "xParam" : "SubPerCapita",
+    "yParam" : "AverageSubRate",
+    "rParam" : "SubPercGdp",
     "value" : "consumption",
     "targetDiv" : "#chart",
     "dimensions" : {
@@ -116,6 +120,7 @@ charts["consumption"] = {
         "width" : 850,
         "height" : 800
     },
+    "variableRadius" : true,
     "radius" : 5, // TODO get dynamic radii
     "countryNamesPath" : "data/countrylist/list-consumption.csv",
     "dataPath" : "data/consumption.csv",

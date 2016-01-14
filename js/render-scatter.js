@@ -4,6 +4,9 @@ function drawScatter (chartObj) {
     var xTicks = !(chartObj.xTicks >= 0) ? 10 : chartObj.xTicks;
     var yTicks = !(chartObj.yTicks >= 0) ? 10 : chartObj.yTicks;
 
+    var xMin = isNaN(chartObj.xMin) ? 0 : chartObj.xMin;
+    var xMax = isNaN(chartObj.xMax) ? 100 : chartObj.xMax;
+
     var yMin = isNaN(chartObj.yMin) ? 0 : chartObj.yMin;
     var yMax = isNaN(chartObj.yMax) ? 100 : chartObj.yMax;
 
@@ -93,9 +96,12 @@ function drawScatter (chartObj) {
         });
 
         // Set scale domains
-        xScale.domain(d3.extent(data, function (d) {
-            return d[xParam];
-        })).nice();
+        if (chartObj.useCustomX) {
+            xScale.domain([xMin, xMax]);
+        } else {
+            xScale.domain(d3.extent(data, function (d) { return d[xParam]; })).nice();
+        }
+
         //yScale.domain(d3.extent(data, function (d) { return d[yParam]; })).nice();
         yScale.domain([yMin, yMax]);
 
