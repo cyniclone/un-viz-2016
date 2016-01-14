@@ -12,6 +12,7 @@ function drawScatter (chartObj) {
 
     var xParam = (chartObj.xParam == undefined) ? "Year" : chartObj.xParam;
     var yParam = (chartObj.yParam == undefined) ? "Value" : chartObj.yParam;
+    if (chartObj.useCustomR) { var rParam = chartObj.rParam; }
 
     /*
      * value accessor - returns the value to encode for a given data object.
@@ -53,13 +54,21 @@ function drawScatter (chartObj) {
             .ticks(yTicks)
             .tickPadding(5);
 
-    if (debug.debug) { debug.xs = xScale; debug.ys = yScale; }
+    // If we use variable radius, set up accessors
+    if (chartObj.useCustomR) {
+        var rValue = function (d) { return d[rParam]; },
+            rScale = d3.scale.linear().range(chartObj.rRange),
+            rMap = function (d) { return rScale(rValue(d)); };
+    }
+
+    if (debug.debug) { debug.xs = xScale; debug.ys = yScale; debug.rs = rScale;}
 
     // Initialize d3 tip
     var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (d) {
+            //TODO make this different for charts["consumption"]
             var s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br>";
             if (chartObj.notPercent == undefined) {
                 s += d3.round(d[yParam], 1) + " %";
@@ -93,6 +102,7 @@ function drawScatter (chartObj) {
 
         data.forEach(function (d) {
             d[yParam] = +d[yParam]; // Force numeric
+            if (chartObj.useCustomR) d[rParam] = +d[rParam];
         });
 
         // Set scale domains
@@ -101,8 +111,10 @@ function drawScatter (chartObj) {
         } else {
             xScale.domain(d3.extent(data, function (d) { return d[xParam]; })).nice();
         }
-
-        //yScale.domain(d3.extent(data, function (d) { return d[yParam]; })).nice();
+        if (chartObj.useCustomR) {
+            rScale.domain(d3.extent(data, function (d) { return d[rParam]; })).nice();
+            debug.rdomain = rScale.domain();
+        }
         yScale.domain([yMin, yMax]);
 
         // Draw gridlines for x axis
@@ -161,7 +173,13 @@ function drawScatter (chartObj) {
             .attr("class", function (d) {
                 return "scatterdot" + n + " c" + d.hash;
             })
-            .attr("r", chartObj.radius)
+            .attr("r", function() {
+                if (chartObj.useCustomR) {
+                    return rMap;
+                } else {
+                    return chartObj.radius;
+                }
+            })
             .attr('cx', xMap)
             .attr('cy', yMap)
             //.style("fill", "none")

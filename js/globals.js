@@ -1,5 +1,5 @@
 /***** Static Content ************/
-var xs, ys, debug = { debug : true, xs : xs, ys : ys }; // Object for debugging and calculating trend lines
+var xs, ys, rs, debug = { debug : true, xs : xs, ys : ys , rs : rs }; // Object for debugging and calculating trend lines
 
 var charts = {}; // Object to hold all chart objects
 
@@ -105,6 +105,10 @@ charts["consumption"] = {
     "useCustomX" : true,
     "xMin" : 0,
     "xMax" : 3000,
+    "useCustomR" : true,
+    //"rMin" : 4,
+    //"rMax" : 32,
+    "rRange" : [4, 32],
     "xParam" : "SubPerCapita",
     "yParam" : "AverageSubRate",
     "rParam" : "SubPercGdp",
