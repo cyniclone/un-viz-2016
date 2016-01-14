@@ -101,12 +101,6 @@ body
     font-size 12px
     fill white
 
-  circle.scatterdot.active,
-  circle.scatterdot2.active
-    stroke-width 2px
-    stroke #E9432E
-    r 4px
-
   line.verticalGrid, line.verticalGrid2, line.horizontalGrid, line.horizontalGrid2
     stroke #ccc
 
@@ -114,7 +108,7 @@ body
   circle.scatterdot2.active
     stroke-width 2px
     stroke #68f
-    r 4px
+    r 6px
 
 .energy /* 7 ENERGY ACCESS */
   background #fbbf0f
@@ -158,6 +152,12 @@ body
   background #b98831
   #page-header
     color white
+  circle.scatterdot
+    stroke white
+    stroke-width 2px
+  circle.active
+    fill white
+    stroke steelblue
         
 
 /*********** global viz  *********/
@@ -181,8 +181,6 @@ body
   color: #222;
 
 /* Style data points */
-circle.active
-  r 6px
 
 .scatterdot, .scatterdot2
   stroke: #E0E0E0;

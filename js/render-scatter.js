@@ -57,8 +57,8 @@ function drawScatter (chartObj) {
     // If we use variable radius, set up accessors
     if (chartObj.useCustomR) {
         var rValue = function (d) { return d[rParam]; },
-            rScale = d3.scale.linear().range(chartObj.rRange),
-            rMap = function (d) { return rScale(rValue(d)); };
+            rScale = d3.scale.linear().range(chartObj.rRange);
+            //rMap = function (d) { return rScale(rValue(d)); };
     }
 
     if (debug.debug) { debug.xs = xScale; debug.ys = yScale; debug.rs = rScale;}
@@ -173,9 +173,9 @@ function drawScatter (chartObj) {
             .attr("class", function (d) {
                 return "scatterdot" + n + " c" + d.hash;
             })
-            .attr("r", function() {
+            .attr("r", function(d) {
                 if (chartObj.useCustomR) {
-                    return rMap;
+                    return rScale(rValue(d));
                 } else {
                     return chartObj.radius;
                 }

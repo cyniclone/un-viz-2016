@@ -99,7 +99,7 @@ charts["childMortality"] = {
 
 /***** 12 RESPONSIBLE CONSUMPTION AND PRODUCTION ************/
 
-charts["consumption"] = {
+charts["consumption"] = {        // TODO list-consumption.csv
     "n"     : 1,
     //"notPercent" : true,
     "useCustomX" : true,
@@ -124,8 +124,6 @@ charts["consumption"] = {
         "width" : 850,
         "height" : 800
     },
-    "variableRadius" : true,
-    "radius" : 5, // TODO get dynamic radii
     "countryNamesPath" : "data/countrylist/list-consumption.csv",
     "dataPath" : "data/consumption.csv",
     "hasTrend" : false,

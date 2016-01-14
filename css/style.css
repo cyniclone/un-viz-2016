@@ -105,12 +105,6 @@ body {
   font-size: 12px;
   fill: #fff;
 }
-.water circle.scatterdot.active,
-.water circle.scatterdot2.active {
-  stroke-width: 2px;
-  stroke: #e9432e;
-  r: 4px;
-}
 .water line.verticalGrid,
 .water line.verticalGrid2,
 .water line.horizontalGrid,
@@ -121,7 +115,7 @@ body {
 .water circle.scatterdot2.active {
   stroke-width: 2px;
   stroke: #68f;
-  r: 4px;
+  r: 6px;
 }
 .energy {
   background: #fbbf0f;
@@ -174,6 +168,14 @@ body {
 .consumption #page-header {
   color: #fff;
 }
+.consumption circle.scatterdot {
+  stroke: #fff;
+  stroke-width: 2px;
+}
+.consumption circle.active {
+  fill: #fff;
+  stroke: #4682b4;
+}
 /*********** global viz  *********/
 .axis {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -194,9 +196,6 @@ body {
   color: #222;
 }
 /* Style data points */
-circle.active {
-  r: 6px;
-}
 .scatterdot,
 .scatterdot2 {
   stroke: #e0e0e0;
