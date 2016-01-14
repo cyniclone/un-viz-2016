@@ -14,6 +14,11 @@ function drawScatter (chartObj) {
     var yParam = (chartObj.yParam == undefined) ? "Value" : chartObj.yParam;
     if (chartObj.useCustomR) { var rParam = chartObj.rParam; }
 
+    var format;
+    if (chartObj.customFormat != undefined)  {
+        format = chartObj.customFormat;
+    }
+
     /*
      * value accessor - returns the value to encode for a given data object.
      * scale          - maps value to a visual display encoding, such as a pixel position.
@@ -44,11 +49,10 @@ function drawScatter (chartObj) {
         yMap = function (d) { return yScale(yValue(d)); },           // data  -> display
         yAxis = d3.svg.axis().scale(yScale).orient("left")
             .tickFormat(function (d) {
-                if (chartObj.notPercent == undefined)
+                if (chartObj.customFormat == undefined)
                     return d + "%";   // Percents on axes
                 else {
-                    var format = d3.format("0,000");
-                    return format(d)
+                    return chartObj.customFormat(d);
                 }
             })
             .ticks(yTicks)
@@ -70,13 +74,16 @@ function drawScatter (chartObj) {
         .html(function (d) {
             //TODO make this different for charts["consumption"]
             var s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br>";
-            if (chartObj.notPercent == undefined) {
+            if (chartObj.customFormat != undefined) {
+                //console.log("custom format");
+                //var format = d3.format("0,000");
+                s += chartObj.customFormat(d[yParam]);
+                return s;
+            } else {
+                //console.log("not custom");
                 s += d3.round(d[yParam], 1) + " %";
                 return s;
             }
-            var format = d3.format("0,000");
-            s += format(d[yParam]);
-            return s;
 
         });
 

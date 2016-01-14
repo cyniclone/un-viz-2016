@@ -12,7 +12,7 @@ var charts = {}; // Object to hold all chart objects
 //1488.8455333   -0.7350615
 
 charts["poverty"] = {
-    "year" : { begin : "1980", end: "2015"},
+    "year" : { begin : "1980", end: "2015" },
     "n"     : 1,
     "value" : "poverty",
     "targetDiv" : "#chart",
@@ -75,7 +75,7 @@ charts["hunger"] = {
 charts["childMortality"] = {
     "year" : { begin : "1960", end: "2015"},
     "n"     : 1,
-    "notPercent" : true,
+    "customFormat" : d3.format("0,000"),
     "yMin" : 0,
     "yMax" : 450,
     "value" : "child-mortality",
@@ -101,7 +101,7 @@ charts["childMortality"] = {
 
 charts["consumption"] = {        // TODO list-consumption.csv
     "n"     : 1,
-    //"notPercent" : true,
+    //"customFormat" : d3.format("0,000"),
     "useCustomX" : true,
     "xMin" : 0,
     "xMax" : 3000,
@@ -432,7 +432,7 @@ charts["innovation1"] = {
     "yTicks" : 5,
     "yMin" : 0,
     "yMax" : 12000,
-    "notPercent" : true,
+    "customFormat" : d3.format("0,000"),
     "value" : "innovation1",
     "targetDiv" : "#chart",
     "dimensions" : {
