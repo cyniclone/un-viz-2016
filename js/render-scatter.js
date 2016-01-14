@@ -7,6 +7,9 @@ function drawScatter (chartObj) {
     var yMin = isNaN(chartObj.yMin) ? 0 : chartObj.yMin;
     var yMax = isNaN(chartObj.yMax) ? 100 : chartObj.yMax;
 
+    var xParam = (chartObj.xParam == undefined) ? "Year" : chartObj.xParam;
+    var yParam = (chartObj.yParam == undefined) ? "Value" : chartObj.yParam;
+
     /*
      * value accessor - returns the value to encode for a given data object.
      * scale          - maps value to a visual display encoding, such as a pixel position.
@@ -21,7 +24,7 @@ function drawScatter (chartObj) {
         height = dim.height - dim.margin.top - dim.margin.bottom;
 
     // setup x
-    var xValue = function (d) { return d.Year; },                    // data  -> value
+    var xValue = function (d) { return d[xParam]; },                    // data  -> value
         xScale = d3.scale.linear().range([0, width]),                // value -> display
         xMap = function (d) { return xScale(xValue(d)); },           // data  -> display
         xAxis = d3.svg.axis().scale(xScale).orient("bottom")
@@ -32,7 +35,7 @@ function drawScatter (chartObj) {
             .tickPadding(5);
 
     // setup y
-    var yValue = function (d) { return d.Value; },                   // data  -> value
+    var yValue = function (d) { return d[yParam]; },                   // data  -> value
         yScale = d3.scale.linear().range([height, 0]),               // value -> display
         yMap = function (d) { return yScale(yValue(d)); },           // data  -> display
         yAxis = d3.svg.axis().scale(yScale).orient("left")
@@ -54,13 +57,13 @@ function drawScatter (chartObj) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (d) {
-            var s = "<b>" + d.CountryName + " - " + d.Year + "</b><br>";
+            var s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br>";
             if (chartObj.notPercent == undefined) {
-                s += d3.round(d.Value, 1) + " %";
+                s += d3.round(d[yParam], 1) + " %";
                 return s;
             }
             var format = d3.format("0,000");
-            s += format(d.Value);
+            s += format(d[yParam]);
             return s;
 
         });
@@ -78,22 +81,22 @@ function drawScatter (chartObj) {
     d3.csv(chartObj.dataPath, function (error, data) {
         console.log(data);
         data = data.filter(function(d) {
-            if(isNaN(d.Value)){
+            if(isNaN(d[yParam])){
                 return false;
             }
-            //d.Value = parseInt(d.Value, 10);
+            //d[yParam]e = parseInt(d[yParam], 10);
             return true;
         });
 
         data.forEach(function (d) {
-            d.Value = +d.Value; // Force numeric
+            d[yParam] = +d[yParam]; // Force numeric
         });
 
         // Set scale domains
         xScale.domain(d3.extent(data, function (d) {
-            return d.Year;
+            return d[xParam];
         })).nice();
-        //yScale.domain(d3.extent(data, function (d) { return d.Value; })).nice();
+        //yScale.domain(d3.extent(data, function (d) { return d[yParam]; })).nice();
         yScale.domain([yMin, yMax]);
 
         // Draw gridlines for x axis
