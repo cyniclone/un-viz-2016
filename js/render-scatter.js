@@ -203,7 +203,7 @@ function drawScatter (obj) {
         }
         
         // Special labeling for consumption viz
-        if (obj.value = "consumption") {
+        if (obj.value == "consumption") {
             d3.select("g.y.axis").append("text")
                 .attr("transform", "rotate(-90)")
                 .attr("y", 8)
