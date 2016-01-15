@@ -119,7 +119,6 @@ function drawScatter (obj) {
         }
         if (obj.useCustomR) {
             rScale.domain(d3.extent(data, function (d) { return d[rParam]; })).nice();
-            debug.rdomain = rScale.domain();
         }
         yScale.domain([yMin, yMax]);
 
@@ -169,8 +168,7 @@ function drawScatter (obj) {
             .append("text");
         svg.append("g")
             .attr("class", "y axis")
-            .call(yAxis)
-            .append("text");
+            .call(yAxis);
 
         // Render dots
         svg.selectAll(".scatterdot" + n)
@@ -202,6 +200,23 @@ function drawScatter (obj) {
         }
         if (obj.hasLoess) {
             //drawLoess(data, obj, xMap, yMap);
+        }
+        
+        // Special labeling for consumption viz
+        if (obj.value = "consumption") {
+            d3.select("g.y.axis").append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 8)
+                .attr("x", "-8")
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Average Subsidization Rate (%)")
+
+            d3.select("g.x.axis").append("text")
+                .attr("x", width - 10)
+                .attr("dy", "-.71em")
+                .style("text-anchor", "end")
+                .text("Energy subsidies per per capita (US dollars per person a year)");
         }
     });
 }

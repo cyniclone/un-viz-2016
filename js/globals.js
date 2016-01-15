@@ -99,7 +99,7 @@ charts["childMortality"] = {
 
 /***** 12 RESPONSIBLE CONSUMPTION AND PRODUCTION ************/
 
-charts["consumption"] = {        // TODO list-consumption.csv
+charts["consumption"] = {
     "n"     : 1,
     //"customFormat" : d3.format("0,000"),
     "useCustomX" : true,
@@ -124,7 +124,7 @@ charts["consumption"] = {        // TODO list-consumption.csv
         "width" : 850,
         "height" : 800
     },
-    "countryNamesPath" : "data/countrylist/list-consumption.csv",
+    //"countryNamesPath" : "data/countrylist/list-consumption.csv",
     "dataPath" : "data/consumption.csv",
     "hasTrend" : false,
 };
