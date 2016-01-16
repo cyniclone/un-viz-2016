@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <title>Good Health and Well-Being</title>
+    <title>Zero Hunger</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -17,52 +17,46 @@
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
+
 </head>
 <body>
 
-<div class="container child-mortality">
+<div class="container climate"> <!-- Top level for Lumira viz -->
+
     <div class="row">
-        <div class="col-md-12 col-sm-12"><h1 id="page-header">Good health and well-being</h1></div>
+        <div class="col-md-12 col-sm-12"><h1 id="page-header">Zero Hunger</h1></div>
     </div>
 
-    <!-- &#10553; arrow thing -->
     <div class="row">
         <div class="col-md-9 col-sm-12">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <h4 class="axis-description">&emsp;Child mortality rate, under-5
-                        <br/>
-                        &#10553;per 1,000 live births</h4>
+                    <h4 class="axis-description">CO2 emissions, tons per capita</h4>
                 </div>
             </div>
-            </h4>
+                </h4>
             <!-- CHART GOES HERE -->
             <div id="chart"></div>
         </div>
 
         <div class="col-md-3 col-sm-12">
-            <h3>Select a country:</h3>
+            <h3 style="color:black;">Select a country:</h3>
             <div id="select-country"></div> <br />
 
             <hr>
 
-            <h3>How to Read This Chart</h3>
+            <h3 style="color:black;">How to Read This Chart</h3>
             <div id="how-to-read">
                 <ol>
                     <li>Each circle is a country</li>
-                    <li>The position of each
-                        country on the vertical axis
-                        is the number of children
-                        per 1,000 live births who
-                        die before the age of 5.</li>
+                    <li>The position of each country on the vertical axis is the tons of CO2 each person emits per year.</li>
                 </ol>
             </div> <br />
 
 
             <hr>
-            <h3>Target for 2030:</h3>
-            <div id="info-box">
-                By 2030, end preventable deaths of newborns and children under 5 years of age, with all countries aiming to reduce neonatal mortality to no more than 12 per 1,000 live births and mortality of children under 5 to no more than 25 per 1,000 live births
+            <h3 style="color:black;">Target for 2030</h3>
+            <div id="info-box">...
             </div> <br />
         </div>
     </div>
@@ -76,15 +70,14 @@
 <script src="js/globals.js"></script>
 <script src="js/helpers.js"></script>
 <script src="js/render-scatter.js"></script>
-<script src="js/lib/loess.js"></script>
-<script src="js/lib/science.v1.min.js"></script>
 
 <script>
     $(document).ready(function() {
-        populateSelect(charts.childMortality.countryNamesPath);
-        drawScatter(charts.childMortality);
+        populateSelect(charts.climate.countryNamesPath);
+        drawScatter(charts.climate);
     });
 </script>
+
 
 </body>
 </html>

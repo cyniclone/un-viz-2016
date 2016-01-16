@@ -176,6 +176,22 @@ body {
   fill: #fff;
   stroke: #4682b4;
 }
+.climate {
+  background: #3a7c46;
+  color: #fff;
+}
+.climate circle.scatterdot {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 1px;
+  fill-opacity: 0.25;
+}
+.climate circle.active {
+  fill-opacity: 1;
+  fill: #164767;
+  stroke: #68f;
+  stroke-width: 2px;
+}
 /*********** global viz  *********/
 .axis {
   font-family: "Helvetica Neue", Helvetica, sans-serif;

@@ -129,6 +129,38 @@ charts["consumption"] = {
     "hasTrend" : false,
 };
 
+/***** 13 CLIMATE ACTION ************/
+// (Intercept)        Year
+// -54.3101900   0.0295105
+
+charts["climate"] = {
+    "year" : { begin : "1960", end: "2011"},
+    "n"     : 1,
+    "value" : "climate",
+    "targetDiv" : "#chart",
+    "xTicks" : 10,
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 40,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 800,
+        "height" : 700
+    },
+    "radius" : 5,
+    //"header" : "ZERO HUNGER",
+    "countryNamesPath" : "data/countrylist/list-climate.csv",
+    "dataPath" : "data/climate.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#222",
+    "lm" : {
+        slope : 0.0295105,
+        intercept :  -54.310190
+    }
+};
+
 /*******************************************
 *  DUAL SCATTERS
 *******************************************/
