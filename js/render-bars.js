@@ -240,11 +240,11 @@ function drawBars (chartObj) {
             .append("text");
 
         // Render bars
-        svg.selectAll(".forbesBar")
+        svg.selectAll(".hBar")
             .data(data)
             .enter().append("rect")
             .attr({
-                "class" : "forbesBar",
+                "class" : "hBar",
                 "x" : 0 ,
                 "width" : function(d) { return xScale(d.Value); },
                 "y" : function(d) { return yScale(d.CountryName); },
@@ -253,51 +253,55 @@ function drawBars (chartObj) {
                 "opacity" : 0.75
             });
 
-        svg.selectAll(".forbesBarText")
+        svg.selectAll(".hBarText")
             .data(data)
             .enter().append("text")
+            .attr("class", "hBarText")
             .attr("x", function(d) { return xScale(d.Value) + 5; })
             .attr("y", function(d) { return yScale(d.CountryName) + yScale.rangeBand() / 2; })
             .attr("dy", ".35em")
             .attr("fill", "white")
-            .text(function(d) { return d.Value + "%" });
-
+            .text(function(d) {
+                var s = d.Value;
+                if (chartObj.percentSuffix != undefined) {
+                    return s + "%" ;
+                } else { return s; }
+            });
 
 
         // Draw OECD average
-        var averageLine = d3.select(".bar-chart g")
-            .append("svg:line")
-            .attr({
-                "class" : "line averageLine",
-                "x1": function() { return xScale(18); },
-                "x2": function() { return xScale(18); },
-                "y1": height,
-                "y2": 0,
-                "fill": "none",
-                "stroke": "#fff",
-                "stroke-width": "2px",
-                "stroke-opacity": 0.5,
-            })
-            .style("stroke-dasharray","2, 2");
+        if (chartObj.hasAverage) {
+            var averageLine = d3.select(".bar-chart g")
+                .append("svg:line")
+                .attr({
+                    "class" : "line averageLine",
+                    "x1": function() { return xScale(18); },
+                    "x2": function() { return xScale(18); },
+                    "y1": height,
+                    "y2": 0,
+                    "fill": "none",
+                    "stroke": "#fff",
+                    "stroke-width": "2px",
+                    "stroke-opacity": 0.5,
+                })
+                .style("stroke-dasharray","2, 2");
 
-        svg.append("text")
-            .text("OECD Average: 18%")
-            .attr({
-                "class" : "text-label",
-                //"x" : function() { return xScale(18) + 2; },
-                //"y" : 600,
-                "fill" : "white",
-                dy: "-0.35em",
-                "font-size" : "18px"
-            })
-            .attr("transform", function() {
-                var s = "translate(" + xScale(18) + ", 600)";
-                s += " rotate(90)"
-                return s;
-            })
-
-
-
+            svg.append("text")
+                .text("OECD Average: 18%")
+                .attr({
+                    "class" : "text-label",
+                    //"x" : function() { return xScale(18) + 2; },
+                    //"y" : 600,
+                    "fill" : "white",
+                    dy: "-0.35em",
+                    "font-size" : "18px"
+                })
+                .attr("transform", function() {
+                    var s = "translate(" + xScale(18) + ", 600)";
+                    s += " rotate(90)"
+                    return s;
+                });
+        }
     });
 
     svg.call(tip);

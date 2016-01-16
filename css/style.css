@@ -192,6 +192,9 @@ body {
   stroke: #68f;
   stroke-width: 2px;
 }
+.fish {
+  background: #2193d0;
+}
 /*********** global viz  *********/
 .axis {
   font-family: "Helvetica Neue", Helvetica, sans-serif;

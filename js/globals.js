@@ -297,6 +297,8 @@ charts["genderm"] = {
     }
 };
 charts["genderBars"] = {
+    "percentSuffix" : true,
+    "hasAverage" : true,
     "dataPath" : "data/gender-forbes.csv",
     "targetDiv" : "#bar-chart",
     "dimensions" : {
@@ -543,5 +545,21 @@ charts["inequality"] = {
     "radius" : 3,
     //"countryNamesPath" : "data/countrylist/list-inequality.csv",
     "dataPath" : "data/inequality.csv",
+};
+
+/***** 14 LIFE BELOW WATER ***********/
+charts["fish"] = {
+    "dataPath" : "data/fish.csv",
+    "targetDiv" : "#bar-chart",
+    "dimensions" : {
+        "margin" : {
+            top : 30,
+            right: 60,
+            bottom: 10,
+            left: 150
+        },
+        "width" : 1100,
+        "height" : 900
+    },
 };
 /**********************************/
