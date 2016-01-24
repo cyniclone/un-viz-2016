@@ -25,22 +25,38 @@
     <div class="row">
         <div class="col-md-12 col-sm-12"><h1 id="page-header">Access to Energy</h1></div>
         <hr>
+        <div id="info-box">
+            <span>
+                <strong>TARGET: </strong>
+                By 2030, ensure universal access to affordable, reliable and modern energy services
+            </span>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-9 col-sm-12">
+        <div class="col-md-6 col-sm-12">
+            <h2>1990</h2>
             <!-- CHART GOES HERE -->
-            <div id="chart"></div>
+            <div id="chart-1990"></div>
         </div>
-        <div class="col-md-3 col-sm-12">
-            <div id="info-box">
-                <p>
-                    <strong>TARGET: </strong>
-                    By 2030, achieve universal and equitable access to safe and
-                    affordable drinking water for all
-                </p>
-            </div>
+        <div class="col-md-6 col-sm-12">
+            <h2>2000</h2>
+            <!-- CHART GOES HERE -->
+            <div id="chart-2000"></div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <h2>2010</h2>
+            <!-- CHART GOES HERE -->
+            <div id="chart-2010"></div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <h2>2012</h2>
+            <!-- CHART GOES HERE -->
+            <div id="chart-2012"></div>
+        </div>
+    </div>
+
 </div>
 
 <!-- Load Libraries -->
@@ -50,12 +66,11 @@
 
 <script src="js/globals.js"></script>
 <script src="js/helpers.js"></script>
-<script src="js/render-scatter.js"></script>
+<script src="js/render-energy.js"></script>
 
 <script>
     $(document).ready(function() {
-        populateSelect("data/countrylist/list-energy.csv");
-        drawScatter(charts.energy);
+        drawEnergy(charts.energy, "1990");
     });
 </script>
 

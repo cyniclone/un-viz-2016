@@ -121,6 +121,13 @@ body {
   background: #fbbf0f;
   color: #000;
 }
+.energy h2 {
+  color: #f28f00;
+  font-weight: bold;
+}
+.energy span {
+  margin-left: 20px;
+}
 .energy #page-header {
   color: #fff;
 }

@@ -379,7 +379,7 @@ charts["waterr"] = {
 
 /***** 7 Access to Energy ************/
 charts["energy"] = {
-    "year": {begin: "1990", end: "2015"},
+    "year": {begin: "1990", end: "2012"},
     "n": 1,
     "value": "energy",
     "targetDiv": "#chart",
@@ -390,11 +390,9 @@ charts["energy"] = {
             bottom: 30,
             left: 50
         },
-        "width": 800,
-        "height": 800
+        "width": 500,
+        "height": 400
     },
-    "radius": 4,
-    "countryNamesPath" : "data/countrylist/list-energy.csv",
     "dataPath": "data/energy.csv",
     "hasTrend": false,
 }
