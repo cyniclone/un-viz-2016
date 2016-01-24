@@ -77,7 +77,7 @@ function drawScatter (obj) {
             //TODO make this different for charts["consumption"]
             var s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br>";
             if (obj.customFormat != undefined) {
-                s += obj.customFormat(d[yParam]);
+                s += obj.customFormat(d3.round(d[yParam], 1));
                 return s;
             } else {
                 s += d3.round(d[yParam], 1) + " %";

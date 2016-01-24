@@ -193,6 +193,10 @@ function drawBars (chartObj) {
         xAxis = d3.svg.axis().scale(xScale).orient("top")
             .tickFormat(d3.format("d"));
 
+    if (chartObj.xTicks != undefined) {
+        xAxis.ticks(chartObj.xTicks);
+    }
+
     // setup y
     var yValue = function (d) { return d.CountryName; },              // data  -> value
         yScale = d3.scale.ordinal().rangeRoundBands([height, 0], .5), // value -> display
@@ -225,7 +229,8 @@ function drawBars (chartObj) {
         console.log(data);
 
         // Set scale domains
-        xScale.domain(d3.extent(data, function(d) { return d.Value; })).nice();
+        //xScale.domain(d3.extent(data, function(d) { return d.Value; })).nice();
+        xScale.domain(chartObj.xDomain);
         yScale.domain(data.map(function(d) { return d.CountryName; }));
 
         // Render Axes

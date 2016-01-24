@@ -139,6 +139,7 @@ charts["climate"] = {
     "value" : "climate",
     "targetDiv" : "#chart",
     "xTicks" : 10,
+    "customFormat" : d3.format("00"),
     "dimensions" : {
         "margin" : {
             top : 20,
@@ -299,6 +300,7 @@ charts["genderm"] = {
 charts["genderBars"] = {
     "percentSuffix" : true,
     "hasAverage" : true,
+    "xDomain" : [0, 45],
     "dataPath" : "data/gender-forbes.csv",
     "targetDiv" : "#bar-chart",
     "dimensions" : {
@@ -551,6 +553,8 @@ charts["inequality"] = {
 charts["fish"] = {
     "dataPath" : "data/fish.csv",
     "targetDiv" : "#bar-chart",
+    "xDomain" : [0, 250],
+    "xTicks" : 5,
     "dimensions" : {
         "margin" : {
             top : 30,
