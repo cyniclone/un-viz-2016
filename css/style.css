@@ -131,6 +131,23 @@ body {
 .energy #page-header {
   color: #fff;
 }
+.energy rect {
+  fill: #f28f00;
+}
+.energy #chart-1990,
+.energy #chart-2000,
+.energy #chart-2010,
+.energy #chart-2012 {
+  margin-bottom: 50px;
+}
+.energy .axis path,
+.energy .axis line {
+  fill: none;
+  stroke: #000;
+}
+.energy .axis text {
+  font: 12px sans-serif;
+}
 .labor {
   background: #a21b43;
   color: #000;
@@ -210,7 +227,7 @@ body {
 .axis line {
   fill: none;
   stroke: #fff;
-  shape-rendering: crispEdges;
+  shape-rendering: geometricPrecision;
 }
 .d3-tip {
   width: 150px;

@@ -2,6 +2,8 @@ function drawScatter (obj) {
     // obj is our chart object - contains all information about how to
     //    organize data and render chart
 
+    /***** Import rules from globals.js ************/
+
     var n = (obj.n > 1) ? obj.n : "";    // Used to control classing for dual charts
 
     var xTicks = !(obj.xTicks >= 0) ? 10 : obj.xTicks;
@@ -21,6 +23,7 @@ function drawScatter (obj) {
     if (obj.customFormat != undefined)  {
         format = obj.customFormat;
     }
+    /**********************************/
 
     /*
      * value accessor - returns the value to encode for a given data object.
@@ -44,7 +47,7 @@ function drawScatter (obj) {
             .ticks(xTicks)
             .tickSize(10)
             .outerTickSize(0)
-            .tickPadding(5);
+            //.tickPadding(5);
 
     // setup y
     var yValue = function (d) { return d[yParam]; },                   // data  -> value

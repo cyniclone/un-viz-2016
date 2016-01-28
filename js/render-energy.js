@@ -1,6 +1,6 @@
-function drawEnergy (chartObj, _year) {
+function drawEnergy (obj, _year) {
     // Assign chart dimensions from object
-    var dim = chartObj.dimensions;
+    var dim = obj.dimensions;
     var margin = dim.margin;
     var width = dim.width - dim.margin.left - dim.margin.right;
     var height = dim.height - dim.margin.top - dim.margin.bottom;
@@ -15,7 +15,15 @@ function drawEnergy (chartObj, _year) {
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
+        .ticks(obj.xTicks)
+        .tickFormat(function(d) { return d + "%"; }).tickPadding(5)
         .orient("bottom");
+
+    // setup y
+    var yAxis = d3.svg.axis().scale(yScale).orient("left")
+        .tickFormat(d3.format("0f"))
+        .tickValues([ 20, 40, 60, 80, 100, 120, 140])
+        .tickPadding(5);
 
     var svg = d3.select("#chart-" + _year).append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -23,7 +31,7 @@ function drawEnergy (chartObj, _year) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.csv(chartObj.dataPath, function (error, data) {
+    d3.csv(obj.dataPath, function (error, data) {
         var values = [];
 
         // get data for year of interest
@@ -40,7 +48,7 @@ function drawEnergy (chartObj, _year) {
         console.log(data);
 
         // Set yScale domain
-        yScale.domain([0, 100]);
+        yScale.domain([0, 130]);
 
         // Generate a Bates distribution of 10 random variables.
         //var values = d3.range(1000).map(d3.random.bates(10));
@@ -50,7 +58,7 @@ function drawEnergy (chartObj, _year) {
         
         // Generate a histogram using twenty uniformly-spaced bins.
         var data = d3.layout.histogram()
-            .bins(xScale.ticks(20))
+            .bins(xScale.ticks(30))
             (values);
 
         console.log(data);
@@ -70,17 +78,23 @@ function drawEnergy (chartObj, _year) {
             .attr("height", function(d) { return height - yScale(d.y); });
 
         bar.append("text")
-            .attr("dy", ".75em")
+            .attr("dy", "-.75em")
             .attr("y", 6)
             .attr("x", xScale(data[0].dx) / 2)
             .attr("text-anchor", "middle")
-            .attr("fill", "steelblue")
+            .attr("fill", "white")
             .text(function(d) { return formatCount(d.y); });
 
+        // Render axes
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .attr("transform", "translate(0, 0)")
+            .call(yAxis);
 
     });
 }

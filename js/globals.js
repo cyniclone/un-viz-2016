@@ -381,11 +381,12 @@ charts["waterr"] = {
 charts["energy"] = {
     "year": {begin: "1990", end: "2012"},
     "n": 1,
+    "xTicks" : 5,
     "value": "energy",
     "targetDiv": "#chart",
     "dimensions": {
         "margin": {
-            top: 20,
+            top: 40,
             right: 20,
             bottom: 30,
             left: 50
