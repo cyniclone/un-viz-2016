@@ -22,8 +22,9 @@ function drawEnergy (obj, _year) {
     // setup y
     var yAxis = d3.svg.axis().scale(yScale).orient("left")
         .tickFormat(d3.format("0f"))
-        .tickValues([ 20, 40, 60, 80, 100, 120, 140])
-        .tickPadding(5);
+        .tickValues([ 20, 40, 60, 80, 100, 120, 130])
+        .tickPadding(5)
+        .outerTickSize(0);
 
     var svg = d3.select("#chart-" + _year).append("svg")
         .attr("width", width + margin.left + margin.right)
