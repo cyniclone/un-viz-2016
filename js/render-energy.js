@@ -7,8 +7,7 @@ function drawEnergy (obj, _year) {
 
     var xScale = d3.scale.linear().domain([0, 100]).range([0, width]);
 
-    var yScale = d3.scale.linear()
-        .range([height, 0]);
+    var yScale = d3.scale.linear().range([height, 0]);
 
     // A formatter for counts.
     var formatCount = d3.format(",.0f");
@@ -25,6 +24,8 @@ function drawEnergy (obj, _year) {
         .tickValues([ 20, 40, 60, 80, 100, 120, 130])
         .tickPadding(5)
         .outerTickSize(0);
+
+    obj.yTicks = yAxis.ticks(); console.log(yAxis.ticks());
 
     var svg = d3.select("#chart-" + _year).append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -64,27 +65,51 @@ function drawEnergy (obj, _year) {
 
         console.log(data);
 
-        var bar = svg.selectAll(".bar")
-            .data(data)
-            .enter().append("g")
-            //.filter(function(d) { return d.Year == _year; })
-            .attr("class", "bar")
-            .attr("transform", function(d) {
-                return "translate(" + xScale(d.x) + "," + yScale(d.y) + ")"; 
-            });
+        //bar.append("text")
+        //    .attr("dy", "-.75em")
+        //    .attr("y", 6)
+        //    .attr("x", xScale(data[0].dx) / 2)
+        //    .attr("text-anchor", "middle")
+        //    .attr("fill", "white")
+        //    .text(function(d) { return formatCount(d.y); });
 
-        bar.append("rect")
-            .attr("x", 1)
-            .attr("width", xScale(data[0].dx) - 1)
-            .attr("height", function(d) { return height - yScale(d.y); });
-
-        bar.append("text")
-            .attr("dy", "-.75em")
-            .attr("y", 6)
-            .attr("x", xScale(data[0].dx) / 2)
-            .attr("text-anchor", "middle")
-            .attr("fill", "white")
-            .text(function(d) { return formatCount(d.y); });
+        // Render gridlines for x axis
+        svg.selectAll("line.verticalGrid").data(xScale.ticks(obj.xTicks)).enter()
+            .append("line")
+            .attr(
+                {
+                    "class": "verticalGrid",
+                    "x1": function (d) {
+                        return xScale(d);
+                    },
+                    "x2": function (d) {
+                        return xScale(d);
+                    },
+                    "y1": height,
+                    "y2": 0,
+                    "fill": "none",
+                    "stroke": "#fff",
+                    "stroke-width": "0.75px"
+                });
+        // Render gridlines for y axis
+        svg.selectAll("line.horizontalGrid").data(yScale.ticks(obj.yTicks)).enter()
+            .append("line")
+            .attr(
+                {
+                    "class": "horizontalGrid",
+                    "x1": 0,
+                    "x2": width,
+                    "y1": function (d) {
+                        return yScale(d);
+                    },
+                    "y2": function (d) {
+                        return yScale(d);
+                    },
+                    "fill": "none",
+                    "stroke": "#fff",
+                    "stroke-width": "0.75px"
+                }
+            );
 
         // Render axes
         svg.append("g")
@@ -94,8 +119,23 @@ function drawEnergy (obj, _year) {
 
         svg.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(0, 0)")
+            //.attr("transform", "translate(0, 0)")
             .call(yAxis);
 
+
+        // Render bars
+        var bar = svg.selectAll(".bar")
+            .data(data)
+            .enter().append("g")
+            //.filter(function(d) { return d.Year == _year; })
+            .attr("class", "bar")
+            .attr("transform", function(d) {
+                return "translate(" + xScale(d.x) + "," + yScale(d.y) + ")";
+            });
+
+        bar.append("rect")
+            .attr("x", 1)
+            .attr("width", xScale(data[0].dx) - 1)
+            .attr("height", function(d) { return height - yScale(d.y); });
     });
 }
