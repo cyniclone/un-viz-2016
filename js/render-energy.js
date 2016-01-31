@@ -60,17 +60,14 @@ function drawEnergy (obj, _year) {
             .attr(
                 {
                     "class": "verticalGrid",
-                    "x1": function (d) {
-                        return xScale(d);
-                    },
-                    "x2": function (d) {
-                        return xScale(d);
-                    },
+                    "x1": function (d) { return xScale(d); },
+                    "x2": function (d) { return xScale(d); },
                     "y1": height,
                     "y2": 0,
                     "fill": "none",
                     "stroke": "#fff",
-                    "stroke-width": "0.75px"
+                    "stroke-width": "0.75px",
+                    "stroke-opacity" : "0.6"
                 });
         // Render gridlines for y axis
         svg.selectAll("line.horizontalGrid").data(yScale.ticks(obj.yTicks/2)).enter()
@@ -80,15 +77,12 @@ function drawEnergy (obj, _year) {
                     "class": "horizontalGrid",
                     "x1": 0,
                     "x2": width,
-                    "y1": function (d) {
-                        return yScale(d);
-                    },
-                    "y2": function (d) {
-                        return yScale(d);
-                    },
+                    "y1": function (d) { return yScale(d); },
+                    "y2": function (d) { return yScale(d); },
                     "fill": "none",
                     "stroke": "#fff",
-                    "stroke-width": "0.75px"
+                    "stroke-width": "0.75px",
+                    "stroke-opacity" : "0.75"
                 }
             );
 
@@ -104,27 +98,26 @@ function drawEnergy (obj, _year) {
             .call(yAxis);
 
 
-        // Make info text box
-        //var infoRect = d3.select("#chart-" + _year + " g")
-        //var infoRect = d3.select("#chart-container-" + _year)
+        /***** Info text box ************/
+
         var infoRect = d3.select("#chart-" + _year)
             .append('div')
+            .attr('class','jq-div') // For styling and JQuery accessibility
             .attr('id', 'info-div-' + _year);
 
-        infoRect.attr({
-                "transform" : "translate(5, 5)"
-                //"transform" : "translate(" + margin.left + "," + margin.top + ")"
-            })
+        infoRect
+            .attr("transform", "translate(5, 5)")
             .style('position','absolute')
-            .style('background','rgba(127, 127, 127, 0.5)')
+            //.style('background','rgba(127, 127, 127, 0.5)')
             .style('top', margin.top + 'px')
             .style('left', margin.left + 25 + 'px')
             .style('width', xScale(75) + 'px')
             .style('height', yScale(100) + 'px')
-            .attr("id", "text-" + _year)
-            .style("font-size", "14px")
-            .text("a")
-        ;
+            .style("font-size", "14px");
+
+        var sel = $('#info-div-' + _year);
+        sel.html('<h4>' + _year + '</h4>');
+        /**********************************/
 
         // Render bars
         var bar = svg.selectAll(".bar")
@@ -148,24 +141,20 @@ function drawEnergy (obj, _year) {
                     .style('stroke-weight', '1px')
                     .style('stroke-opacity', '1');
 
-                // Concatenate text to insert
-                var num = i * 5;
-                var text = "In " + _year + ", " + d.length + " countries were able to provide between ";
-                text += num + "% and " + (num + 5) + "% of their population with reliable electricity";
+                var sel = $('#info-div-' + _year);  // Get selection: div to manipulate
+                var html = "<h4>" + _year + "</h4><br />"; // JQuery html to put in selection
 
+                // Variables to populate html
+                var pctInterval = i * 5;    // Percent intervals of histogram bins
+                var numCountries = d.length;    // Number of countries
 
-                //var selection = d3.select("#info-text-" + _year + " text");
-                //    selection.text(text);
+                html += "<p>In <strong>" + _year + "</strong>, " + numCountries + " countries provided reliable electricity access for ";
+                html += pctInterval + "% - " + (pctInterval + 5) + "% of their population";
 
-                var select = $('#info-text-' + _year +" div");
-                console.log(select);
-
-                select.html("aaa");
+                sel.html(html);
             })
-
             .on('mouseout',function(d) {
-                // Make stroke invisible
-                d3.select(this).style('stroke-opacity', '0')
+                d3.select(this).style('stroke-opacity', '0')    // Make stroke invisible
             })
 
 

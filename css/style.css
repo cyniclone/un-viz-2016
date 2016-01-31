@@ -129,7 +129,7 @@ body {
   margin-left: 20px;
 }
 .energy #page-header {
-  color: #fff;
+  color: #222;
 }
 .energy #chart-1990,
 .energy #chart-2000,
@@ -147,6 +147,13 @@ body {
 }
 .energy .bar {
   shape-rendering: geometricPrecision;
+}
+.energy .jq-div h4 {
+  font-weight: bold;
+  margin: 0 0 0 0;
+}
+.energy .jq-div p {
+  color: #222;
 }
 .labor {
   background: #a21b43;
