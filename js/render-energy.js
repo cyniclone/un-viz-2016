@@ -112,12 +112,17 @@ function drawEnergy (obj, _year) {
             .call(yAxis);
 
 
-        // Make tooltip
-        var tooltip = d3.select("#chart-" + _year + " g").append('div')
-            //.style('position','absolute') //To allow d3 to follow the position absolute to the relationship to the page
-            .style('padding','0 10px') //To do padding on the toop tip. 0 on the top and bottom and 10px on each side
-            .style('background','white')
-            .style('opacity',0) // 0 as we don't want to show when the graphic first loads up
+        // Make info text box
+        var text = "";
+        var infoRect = d3.select("#chart-" + _year + " g")
+            .append('g')
+            .attr('id', 'info-text-' + _year);
+
+        infoRect.attr({
+                "transform" : "translate(5, 5)"
+            })
+            .append("text")
+            .text(text)
 
         // Render bars
         var bar = svg.selectAll(".bar")
@@ -125,6 +130,7 @@ function drawEnergy (obj, _year) {
             .enter().append("g")
             //.filter(function(d) { return d.Year == _year; })
             .attr("class", "bar")
+            .attr("fill", "#F28F00")
             .attr("transform", function(d) {
                 return "translate(" + xScale(d.x) + "," + yScale(d.y) + ")";
             });
@@ -134,25 +140,20 @@ function drawEnergy (obj, _year) {
             .attr("width", xScale(data[0].dx) - 1)
             .attr("height", function(d) { return height - yScale(d.y); });
 
-        //To change the color to yellow on mouse over and to set the opactiy to 0.5
-        bar
-        .on('mouseover',function(d){
-
-            //tooltip.html(d)
-            //    .style('left',(d3.event.pageX - 20)+ 'px') //position of the tooltip
-            //    .style('top',(d3.event.pageY + 15) + 'px')
-
-            //tempcolor = this.style.fill
-
-            d3.select(this)
-                .style('stroke','black')
-                .style('stroke-weight', '1px')
-                .style('stroke-opacity', '1')
-        })
-        //To reset the color, hence opacity = 1
-            .on('mouseout',function(d){
+        bar.on('mouseover',function(d) {
+                // Outline rect with stroke
                 d3.select(this)
-                    .style('stroke-opacity', '0')
+                    .style('stroke','black')
+                    .style('stroke-weight', '1px')
+                    .style('stroke-opacity', '1');
+
+                d3.select("#info-text-" + _year + " text")
+                    .text("In " + _year);
+
+            })
+            .on('mouseout',function(d) {
+                // Make stroke invisible
+                d3.select(this).style('stroke-opacity', '0')
             })
 
         //var infoText = d3.select("#chart-" + _year + " g")

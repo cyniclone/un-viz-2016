@@ -131,9 +131,6 @@ body {
 .energy #page-header {
   color: #fff;
 }
-.energy rect {
-  fill: #f28f00;
-}
 .energy #chart-1990,
 .energy #chart-2000,
 .energy #chart-2010,
