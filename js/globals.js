@@ -124,7 +124,7 @@ charts["consumption"] = {
         "width" : 850,
         "height" : 800
     },
-    //"countryNamesPath" : "data/countrylist/list-consumption.csv",
+    "countryNamesPath" : "data/countrylist/list-consumption.csv",
     "dataPath" : "data/consumption.csv",
     "hasTrend" : false,
 };

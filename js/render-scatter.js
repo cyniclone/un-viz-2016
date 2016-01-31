@@ -19,10 +19,10 @@ function drawScatter (obj) {
     var yParam = (obj.yParam == undefined) ? "Value" : obj.yParam;
     if (obj.useCustomR) { var rParam = obj.rParam; }
 
-    var format;
-    if (obj.customFormat != undefined)  {
-        format = obj.customFormat;
-    }
+    //var format;
+    //if (obj.customFormat != undefined)  {
+    //    format = obj.customFormat;
+    //}
     /**********************************/
 
     /*
@@ -219,7 +219,7 @@ function drawScatter (obj) {
                 .attr("x", width - 10)
                 .attr("dy", "-.71em")
                 .style("text-anchor", "end")
-                .text("Energy subsidies per per capita (US dollars per person a year)");
+                .text("Energy subsidies per capita (US dollars per person a year)");
         }
     });
 }
