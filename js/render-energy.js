@@ -49,18 +49,10 @@ function drawEnergy (obj, _year) {
         // Set yScale domain
         yScale.domain([0, 130]);
 
-        // Generate a histogram using twenty uniformly-spaced bins.
+        // Populate a histogram using thirty uniformly-spaced bins.
         var data = d3.layout.histogram()
             .bins(xScale.ticks(30))
             (values);
-
-        //bar.append("text")
-        //    .attr("dy", "-.75em")
-        //    .attr("y", 6)
-        //    .attr("x", xScale(data[0].dx) / 2)
-        //    .attr("text-anchor", "middle")
-        //    .attr("fill", "white")
-        //    .text(function(d) { return formatCount(d.y); });
 
         // Render gridlines for x axis
         svg.selectAll("line.verticalGrid").data(xScale.ticks(obj.xTicks)).enter()
@@ -113,16 +105,26 @@ function drawEnergy (obj, _year) {
 
 
         // Make info text box
-        var infoRect = d3.select("#chart-" + _year + " g")
-            .append('g')
-            .attr('id', 'info-text-' + _year);
+        //var infoRect = d3.select("#chart-" + _year + " g")
+        //var infoRect = d3.select("#chart-container-" + _year)
+        var infoRect = d3.select("#chart-" + _year)
+            .append('div')
+            .attr('id', 'info-div-' + _year);
 
         infoRect.attr({
                 "transform" : "translate(5, 5)"
+                //"transform" : "translate(" + margin.left + "," + margin.top + ")"
             })
-            .append("text")
-            .style("font-size", "12px")
-            .text("")
+            .style('position','absolute')
+            .style('background','rgba(127, 127, 127, 0.5)')
+            .style('top', margin.top + 'px')
+            .style('left', margin.left + 25 + 'px')
+            .style('width', xScale(75) + 'px')
+            .style('height', yScale(100) + 'px')
+            .attr("id", "text-" + _year)
+            .style("font-size", "14px")
+            .text("a")
+        ;
 
         // Render bars
         var bar = svg.selectAll(".bar")
@@ -140,20 +142,25 @@ function drawEnergy (obj, _year) {
             .attr("height", function(d) { return height - yScale(d.y); });
 
         bar.on('mouseover',function(d, i) {
-                console.log(i);
                 // Outline rect with stroke
                 d3.select(this)
                     .style('stroke', 'black')
                     .style('stroke-weight', '1px')
                     .style('stroke-opacity', '1');
 
+                // Concatenate text to insert
                 var num = i * 5;
                 var text = "In " + _year + ", " + d.length + " countries were able to provide between ";
-                text += num + " and " + (num + 5) + "% of their population with reliable electricity";
+                text += num + "% and " + (num + 5) + "% of their population with reliable electricity";
 
 
-                d3.select("#info-text-" + _year + " text")
-                    .text(text)
+                //var selection = d3.select("#info-text-" + _year + " text");
+                //    selection.text(text);
+
+                var select = $('#info-text-' + _year +" div");
+                console.log(select);
+
+                select.html("aaa");
             })
 
             .on('mouseout',function(d) {
