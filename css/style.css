@@ -148,6 +148,9 @@ body {
 .energy .axis text {
   font: 12px sans-serif;
 }
+.energy .bar {
+  shape-rendering: geometricPrecision;
+}
 .labor {
   background: #a21b43;
   color: #000;

@@ -28,12 +28,14 @@ function drawEnergy (obj, _year) {
     obj.yTicks = yAxis.ticks(); console.log(yAxis.ticks());
 
     var svg = d3.select("#chart-" + _year).append("svg")
+        .attr("class", "viz")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     d3.csv(obj.dataPath, function (error, data) {
+        if (error) throw error;
         var values = [];
 
         // get data for year of interest
@@ -44,26 +46,13 @@ function drawEnergy (obj, _year) {
             values.push(d.Value)
         });
 
-
-
-        console.log("filtered data");
-        console.log(data);
-
         // Set yScale domain
         yScale.domain([0, 130]);
 
-        // Generate a Bates distribution of 10 random variables.
-        //var values = d3.range(1000).map(d3.random.bates(10));
-
-        console.log("my values");
-        console.log(values);
-        
         // Generate a histogram using twenty uniformly-spaced bins.
         var data = d3.layout.histogram()
             .bins(xScale.ticks(30))
             (values);
-
-        console.log(data);
 
         //bar.append("text")
         //    .attr("dy", "-.75em")
@@ -92,7 +81,7 @@ function drawEnergy (obj, _year) {
                     "stroke-width": "0.75px"
                 });
         // Render gridlines for y axis
-        svg.selectAll("line.horizontalGrid").data(yScale.ticks(obj.yTicks)).enter()
+        svg.selectAll("line.horizontalGrid").data(yScale.ticks(obj.yTicks/2)).enter()
             .append("line")
             .attr(
                 {
@@ -123,6 +112,13 @@ function drawEnergy (obj, _year) {
             .call(yAxis);
 
 
+        // Make tooltip
+        var tooltip = d3.select("#chart-" + _year + " g").append('div')
+            //.style('position','absolute') //To allow d3 to follow the position absolute to the relationship to the page
+            .style('padding','0 10px') //To do padding on the toop tip. 0 on the top and bottom and 10px on each side
+            .style('background','white')
+            .style('opacity',0) // 0 as we don't want to show when the graphic first loads up
+
         // Render bars
         var bar = svg.selectAll(".bar")
             .data(data)
@@ -137,5 +133,35 @@ function drawEnergy (obj, _year) {
             .attr("x", 1)
             .attr("width", xScale(data[0].dx) - 1)
             .attr("height", function(d) { return height - yScale(d.y); });
+
+        //To change the color to yellow on mouse over and to set the opactiy to 0.5
+        bar
+        .on('mouseover',function(d){
+
+            //tooltip.html(d)
+            //    .style('left',(d3.event.pageX - 20)+ 'px') //position of the tooltip
+            //    .style('top',(d3.event.pageY + 15) + 'px')
+
+            //tempcolor = this.style.fill
+
+            d3.select(this)
+                .style('stroke','black')
+                .style('stroke-weight', '1px')
+                .style('stroke-opacity', '1')
+        })
+        //To reset the color, hence opacity = 1
+            .on('mouseout',function(d){
+                d3.select(this)
+                    .style('stroke-opacity', '0')
+            })
+
+        //var infoText = d3.select("#chart-" + _year + " g")
+        //    .append("text")
+        //    .attr("id", "info-text-" + _year)
+        //    .attr("transform", "translate(5, 5)")
+        //    .text("a");
+
+        //$("#info-text" + _year).html("<h3>hi</h3>");
+
     });
 }
