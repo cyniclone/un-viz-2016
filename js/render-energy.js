@@ -113,7 +113,6 @@ function drawEnergy (obj, _year) {
 
 
         // Make info text box
-        var text = "";
         var infoRect = d3.select("#chart-" + _year + " g")
             .append('g')
             .attr('id', 'info-text-' + _year);
@@ -122,13 +121,13 @@ function drawEnergy (obj, _year) {
                 "transform" : "translate(5, 5)"
             })
             .append("text")
-            .text(text)
+            .style("font-size", "12px")
+            .text("")
 
         // Render bars
         var bar = svg.selectAll(".bar")
             .data(data)
             .enter().append("g")
-            //.filter(function(d) { return d.Year == _year; })
             .attr("class", "bar")
             .attr("fill", "#F28F00")
             .attr("transform", function(d) {
@@ -140,29 +139,28 @@ function drawEnergy (obj, _year) {
             .attr("width", xScale(data[0].dx) - 1)
             .attr("height", function(d) { return height - yScale(d.y); });
 
-        bar.on('mouseover',function(d) {
+        bar.on('mouseover',function(d, i) {
+                console.log(i);
                 // Outline rect with stroke
                 d3.select(this)
-                    .style('stroke','black')
+                    .style('stroke', 'black')
                     .style('stroke-weight', '1px')
                     .style('stroke-opacity', '1');
 
-                d3.select("#info-text-" + _year + " text")
-                    .text("In " + _year);
+                var num = i * 5;
+                var text = "In " + _year + ", " + d.length + " countries were able to provide between ";
+                text += num + " and " + (num + 5) + "% of their population with reliable electricity";
 
+
+                d3.select("#info-text-" + _year + " text")
+                    .text(text)
             })
+
             .on('mouseout',function(d) {
                 // Make stroke invisible
                 d3.select(this).style('stroke-opacity', '0')
             })
 
-        //var infoText = d3.select("#chart-" + _year + " g")
-        //    .append("text")
-        //    .attr("id", "info-text-" + _year)
-        //    .attr("transform", "translate(5, 5)")
-        //    .text("a");
-
-        //$("#info-text" + _year).html("<h3>hi</h3>");
 
     });
 }
