@@ -162,12 +162,6 @@ charts["climate"] = {
     }
 };
 
-/*******************************************
-*  DUAL SCATTERS
-*******************************************/
-
-
-
 /***** 4 QUALITY EDUCATION ************/
 
 //Coefficients:
@@ -523,8 +517,39 @@ charts["innovation2"] = {
     }
 };
 
-
-/***** bar charts ************/
+/***** 11 Sustainable Cities and Communities ************/
+charts["sustainable"] = {
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        "width" : 550,
+        "height" : 600
+    },
+    "countryNamesPath" : "data/countrylist/list-sustainable.csv",
+    "dataPath" : "data/sustainable.csv"
+};
+charts["sustainableBars"] = {
+    //"percentSuffix" : true,
+    //"hasAverage" : true,
+    //"xDomain" : [0, 45],
+    //"dataPath" : "data/gender-forbes.csv",
+    //"targetDiv" : "#bar-chart",
+    //"dimensions" : {
+    //    "margin" : {
+    //        top : 20,
+    //        right: 60,
+    //        bottom: 10,
+    //        left: 100
+    //    },
+    //    "width" : 1100,
+    //    "height" : 900
+    //}
+};
 
 // INEQUALITY
 charts["inequality"] = {

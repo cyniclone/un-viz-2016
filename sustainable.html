@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <title>Industry, Innovation and Infrastructure</title>
+    <title>Sustainable Cities and Communities</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -22,16 +22,15 @@
 </head>
 <body>
 
-<div class="container innovation"> <!-- Top level for Lumira viz -->
+<div class="container sustainable"> <!-- Top level for Lumira viz -->
     <div class="row">
-        <div class="col-md-12 col-sm-12"><h1 id="page-header">Industry, Innovation and Infrastructure</h1></div>
-        <!--<div class="col-md-3 col-sm-12"><select id="nav"></select></div>-->
+        <div class="col-md-12 col-sm-12"><h1 id="page-header">Sustainable Cities and Communities</h1></div>
     </div>
 
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <h3>Select a country:</h3>
-            <div id="select-country" style="float:left; margin-bottom:10px;"></div><br />
+            <div id="select-country"></div> <br />
         </div>
     </div>
 
@@ -39,11 +38,8 @@
         <div class="col-md-12 col-sm-12">
             <div id="info-box">
                 <p>
-                    <strong>TARGET: </strong>
-                    Enhance scientific research, upgrade the technological capabilities of industrial
-                    sectors in all countries, in particular developing countries, including, by 2030, encouraging
-                    innovation and substantially increasing the number of research and development
-                    workers per 1 million people and public and private research and development spending
+                    <strong>HOW TO READ THESE CHARTS:</strong>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dicta eligendi maiores minima odit provident rem rerum tempore ut. Ad alias assumenda atque earum ipsum molestias nihil praesentium similique unde!
                 </p>
                 <hr>
             </div>
@@ -51,23 +47,20 @@
     </div>
 
     <div class="row">
-        <!-- Female -->
+        <!-- Map -->
         <div class="col-md-6 col-sm-12">
-            <p style="color:#164767;text-align:center;font-weight:700">Research and development full time<br>
-                personnel per million people
-            </p>
             <!-- CHART GOES HERE -->
-            <div id="chart"></div>
+            <div id="map"></div>
         </div>
+    </div>
 
-        <!-- Male -->
-        <div class="col-md-6 col-sm-12">
-            <p style="color:#164767;text-align:center;font-weight:700">
-                Percentage of research and development<br>
-                personnel who are women
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias autem est fugiat placeat repudiandae soluta vero vitae. Consequuntur deleniti ex magnam minima repudiandae tempora. Asperiores dolor id repellat voluptatibus?
             </p>
-            <!-- CHART GOES HERE -->
-            <div id="chart2"></div>
+            <div id="bar-chart"></div>
         </div>
     </div>
 </div>
@@ -80,12 +73,14 @@
 <script src="js/globals.js"></script>
 <script src="js/helpers.js"></script>
 <script src="js/render-scatter.js"></script>
+<script src="js/render-bars.js"></script>
 
 <script>
     $(document).ready(function() {
-        populateSelect("data/countrylist/list-innovation.csv");
-        drawScatter(charts.innovation1);
-        drawScatter(charts.innovation2);
+//        populateSelect("data/countrylist/list-gender.csv");
+//        drawScatter(charts.genderf);
+//        drawScatter(charts.genderm);
+//        drawBars(charts.genderBars);
     });
 </script>
 

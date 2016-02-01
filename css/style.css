@@ -192,6 +192,10 @@ body {
   stroke-dasharray: 1, 1;
   stroke-opacity: 0.8;
 }
+.sustainable {
+  color: #000;
+  background: #f59a2b;
+}
 .consumption {
   color: #000;
   background: #b98831;
