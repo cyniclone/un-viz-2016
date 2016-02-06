@@ -20,6 +20,34 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
 
 </head>
+<style>
+    /* 11SUSTAINABLE */
+    body {
+        font: 12px sans-serif;
+    }
+
+    path {
+        stroke-width: 1px;
+        stroke: #d6d6d6;
+        fill: #004558;
+        cursor: pointer;
+    }
+
+    path:hover, path.highlighted {
+        fill: #feab6f;
+    }
+
+    div.tooltip {
+        position: absolute;
+        background-color: white;
+        border: 1px solid black;
+        color: black;
+        font-weight: bold;
+        padding: 4px 8px;
+        display: none;
+    }
+
+</style>
 <body>
 
 <div class="container sustainable"> <!-- Top level for Lumira viz -->
@@ -48,9 +76,9 @@
 
     <div class="row">
         <!-- Map -->
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-12 col-sm-12">
             <!-- CHART GOES HERE -->
-            <div id="map"></div>
+            <div id="map" style="height:400px"></div>
         </div>
     </div>
 
@@ -69,18 +97,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
 
 <script src="js/globals.js"></script>
 <script src="js/helpers.js"></script>
 <script src="js/render-scatter.js"></script>
-<script src="js/render-bars.js"></script>
+<script src="js/render-maps.js"></script>
 
 <script>
     $(document).ready(function() {
-//        populateSelect("data/countrylist/list-gender.csv");
-//        drawScatter(charts.genderf);
-//        drawScatter(charts.genderm);
-//        drawBars(charts.genderBars);
+        renderMap();
     });
 </script>
 
