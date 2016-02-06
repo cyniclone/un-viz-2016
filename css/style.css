@@ -196,6 +196,31 @@ body {
   color: #000;
   background: #f59a2b;
 }
+.sustainable #map {
+  background: rgba(255,255,255,0.5);
+}
+.sustainable body {
+  font: 12px sans-serif;
+}
+.sustainable path {
+  stroke-width: 1px;
+  stroke: #d6d6d6;
+  fill: #004558;
+  cursor: pointer;
+}
+.sustainable path:hover,
+.sustainable path.highlighted {
+  fill: #feab6f;
+}
+.sustainable div.tooltip {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  font-weight: bold;
+  padding: 4px 8px;
+  display: none;
+}
 .consumption {
   color: #000;
   background: #b98831;
