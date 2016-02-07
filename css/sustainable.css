@@ -1,17 +1,17 @@
-#map {
+.sustainable #map {
   font: 12px sans-serif;
 }
-path {
+.sustainable path {
   stroke-width: 1px;
   stroke: #fff;
-  fill: #4682b4;
+  fill: #b5b5b5;
   cursor: pointer;
 }
-path:hover,
-path.highlighted {
+.sustainable path:hover,
+.sustainable path.highlighted {
   fill: #ff6347;
 }
-div.world-tooltip {
+.sustainable div.world-tooltip {
   position: absolute;
   background-color: #fff;
   border: 1px solid #000;
@@ -20,8 +20,3 @@ div.world-tooltip {
   padding: 4px 8px;
   display: none;
 }
-
-.sustainable
-  fill #f59a23
-
-

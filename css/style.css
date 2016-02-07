@@ -192,20 +192,23 @@ body {
   stroke-dasharray: 1, 1;
   stroke-opacity: 0.8;
 }
-.sustainable #map {
+.sustainable {
+  background: #f59a23;
+}
+#map {
   font: 12px sans-serif;
 }
-.sustainable path {
+path {
   stroke-width: 1px;
-  stroke: #fff;
-  fill: #b5b5b5;
+  stroke: #f5f5f5;
+  fill: #4682b4;
   cursor: pointer;
 }
-.sustainable path:hover,
-.sustainable path.highlighted {
+path:hover,
+path.highlighted {
   fill: #ff6347;
 }
-.sustainable div.world-tooltip {
+div.world-tooltip {
   position: absolute;
   background-color: #fff;
   border: 1px solid #000;

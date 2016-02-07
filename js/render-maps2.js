@@ -1,7 +1,7 @@
 
 //Map dimensions (in pixels)
-var width = 600,
-    height = 309;
+var width = 900,
+    height = 500;
 
 //Map projection
 var projection = d3.geo.mercator()
@@ -76,11 +76,16 @@ function showTooltip(d) {
 
 //Move the tooltip to track the mouse
 function moveTooltip() {
+    console.log("d3.event.pageY + offset.y " + (d3.event.pageY + tooltipOffset.y));
+    console.log("d3.event.pageX + offset.x " + (d3.event.pageX + tooltipOffset.x));
+
     tooltip.style("top",(d3.event.pageY+tooltipOffset.y)+"px")
         .style("left",(d3.event.pageX+tooltipOffset.x)+"px");
+
 }
 
 //Create a tooltip, hidden at the start
 function hideTooltip() {
-    tooltip.style("display","none");
+    //tooltip.style("display","none");
+    //tooltip.style("display","inline-block");
 }
