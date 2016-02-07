@@ -1,0 +1,22 @@
+#map {
+  font: 12px sans-serif;
+}
+path {
+  stroke-width: 1px;
+  stroke: #fff;
+  fill: #4682b4;
+  cursor: pointer;
+}
+path:hover,
+path.highlighted {
+  fill: #ff6347;
+}
+div.world-tooltip {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  font-weight: bold;
+  padding: 4px 8px;
+  display: none;
+}
