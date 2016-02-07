@@ -1,11 +1,12 @@
+
 //Map dimensions (in pixels)
-var width = 1130,
-    height = 550;
+var width = 600,
+    height = 309;
 
 //Map projection
 var projection = d3.geo.mercator()
-    .scale(109.1065882450161)
-    .center([3.304581611064284,-1.340944203549356]) //projection center
+    .scale(93.51993278144236)
+    .center([3.304581611064289,-1.3409442035493517]) //projection center
     .translate([width/2,height/2]) //translate to center the map in view
 
 //Generate paths based on projection

@@ -1,11 +1,26 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <style>
+
+    </style>
+</head>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<div class="sustainabile">
+    <div id="map"></div>
+</div>
+<script>
+
 //Map dimensions (in pixels)
-var width = 1130,
-    height = 550;
+var width = 600,
+    height = 309;
 
 //Map projection
 var projection = d3.geo.mercator()
-    .scale(109.1065882450161)
-    .center([3.304581611064284,-1.340944203549356]) //projection center
+    .scale(93.51993278144236)
+    .center([3.304581611064289,-1.3409442035493517]) //projection center
     .translate([width/2,height/2]) //translate to center the map in view
 
 //Generate paths based on projection
@@ -33,18 +48,18 @@ svg.call(zoom);
 var tooltip = d3.select("#map").append("div").attr("class","tooltip");
 
 d3.json("data/json/world-topo.topojson",function(error,geodata) {
-    if (error) return console.log(error); //unknown error, check the console
+  if (error) return console.log(error); //unknown error, check the console
 
-    //Create a path for each map feature in the data
-    features.selectAll("path")
-        .data(topojson.feature(geodata,geodata.objects.countries).features) //generate features from TopoJSON
-        .enter()
-        .append("path")
-        .attr("d",path)
-        .on("mouseover",showTooltip)
-        .on("mousemove",moveTooltip)
-        .on("mouseout",hideTooltip)
-        .on("click",clicked);
+  //Create a path for each map feature in the data
+  features.selectAll("path")
+    .data(topojson.feature(geodata,geodata.objects.countries).features) //generate features from TopoJSON
+    .enter()
+    .append("path")
+    .attr("d",path)
+    .on("mouseover",showTooltip)
+    .on("mousemove",moveTooltip)
+    .on("mouseout",hideTooltip)
+    .on("click",clicked);
 
 });
 
@@ -57,8 +72,8 @@ function clicked(d,i) {
 
 //Update map on zoom/pan
 function zoomed() {
-    features.attr("transform", "translate(" + zoom.translate() + ")scale(" + zoom.scale() + ")")
-        .selectAll("path").style("stroke-width", 1 / zoom.scale() + "px" );
+  features.attr("transform", "translate(" + zoom.translate() + ")scale(" + zoom.scale() + ")")
+      .selectAll("path").style("stroke-width", 1 / zoom.scale() + "px" );
 }
 
 
@@ -67,19 +82,22 @@ var tooltipOffset = {x: 5, y: -25};
 
 //Create a tooltip, hidden at the start
 function showTooltip(d) {
-    moveTooltip();
+  moveTooltip();
 
-    tooltip.style("display","block")
-        .text(d.properties.admin);
+  tooltip.style("display","block")
+      .text(d.properties.admin);
 }
 
 //Move the tooltip to track the mouse
 function moveTooltip() {
-    tooltip.style("top",(d3.event.pageY+tooltipOffset.y)+"px")
-        .style("left",(d3.event.pageX+tooltipOffset.x)+"px");
+  tooltip.style("top",(d3.event.pageY+tooltipOffset.y)+"px")
+      .style("left",(d3.event.pageX+tooltipOffset.x)+"px");
 }
 
 //Create a tooltip, hidden at the start
 function hideTooltip() {
-    tooltip.style("display","none");
+  tooltip.style("display","none");
 }
+</script>
+
+</body>
