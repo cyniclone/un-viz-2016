@@ -1,35 +1,45 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+<head>
+    <meta charset="utf-8">
+    <title>Sustainable Cities and Communities</title>
 
-body {
-  font: 12px sans-serif;
-}
+    <!-- Latest compiled and minified CSS -->
+    <style>
 
-path {
-  stroke-width: 1px;
-  stroke: white;
-  fill: steelblue;
-  cursor: pointer;
-}
+        body {
+            font: 12px sans-serif;
+        }
 
-path:hover, path.highlighted {
-  fill: tomato;
-}
+        path {
+            stroke-width: 1px;
+            stroke: white;
+            fill: steelblue;
+            cursor: pointer;
+        }
 
-div.tooltip {
-  position: absolute;
-  background-color: white;
-  border: 1px solid black;
-  color: black;
-  font-weight: bold;
-  padding: 4px 8px;
-  display: none;
-}
+        path:hover, path.highlighted {
+            fill: tomato;
+        }
 
-</style>
+        div.world-tooltip {
+            position: absolute;
+            background-color: white;
+            border: 1px solid black;
+            color: black;
+            font-weight: bold;
+            padding: 4px 8px;
+            display: none;
+        }
+
+    </style>
+    <link href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
 <body>
-<div id="map"></div>
+<div class="container sustainable">
+    <h2>hi</h2>
+    <div id="map"></div>
+</div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>

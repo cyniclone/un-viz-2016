@@ -31,7 +31,7 @@ var zoom = d3.behavior.zoom()
 svg.call(zoom);
 
 //Create a tooltip, hidden at the start
-var tooltip = d3.select("#map").append("div").attr("class","tooltip");
+var tooltip = d3.select("#map").append("div").attr("class","world-tooltip");
 
 d3.json("data/json/world-topo.topojson",function(error,geodata) {
     if (error) return console.log(error); //unknown error, check the console
