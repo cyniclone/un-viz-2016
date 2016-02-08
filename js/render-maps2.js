@@ -1,6 +1,6 @@
 
 //Map dimensions (in pixels)
-var width = 900,
+var width = 1100,
     height = 500;
 
 //Map projection
@@ -31,7 +31,8 @@ var zoom = d3.behavior.zoom()
 svg.call(zoom);
 
 //Create a tooltip, hidden at the start
-var tooltip = d3.select("#map").append("div").attr("class","world-tooltip");
+//var tooltip = d3.select("#map").append("div").attr("class","world-tooltip");
+var tooltip = d3.select("body").append("div").attr("class","world-tooltip");
 
 d3.json("data/json/world-topo.topojson",function(error,geodata) {
     if (error) return console.log(error); //unknown error, check the console
