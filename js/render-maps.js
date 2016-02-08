@@ -1,11 +1,12 @@
+
 //Map dimensions (in pixels)
-var width = 1130,
-    height = 550;
+var width = 1100,
+    height = 500;
 
 //Map projection
 var projection = d3.geo.mercator()
-    .scale(109.1065882450161)
-    .center([3.304581611064284,-1.340944203549356]) //projection center
+    .scale(93.51993278144236)
+    .center([3.304581611064289,-1.3409442035493517]) //projection center
     .translate([width/2,height/2]) //translate to center the map in view
 
 //Generate paths based on projection
@@ -30,7 +31,8 @@ var zoom = d3.behavior.zoom()
 svg.call(zoom);
 
 //Create a tooltip, hidden at the start
-var tooltip = d3.select("#map").append("div").attr("class","tooltip");
+//var tooltip = d3.select("#map").append("div").attr("class","world-tooltip");
+var tooltip = d3.select("body").append("div").attr("class","world-tooltip");
 
 d3.json("data/json/world-topo.topojson",function(error,geodata) {
     if (error) return console.log(error); //unknown error, check the console
@@ -75,11 +77,16 @@ function showTooltip(d) {
 
 //Move the tooltip to track the mouse
 function moveTooltip() {
+    console.log("d3.event.pageY + offset.y " + (d3.event.pageY + tooltipOffset.y));
+    console.log("d3.event.pageX + offset.x " + (d3.event.pageX + tooltipOffset.x));
+
     tooltip.style("top",(d3.event.pageY+tooltipOffset.y)+"px")
         .style("left",(d3.event.pageX+tooltipOffset.x)+"px");
+
 }
 
 //Create a tooltip, hidden at the start
 function hideTooltip() {
-    tooltip.style("display","none");
+    //tooltip.style("display","none");
+    //tooltip.style("display","inline-block");
 }
