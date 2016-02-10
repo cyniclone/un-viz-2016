@@ -204,6 +204,27 @@ path {
   fill: #4682b4;
   cursor: pointer;
 }
+path .q0-7 {
+  fill: #feead8;
+}
+path .q1-7 {
+  fill: #fcc99c;
+}
+path .q2-7 {
+  fill: #f8a96a;
+}
+path .q3-7 {
+  fill: #f38c41;
+}
+path .q4-7 {
+  fill: #ed691e;
+}
+path .q5-7 {
+  fill: #cd4d1b;
+}
+path .q6-7 {
+  fill: #a0391b;
+}
 path:hover,
 path.highlighted {
   fill: #ff6347;

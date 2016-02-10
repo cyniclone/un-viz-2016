@@ -1,4 +1,3 @@
-
 //Map dimensions (in pixels)
 var width = 1100,
     height = 500;
@@ -29,6 +28,11 @@ var zoom = d3.behavior.zoom()
     .on("zoom",zoomed);
 
 svg.call(zoom);
+
+// Color scale
+var threshold = d3.scale.threshold()
+    .domain([3, 6, 12, 24, 36, 60, 75, 110])
+    .range(d3.range(7).map(function(i) { return "q" + i + "-7"; }));
 
 //Create a tooltip, hidden at the start
 //var tooltip = d3.select("#map").append("div").attr("class","world-tooltip");
@@ -87,6 +91,6 @@ function moveTooltip() {
 
 //Create a tooltip, hidden at the start
 function hideTooltip() {
-    //tooltip.style("display","none");
+    tooltip.style("display","none");
     //tooltip.style("display","inline-block");
 }
