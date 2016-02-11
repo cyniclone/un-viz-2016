@@ -47,20 +47,24 @@ function renderMap () {
     q
         .defer(d3.json, topojsonPath)
         .defer(d3.csv, csvPath, function (d) {
-            valueByCountryCode.set(d.CountryCode, +d.PM2p5Year)
+            valueByCountryCode.set(d.CountryCode, +d.PM2p5)
         })
         .await(ready);
 
     function ready(error, geodata) {
         if (error) throw error;
-
+        
         //Create a path for each map feature in the data
         features.selectAll("path")
             .data(topojson.feature(geodata,geodata.objects.countries).features) //generate features from TopoJSON
             .enter()
             .append("path")
             .attr("class", function(d) {
-                return threshold(valueByCountryCode.get(d.CountryCode))
+                var value = threshold(valueByCountryCode.get(d.properties.id));
+                if (value) {    // check if value is defined
+                    console.log(value);
+                    return value;
+                }
             })
             .attr("d",path)
             .on("mouseover",showTooltip)
