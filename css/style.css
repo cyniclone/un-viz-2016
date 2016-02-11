@@ -201,29 +201,32 @@ body {
 path {
   stroke-width: 1px;
   stroke: #f5f5f5;
-  fill: #4682b4;
+/*fill: #222; */
   cursor: pointer;
 }
-path .q0-7 {
+.q0-7 {
   fill: #feead8;
 }
-path .q1-7 {
+.q1-7 {
   fill: #fcc99c;
 }
-path .q2-7 {
+.q2-7 {
   fill: #f8a96a;
 }
-path .q3-7 {
+.q3-7 {
   fill: #f38c41;
 }
-path .q4-7 {
+.q4-7 {
   fill: #ed691e;
 }
-path .q5-7 {
+.q5-7 {
   fill: #cd4d1b;
 }
-path .q6-7 {
+.q6-7 {
   fill: #a0391b;
+}
+.no-data {
+  fill: #fefefe;
 }
 path:hover,
 path.highlighted {

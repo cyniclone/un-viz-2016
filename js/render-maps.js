@@ -51,6 +51,7 @@ function renderMap () {
         })
         .await(ready);
 
+    // The two defer calls will not be executed until ready() is
     function ready(error, geodata) {
         if (error) throw error;
         
@@ -64,6 +65,8 @@ function renderMap () {
                 if (value) {    // check if value is defined
                     console.log(value);
                     return value;
+                } else {
+                    return "no-data";
                 }
             })
             .attr("d",path)
