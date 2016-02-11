@@ -230,7 +230,7 @@ path {
 }
 path:hover,
 path.highlighted {
-  fill: #ff6347;
+  fill: #4684df;
 }
 div.world-tooltip {
   position: absolute;
