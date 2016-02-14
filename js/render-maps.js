@@ -1,5 +1,8 @@
+var threshold = d3.scale.threshold();
+
 function renderMap () {
     var topojsonPath = "data/json/world-topo.topojson";
+    //var topojsonPath = "data/json/countries.topojson";
     var csvPath = "data/sustainable.csv";
 
     //Map dimensions (in pixels)
@@ -35,7 +38,8 @@ function renderMap () {
     svg.call(zoom);
 
 // Color scale
-    var threshold = d3.scale.threshold()
+//    var threshold = d3.scale.threshold()
+    threshold
         .domain([3, 6, 12, 24, 36, 60, 75, 110])
         .range(d3.range(7).map(function (i) {
             return "q" + i + "-7";
@@ -47,6 +51,8 @@ function renderMap () {
     q
         .defer(d3.json, topojsonPath)
         .defer(d3.csv, csvPath, function (d) {
+            //console.log(d.CountryCode + " - " + threshold(val));
+
             valueByCountryCode.set(d.CountryCode, +d.PM2p5)
         })
         .await(ready);
@@ -61,13 +67,16 @@ function renderMap () {
             .enter()
             .append("path")
             .attr("class", function(d) {
-                var value = threshold(valueByCountryCode.get(d.properties.id));
-                if (value) {    // check if value is defined
-                    console.log(value);
-                    return value;
-                } else {
-                    return "no-data";
-                }
+
+                //var value = threshold(valueByCountryCode.get(d.properties.id));
+                var value = d.properties.id;
+                var valueByCC = valueByCountryCode.get(value);
+                var valueThresh = threshold(valueByCC);
+
+                console.log("value " + value + " valueByCC " + valueByCC + " valueThresh " + valueThresh);
+                
+                // check if value is defined
+                if (value) { return value; } else { return "no-data"; }
             })
             .attr("d",path)
             .on("mouseover",showTooltip)
@@ -100,15 +109,15 @@ function renderMap () {
         moveTooltip();
 
         tooltip.style("display","block")
-            .text(d.properties.admin); // Country name
+            .text(d.properties.id + " | " + d.properties.admin); // Country name
         //.text(d.properties.id); // Three-letter code
     }
 
 //Move the tooltip to track the mouse
     function moveTooltip() {
 
-        tooltip.style("top",(d3.event.pageY+tooltipOffset.y)+"px")
-            .style("left",(d3.event.pageX+tooltipOffset.x)+"px");
+        tooltip.style("top",(d3.event.pageY + tooltipOffset.y) + "px")
+            .style("left",(d3.event.pageX + tooltipOffset.x) + "px");
 
     }
 

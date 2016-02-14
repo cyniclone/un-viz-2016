@@ -226,7 +226,7 @@ path {
   fill: #a0391b;
 }
 .no-data {
-  fill: #fefefe;
+  fill: #ccc;
 }
 path:hover,
 path.highlighted {
