@@ -1,5 +1,3 @@
-//var threshold = d3.scale.threshold();
-
 function renderMap () {
     var topojsonPath = "data/json/world-topo.topojson";
     var csvPath = "data/sustainable.csv";
@@ -9,9 +7,9 @@ function renderMap () {
         height = 500;
 
 //Map projection
-    var projection = d3.geo.mercator()
-        .scale(93.51993278144236)
-        .center([3.304581611064289, -1.3409442035493517]) //projection center
+    var projection = d3.geo.equirectangular()
+        .scale(175)
+        .center([3.3, -1.3]) //projection center
         .translate([width / 2, height / 2]) //translate to center the map in view
 
 //Generate paths based on projection
@@ -41,9 +39,7 @@ function renderMap () {
     var threshold = d3.scale.threshold()
         //.domain([3, 6, 12, 24, 36, 60, 75, 110])
         .domain([6, 12, 24, 36, 60, 75])
-        .range(d3.range(7).map(function (i) {
-            return "q" + i + "-7";
-        }));
+        .range(d3.range(7).map(function (i) { return "q" + i + "-7"; }));
 
     var valueByCountryCode = d3.map();
 
@@ -84,9 +80,7 @@ function renderMap () {
 
 // Add optional onClick events for features here
 // d.properties contains the attributes (e.g. d.properties.name, d.properties.population)
-    function clicked(d,i) {
-
-    }
+    function clicked(d,i) { }
 
 
 //Update map on zoom/pan
