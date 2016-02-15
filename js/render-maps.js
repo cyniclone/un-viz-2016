@@ -1,24 +1,22 @@
-function renderMap () {
-    var topojsonPath = "data/json/world-topo.topojson";
-    var csvPath = "data/sustainable.csv";
+function renderMap (obj) {
+    //var topojsonPath = "data/json/world-topo.topojson";
+    //var csvPath = "data/sustainable.csv";
 
     //Map dimensions (in pixels)
-    var width = 1100,
-        height = 500;
+    var width = obj.dimensions.width,
+        height = obj.dimensions.height;
 
 //Map projection
     var projection = d3.geo.equirectangular()
         .scale(175)
-        .center([3.3, -1.3]) //projection center
+        .center([0,0]) //projection center
         .translate([width / 2, height / 2]) //translate to center the map in view
 
 //Generate paths based on projection
     var path = d3.geo.path().projection(projection);
 
 //Create an SVG
-    var svg = d3.select("#map").append("svg")
-        .attr("width", width)
-        .attr("height", height);
+    var svg = d3.select("#map").append("svg").attr("width", width).attr("height", height);
 
 //Group for the map features
     var features = svg.append("g").attr("class", "features");
@@ -45,8 +43,8 @@ function renderMap () {
 
     var q = d3_queue.queue();
     q
-        .defer(d3.json, topojsonPath)
-        .defer(d3.csv, csvPath, function (d) {
+        .defer(d3.json, obj.path.topojson)
+        .defer(d3.csv, obj.path.csv, function (d) {
             //console.log(d.CountryCode + " - " + threshold(val));
 
             valueByCountryCode.set(d.CountryCode, +d.PM2p5)
@@ -99,7 +97,15 @@ function renderMap () {
 
         // TODO: add value to tooltip
         tooltip.style("display","block")
-            .text(d.properties.admin); // Country name
+            .text(function () {
+                var tooltipValue = valueByCountryCode.get(d.properties.id)
+
+                var s = "";
+                s += d.properties.admin + " - ";
+                s += (tooltipValue) ? (tooltipValue + obj.tooltipText) : "no data";
+
+                return s;
+            });
     }
 
 //Move the tooltip to track the mouse

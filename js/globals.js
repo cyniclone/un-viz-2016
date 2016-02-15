@@ -519,6 +519,10 @@ charts["innovation2"] = {
 
 /***** 11 Sustainable Cities and Communities ************/
 charts["sustainable"] = {
+    "path" : {
+        "csv" : "data/sustainable.csv",
+        "topojson" : "data/json/world-topo.topojson"
+    },
     "targetDiv" : "#chart",
     "dimensions" : {
         "margin" : {
@@ -527,11 +531,10 @@ charts["sustainable"] = {
             bottom: 30,
             left: 50
         },
-        "width" : 550,
-        "height" : 600
+        "width" : 1100,
+        "height" : 525
     },
-    "countryNamesPath" : "data/countrylist/list-sustainable.csv",
-    "dataPath" : "data/sustainable.csv"
+    "tooltipText" : " micrograms"
 };
 charts["sustainableBars"] = {
     //"percentSuffix" : true,

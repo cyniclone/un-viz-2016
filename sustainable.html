@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container-fluid sustainable">
+<div class="container sustainable">
     <div class="row">
         <div class="col-md-12 col-sm-12"><h1 id="page-header">Sustainable Cities and Communities</h1></div>
     </div>
@@ -20,7 +20,7 @@
         <div class="col-md-12 col-sm-12">
             <div id="info-box">
                 <p>
-                    Air quality: Annual mean concentration of particles smaller than 2.5 microns
+                    Air quality: Annual mean concentration of particles smaller than 2.5 microns, in micrograms, per cubic meter of air
                 </p>
             </div>
         </div>
@@ -48,10 +48,11 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="https://d3js.org/d3-queue.v2.min.js"></script>
+<script src="js/globals.js"></script>
 <script src="js/render-maps.js"></script>
 <script>
     $(document).ready(function() {
-        renderMap();
+        renderMap(charts["sustainable"]);
     })
 </script>
 

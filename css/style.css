@@ -287,13 +287,19 @@ div.world-tooltip {
 }
 .d3-tip,
 .world-tooltip {
-  width: 150px;
+/* width: 150px; */
   background-color: rgba(255,255,255,0.85);
   padding: 5px;
   border-radius: 10px;
   font-size: 12px;
   font-family: sans-serif;
   color: #222;
+}
+.d3-tip {
+  width: 150px;
+}
+.world-tooltip {
+  width: 180px;
 }
 /* Style data points */
 .scatterdot,
