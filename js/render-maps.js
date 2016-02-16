@@ -116,17 +116,65 @@ function renderLegend(obj) {
         width = dim.width - dim.margin.left - dim.margin.right,
         height = dim.height - dim.margin.top - dim.margin.bottom;
 
-    var data = obj.domain;
+    var data = obj.legendData;
+
+    var threshold = d3.scale.threshold()
+        .domain(obj.domain)
+        .range(d3.range(7).map(function (i) { return "q" + i + "-7"; }));
 
     console.log(obj);
     console.log(data);
 
     //Create an SVG
-    var svg = d3.select("#map").append("svg").attr("width", width).attr("height", height);
+    var svg = d3.select("#map-legend").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var xScale = d3.scale().linear()
+    var xScale = d3.scale.linear()
         .range([0, width])
-        .domain(data);
+        .domain(d3.extent(data));
 
-    
+    var xAxis = d3.svg.axis()
+        .scale(xScale)
+        .orient("bottom")
+        .tickValues(data)
+        .tickPadding(5)
+        .outerTickSize(20)
+        .innerTickSize(20);
+
+    svg.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", function(d, i) {
+            return "bar " + threshold(d);
+        })
+        .attr("x", function(d, i) {
+            return xScale(d)
+        })
+        .attr("width", function(d, i) {
+            if (data[i] == data[0]) {
+                return xScale(data[i+1] - data[i])
+            }
+            console.log(data[i+1] - data[i]);
+            return xScale(data[i+1] - data[i])
+        })
+        .attr("y", 0 )
+        .attr("height", 20)
+        .attr("fill", function(d, i) {
+            return "rgb(255, 255, " + 255 / 27 * Math.random() + ")"
+        });
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + 0 + ")")
+        .call(xAxis);
+
+    svg.append("text")
+        .attr("y", margin.bottom + 10)
+        .attr("dy", ".71em")
+        .text(obj.legendLabel);
+
+
 }

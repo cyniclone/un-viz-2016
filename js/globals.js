@@ -525,29 +525,22 @@ charts["sustainable"] = {
     },
     "targetDiv" : "#chart",
     "dimensions" : {
-        "margin" : {
-            top : 20,
-            right: 20,
-            bottom: 30,
-            left: 50
-        },
+        "margin" : { top : 20,  right: 20,  bottom: 30,  left: 50 },
         "width" : 1100,
         "height" : 525
     },
     "legend" : {
         "dimensions" : {
-                "margin" : {
-                    top : 20,
-                    right: 20,
-                    bottom: 20,
-                    left: 20
-                },
+                "margin" : { top : 10,  right: 20,  bottom: 40,  left: 20 },
                 "width" : 1100,
-                "height" : 100
+                "height" : 130
         }
     },
     "tooltipText" : " micrograms",
-    "domain" : [6, 12, 24, 36, 60, 75]
+    "domain" : [6, 12, 24, 36, 60, 75],
+    "legendData" : [0, 6, 12, 24, 36, 60, 75, 110],
+    "legendLabel" : "Micrograms of particles (smaller than 2.5 microns) per cubic meter of air"
+
 
 };
 charts["sustainableBars"] = {

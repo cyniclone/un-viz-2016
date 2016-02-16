@@ -198,6 +198,20 @@ body {
 #map {
   font: 12px sans-serif;
 }
+#map-legend g.tick {
+  fill: #000;
+}
+#map-legend g.tick line {
+  stroke: #222;
+}
+#map-legend .axis path {
+  stroke: #222;
+  stroke-width: 1.5px;
+}
+#map-legend .x.axis g.tick {
+  stroke-opacity: 1;
+  stroke-width: 1.5px;
+}
 path {
   stroke-width: 1px;
   stroke: #f5f5f5;
