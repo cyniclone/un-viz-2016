@@ -1,6 +1,4 @@
 function renderMap (obj) {
-    //var topojsonPath = "data/json/world-topo.topojson";
-    //var csvPath = "data/sustainable.csv";
 
     //Map dimensions (in pixels)
     var width = obj.dimensions.width,
@@ -33,10 +31,8 @@ function renderMap (obj) {
     svg.call(zoom);
 
 // Color scale
-    // TODO: Value higher than 75 causes 'undefined' for threshold
     var threshold = d3.scale.threshold()
-        //.domain([3, 6, 12, 24, 36, 60, 75, 110])
-        .domain([6, 12, 24, 36, 60, 75])
+        .domain(obj.domain)
         .range(d3.range(7).map(function (i) { return "q" + i + "-7"; }));
 
     var valueByCountryCode = d3.map();
@@ -44,11 +40,7 @@ function renderMap (obj) {
     var q = d3_queue.queue();
     q
         .defer(d3.json, obj.path.topojson)
-        .defer(d3.csv, obj.path.csv, function (d) {
-            //console.log(d.CountryCode + " - " + threshold(val));
-
-            valueByCountryCode.set(d.CountryCode, +d.PM2p5)
-        })
+        .defer(d3.csv, obj.path.csv, function (d) { valueByCountryCode.set(d.CountryCode, +d.PM2p5) })
         .await(ready);
 
     // The two defer calls will not be executed until ready() is
@@ -61,9 +53,7 @@ function renderMap (obj) {
             .enter()
             .append("path")
             .attr("class", function(d) {
-
                 var value = threshold(valueByCountryCode.get(d.properties.id));
-                
                 // check if value is defined
                 if (value) { return value; } else { return "no-data"; }
             })
@@ -80,13 +70,11 @@ function renderMap (obj) {
 // d.properties contains the attributes (e.g. d.properties.name, d.properties.population)
     function clicked(d,i) { }
 
-
 //Update map on zoom/pan
     function zoomed() {
         features.attr("transform", "translate(" + zoom.translate() + ")scale(" + zoom.scale() + ")")
             .selectAll("path").style("stroke-width", 1 / zoom.scale() + "px" );
     }
-
 
 //Position of the tooltip relative to the cursor
     var tooltipOffset = {x: 5, y: -25};
@@ -120,4 +108,25 @@ function renderMap (obj) {
         tooltip.style("display","none");
     }
 
+}
+
+function renderLegend(obj) {
+    var dim = obj.legend.dimensions,
+        margin = dim.margin,
+        width = dim.width - dim.margin.left - dim.margin.right,
+        height = dim.height - dim.margin.top - dim.margin.bottom;
+
+    var data = obj.domain;
+
+    console.log(obj);
+    console.log(data);
+
+    //Create an SVG
+    var svg = d3.select("#map").append("svg").attr("width", width).attr("height", height);
+
+    var xScale = d3.scale().linear()
+        .range([0, width])
+        .domain(data);
+
+    
 }

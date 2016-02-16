@@ -534,7 +534,21 @@ charts["sustainable"] = {
         "width" : 1100,
         "height" : 525
     },
-    "tooltipText" : " micrograms"
+    "legend" : {
+        "dimensions" : {
+                "margin" : {
+                    top : 20,
+                    right: 20,
+                    bottom: 20,
+                    left: 20
+                },
+                "width" : 1100,
+                "height" : 100
+        }
+    },
+    "tooltipText" : " micrograms",
+    "domain" : [6, 12, 24, 36, 60, 75]
+
 };
 charts["sustainableBars"] = {
     //"percentSuffix" : true,
