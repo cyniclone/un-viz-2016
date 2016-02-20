@@ -178,27 +178,6 @@ body
   g.tick
     font-size 12px
     fill white
-  #map
-    font: 12px sans-serif
-  #map-legend
-    g.tick
-      fill black
-      line
-        stroke #222
-    .axis
-      path
-        stroke #222
-        stroke-width 1.5px
-    .x.axis
-      g.tick
-        stroke-opacity 1
-        stroke-width 1.5px
-
-  path
-    stroke-width: 1px;
-    stroke: whitesmoke;
-    /*fill: #222; */
-    cursor: pointer;
 
   .q0-7   /* Choropleth styling */
     fill #FEEAD8
@@ -218,18 +197,8 @@ body
     fill #ccc
     fill-opacity 0.6
 
-
   path:hover, path.highlighted
     fill #4684DF
-
-  div.world-tooltip
-    position: absolute;
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-    font-weight: bold;
-    padding: 4px 8px;
-    display: none;
 
 .consumption /* 12 RESPONSIBLE CONSUMPTION */
   color #000000
@@ -260,6 +229,25 @@ body
 .fish /* 14 LIFE BELOW WATER */
   background #2193d0
 
+.land /* 15 LIFE ON LAND */
+  background #59B439
+  .q0-7   /* Choropleth styling */
+    fill #EAF2E3
+  .q1-7
+    fill #C5E0BE
+  .q2-7
+    fill #9ECE9A
+  .q3-7
+    fill #74BE77
+  .q4-7
+    fill #41B062
+  .q5-7
+    fill #149148
+  .q6-7
+    fill #006A35
+  .no-data
+    fill #ccc
+    fill-opacity 0.6
 
 
         
@@ -275,7 +263,6 @@ body
   shape-rendering geometricPrecision
 
 .d3-tip, .world-tooltip
-  /* width: 150px; */
   background-color: rgba(255, 255, 255, 0.85);
 
   padding: 5px;
@@ -288,6 +275,39 @@ body
   width 150px
 .world-tooltip
   width 180px
+
+div.world-tooltip
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-weight: bold;
+  padding: 4px 8px;
+  display: none;
+
+/* MAP */
+#map-legend
+  g.tick
+    fill black
+    line
+      stroke #222
+  .axis
+    path
+      stroke #222
+      stroke-width 1.5px
+  .x.axis
+    g.tick
+      stroke-opacity 1
+      stroke-width 1.5px
+
+#map
+  font: 12px sans-serif
+  path
+    stroke-width: 1px;
+    stroke: whitesmoke;
+    /*fill: #222; */
+    cursor: pointer;
+
 
 /* Style data points */
 

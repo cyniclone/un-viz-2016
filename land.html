@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Sustainable Cities and Communities</title>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container land">
+    <div class="row">
+        <div class="col-md-12 col-sm-12"><h1 id="page-header">Life on Land</h1></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div id="info-box">
+                <p>
+                <h4>
+                    Forest area worldwide
+
+                </h4>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Forest area as a percentage of the total country surface (2013)</h3>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="map-legend"></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/d3-queue.v2.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+<script src="js/globals.js"></script>
+<script src="js/render-maps.js"></script>
+<script src="js/render-bars.js"></script>
+<script>
+    $(document).ready(function() {
+        renderMap(charts["sustainable"]);
+        renderLegend(charts["sustainable"]);
+//        drawBars(charts["sustainableBars"]);
+    })
+</script>
+
+</body>

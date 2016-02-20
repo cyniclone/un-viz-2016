@@ -1,5 +1,4 @@
 function renderMap (obj) {
-
     //Map dimensions (in pixels)
     var width = obj.dimensions.width,
         height = obj.dimensions.height;
@@ -39,14 +38,15 @@ function renderMap (obj) {
 
     var q = d3_queue.queue();
     q
-        .defer(d3.json, obj.path.topojson)
+        .defer(d3.json, obj.path.topo)
+        //.defer(d3.json, "data/json/world-topo.topojson")
         .defer(d3.csv, obj.path.csv, function (d) { valueByCountryCode.set(d.CountryCode, +d.PM2p5) })
         .await(ready);
 
     // The two defer calls will not be executed until ready() is
     function ready(error, geodata) {
         if (error) throw error;
-        
+
         //Create a path for each map feature in the data
         features.selectAll("path")
             .data(topojson.feature(geodata,geodata.objects.countries).features) //generate features from TopoJSON

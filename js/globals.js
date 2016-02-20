@@ -522,7 +522,7 @@ charts["innovation2"] = {
 charts["sustainable"] = {
     "path" : {
         "csv" : "data/sustainable.csv",
-        "topojson" : "data/json/world-topo.topojson"
+        "topo" : "data/json/world-topo.topojson"
     },
     "targetDiv" : "#chart",
     "dimensions" : {

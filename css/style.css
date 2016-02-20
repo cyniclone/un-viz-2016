@@ -203,29 +203,6 @@ g.tick {
   font-size: 12px;
   fill: #fff;
 }
-#map {
-  font: 12px sans-serif;
-}
-#map-legend g.tick {
-  fill: #000;
-}
-#map-legend g.tick line {
-  stroke: #222;
-}
-#map-legend .axis path {
-  stroke: #222;
-  stroke-width: 1.5px;
-}
-#map-legend .x.axis g.tick {
-  stroke-opacity: 1;
-  stroke-width: 1.5px;
-}
-path {
-  stroke-width: 1px;
-  stroke: #f5f5f5;
-/*fill: #222; */
-  cursor: pointer;
-}
 .q0-7 {
   fill: #feead8;
 }
@@ -254,15 +231,6 @@ path {
 path:hover,
 path.highlighted {
   fill: #4684df;
-}
-div.world-tooltip {
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #000;
-  color: #000;
-  font-weight: bold;
-  padding: 4px 8px;
-  display: none;
 }
 .consumption {
   color: #000;
@@ -298,6 +266,34 @@ div.world-tooltip {
 .fish {
   background: #2193d0;
 }
+.land {
+  background: #59b439;
+}
+.land .q0-7 {
+  fill: #eaf2e3;
+}
+.land .q1-7 {
+  fill: #c5e0be;
+}
+.land .q2-7 {
+  fill: #9ece9a;
+}
+.land .q3-7 {
+  fill: #74be77;
+}
+.land .q4-7 {
+  fill: #41b062;
+}
+.land .q5-7 {
+  fill: #149148;
+}
+.land .q6-7 {
+  fill: #006a35;
+}
+.land .no-data {
+  fill: #ccc;
+  fill-opacity: 0.6;
+}
 /*********** global viz  *********/
 .axis {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -310,7 +306,6 @@ div.world-tooltip {
 }
 .d3-tip,
 .world-tooltip {
-/* width: 150px; */
   background-color: rgba(255,255,255,0.85);
   padding: 5px;
   border-radius: 10px;
@@ -323,6 +318,39 @@ div.world-tooltip {
 }
 .world-tooltip {
   width: 180px;
+}
+div.world-tooltip {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  font-weight: bold;
+  padding: 4px 8px;
+  display: none;
+}
+/* MAP */
+#map-legend g.tick {
+  fill: #000;
+}
+#map-legend g.tick line {
+  stroke: #222;
+}
+#map-legend .axis path {
+  stroke: #222;
+  stroke-width: 1.5px;
+}
+#map-legend .x.axis g.tick {
+  stroke-opacity: 1;
+  stroke-width: 1.5px;
+}
+#map {
+  font: 12px sans-serif;
+}
+#map path {
+  stroke-width: 1px;
+  stroke: #f5f5f5;
+/*fill: #222; */
+  cursor: pointer;
 }
 /* Style data points */
 .scatterdot,
