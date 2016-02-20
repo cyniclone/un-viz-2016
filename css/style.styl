@@ -231,6 +231,11 @@ body
 
 .land /* 15 LIFE ON LAND */
   background #59B439
+
+  #map
+    path
+      stroke: #7f7f7f;
+
   .q0-7   /* Choropleth styling */
     fill #EAF2E3
   .q1-7
@@ -247,7 +252,11 @@ body
     fill #006A35
   .no-data
     fill #ccc
-    fill-opacity 0.6
+    fill-opacity 1
+
+  #map
+    path:hover, path.highlighted
+      fill #4684DF
 
 
         

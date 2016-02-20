@@ -32,15 +32,14 @@ function renderMap (obj) {
 // Color scale
     var threshold = d3.scale.threshold()
         .domain(obj.domain)
-        .range(d3.range(7).map(function (i) { return "q" + i + "-7"; }));
+        .range(d3.range(obj.numQuantiles).map(function (i) { return "q" + i + "-" + obj.numQuantiles; }));
 
     var valueByCountryCode = d3.map();
 
     var q = d3_queue.queue();
     q
         .defer(d3.json, obj.path.topo)
-        //.defer(d3.json, "data/json/world-topo.topojson")
-        .defer(d3.csv, obj.path.csv, function (d) { valueByCountryCode.set(d.CountryCode, +d.PM2p5) })
+        .defer(d3.csv, obj.path.csv, function (d) { valueByCountryCode.set(d.CountryCode, +d[obj.mapParam]) })
         .await(ready);
 
     // The two defer calls will not be executed until ready() is
@@ -117,10 +116,12 @@ function renderLegend(obj) {
         height = dim.height - dim.margin.top - dim.margin.bottom;
 
     var data = obj.legendData;
+    var numQ = obj.numQuantiles;
+    console.log("numQ " + numQ);
 
     var threshold = d3.scale.threshold()
         .domain(obj.domain)
-        .range(d3.range(7).map(function (i) { return "q" + i + "-7"; }));
+        .range(d3.range(obj.numQuantiles).map(function (i) { return "q" + i + "-" + numQ; }));
 
     console.log(obj);
     console.log(data);

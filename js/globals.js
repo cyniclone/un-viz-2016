@@ -524,7 +524,8 @@ charts["sustainable"] = {
         "csv" : "data/sustainable.csv",
         "topo" : "data/json/world-topo.topojson"
     },
-    "targetDiv" : "#chart",
+    "mapParam" : "PM2p5",
+    "numQuantiles" : 7,
     "dimensions" : {
         "margin" : { top : 20,  right: 20,  bottom: 30,  left: 50 },
         "width" : 1100,
@@ -598,5 +599,31 @@ charts["fish"] = {
         "width" : 1100,
         "height" : 900
     },
+};
+
+/***** 15 LIFE ON LAND ************/
+charts["land"] = {
+    "path" : {
+        "csv" : "data/land.csv",
+        "topo" : "data/json/world-topo.topojson"
+    },
+    "mapParam" : "2013",
+    "numQuantiles" : 7,
+    "dimensions" : {
+        "margin" : { top : 20,  right: 20,  bottom: 30,  left: 50 },
+        "width" : 1100,
+        "height" : 525
+    },
+    "legend" : {
+        "dimensions" : {
+            "margin" : { top : 10,  right: 20,  bottom: 40,  left: 20 },
+            "width" : 1100,
+            "height" : 90
+        }
+    },
+    "tooltipText" : " %",
+    "domain" : [16, 26, 36, 48, 60, 75],
+    "legendData" : [0, 16, 26, 36, 48, 60, 75, 100],
+    "legendLabel" : "Percentage of total country surface"
 };
 /**********************************/

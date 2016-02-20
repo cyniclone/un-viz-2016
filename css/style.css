@@ -269,6 +269,9 @@ path.highlighted {
 .land {
   background: #59b439;
 }
+.land #map path {
+  stroke: #7f7f7f;
+}
 .land .q0-7 {
   fill: #eaf2e3;
 }
@@ -292,7 +295,11 @@ path.highlighted {
 }
 .land .no-data {
   fill: #ccc;
-  fill-opacity: 0.6;
+  fill-opacity: 1;
+}
+.land #map path:hover,
+.land #map path.highlighted {
+  fill: #4684df;
 }
 /*********** global viz  *********/
 .axis {
