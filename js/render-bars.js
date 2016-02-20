@@ -178,10 +178,10 @@ function drawBars2 () {
     d3.csv("data/inequality.csv", type, render);
 }
 
-function drawBars (chartObj) {
+function drawBars (obj) {
 
     // Assign chart dimensions from object
-    var dim = chartObj.dimensions,
+    var dim = obj.dimensions,
         margin = dim.margin,
         width = dim.width - dim.margin.left - dim.margin.right,
         height = dim.height - dim.margin.top - dim.margin.bottom;
@@ -193,8 +193,8 @@ function drawBars (chartObj) {
         xAxis = d3.svg.axis().scale(xScale).orient("top")
             .tickFormat(d3.format("d"));
 
-    if (chartObj.xTicks != undefined) {
-        xAxis.ticks(chartObj.xTicks);
+    if (obj.xTicks != undefined) {
+        xAxis.ticks(obj.xTicks);
     }
 
     // setup y
@@ -213,14 +213,14 @@ function drawBars (chartObj) {
         });
 
     // Make chart SVG
-    var svg = d3.select(chartObj.targetDiv).append("svg")
+    var svg = d3.select(obj.targetDiv).append("svg")
         .attr("class", "bar-chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.csv(chartObj.dataPath, function (error, data) {
+    d3.csv(obj.dataPath, function (error, data) {
         data.forEach(function(d) {d.Value = +d.Value;}); // Force numeric
 
         // Sort data
@@ -230,7 +230,7 @@ function drawBars (chartObj) {
 
         // Set scale domains
         //xScale.domain(d3.extent(data, function(d) { return d.Value; })).nice();
-        xScale.domain(chartObj.xDomain);
+        xScale.domain(obj.xDomain);
         yScale.domain(data.map(function(d) { return d.CountryName; }));
 
         // Render Axes
@@ -266,16 +266,17 @@ function drawBars (chartObj) {
             .attr("y", function(d) { return yScale(d.CountryName) + yScale.rangeBand() / 2; })
             .attr("dy", ".35em")
             .attr("fill", "white")
+            .style("font-size", "11px")
             .text(function(d) {
                 var s = d.Value;
-                if (chartObj.percentSuffix != undefined) {
-                    return s + "%" ;
+                if (obj.hasSuffix) {
+                    return s + obj.suffix ;
                 } else { return s; }
             });
 
 
         // Draw OECD average
-        if (chartObj.hasAverage) {
+        if (obj.hasAverage) {
             var averageLine = d3.select(".bar-chart g")
                 .append("svg:line")
                 .attr({

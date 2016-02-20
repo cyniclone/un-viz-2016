@@ -19,6 +19,7 @@ select {
 }
 #select-title {
   float: right;
+  margin-top: 0px;
   display: inline-block;
 }
 /*****    TEXT STYLING    *********/
@@ -195,6 +196,13 @@ body {
 .sustainable {
   background: #f59a23;
 }
+h3 {
+  color: #000;
+}
+g.tick {
+  font-size: 12px;
+  fill: #fff;
+}
 #map {
   font: 12px sans-serif;
 }
@@ -241,6 +249,7 @@ path {
 }
 .no-data {
   fill: #ccc;
+  fill-opacity: 0.6;
 }
 path:hover,
 path.highlighted {

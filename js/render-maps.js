@@ -154,11 +154,9 @@ function renderLegend(obj) {
             return xScale(d)
         })
         .attr("width", function(d, i) {
-            if (data[i] == data[0]) {
+            if (!isNaN(xScale(data[i+1] - data[i]))) {
                 return xScale(data[i+1] - data[i])
-            }
-            console.log(data[i+1] - data[i]);
-            return xScale(data[i+1] - data[i])
+            } else { return 0; }
         })
         .attr("y", 0 )
         .attr("height", 20)

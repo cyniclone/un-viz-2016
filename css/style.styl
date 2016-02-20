@@ -21,6 +21,7 @@ select
 
 #select-title
   float right
+  margin-top 0px
   display inline-block
 
 /*****    TEXT STYLING    *********/
@@ -172,6 +173,11 @@ body
 
 .sustainable /* 11 SUSTAINABLE CITIES AND COMMUNITIES */
     background #f59a23
+  h3
+    color black
+  g.tick
+    font-size 12px
+    fill white
   #map
     font: 12px sans-serif
   #map-legend
@@ -187,7 +193,6 @@ body
       g.tick
         stroke-opacity 1
         stroke-width 1.5px
-
 
   path
     stroke-width: 1px;
@@ -211,6 +216,8 @@ body
     fill #A0391B
   .no-data
     fill #ccc
+    fill-opacity 0.6
+
 
   path:hover, path.highlighted
     fill #4684DF

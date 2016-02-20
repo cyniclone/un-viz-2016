@@ -292,7 +292,8 @@ charts["genderm"] = {
     }
 };
 charts["genderBars"] = {
-    "percentSuffix" : true,
+    "hasSuffix" : true,
+    "suffix" : "%",
     "hasAverage" : true,
     "xDomain" : [0, 45],
     "dataPath" : "data/gender-forbes.csv",
@@ -533,32 +534,30 @@ charts["sustainable"] = {
         "dimensions" : {
                 "margin" : { top : 10,  right: 20,  bottom: 40,  left: 20 },
                 "width" : 1100,
-                "height" : 130
+                "height" : 90
         }
     },
     "tooltipText" : " micrograms",
     "domain" : [6, 12, 24, 36, 60, 75],
     "legendData" : [0, 6, 12, 24, 36, 60, 75, 110],
     "legendLabel" : "Micrograms of particles (smaller than 2.5 microns) per cubic meter of air"
-
-
 };
 charts["sustainableBars"] = {
-    //"percentSuffix" : true,
-    //"hasAverage" : true,
-    //"xDomain" : [0, 45],
-    //"dataPath" : "data/gender-forbes.csv",
-    //"targetDiv" : "#bar-chart",
-    //"dimensions" : {
-    //    "margin" : {
-    //        top : 20,
-    //        right: 60,
-    //        bottom: 10,
-    //        left: 100
-    //    },
-    //    "width" : 1100,
-    //    "height" : 900
-    //}
+    "hasSuffix" : true,
+    "suffix" : " µg",
+    "xDomain" : [0, 100],
+    "dataPath" : "data/sustainable-bars.csv",
+    "targetDiv" : "#bar-chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 60,
+            bottom: 10,
+            left: 150
+        },
+        "width" : 1100,
+        "height" : 600
+    }
 };
 
 // INEQUALITY

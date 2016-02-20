@@ -20,7 +20,10 @@
         <div class="col-md-12 col-sm-12">
             <div id="info-box">
                 <p>
+                <h4>
                     Air quality: Annual mean concentration of particles smaller than 2.5 microns, in micrograms, per cubic meter of air
+
+                </h4>
                 </p>
             </div>
         </div>
@@ -42,9 +45,10 @@
 
     <div class="row">
         <div class="col-md-12 col-sm-12">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dicta eligendi maiores minima odit provident rem rerum tempore ut. Ad alias assumenda atque earum ipsum molestias nihil praesentium similique unde!
-                </p>
+            <h3>Top 25 countries</h3>
+            <p>Micrograms of particles (smaller than 2.5 microns) per cubic meter of air</p>
+            <div id="bar-chart"></div>
+            <br>
         </div>
     </div>
 </div>
@@ -54,12 +58,16 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="https://d3js.org/d3-queue.v2.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
 <script src="js/globals.js"></script>
 <script src="js/render-maps.js"></script>
+<script src="js/render-bars.js"></script>
 <script>
     $(document).ready(function() {
         renderMap(charts["sustainable"]);
         renderLegend(charts["sustainable"]);
+        drawBars(charts["sustainableBars"]);
     })
 </script>
 
