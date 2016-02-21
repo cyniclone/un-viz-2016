@@ -635,7 +635,15 @@ charts["landLine"] = {
     "path" : {
         "csv": "data/land-line.csv"
     },
-    "miles" : [15, 15.5, 16, 16.5],
-    "kilometers" : [39, 40, 41, 42]
+    "kilometers" : {
+        "values" : [39.0, 40.0, 41.0, 42.0],
+        "domain" : [38, 43]
+    },
+    "miles" : {
+        "values" : [15.0, 15.5, 16.0, 16.5],
+        "domain" : [14.6719, 16.6024]
+    //    TODO: Dude, remember that the units are squared
+    },
+    "years" : [1990, 2000, 2006, 2008, 2010, 2012]
 }
 /**********************************/

@@ -270,6 +270,9 @@ path.highlighted {
 .land {
   background: #59b439;
 }
+.land #line-chart .x.axis path {
+  stroke: none;
+}
 .land #map path {
   stroke: #7f7f7f;
 }
