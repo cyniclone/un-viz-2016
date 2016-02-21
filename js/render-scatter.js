@@ -120,6 +120,7 @@ function drawScatter (obj) {
         } else {
             xScale.domain(d3.extent(data, function (d) { return d[xParam]; })).nice();
         }
+
         if (obj.useCustomR) {
             rScale.domain(d3.extent(data, function (d) { return d[rParam]; })).nice();
         }

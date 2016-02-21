@@ -69,6 +69,25 @@ function renderLine(obj) {
         //    .style("stroke", "black")
         //    .attr("d", valueMi(data));
 
+        // Render dots
+        svg.selectAll(".circle")
+            .data(data)
+            .enter().append("circle")
+            .attr("class", "circle")
+            .attr("r", "5")
+            .style({
+                "fill" : "white",
+                "stroke" : "#006A35",
+                "stroke-width" : "1.5px"
+            })
+            .attr('cx', function(d) {
+                return xScale(d.Year)
+            })
+            .attr('cy', function(d) {
+                return yScaleKm(d.km)
+            })
+
+
         svg.append("g")            // Add the X Axis
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")

@@ -273,6 +273,10 @@ path.highlighted {
 .land #line-chart .axis path {
   stroke: none;
 }
+.land #line-chart .y.axis g.tick {
+  stroke-width: 2px;
+  stroke-opacity: 0.6;
+}
 .land #line-chart g.tick {
   font-size: 14px;
   fill: #fff;
