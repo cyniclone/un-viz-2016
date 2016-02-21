@@ -38,6 +38,17 @@ function renderLine(obj) {
         .x(function(d) { return xScale(d.Year); })
         .y(function(d) { return yScaleMi(d.mi); });
 
+    var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function (d) {
+            var html = "";
+            html += "<b><u>" + d.Year + "</u></b><br />";
+            html += d.km + " km &sup2; (millions)<br />"
+            html += d.mi + " miles &sup2; (millions)";
+            return html
+        });
+
     var svg = d3.select("#line-chart")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -45,6 +56,8 @@ function renderLine(obj) {
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.call(tip);
 
     d3.csv(obj.path.csv, function(error, data) {
         data.forEach(function(d) {
@@ -61,7 +74,7 @@ function renderLine(obj) {
         svg.append("path")        // Add the valueline path.
             .style("fill", "none")
             .style("stroke", "white")
-            .style("stroke-width", "2px")
+            .style("stroke-width", "1.5px")
             .attr("d", valueKm(data));
 
         //svg.append("path")        // Add the valueline2 path.
@@ -86,6 +99,8 @@ function renderLine(obj) {
             .attr('cy', function(d) {
                 return yScaleKm(d.km)
             })
+            .on('mouseover', function (d) { tip.show(d); })
+            .on('mouseout', function (d) { tip.hide(d); });
 
 
         svg.append("g")            // Add the X Axis

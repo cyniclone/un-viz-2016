@@ -279,7 +279,7 @@ path.highlighted {
 }
 .land #line-chart g.tick {
   font-size: 14px;
-  fill: #fff;
+  fill: #333;
 }
 .land #map path {
   stroke: #7f7f7f;
