@@ -533,9 +533,9 @@ charts["sustainable"] = {
     },
     "legend" : {
         "dimensions" : {
-                "margin" : { top : 10,  right: 20,  bottom: 40,  left: 20 },
-                "width" : 1100,
-                "height" : 90
+            "margin" : { top : 10,  right: 20,  bottom: 40,  left: 20 },
+            "width" : 1100,
+            "height" : 90
         }
     },
     "tooltipText" : " micrograms",
@@ -626,4 +626,16 @@ charts["land"] = {
     "legendData" : [0, 16, 26, 36, 48, 60, 75, 100],
     "legendLabel" : "Percentage of total country surface"
 };
+charts["landLine"] = {
+    "dimensions" : {
+        "margin" : { top : 20,  right: 50,  bottom: 30,  left: 50 },
+        "width" : 900,
+        "height" : 350
+    },
+    "path" : {
+        "csv": "data/land-line.csv"
+    },
+    "miles" : [15, 15.5, 16, 16.5],
+    "kilometers" : [39, 40, 41, 42]
+}
 /**********************************/

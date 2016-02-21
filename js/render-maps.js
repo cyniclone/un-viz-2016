@@ -117,14 +117,10 @@ function renderLegend(obj) {
 
     var data = obj.legendData;
     var numQ = obj.numQuantiles;
-    console.log("numQ " + numQ);
 
     var threshold = d3.scale.threshold()
         .domain(obj.domain)
-        .range(d3.range(obj.numQuantiles).map(function (i) { return "q" + i + "-" + numQ; }));
-
-    console.log(obj);
-    console.log(data);
+        .range(d3.range(numQ).map(function (i) { return "q" + i + "-" + numQ; }));
 
     //Create an SVG
     var svg = d3.select("#map-legend").append("svg")

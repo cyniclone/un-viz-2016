@@ -6,6 +6,7 @@ h1 text-align center,
   font-size: 50px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: #000;
 }
 h3 font-size 24px,
 #how-to-read > ol > li    font-size 18px margin-bottom 12px,
@@ -272,6 +273,10 @@ path.highlighted {
 .land #map path {
   stroke: #7f7f7f;
 }
+.land #map path:hover,
+.land #map path.highlighted {
+  fill: #4684df;
+}
 .land .q0-7 {
   fill: #eaf2e3;
 }
@@ -296,10 +301,6 @@ path.highlighted {
 .land .no-data {
   fill: #ccc;
   fill-opacity: 1;
-}
-.land #map path:hover,
-.land #map path.highlighted {
-  fill: #4684df;
 }
 /*********** global viz  *********/
 .axis {
@@ -340,14 +341,10 @@ div.world-tooltip {
   fill: #000;
 }
 #map-legend g.tick line {
-  stroke: #222;
+  stroke: #555;
 }
 #map-legend .axis path {
-  stroke: #222;
-  stroke-width: 1.5px;
-}
-#map-legend .x.axis g.tick {
-  stroke-opacity: 1;
+  stroke: #555;
   stroke-width: 1.5px;
 }
 #map {

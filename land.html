@@ -19,12 +19,10 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div id="info-box">
-                <p>
-                <h4>
+                <h3>
                     Forest area worldwide
-
-                </h4>
-                </p>
+                </h3>
+                <div id="line-chart"></div>
             </div>
         </div>
     </div>
@@ -54,14 +52,13 @@
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
 <script src="js/globals.js"></script>
-<script src="js/scrape-json.js"></script>
 <script src="js/render-maps.js"></script>
-<script src="js/render-bars.js"></script>
+<script src="js/render-line.js"></script>
 <script>
     $(document).ready(function() {
         renderMap(charts["land"]);
         renderLegend(charts["land"]);
-//        drawBars(charts["sustainableBars"]);
+        renderLine(charts["landLine"]);
     })
 </script>
 

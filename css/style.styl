@@ -7,6 +7,7 @@ h1 text-align center
   font-size 50px
   text-transform uppercase
   letter-spacing 1px
+  color black
 
 h3 font-size 24px
 
@@ -235,6 +236,8 @@ body
   #map
     path
       stroke: #7f7f7f;
+    path:hover, path.highlighted
+      fill #4684DF
 
   .q0-7   /* Choropleth styling */
     fill #EAF2E3
@@ -254,9 +257,6 @@ body
     fill #ccc
     fill-opacity 1
 
-  #map
-    path:hover, path.highlighted
-      fill #4684DF
 
 
         
@@ -299,16 +299,11 @@ div.world-tooltip
   g.tick
     fill black
     line
-      stroke #222
+      stroke #555
   .axis
     path
-      stroke #222
+      stroke #555
       stroke-width 1.5px
-  .x.axis
-    g.tick
-      stroke-opacity 1
-      stroke-width 1.5px
-
 #map
   font: 12px sans-serif
   path
@@ -316,6 +311,7 @@ div.world-tooltip
     stroke: whitesmoke;
     /*fill: #222; */
     cursor: pointer;
+
 
 
 /* Style data points */
