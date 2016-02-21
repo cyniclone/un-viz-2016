@@ -270,8 +270,12 @@ path.highlighted {
 .land {
   background: #59b439;
 }
-.land #line-chart .x.axis path {
+.land #line-chart .axis path {
   stroke: none;
+}
+.land #line-chart g.tick {
+  font-size: 14px;
+  fill: #fff;
 }
 .land #map path {
   stroke: #7f7f7f;

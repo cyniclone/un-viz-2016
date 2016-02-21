@@ -628,8 +628,8 @@ charts["land"] = {
 };
 charts["landLine"] = {
     "dimensions" : {
-        "margin" : { top : 20,  right: 50,  bottom: 30,  left: 50 },
-        "width" : 900,
+        "margin" : { top : 20,  right: 80,  bottom: 30,  left: 80 },
+        "width" : 950,
         "height" : 350
     },
     "path" : {

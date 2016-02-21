@@ -234,9 +234,12 @@ body
   background #59B439
 
   #line-chart
-    .x.axis
-      path
+    .axis path
         stroke none
+    g.tick
+      font-size 14px
+      fill white
+
 
   #map
     path
@@ -261,10 +264,6 @@ body
   .no-data
     fill #ccc
     fill-opacity 1
-
-
-
-        
 
 /*********** global viz  *********/
 .axis

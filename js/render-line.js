@@ -10,7 +10,7 @@ function renderLine(obj) {
 
     var xAxis = d3.svg.axis().scale(xScale)
         .orient("bottom")
-        .tickFormat(d3.format("d"))
+        .tickFormat(d3.format("d")).tickSize(0)
         .tickValues(obj.years);
 
     var format = d3.format(".3n");
@@ -18,12 +18,18 @@ function renderLine(obj) {
     var yAxisLeft = d3.svg.axis().scale(yScaleKm)
         .orient("left")
         .tickFormat(format)
-        .tickValues(obj.kilometers.values);
+        .tickValues(obj.kilometers.values)
+        .tickSize(20)
+        .tickPadding(10)
+        .outerTickSize(0); //remove end ticks
 
     var yAxisRight = d3.svg.axis().scale(yScaleMi)
         .orient("right")
         .tickFormat(format)
-        .tickValues(obj.miles.values);
+        .tickValues(obj.miles.values)
+        .tickSize(20)
+        .tickPadding(10)
+        .outerTickSize(0); //remove end ticks
 
     var valueKm = d3.svg.line()
         .x(function(d) { return xScale(d.Year); })
@@ -54,13 +60,14 @@ function renderLine(obj) {
 
         svg.append("path")        // Add the valueline path.
             .style("fill", "none")
-            .style("stroke", "blue")
+            .style("stroke", "white")
+            .style("stroke-width", "2px")
             .attr("d", valueKm(data));
 
-        svg.append("path")        // Add the valueline2 path.
-            .style("fill", "none")
-            .style("stroke", "black")
-            .attr("d", valueMi(data));
+        //svg.append("path")        // Add the valueline2 path.
+        //    .style("fill", "none")
+        //    .style("stroke", "black")
+        //    .attr("d", valueMi(data));
 
         svg.append("g")            // Add the X Axis
             .attr("class", "x axis")
