@@ -110,14 +110,22 @@ function renderLine(obj) {
 
         svg.append("g")
             .attr("class", "y axis")
-            .style("fill", "steelblue")
-            .call(yAxisLeft);
+            .call(yAxisLeft)
+            .append("text")
+            .style("text-anchor", "beginning")
+            .attr("dy", yScaleKm(obj.kilometers.values[obj.kilometers.values.length-1]))
+            .attr("dx", 10)
+            .text("Square Kilometers")
 
         svg.append("g")
             .attr("class", "y axis")
-            .style("fill", "red")
             .attr("transform", "translate(" + width + " ,0)")
-            .call(yAxisRight);
+            .call(yAxisRight)
+            .append("text")
+            .style("text-anchor", "end")
+            .attr("dy", yScaleMi(obj.miles.values[obj.miles.values.length-1]))
+            .attr("dx", -10)
+            .text("Square Miles");
     });
 
 }

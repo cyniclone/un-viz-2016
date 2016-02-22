@@ -628,7 +628,7 @@ charts["land"] = {
 };
 charts["landLine"] = {
     "dimensions" : {
-        "margin" : { top : 20,  right: 80,  bottom: 30,  left: 80 },
+        "margin" : { top : 20,  right: 90,  bottom: 30,  left: 90 },
         "width" : 950,
         "height" : 350
     },
@@ -637,11 +637,11 @@ charts["landLine"] = {
     },
     "kilometers" : {
         "values" : [39.0, 40.0, 41.0, 42.0],
-        "domain" : [38, 43]
+        "domain" : [38, 42.5]
     },
     "miles" : {
-        "values" : [15.0, 15.5, 16.0, 16.5],
-        "domain" : [14.6719, 16.6024]
+        "values" : [15.0, 15.5, 16.0],
+        "domain" : [14.6719, 16.40934]
     },
     "years" : [1990, 2000, 2006, 2008, 2010, 2012]
 }
