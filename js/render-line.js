@@ -87,20 +87,30 @@ function renderLine(obj) {
             .data(data)
             .enter().append("circle")
             .attr("class", "circle")
-            .attr("r", "5")
+            .attr("r", "6")
             .style({
                 "fill" : "white",
                 "stroke" : "#006A35",
                 "stroke-width" : "1.5px"
             })
-            .attr('cx', function(d) {
-                return xScale(d.Year)
+            .attr('cx', function(d) { return xScale(d.Year) })
+            .attr('cy', function(d) { return yScaleKm(d.km) })
+            .on('mouseover', function (d) {
+                d3.select(this)
+                    .attr("r", 8)
+                    .style("fill", "#006A35")
+                    .style("stroke", "white");
+
+                tip.show(d);
             })
-            .attr('cy', function(d) {
-                return yScaleKm(d.km)
-            })
-            .on('mouseover', function (d) { tip.show(d); })
-            .on('mouseout', function (d) { tip.hide(d); });
+            .on('mouseout', function (d) {
+                d3.select(this)
+                    .attr("r", 6)
+                    .style("fill", "white")
+                    .style("stroke", "#006A35")
+
+                tip.hide(d);
+            });
 
 
         svg.append("g")            // Add the X Axis
