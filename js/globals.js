@@ -398,31 +398,31 @@ charts["energy"] = {
 // LABOR FORCE PARTICIPATION
 //(Intercept)         Year
 //-316.4548911    0.1836041
-    charts["laborf"] = {
-        "year" : { begin : "1990", end: "2015"},
-        "n"     : 1,
-        "value" : "laborf",
-        "targetDiv" : "#chart",
-        "dimensions" : {
-            "margin" : {
-                top : 20,
-                right: 20,
-                bottom: 30,
-                left: 50
-            },
-            "width" : 550,
-            "height" : 600
+charts["laborf"] = {
+    "year" : { begin : "1990", end: "2015"},
+    "n"     : 1,
+    "value" : "laborf",
+    "targetDiv" : "#chart",
+    "dimensions" : {
+        "margin" : {
+            top : 20,
+            right: 20,
+            bottom: 30,
+            left: 50
         },
-        "radius" : 4,
-        "countryNamesPath" : "data/countrylist/list-labor.csv",
-        "dataPath" : "data/labor-f.csv",
-        "hasTrend" : true,
-        "trendStroke" : "#fbb900",
-        "lm" : {
-            slope : 0.1836041,
-            intercept : -316.4548911
-        }
-    };
+        "width" : 550,
+        "height" : 600
+    },
+    "radius" : 4,
+    "countryNamesPath" : "data/countrylist/list-labor.csv",
+    "dataPath" : "data/labor-f.csv",
+    "hasTrend" : true,
+    "trendStroke" : "#fbb900",
+    "lm" : {
+        slope : 0.1836041,
+        intercept : -316.4548911
+    }
+};
 
 //(Intercept)        Year
 //314.7779211  -0.1194259
@@ -645,4 +645,18 @@ charts["landLine"] = {
     },
     "years" : [1990, 2000, 2006, 2008, 2010, 2012]
 }
-/**********************************/
+
+/***** 17 PEACE AND JUSTICE STRONG INSTITUTIONS ************/
+charts["birthRegistration"] = {
+    "targetDiv" : "#chart",
+    "yTicks" : 5,
+    "dimensions" : {
+        "margin" : { top : 20,  right: 40,  bottom: 30,  left: 50 },
+        "width" : 800,
+        "height" : 700
+    },
+    "radius" : 8,
+    "countryNamesPath" : "data/countrylist/list-birth-registration.csv",
+    "dataPath" : "data/birth-registration.csv",
+    "hasTrend" : false
+}

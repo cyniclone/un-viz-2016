@@ -1,0 +1,294 @@
+CountryName,hash,Year,Value
+Malawi,0ce65b,2011,2.3
+Somalia,4dfdf1,2006,3
+Liberia,1ed5dd,2007,3.6
+Afghanistan,c69153,2003,6
+Ethiopia,3d91f7,2005,6.6
+Tanzania,7e380b,2005,8
+Chad,6c6b1b,2004,9
+Zambia,dcf25e,2000,10
+Bangladesh,fa6c37,2006,10
+Zambia,dcf25e,2007,14
+Chad,6c6b1b,2010,15.7
+Tanzania,7e380b,2010,16.3
+"Yemen, Rep.",876440,2012,17.1
+Uganda,e92904,2006,21
+Tanzania,7e380b,2008,21.8
+"Yemen, Rep.",876440,2006,22
+Guinea-Bissau,b07cb9,2010,24.1
+Lesotho,93b12b,2004,26.3
+Pakistan,82d220,2007,26.5
+"Congo, Dem. Rep.",7c927d,2010,27.8
+Uganda,e92904,2011,29.9
+Swaziland,c985df,2007,30
+Nigeria,9742d0,2008,30
+Bangladesh,fa6c37,2011,30.5
+Mozambique,a40a9b,2008,31
+"Congo, Dem. Rep.",7c927d,2007,31.3
+Niger,6687e1,2006,31.8
+Sudan,1193ba,2006,33
+Nepal,0e1d58,2006,35
+South Sudan,6981f4,2010,35.4
+Angola,a42522,2001,35.6
+Equatorial Guinea,80eaf3,2000,37.1
+Afghanistan,c69153,2011,37.4
+Zimbabwe,5922f5,2009,38
+Guinea-Bissau,b07cb9,2006,38.9
+India,967ce3,2006,41.1
+Nigeria,9742d0,2011,41.5
+Nepal,0e1d58,2011,42.3
+Vanuatu,d16ad2,2007,43
+Guinea,b47b54,2005,43.2
+Least developed countries: UN classification,042c62,2011,43.24398681
+Low income,569b14,2011,44.80466369
+Lesotho,93b12b,2009,45.1
+Sub-Saharan Africa (developing only),fc04b3,2011,45.34783481
+Sub-Saharan Africa (all income levels),4473fd,2011,45.35525387
+Samoa,f56806,2009,47.7
+Mozambique,a40a9b,2011,47.9
+Heavily indebted poor countries (HIPC),160268,2011,47.97757893
+Kenya,a84f56,2003,48
+Sierra Leone,50df2d,2005,48
+Zimbabwe,5922f5,2011,48.8
+Central African Republic,dba867,2006,49
+Swaziland,c985df,2010,49.5
+Tuvalu,9a2248,2007,49.9
+Ghana,317dba,2006,51
+Sierra Leone,50df2d,2008,51
+"Gambia, The",541212,2010,52.5
+Timor-Leste,2d79f6,2003,53
+Indonesia,35536a,2007,53
+Mali,daa6a4,2006,53.3
+Equatorial Guinea,80eaf3,2011,53.5
+Fragile and conflict affected situations,7a2ee7,2011,53.84359107
+Indonesia,35536a,2002,55
+Senegal,d8973b,2005,55
+Cote d'Ivoire,58f76a,2006,55
+"Gambia, The",541212,2006,55
+Timor-Leste,2d79f6,2009,55
+Timor-Leste,2d79f6,2010,55.2
+Mauritania,85fa35,2007,56
+Guinea,b47b54,2012,57.9
+Botswana,180c89,2000,58
+Mauritania,85fa35,2011,58.8
+Sudan,1193ba,2010,59.3
+Burundi,461758,2005,60
+Benin,373616,2006,60
+Kenya,a84f56,2009,60
+Central African Republic,dba867,2010,61
+Other small states,e94dd4,2011,61.3574826
+Cameroon,73a7dd,2011,61.4
+Cambodia,314ccd,2010,62.1
+Ghana,317dba,2011,62.5
+Rwanda,7266a1,2010,63.2
+Niger,6687e1,2012,63.9
+Burkina Faso,e71b56,2006,64
+Myanmar,928b7c,2003,64.9
+Cote d'Ivoire,58f76a,2012,65
+Cambodia,314ccd,2005,66
+Small states,964b0a,2011,66.14213977
+Indonesia,35536a,2012,66.6
+Lower middle income,5db509,2011,66.82374777
+Namibia,bfe79d,2007,67
+Low & middle income,efaa62,2011,67.00368023
+Sao Tome and Principe,6ddcb9,2006,68.7
+South Asia,edef51,2011,69.96215039
+Cameroon,73a7dd,2006,70
+Ghana,317dba,2008,71
+World,70c07e,2011,71.27646381
+Lao PDR,ed2615,2006,72
+Botswana,180c89,2007,72
+Middle income,bf919c,2011,72.08980219
+Botswana,180c89,2008,72.2
+Myanmar,928b7c,2010,72.4
+Maldives,213cb2,2000,73
+Zimbabwe,5922f5,2006,73.9
+Bolivia,a001af,2001,74
+Senegal,d8973b,2011,74.6
+Madagascar,f92bcb,2004,74.8
+Lao PDR,ed2615,2012,74.8
+Sao Tome and Principe,6ddcb9,2009,75.1
+Burundi,461758,2010,75.2
+Bolivia,a001af,2008,75.8
+Paraguay,71a452,2011,76.1
+Burkina Faso,e71b56,2010,76.9
+Togo,30949d,2010,77.9
+Dominican Republic,8a4bf1,2006,78
+South Africa,35fda1,2006,78
+Sierra Leone,50df2d,2010,78
+Namibia,bfe79d,2011,78
+Togo,30949d,2006,78.1
+Madagascar,f92bcb,2009,79.7
+Haiti,a4842f,2012,79.7
+Solomon Islands,ecae78,2007,80
+Benin,373616,2012,80.2
+Mali,daa6a4,2010,80.8
+"Venezuela, RB",6cba5d,2011,80.8
+Nicaragua,481264,2001,81
+"Congo, Rep.",c0faa9,2005,81
+Haiti,a4842f,2006,81
+Dominican Republic,8a4bf1,2012,81.1
+Rwanda,7266a1,2005,82
+Dominican Republic,8a4bf1,2011,82.4
+Philippines,806736,2000,83
+India,967ce3,2011,83.6
+Turkey,d7153e,2003,84
+Nicaragua,481264,2012,84.7
+Ecuador,09f199,2004,84.9
+Morocco,32e087,2000,85
+South Africa,35fda1,2012,85
+Comoros,e5bb59,2012,87.3
+Comoros,e5bb59,2000,87.6
+Guyana,bc88a2,2009,87.9
+Tajikistan,279c77,2005,88
+Vietnam,681101,2006,88
+Tajikistan,279c77,2012,88.4
+Gabon,a06dcd,2000,89
+Brazil,37497a,2005,89
+Jamaica,5eedd6,2005,89
+Gabon,a06dcd,2012,89.6
+Ecuador,09f199,2010,90
+Philippines,806736,2010,90.2
+Colombia,2f7373,2005,90.4
+"Congo, Rep.",c0faa9,2012,90.8
+Argentina,354bf9,2004,91
+Brazil,37497a,2008,91
+Cabo Verde,07dee4,2010,91
+Djibouti,60a8b0,2006,91.7
+"Venezuela, RB",6cba5d,2000,92
+Georgia,9113c6,2005,92
+Kiribati,3f57ad,2008,92
+South Africa,35fda1,2008,92
+St. Lucia,b17b65,2012,92
+Latin America & Caribbean (developing only),ec4d8f,2011,92.30572468
+Latin America & Caribbean (all income levels),56367d,2011,92.35714304
+Maldives,213cb2,2009,92.5
+Brazil,37497a,2011,92.8
+Guyana,bc88a2,2006,93
+Peru,36c572,2007,93
+Guyana,bc88a2,2007,93.3
+Mexico,41937b,2009,93.4
+Kiribati,3f57ad,2009,93.5
+Azerbaijan,213598,2006,93.6
+Honduras,5aa588,2012,93.6
+Turkey,d7153e,2008,93.7
+"Macedonia, FYR",a0b9ed,2005,94
+Belize,42ab0c,2006,94
+Honduras,5aa588,2006,94
+Morocco,32e087,2011,94
+Iraq,1aed9e,2006,95
+Vietnam,681101,2011,95
+Belize,42ab0c,2011,95.2
+Turkmenistan,1f8dc1,2006,95.5
+Peru,36c572,2012,95.6
+Kyrgyz Republic,1407c0,2006,95.7
+Marshall Islands,bb1306,2007,95.9
+Chile,349507,2004,96
+Armenia,5f4599,2005,96
+Syrian Arab Republic,48a9fd,2006,96
+West Bank and Gaza,a0f1b4,2006,96
+High income: nonOECD,1d1847,2011,96.08925234
+Europe & Central Asia (developing only),320ff5,2011,96.15687247
+Colombia,2f7373,2010,96.5
+Trinidad and Tobago,4d206a,2006,96.6
+Guatemala,11760e,2009,96.7
+Suriname,b17fc6,2006,97
+Sri Lanka,197042,2007,97.2
+Jamaica,5eedd6,2008,97.8
+Moldova,9791bc,2000,98
+Albania,79b9d2,2005,98
+Montenegro,479fb3,2005,98
+Mongolia,f54da3,2005,98
+Jamaica,5eedd6,2010,98.1
+Kyrgyz Republic,1407c0,2012,98.3
+OECD members,019025,2011,98.39178838
+Georgia,9113c6,2011,98.5
+El Salvador,259a6e,2008,98.6
+Albania,79b9d2,2009,98.6
+"Iran, Islamic Rep.",e3f25e,2010,98.6
+Europe & Central Asia (all income levels),248204,2011,98.81672493
+"Korea, Dem. Rep.",7609ec,2000,98.9
+Montenegro,479fb3,2006,98.9
+Serbia,6d31bf,2006,98.9
+Serbia,6d31bf,2010,98.9
+Suriname,b17fc6,2010,98.9
+"Egypt, Arab Rep.",ff11f8,2005,99
+Serbia,6d31bf,2005,99
+Kazakhstan,2f36b6,2006,99
+Argentina,354bf9,2007,99
+Chile,349507,2008,99
+Mongolia,f54da3,2010,99
+High income,10f566,2011,99.09005432
+Jordan,674027,2012,99.1
+Iraq,1aed9e,2011,99.2
+Tunisia,edf404,2012,99.2
+West Bank and Gaza,a0f1b4,2010,99.3
+Algeria,bd6acc,2006,99.4
+Chile,349507,2007,99.4
+Chile,349507,2011,99.4
+Thailand,a2b7c1,2012,99.4
+Bosnia and Herzegovina,62ac59,2006,99.5
+Thailand,a2b7c1,2006,99.5
+Lebanon,5caa7f,2009,99.5
+Argentina,354bf9,2012,99.5
+Armenia,5f4599,2010,99.6
+Moldova,9791bc,2012,99.6
+Costa Rica,1bf429,2011,99.7
+Kazakhstan,2f36b6,2011,99.7
+"Macedonia, FYR",a0b9ed,2011,99.7
+Chile,349507,2010,99.8
+Ukraine,c951ec,2012,99.8
+Uzbekistan,db800e,2006,99.9
+Bhutan,bb2254,2010,99.9
+High income: OECD,312c78,2011,99.98738134
+Cuba,c484b1,2005,100
+Ukraine,c951ec,2005,100
+Monaco,35ab1c,2006,100
+"Korea, Dem. Rep.",7609ec,2009,100
+San Marino,87fd3b,2009,100
+United States,768685,2009,100
+Belgium,5cb4c9,2010,100
+Cyprus,852add,2010,100
+United Kingdom,976912,2010,100
+Greece,4902a4,2010,100
+Ireland,eb2131,2010,100
+Iceland,b3c92e,2010,100
+Luxembourg,507672,2010,100
+Russian Federation,c29b4d,2010,100
+Slovak Republic,36d711,2010,100
+Austria,593905,2011,100
+Central Europe and the Baltics,0f4c62,2011,100
+Switzerland,77dcd8,2011,100
+Cuba,c484b1,2011,100
+Germany,17d53e,2011,100
+Denmark,89da12,2011,100
+Euro area,a356c2,2011,100
+Spain,20a8df,2011,100
+Estonia,f0a96d,2011,100
+European Union,1e9cb0,2011,100
+Finland,c909b1,2011,100
+France,e3772a,2011,100
+Hungary,f14e46,2011,100
+Italy,ad79ef,2011,100
+Liechtenstein,b0ddce,2011,100
+Lithuania,74a788,2011,100
+Latvia,c5f5bb,2011,100
+Malta,1a591a,2011,100
+North America,247ce5,2011,100
+Netherlands,fb61c8,2011,100
+Norway,988455,2011,100
+Poland,5ff03b,2011,100
+Portugal,a49519,2011,100
+Slovenia,d1aa05,2011,100
+Sweden,72ddd2,2011,100
+Andorra,9d3bd1,2012,100
+United Arab Emirates,d115b8,2012,100
+Australia,ceafb5,2012,100
+Bulgaria,5c7772,2012,100
+Belarus,027a12,2012,100
+Canada,cd6a7b,2012,100
+Czech Republic,1fef42,2012,100
+Israel,4c197d,2012,100
+Japan,fcf29f,2012,100
+New Zealand,a2238e,2012,100
+Uruguay,66b989,2012,100

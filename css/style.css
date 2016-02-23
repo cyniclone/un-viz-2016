@@ -313,6 +313,24 @@ path.highlighted {
   fill: #ccc;
   fill-opacity: 1;
 }
+.birth-registration {
+  background: #066799;
+  color: #fff;
+}
+.birth-registration h3 {
+  color: #fab600;
+}
+.birth-registration circle {
+  fill-opacity: 0.3;
+  stroke-opacity: 1;
+  stroke-width: 1.5px;
+}
+.birth-registration circle.active {
+  stroke: #fab600;
+}
+.birth-registration g.tick {
+  font-size: 14px;
+}
 /*********** global viz  *********/
 .axis {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
