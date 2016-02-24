@@ -334,11 +334,25 @@ path.highlighted {
 .partnerships {
   background: #164767;
 }
+.partnerships #page-header,
 .partnerships .axis-description,
 .partnerships #how-to-read {
   color: #fff;
 }
-.partnerships circle.active {
+.partnerships .accent-color {
+  color: #ffd200;
+}
+.partnerships #how-to-read li {
+  color: #ffd200;
+}
+.partnerships #how-to-read span {
+  color: #fff;
+}
+.partnerships #chart g.tick {
+  font-size: 13px;
+  fill: #fff;
+}
+.partnerships #chart circle.active {
   stroke: #ffd200;
 }
 /*********** global viz  *********/

@@ -662,9 +662,14 @@ charts["birthRegistration"] = {
 }
 
 /***** 17 PARTNERSHIPS ************/
+//(Intercept)        Year
+//-304.677140    0.168924
+
 charts["partnerships"] = {
     "targetDiv" : "#chart",
-    "yTicks" : 10,
+    "yTicks" : 6,
+    "yMin" : 0,
+    "yMax" : 60,
     "dimensions" : {
         "margin" : { top : 20,  right: 40,  bottom: 30,  left: 50 },
         "width" : 800,
@@ -673,5 +678,10 @@ charts["partnerships"] = {
     "radius" : 5,
     "countryNamesPath" : "data/countrylist/list-partnerships.csv",
     "dataPath" : "data/partnerships.csv",
-    "hasTrend" : false
+    "hasTrend" : true,
+    "trendStroke" : "#FFD200",
+    "lm" : {
+        slope : 0.168924,
+        intercept : -304.677140
+    }
 }

@@ -19,12 +19,6 @@ function drawScatter (obj) {
     var yParam = (obj.yParam == undefined) ? "Value" : obj.yParam;
     if (obj.useCustomR) { var rParam = obj.rParam; }
 
-    //var format;
-    //if (obj.customFormat != undefined)  {
-    //    format = obj.customFormat;
-    //}
-    /**********************************/
-
     /*
      * value accessor - returns the value to encode for a given data object.
      * scale          - maps value to a visual display encoding, such as a pixel position.
@@ -200,6 +194,10 @@ function drawScatter (obj) {
             });
 
         if (obj.hasTrend) {
+            obj.year = {};
+            obj.year.begin = d3.min(data, function(d) { return d.Year; });
+            obj.year.end = d3.max(data, function(d) { return d.Year; });
+
             drawLine(obj, yScale);
         }
         if (obj.hasLoess) {
@@ -225,12 +223,13 @@ function drawScatter (obj) {
     });
 }
 
-function drawLine (chartObj, _yScale) {
+function drawLine (obj, _yScale) {
     // Takes a given trendline and draws it to the #chart div
-    var lm = chartObj.lm;   // Get coordinates from linear model
-    var dim = chartObj.dimensions;
-    var year = chartObj.year;
-    var n = (chartObj.n > 1) ? chartObj.n : "";
+    var lm = obj.lm;   // Get coordinates from linear model
+    var dim = obj.dimensions;
+    var year = obj.year;
+
+    var n = (obj.n > 1) ? obj.n : "";
 
 
     d3.select(".viz" + n + " g")
@@ -243,7 +242,7 @@ function drawLine (chartObj, _yScale) {
             "stroke-width": "3px"
         })
         .attr("class", "trend")
-        .style("stroke", chartObj.trendStroke);
+        .style("stroke", obj.trendStroke);
 
     d3.selectAll('.trend').moveToFront();
 }

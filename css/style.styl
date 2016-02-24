@@ -272,6 +272,7 @@ body
   color white
   h3
     color #FAB600
+    
   circle
     fill-opacity 0.3
     stroke-opacity 1
@@ -284,11 +285,26 @@ body
 
 .partnerships /* 17 PARTNERSHIPS */
   background #164767
+  #page-header
+
   .axis-description, #how-to-read
     color white
 
-  circle.active
-    stroke #FFD200
+  .accent-color
+    color #FFD200
+
+  #how-to-read
+   li
+     color #FFD200
+    span
+      color white
+
+  #chart
+    g.tick
+      font-size 13px
+      fill white
+    circle.active
+      stroke #FFD200
 
 /*********** global viz  *********/
 .axis
