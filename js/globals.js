@@ -646,7 +646,7 @@ charts["landLine"] = {
     "years" : [1990, 2000, 2006, 2008, 2010, 2012]
 }
 
-/***** 17 PEACE AND JUSTICE STRONG INSTITUTIONS ************/
+/***** 16 PEACE AND JUSTICE STRONG INSTITUTIONS ************/
 charts["birthRegistration"] = {
     "targetDiv" : "#chart",
     "yTicks" : 5,
@@ -658,5 +658,20 @@ charts["birthRegistration"] = {
     "radius" : 8,
     "countryNamesPath" : "data/countrylist/list-birth-registration.csv",
     "dataPath" : "data/birth-registration.csv",
+    "hasTrend" : false
+}
+
+/***** 17 PARTNERSHIPS ************/
+charts["partnerships"] = {
+    "targetDiv" : "#chart",
+    "yTicks" : 10,
+    "dimensions" : {
+        "margin" : { top : 20,  right: 40,  bottom: 30,  left: 50 },
+        "width" : 800,
+        "height" : 700
+    },
+    "radius" : 5,
+    "countryNamesPath" : "data/countrylist/list-partnerships.csv",
+    "dataPath" : "data/partnerships.csv",
     "hasTrend" : false
 }

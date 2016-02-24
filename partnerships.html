@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <title>Partnerships for the Goals</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
+
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+
+<div class="container partnerships">
+    <div class="row">
+        <div class="col-md-12 col-sm-12"><h1 id="page-header">Partnerships for the Goals</h1></div>
+    </div>
+
+    <!-- &#10553; arrow thing -->
+    <div class="row">
+        <div class="col-md-9 col-sm-12">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <p style="color:white">
+                        Strengthen domestic resource mobilization, including through international support to
+                        developing countries, to improve domestic capacity for tax and other revenue collection
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h4 class="axis-description">
+                        &#10553; Tax revenue as % of GDP</h4>
+                </div>
+            </div>
+            </h4>
+            <!-- CHART GOES HERE -->
+            <div id="chart"></div>
+        </div>
+
+        <div class="col-md-3 col-sm-12">
+            <h3>Select a country:</h3>
+            <div id="select-country"></div><br>
+
+            <hr>
+
+            <!--<h3>Target for 2030:</h3>-->
+            <!--<div id="info-box">-->
+               <!---->
+            <!--</div>-->
+
+            <h3>How to Read This Chart</h3>
+            <div id="how-to-read">
+                <ol>
+                    <li>Each circle is a country</li>
+                    <li>The position of each country on the vertical axis is the country’s tax revenue as a percentage of its Gross Domestic Product</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Load Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+<script src="js/globals.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/render-scatter.js"></script>
+
+<script>
+    $(document).ready(function() {
+        populateSelect(charts.partnerships.countryNamesPath);
+        drawScatter(charts.partnerships);
+    });
+</script>
+
+</body>
+</html>
+
