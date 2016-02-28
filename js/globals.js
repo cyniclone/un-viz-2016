@@ -563,10 +563,10 @@ charts["sustainableBars"] = {
 
 // INEQUALITY
 charts["inequality"] = {
-    //"year" : { begin : "1990", end: "2016"},
-    "n"     : 1,
+    "xTicks" : [-4, -2, 0, 2, 4, 6, 8, 10, 12],
+    //"n"     : 1,
     "value" : "inequality",
-    "targetDiv" : "#chart",
+    //"targetDiv" : "#chart",
     "dimensions" : {
         "margin" : {
             top : 20,
@@ -575,7 +575,7 @@ charts["inequality"] = {
             left: 120
         },
         "width" : 800,
-        "height" : 900
+        "height" : 100
     },
     //"xTicks" : 5,
     "radius" : 3,

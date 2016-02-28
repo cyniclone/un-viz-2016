@@ -1,36 +1,46 @@
-function drawIneqBars (chartObj) {
+function drawIneqBars (obj) {
 
-    var dim = chartObj.dimensions,
+    var dim = obj.dimensions,
         margin = dim.margin,
         width = dim.width - dim.margin.left - dim.margin.right,
         height = dim.height - dim.margin.top - dim.margin.bottom;
 
-    var xScale = d3.scale.linear().range([0, width]),               // value -> display
-        xAxis  = d3.svg.axis().scale(xScale).orient("top");
+    var xScale = d3.scale.linear().range([0, width]),
+        xAxis  = d3.svg.axis().scale(xScale).orient("top").ticks(obj.xTicks);
 
     var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .2),
-        yAxis  = d3.svg.axis().scale(yScale).orient("left").ticks(8, "%");
+        yAxis  = d3.svg.axis().scale(yScale).orient("left");
 
-    // Make chart SVG
-    var svg = d3.select(chartObj.targetDiv).append("svg")
-        .attr("class", "viz")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    //// Make chart SVG
+    //var svg = d3.select(obj.targetDiv).append("svg")
+    //    .attr("class", "viz")
+    //    .attr("width", width + margin.left + margin.right)
+    //    .attr("height", height + margin.top + margin.bottom)
+    //    .append("g")
+    //    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.csv(chartObj.dataPath, function(error, data) {
+    d3.csv(obj.dataPath, function(error, data) {
         if (error) throw error;
 
         data.forEach(function (d) {
-            //d.ValueG = +d.ValueG; // Force numeric
-            //d.ValueB = +d.ValueB; // Force numeric
+            d.ValueG = +d.ValueG; // Force numeric; value of general population
+            d.ValueB = +d.ValueB; // Force numeric; value of bottom 40%
         });
+
+        // Nest objects by country name so we can iterate through them
+        d3.nest()
+            .key(function(d) { return d.CountryName; })
+            .map(data);
+
+        console.log("data:");
+        console.log(data);
 
         // Set Scale domains
         //yScale.domain(data.map(function(d) { return d.Label; } ));
         yScale.domain(data.map(function(d) { return d.Label; } ));
         xScale.domain([-5, 12]);
+
+        /*
 
         // Render axes
         svg.append("g")
@@ -60,7 +70,17 @@ function drawIneqBars (chartObj) {
             //.attr("width", function(d) { return xScale(d.ValueG); })
             .attr("width", function(d) { return Math.abs(xScale(d.ValueG) - xScale(0)); })
             .attr("fill", "#8b1c34");
+
+            */
     });
+
+    function drawIneqDiv (obj) {
+        // For each country in the object...
+
+        // Make a div with id "#chart-" + d.CountryName
+
+
+    }
 }
 
 function drawBars2 () {
