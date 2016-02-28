@@ -28,17 +28,26 @@ function drawIneqBars (obj) {
         });
 
         // Nest objects by country name so we can iterate through them
-        d3.nest()
+        data = d3.nest()
             .key(function(d) { return d.CountryName; })
             .map(data);
 
-        console.log("data:");
+
         console.log(data);
+        
+        // For each country in the object...
+        for(var i = 0; i < _.size(data); i++) {
+            var countryName = _.keys(data)[i];
+            var subObj = data[countryName];
+            // Make a div with id "#chart-" + d.CountryName
+
+            $("#charts").append("<div id='chart-" + subObj[0].DivName + "'>" + countryName + "</div>")
+        }
 
         // Set Scale domains
         //yScale.domain(data.map(function(d) { return d.Label; } ));
-        yScale.domain(data.map(function(d) { return d.Label; } ));
-        xScale.domain([-5, 12]);
+        yScale.domain(function(d) { return d.Period; } );
+        xScale.domain(obj.xDomain);
 
         /*
 
@@ -73,14 +82,6 @@ function drawIneqBars (obj) {
 
             */
     });
-
-    function drawIneqDiv (obj) {
-        // For each country in the object...
-
-        // Make a div with id "#chart-" + d.CountryName
-
-
-    }
 }
 
 function drawBars2 () {

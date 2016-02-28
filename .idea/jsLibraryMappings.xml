@@ -2,6 +2,6 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$/js/globals.js" libraries="{jQuery-2.0.0}" />
-    <file url="PROJECT" libraries="{d3-DefinitelyTyped, d3-queue.v2}" />
+    <file url="PROJECT" libraries="{d3-DefinitelyTyped, d3-queue.v2, underscore}" />
   </component>
 </project>

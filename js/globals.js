@@ -564,6 +564,7 @@ charts["sustainableBars"] = {
 // INEQUALITY
 charts["inequality"] = {
     "xTicks" : [-4, -2, 0, 2, 4, 6, 8, 10, 12],
+    "xDomain" : [-4, 12],
     //"n"     : 1,
     "value" : "inequality",
     //"targetDiv" : "#chart",
