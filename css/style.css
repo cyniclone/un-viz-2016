@@ -195,8 +195,15 @@ body {
 .inequality .height-90 {
   height: 90px;
 }
+.inequality #inequality-axis {
+  height: 30px;
+}
 .inequality #inequality-axis .axis path {
-  stroke: #333;
+  stroke: none;
+}
+.inequality #inequality-axis g.tick {
+  font-size: 14px;
+  fill: #000;
 }
 .sustainable {
   background: #f59a23;

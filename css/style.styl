@@ -166,8 +166,13 @@ body
   .height-60 { height: 60px }
   .height-90 { height: 90px }
   #inequality-axis
-    .axis path
-      stroke #333
+    height 30px
+    .axis
+      path
+        stroke none
+    g.tick
+      font-size 14px
+      fill black
 
 .sustainable /* 11 SUSTAINABLE CITIES AND COMMUNITIES */
     background #f59a23

@@ -8,7 +8,7 @@ function drawBars (obj) {
         width = dim.width - dim.margin.left - dim.margin.right,
         height = dim.height - dim.margin.top - dim.margin.bottom;
 
-// setup x
+    // setup x
     var xValue = function (d) { return d.Value; },                   // data  -> value
         xScale = d3.scale.linear().range([0, width]),                // value -> display
         xMap = function (d) { return xScale(xValue(d));},           // data  -> display
@@ -144,19 +144,23 @@ function drawIneqBars (obj) {
 
     // Setup x
     var xScale = d3.scale.linear().range([0, width]).domain(obj.xDomain);
-    var xAxis  = d3.svg.axis().scale(xScale).orient("top").ticks(obj.xTicks).outerTickSize(0);
+    var xAxis  = d3.svg.axis().scale(xScale).orient("top")
+        .tickFormat(function (d) {
+            return d + "%";
+        })
+        .tickPadding(5)
+        .tickSize(10)
+        .tickValues(obj.xTickValues);
 
     // Render x axis
     d3.select("#inequality-axis")
         .append("svg")
         .style("width", width + margin.left + margin.right)
-        .style("height", "20px")
+        .style("height", "30px")
         .append("g")
         .attr("class", "x axis")
-        .attr("transform","translate(" + margin.left + ", 0)")
+        .attr("transform","translate(" + margin.left + ", 30)")
         .call(xAxis);
-
-
 
      //Setup color scale
     var colorScale = d3.scale.ordinal().range(obj.colorScaleRange);
@@ -208,7 +212,7 @@ function drawIneqBars (obj) {
 
 
             // Draw grid-lines for x axis
-            svg.selectAll("line.verticalGrid").data(obj.xTicks).enter()
+            svg.selectAll("line.verticalGrid").data(obj.xTickValues).enter()
                 .append("line")
                 .attr(
                     {
