@@ -186,6 +186,9 @@ body {
   color: #000;
   background: #dd1e66;
 }
+.inequality .bar-chart-holder {
+  height: 100px;
+}
 .inequality #chart g.tick {
   font-size: 12px;
 }

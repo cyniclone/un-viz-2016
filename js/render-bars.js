@@ -1,27 +1,30 @@
 function drawIneqBars (obj) {
-
+    // Global variables; used by all charts
+    // Bring in chart dimensions
     var dim = obj.dimensions,
         margin = dim.margin,
         width = dim.width - dim.margin.left - dim.margin.right,
         height = dim.height - dim.margin.top - dim.margin.bottom;
 
-    var xScale = d3.scale.linear().range([0, width]),
-        xAxis  = d3.svg.axis().scale(xScale).orient("top").ticks(obj.xTicks);
+    // Setup x
+    var xScale = d3.scale.linear().range([0, width]);
+    var xAxis  = d3.svg.axis().scale(xScale).orient("top").ticks(obj.xTicks).outerTickSize(0);
 
-    var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .2),
-        yAxis  = d3.svg.axis().scale(yScale).orient("left");
+    // xScale's domain will be the same for all charts; yScale's will vary
+    xScale.domain(obj.xDomain);
 
-    //// Make chart SVG
-    //var svg = d3.select(obj.targetDiv).append("svg")
-    //    .attr("class", "viz")
-    //    .attr("width", width + margin.left + margin.right)
-    //    .attr("height", height + margin.top + margin.bottom)
-    //    .append("g")
-    //    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    // Setup y
+    var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .2);
+    var yAxis  = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
 
-    d3.csv(obj.dataPath, function(error, data) {
+    // Setup color scale
+    var colorScale = d3.scale.ordinal().range(obj.colorScaleRange);
+
+    var data; // Global data object
+    d3.csv(obj.dataPath, function(error, _data) {
         if (error) throw error;
 
+        data = _data;
         data.forEach(function (d) {
             d.ValueG = +d.ValueG; // Force numeric; value of general population
             d.ValueB = +d.ValueB; // Force numeric; value of bottom 40%
@@ -29,59 +32,82 @@ function drawIneqBars (obj) {
 
         // Nest objects by country name so we can iterate through them
         data = d3.nest()
-            .key(function(d) { return d.CountryName; })
+            .key(function (d) { return d.CountryName; })
             .map(data);
 
-
-        console.log(data);
-        
-        // For each country in the object...
+        // MAIN LOOP here. For each country in the object...
         for(var i = 0; i < _.size(data); i++) {
             var countryName = _.keys(data)[i];
-            var subObj = data[countryName];
-            // Make a div with id "#chart-" + d.CountryName
+            var subObj = data[countryName];     // Sub-object for each loop iteration
+            var css_id = "chart-" + subObj[0].DivName;
 
-            $("#charts").append("<div id='chart-" + subObj[0].DivName + "'>" + countryName + "</div>")
+            // Make a div with id "#chart-" + countryName
+            $("#charts").append("<div id='" + css_id + "' class='bar-chart-holder'></div>"); // initializes empty
+
+            // Our year labels
+            yScale.domain(function(d) { return d.Period; } );
+
+            // Variable for chart DOM element
+            var svg = d3.select("#" + css_id).append("svg")
+                .attr("class", "bar-chart")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+            // Draw gridlines for x axis
+            svg.selectAll("line.verticalGrid").data(xScale.ticks(obj.xTicks)).enter()
+            svg.selectAll("line.verticalGrid").data(obj.xTicks).enter()
+                .append("line")
+                .attr(
+                    {
+                        "class": "verticalGrid",
+                        "x1": function (d) { return xScale(d); },
+                        "x2": function (d) { return xScale(d); },
+                        "y1": height,
+                        "y2": 0,
+                        "fill": "none",
+                        "stroke": "#fff",
+                        "stroke-width": "0.75px"
+                    });
+
+            // Render axes
+            svg.append("g")
+                .attr("class", "x axis")
+                .call(xAxis);
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis);
         }
-
-        // Set Scale domains
-        //yScale.domain(data.map(function(d) { return d.Label; } ));
-        yScale.domain(function(d) { return d.Period; } );
-        xScale.domain(obj.xDomain);
-
-        /*
-
-        // Render axes
-        svg.append("g")
-            .attr("class", "x axis")
-            //.attr("transform", "translate(0," + 0 + ")")
-            .call(xAxis);
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis);
-
-        svg.selectAll(".bottom.bar") // Draw bars for bottom 40
-            .data(data)
-            .enter().append("rect")
-            .attr("y", function(d) { return yScale(d.Label) })
-            .attr("height", yScale.rangeBand()/2)
-            .attr("x", function(d) { return xScale(Math.min(0, d.ValueB)) })
-            //.attr("width", function(d) { return xScale(d.ValueB); })
-            .attr("width", function(d) { return Math.abs(xScale(d.ValueB) - xScale(0)); })
-            .attr("fill", "white");
-
-        svg.selectAll(".general.bar") // Draw bars for general population
-            .data(data)
-            .enter().append("rect")
-            .attr("y", function(d) { return yScale(d.Label) + yScale.rangeBand()/2 + 1 })
-            .attr("height", yScale.rangeBand()/2)
-            .attr("x", function(d) { return xScale(Math.min(0, d.ValueG)) })
-            //.attr("width", function(d) { return xScale(d.ValueG); })
-            .attr("width", function(d) { return Math.abs(xScale(d.ValueG) - xScale(0)); })
-            .attr("fill", "#8b1c34");
-
-            */
     });
+
+    /*
+
+
+
+     svg.selectAll(".bottom.bar") // Draw bars for bottom 40
+     .data(data)
+     .enter().append("rect")
+     .attr("y", function(d) { return yScale(d.Label) })
+     .attr("height", yScale.rangeBand()/2)
+     .attr("x", function(d) { return xScale(Math.min(0, d.ValueB)) })
+     //.attr("width", function(d) { return xScale(d.ValueB); })
+     .attr("width", function(d) { return Math.abs(xScale(d.ValueB) - xScale(0)); })
+     .attr("fill", "white");
+
+     svg.selectAll(".general.bar") // Draw bars for general population
+     .data(data)
+     .enter().append("rect")
+     .attr("y", function(d) { return yScale(d.Label) + yScale.rangeBand()/2 + 1 })
+     .attr("height", yScale.rangeBand()/2)
+     .attr("x", function(d) { return xScale(Math.min(0, d.ValueG)) })
+     //.attr("width", function(d) { return xScale(d.ValueG); })
+     .attr("width", function(d) { return Math.abs(xScale(d.ValueG) - xScale(0)); })
+     .attr("fill", "#8b1c34");
+
+     */
+
 }
 
 function drawBars2 () {

@@ -565,21 +565,19 @@ charts["sustainableBars"] = {
 charts["inequality"] = {
     "xTicks" : [-4, -2, 0, 2, 4, 6, 8, 10, 12],
     "xDomain" : [-4, 12],
-    //"n"     : 1,
     "value" : "inequality",
-    //"targetDiv" : "#chart",
     "dimensions" : {
         "margin" : {
-            top : 20,
+            top : 0,
             right: 20,
-            bottom: 20,
-            left: 120
+            bottom: 0,
+            left: 200
         },
         "width" : 800,
         "height" : 100
     },
-    //"xTicks" : 5,
     "radius" : 3,
+    "colorScaleRange" : ["#8b1c34", "#FEFEFE"],
     //"countryNamesPath" : "data/countrylist/list-inequality.csv",
     "dataPath" : "data/inequality.csv",
 };
