@@ -195,13 +195,8 @@ body {
 .inequality .height-90 {
   height: 90px;
 }
-.inequality #chart g.tick {
-  font-size: 12px;
-}
-.inequality #chart .x.axis g.tick {
-  color: #ccc;
-  stroke-dasharray: 1, 1;
-  stroke-opacity: 0.8;
+.inequality #inequality-axis .axis path {
+  stroke: #333;
 }
 .sustainable {
   background: #f59a23;

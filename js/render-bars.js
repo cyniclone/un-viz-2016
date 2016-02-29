@@ -140,16 +140,27 @@ function drawIneqBars (obj) {
         margin = dim.margin,
         width = dim.width - dim.margin.left - dim.margin.right,
         heightPerTick = dim.heightPerTick;
-
     // Height will vary for each country, and will be set later.
-    //height = dim.height - dim.margin.top - dim.margin.bottom;
 
     // Setup x
     var xScale = d3.scale.linear().range([0, width]).domain(obj.xDomain);
     var xAxis  = d3.svg.axis().scale(xScale).orient("top").ticks(obj.xTicks).outerTickSize(0);
 
-    // Setup color scale
+    // Render x axis
+    d3.select("#inequality-axis")
+        .append("svg")
+        .style("width", width + margin.left + margin.right)
+        .style("height", "20px")
+        .append("g")
+        .attr("class", "x axis")
+        .attr("transform","translate(" + margin.left + ", 0)")
+        .call(xAxis);
+
+
+
+     //Setup color scale
     var colorScale = d3.scale.ordinal().range(obj.colorScaleRange);
+
 
     d3.csv(obj.dataPath, function(error, _data) {
         if (error) throw error;
@@ -174,9 +185,6 @@ function drawIneqBars (obj) {
 
             // Set height of chart based on number of periods
             var height = _.pluck(subObj, "Period").length * heightPerTick;
-            console.log(countryName + " " + height);
-            console.log(_.pluck(subObj, "Period"));
-            console.log(_.pluck(subObj, "Period").length);
 
             // Make a div with id "#chart-" + countryName;
             var css_id = "chart-" + subObj[0].DivName;
@@ -187,7 +195,7 @@ function drawIneqBars (obj) {
                 //.domain(function(d) {return d.Period; } );
                 .domain(_.pluck(subObj, "Period")); // Gets list of property values for period
 
-            var yAxis  = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0)
+            var yAxis = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
             var countryLabel = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
 
             // Variable for chart DOM element
@@ -211,20 +219,17 @@ function drawIneqBars (obj) {
                         "y2": 0,
                         "fill": "none",
                         "stroke": "#fff",
-                        "stroke-width": "0.75px"
+                        "stroke-width": "0.75px",
+                        "stroke-dasharray" : "2,2"
                     });
 
-            // Render x axis
+            // Render top border
             svg.append("g")
-                .attr("class", "x axis")
-                .call(xAxis);
-            // Continue line to the left of the axis
-            svg.append("g")
-                .attr("class", "x axis")
+                .attr("class", "axis")
                 .append("line")
-                .attr({ "x1": -margin.left,  "x2": 0,  "y1": 0,  "y2": 0 });
+                .attr({ "x1": -margin.left,  "x2": width,  "y1": 0,  "y2": 0 });
 
-            // Render the country name to the left side
+            // Render the country name to the left
             svg.append("g")
                 .attr("class", "y axis")
                 .call(countryLabel)
@@ -232,7 +237,7 @@ function drawIneqBars (obj) {
                 .attr("transform","translate(-" + margin.left + ", 20)")
                 .text(function () { return countryName; });
 
-            // Render y axis
+            // Render y axis (period)
             svg.append("g")
                 .attr("class", "y axis")
                 .call(yAxis)
