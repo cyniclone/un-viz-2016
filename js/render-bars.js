@@ -57,7 +57,7 @@ function drawIneqBars (obj) {
 
 
             // Draw gridlines for x axis
-            svg.selectAll("line.verticalGrid").data(xScale.ticks(obj.xTicks)).enter()
+            //svg.selectAll("line.verticalGrid").data(xScale.ticks(obj.xTicks)).enter()
             svg.selectAll("line.verticalGrid").data(obj.xTicks).enter()
                 .append("line")
                 .attr(
@@ -78,7 +78,12 @@ function drawIneqBars (obj) {
                 .call(xAxis);
             svg.append("g")
                 .attr("class", "y axis")
-                .call(yAxis);
+                .call(yAxis)
+                .append("text")
+                .attr("transform","translate(-" + margin.left + ", 20)")
+                .text(function (d) {
+                    return countryName;
+                });
         }
     });
 
