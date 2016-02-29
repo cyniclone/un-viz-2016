@@ -195,10 +195,21 @@ function drawIneqBars (obj) {
                 //.range([0, height])
                 .domain(_.pluck(subObj, "Period")); // Gets list of property values for period
 
-            debug.ys = yScale;
-
             var yAxis = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
             var countryLabel = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
+
+            // Initialize d3 tip
+            var tip = d3.tip()
+                .attr("class", "d3-tip")
+                .style("width", "260px")
+                .offset([-10, 0])
+                .html(function (d) {
+                    var s = "";
+                    s += "<u>" + d.CountryName + "</u><br />"
+                    s += "<span class='tip-info-general'>General Population - " + d.ValueG + "% income growth</span><br />"
+                    s += "<span class='tip-info-bottom'>Lowest 40% - " + d.ValueB + "% income growth</span><br />"
+                    return s;
+                });
 
             // Variable for chart DOM element
             var svg = d3.select("#" + css_id).append("svg")
@@ -208,6 +219,7 @@ function drawIneqBars (obj) {
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+            svg.call(tip);
 
             // Draw grid-lines for x axis
             svg.selectAll("line.verticalGrid").data(obj.xTickValues).enter()
@@ -256,8 +268,6 @@ function drawIneqBars (obj) {
                     "y2": height
                 });
 
-            debug.subObj = subObj;
-
             // Render dots - general population
             svg.selectAll(".ineq-dot-general")
                 .data(subObj)
@@ -266,6 +276,14 @@ function drawIneqBars (obj) {
                 .attr("r", 5)
                 .attr('cx', function (d) { return xScale(d.ValueG) })
                 .attr('cy', function (d) { return yScale(d.Period) + yScale.rangeBand()/2 })
+                .on('mouseover', function (d) {
+                    tip.show(d);
+                    $(".tip-info-general").css("font-weight", "bold");
+                })
+                .on('mouseout', function (d) {
+                    tip.hide(d);
+                    $(".tip-info-general").css("font-weight", "normal");
+                });
 
             // Render dots - bottom 40%
             svg.selectAll(".ineq-dot-bottom")
@@ -275,15 +293,14 @@ function drawIneqBars (obj) {
                 .attr("r", 5)
                 .attr('cx', function (d) { return xScale(d.ValueB) })
                 .attr('cy', function (d) { return yScale(d.Period) + yScale.rangeBand()/2 })
-                //.style("fill","blue")
-                //.on('mouseover', function (d) {
-                //    tip.show(d);
-                //    activate(d3.selectAll(".c" + d.hash));
-                //})
-                //.on('mouseout', function (d) {
-                //    tip.hide(d);
-                //    deactivate(d3.selectAll(".c" + d.hash));
-                //});
+                .on('mouseover', function (d) {
+                    tip.show(d);
+                    $(".tip-info-bottom").css("font-weight", "bold");
+                })
+                .on('mouseout', function (d) {
+                    tip.hide(d);
+                    $(".tip-info-bottom").css("font-weight", "normal");
+                });
 
         }
     });

@@ -218,6 +218,9 @@ body {
 .inequality circle.purple {
   fill: #8b1c34;
 }
+.inequality .d3-tip {
+  width: 200px;
+}
 .sustainable {
   background: #f59a23;
 }
