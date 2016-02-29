@@ -163,11 +163,10 @@ function drawIneqBars (obj) {
      //Setup color scale
     var colorScale = d3.scale.ordinal().range(obj.colorScaleRange);
 
-
-    d3.csv(obj.dataPath, function(error, _data) {
+    d3.csv(obj.dataPath, function(error, data) {
         if (error) throw error;
 
-        data = _data;
+        //data = _data;
         data.forEach(function (d) {
             d.ValueG = +d.ValueG; // Force numeric; value of general population
             d.ValueB = +d.ValueB; // Force numeric; value of bottom 40%
@@ -183,6 +182,7 @@ function drawIneqBars (obj) {
         // MAIN LOOP here. For each country in the object...
         for(var i = 0; i < _.size(data); i++) {
             var countryName = _.keys(data)[i];
+            console.log(data);
             var subObj = data[countryName];     // Sub-object for each loop iteration
 
             // Set height of chart based on number of periods
@@ -193,9 +193,12 @@ function drawIneqBars (obj) {
             $("#charts").append("<div id='" + css_id + "' class='height-" + height + "'></div>"); // initializes empty
 
             // Setup y - each chart will have its own yScale and yAxis
-            var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .2)
-                //.domain(function(d) {return d.Period; } );
+            var yScale = d3.scale.ordinal()
+                .rangeRoundBands([0, height], .1)
+                //.range([0, height])
                 .domain(_.pluck(subObj, "Period")); // Gets list of property values for period
+
+            debug.ys = yScale;
 
             var yAxis = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
             var countryLabel = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
@@ -212,8 +215,7 @@ function drawIneqBars (obj) {
             // Draw grid-lines for x axis
             svg.selectAll("line.verticalGrid").data(obj.xTickValues).enter()
                 .append("line")
-                .attr(
-                    {
+                .attr({
                         "class": "verticalGrid",
                         "x1": function (d) { return xScale(d); },
                         "x2": function (d) { return xScale(d); },
@@ -256,6 +258,29 @@ function drawIneqBars (obj) {
                     "y1": 0,
                     "y2": height
                 });
+
+            debug.subObj = subObj;
+
+            // Render dots
+            svg.selectAll(".ineq-dot")
+                .data(subObj)
+                .enter().append("circle")
+                .attr("r", 5)
+                .attr('cx', function (d) {
+                    return xScale(d.ValueB)
+                })
+                .attr('cy', function (d) {
+                    return yScale(d.Period) + yScale.rangeBand()/2
+                }).style("fill","blue")
+                //.on('mouseover', function (d) {
+                //    tip.show(d);
+                //    activate(d3.selectAll(".c" + d.hash));
+                //})
+                //.on('mouseout', function (d) {
+                //    tip.hide(d);
+                //    deactivate(d3.selectAll(".c" + d.hash));
+                //});
+
         }
     });
 }
