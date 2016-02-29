@@ -563,9 +563,8 @@ charts["sustainableBars"] = {
 
 // INEQUALITY
 charts["inequality"] = {
-    //"xTicks" : [-4, -2, 0, 2, 4, 6, 8, 10, 12],
-    "xTickValues" : [-4, -2, 0, 2, 4, 6, 8, 10, 12],
-    "xDomain" : [-4, 12],
+    "xTickValues" : [-5, -4, -2, 0, 2, 4, 6, 8, 10, 12],
+    "xDomain" : [-5, 12],
     "value" : "inequality",
     "dimensions" : {
         "margin" : {
@@ -578,8 +577,6 @@ charts["inequality"] = {
         "heightPerTick" : 30
     },
     "radius" : 3,
-    "colorScaleRange" : ["#8b1c34", "#FEFEFE"],
-    //"countryNamesPath" : "data/countrylist/list-inequality.csv",
     "dataPath" : "data/inequality.csv",
 };
 

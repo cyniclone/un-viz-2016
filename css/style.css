@@ -208,6 +208,16 @@ body {
   font-size: 14px;
   fill: #000;
 }
+.inequality circle {
+  fill-opacity: 0.8;
+  stroke: #000;
+}
+.inequality circle.white {
+  fill: #fefefe;
+}
+.inequality circle.purple {
+  fill: #8b1c34;
+}
 .sustainable {
   background: #f59a23;
 }

@@ -160,9 +160,6 @@ function drawIneqBars (obj) {
         .attr("transform","translate(" + margin.left + ", 30)")
         .call(xAxis);
 
-     //Setup color scale
-    var colorScale = d3.scale.ordinal().range(obj.colorScaleRange);
-
     d3.csv(obj.dataPath, function(error, data) {
         if (error) throw error;
 
@@ -261,17 +258,24 @@ function drawIneqBars (obj) {
 
             debug.subObj = subObj;
 
-            // Render dots
-            svg.selectAll(".ineq-dot")
+            // Render dots - general population
+            svg.selectAll(".ineq-dot-general")
                 .data(subObj)
                 .enter().append("circle")
+                .attr("class", "purple")
                 .attr("r", 5)
-                .attr('cx', function (d) {
-                    return xScale(d.ValueB)
-                })
-                .attr('cy', function (d) {
-                    return yScale(d.Period) + yScale.rangeBand()/2
-                }).style("fill","blue")
+                .attr('cx', function (d) { return xScale(d.ValueG) })
+                .attr('cy', function (d) { return yScale(d.Period) + yScale.rangeBand()/2 })
+
+            // Render dots - bottom 40%
+            svg.selectAll(".ineq-dot-bottom")
+                .data(subObj)
+                .enter().append("circle")
+                .attr("class", "white")
+                .attr("r", 5)
+                .attr('cx', function (d) { return xScale(d.ValueB) })
+                .attr('cy', function (d) { return yScale(d.Period) + yScale.rangeBand()/2 })
+                //.style("fill","blue")
                 //.on('mouseover', function (d) {
                 //    tip.show(d);
                 //    activate(d3.selectAll(".c" + d.hash));
