@@ -205,9 +205,10 @@ function drawIneqBars (obj) {
                 .offset([-10, 0])
                 .html(function (d) {
                     var s = "";
-                    s += "<u>" + d.CountryName + "</u><br />"
-                    s += "<span class='tip-info-general'>General Population - " + d.ValueG + "% income growth</span><br />"
-                    s += "<span class='tip-info-bottom'>Lowest 40% - " + d.ValueB + "% income growth</span><br />"
+                    s += "<u>" + d.CountryName + ", " + d.Period +"</u><br />";
+                    s += "<span class='tip-info-general'>General Population: " + d.ValueG + "% income growth</span><br />";
+                    s += "<span class='tip-info-bottom'>Lowest 40%: " + d.ValueB + "% income growth</span><br />";
+                    s += "<span>Difference: " + Math.abs(d.ValueG - d.ValueB).toFixed(2) + "%";
                     return s;
                 });
 
@@ -267,6 +268,20 @@ function drawIneqBars (obj) {
                     "y1": 0,
                     "y2": height
                 });
+
+            // Draw connecting lines
+            svg.selectAll(".connector-line")
+                .data(subObj)
+                .enter()
+                .append('line')
+                .attr("class", "connector-line")
+                .attr('x1', function(d) { return xScale(d.ValueG); })
+                .attr('x2', function(d) { return xScale(d.ValueB); })
+                .attr('y1', function(d) { return yScale(d.Period) + yScale.rangeBand()/2; })
+                .attr('y2', function(d) { return yScale(d.Period) + yScale.rangeBand()/2; })
+                //.attr('stroke-width', '0')
+                .attr('stroke', '#000')
+                .attr('opacity', '1');
 
             // Render dots - general population
             svg.selectAll(".ineq-dot-general")
