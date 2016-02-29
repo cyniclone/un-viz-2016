@@ -195,6 +195,9 @@ body {
 .inequality .height-90 {
   height: 90px;
 }
+.inequality .zero-line {
+  stroke: #fefefe;
+}
 .inequality #inequality-axis {
   height: 30px;
 }

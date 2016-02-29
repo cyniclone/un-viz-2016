@@ -145,9 +145,7 @@ function drawIneqBars (obj) {
     // Setup x
     var xScale = d3.scale.linear().range([0, width]).domain(obj.xDomain);
     var xAxis  = d3.svg.axis().scale(xScale).orient("top")
-        .tickFormat(function (d) {
-            return d + "%";
-        })
+        .tickFormat(function (d) { return d + "%"; })
         .tickPadding(5)
         .tickSize(10)
         .tickValues(obj.xTickValues);
@@ -247,6 +245,17 @@ function drawIneqBars (obj) {
                 .call(yAxis)
                 .append("text")
                 .attr("transform","translate(0, 0)");
+
+            // Render zero-line
+            svg.append("g")
+                .attr("class", "zero-line")
+                .append("line")
+                .attr({
+                    "x1": xScale(0),
+                    "x2": xScale(0),
+                    "y1": 0,
+                    "y2": height
+                });
         }
     });
 }
