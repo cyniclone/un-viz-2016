@@ -1,255 +1,5 @@
 var debug = {};
 
-function drawIneqBars (obj) {
-    // Global variables; used by all charts in this visualization
-    var dim = obj.dimensions,  // Bring in chart dimensions
-        margin = dim.margin,
-        width = dim.width - dim.margin.left - dim.margin.right,
-        heightPerTick = dim.heightPerTick;
-
-    // Height will vary for each country, and will be set later.
-        //height = dim.height - dim.margin.top - dim.margin.bottom;
-
-    // Setup x
-    var xScale = d3.scale.linear().range([0, width]).domain(obj.xDomain);
-    var xAxis  = d3.svg.axis().scale(xScale).orient("top").ticks(obj.xTicks).outerTickSize(0);
-
-    // Setup color scale
-    var colorScale = d3.scale.ordinal().range(obj.colorScaleRange);
-
-    d3.csv(obj.dataPath, function(error, _data) {
-        if (error) throw error;
-
-        data = _data;
-        data.forEach(function (d) {
-            d.ValueG = +d.ValueG; // Force numeric; value of general population
-            d.ValueB = +d.ValueB; // Force numeric; value of bottom 40%
-        });
-
-        // Nest objects by country name so we can iterate through them
-        data = d3.nest()
-            .key(function (d) { return d.CountryName; })
-            .map(data);
-
-        debug.data = data;
-
-        // MAIN LOOP here. For each country in the object...
-        for(var i = 0; i < _.size(data); i++) {
-            var countryName = _.keys(data)[i];
-            var subObj = data[countryName];     // Sub-object for each loop iteration
-
-            // Set height of chart based on number of periods
-            var height = _.pluck(subObj, "Period").length * heightPerTick;
-            console.log(countryName + " " + height);
-            console.log(_.pluck(subObj, "Period"));
-            console.log(_.pluck(subObj, "Period").length);
-
-            // Make a div with id "#chart-" + countryName;
-            var css_id = "chart-" + subObj[0].DivName;
-            $("#charts").append("<div id='" + css_id + "' class='height-" + height + "'></div>"); // initializes empty
-
-            // Setup y - each chart will have its own yScale and yAxis
-            var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .2)
-                //.domain(function(d) {return d.Period; } );
-                .domain(_.pluck(subObj, "Period")); // Gets list of property values for period
-
-            var yAxis  = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0)
-            var countryLabel = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
-
-            // Variable for chart DOM element
-            var svg = d3.select("#" + css_id).append("svg")
-                .attr("class", "bar-chart")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-            // Draw grid-lines for x axis
-            svg.selectAll("line.verticalGrid").data(obj.xTicks).enter()
-                .append("line")
-                .attr(
-                    {
-                        "class": "verticalGrid",
-                        "x1": function (d) { return xScale(d); },
-                        "x2": function (d) { return xScale(d); },
-                        "y1": height,
-                        "y2": 0,
-                        "fill": "none",
-                        "stroke": "#fff",
-                        "stroke-width": "0.75px"
-                    });
-
-            // Render x axis
-            svg.append("g")
-                .attr("class", "x axis")
-                .call(xAxis);
-            // Continue line to the left of the axis
-            svg.append("g")
-                .attr("class", "x axis")
-                .append("line")
-                .attr({ "x1": -margin.left,  "x2": 0,  "y1": 0,  "y2": 0 });
-
-            // Render the country name to the left side
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(countryLabel)
-                .append("text")
-                .attr("transform","translate(-" + margin.left + ", 20)")
-                .text(function () { return countryName; });
-
-            // Render y axis
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis)
-                .append("text")
-                .attr("transform","translate(0, 0)");
-        }
-    });
-
-    /*
-
-
-
-     svg.selectAll(".bottom.bar") // Draw bars for bottom 40
-     .data(data)
-     .enter().append("rect")
-     .attr("y", function(d) { return yScale(d.Label) })
-     .attr("height", yScale.rangeBand()/2)
-     .attr("x", function(d) { return xScale(Math.min(0, d.ValueB)) })
-     //.attr("width", function(d) { return xScale(d.ValueB); })
-     .attr("width", function(d) { return Math.abs(xScale(d.ValueB) - xScale(0)); })
-     .attr("fill", "white");
-
-     svg.selectAll(".general.bar") // Draw bars for general population
-     .data(data)
-     .enter().append("rect")
-     .attr("y", function(d) { return yScale(d.Label) + yScale.rangeBand()/2 + 1 })
-     .attr("height", yScale.rangeBand()/2)
-     .attr("x", function(d) { return xScale(Math.min(0, d.ValueG)) })
-     //.attr("width", function(d) { return xScale(d.ValueG); })
-     .attr("width", function(d) { return Math.abs(xScale(d.ValueG) - xScale(0)); })
-     .attr("fill", "#8b1c34");
-
-     */
-
-}
-
-function drawBars2 () {
-    var outerWidth = 1000;
-    var outerHeight = 800;
-    var margin = { left: 200, top: 0, right: 100, bottom: 90 };
-    var barPadding = 0.6
-    var barPaddingOuter = 0.3;
-    var innerWidth = outerWidth - margin.left - margin.right;
-    var innerHeight = outerHeight - margin.top - margin.bottom;
-
-    // Create SVG
-    var svg = d3.select("#chart").append("svg")
-        .attr("width", outerWidth)
-        .attr("height", outerHeight);
-    var g = svg.append("g")
-        .attr("transform", "translate(" + margin.left + ", " + margin.top + 30 + ")");
-
-    // The axis is on the right
-    var xAxisG = g.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + 10 + ")");
-
-    // Common y axis for all
-    var yAxisG = g.append("g")
-        .attr("class", "y axis");
-
-    var xScale = d3.scale.linear().range([0, innerWidth]);
-    var yScale = d3.scale.ordinal()
-        .rangeRoundBands([0, innerHeight], barPadding, barPaddingOuter);
-
-    var yAxis = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
-
-    function render(data) {
-        var xAxis = d3.svg.axis().scale(xScale).orient("top")
-            .tickValues([-4, -2, 0, 2, 4, 6, 8, 10, 12])
-            .outerTickSize(0)
-            .innerTickSize(-1 * outerHeight);
-
-        xScale.domain([-5, 15]);
-
-        // Make y Axis labels
-        var country = "";
-        data.forEach(function(d) {
-            if (d.CountryName == country) {
-                d.label = d.Period;
-            } else {
-                d.label = d.Period;
-                d.heading = d.CountryName;
-            }
-            country = d.CountryName;
-        });
-
-        var labels = data.map(function(d) {
-            return d.label;
-        });
-
-        // Set domain for all Y labels
-        yScale.domain(labels);
-        xAxisG.call(xAxis);
-        yAxisG.call(yAxis);
-
-        // Make bar chart for general population
-        var bars = g.selectAll(".ValueG").data(data);
-        bars.enter().append("rect")
-            .attr("height", yScale.rangeBand() / 2);
-        bars.attr("x", function(d) { return xScale(0); })
-            .attr("y", function(d) { return yScale(d.label); })
-            .attr("width", function(d) { return xScale(d.ValueG) - xScale(0); })
-            .style("fill", "#8b1c34")
-            .attr("class", "ValueG");
-
-        // Make bars for bottom 40% population
-        var bars = g.selectAll(".ValueB").data(data);
-        bars.enter().append("rect")
-            .attr("height", yScale.rangeBand() / 2)
-            .attr("x", function(d) { return xScale(0); })
-            .attr("y", function(d) { return yScale.rangeBand() / 2 + yScale(d.label); })
-            .attr("width", function(d) { return xScale(d.ValueB) - xScale(0); })
-            .style("fill", "white")
-            .attr("class", "ValueB")
-
-        // Make grid lines for those data that have headings
-        var lines = g.selectAll(".xLine").data(filter(function(d) { return !(d.heading == undefined) }));
-        lines.enter().append("line")
-        lines
-            .attr("x1", 0)
-            .attr("y1", function(d) { return (yScale(d.label) - yScale.rangeBand()) })
-            .attr("x2", outerWidth)
-            .attr("y2", function(d) { return (yScale(d.label) - yScale.rangeBand()) })
-            .style("stroke", "blue")
-            .attr("class", "xLine")
-            .style("display", function(s) {
-                if ((yScale(s.label) - yScale.rangeBand()) < 0) {
-                    return "none"; // Don't show grids when y is negative
-                }
-            });
-
-        // Make heading filtering data only for those which have headings
-        var headings = g.selectAll(".heading").data(data.filter(function(d) { return !(d.heading == undefined )}));
-        headings.enter().append("text")
-            .text(function(d) { return d.heading })
-            .attr("x", 0)
-            .attr("y", function(d) {
-                return (yScale(d.label) - yScale.rangeBand() + 30 )
-            });
-    }
-
-    function type(d) {
-        d.ValueA = +d.ValueA;
-        d.ValueB = +d.ValueB;
-        console.log(d);
-        return d;
-    }
-    d3.csv("data/inequality.csv", type, render);
-}
-
 function drawBars (obj) {
 
     // Assign chart dimensions from object
@@ -383,4 +133,111 @@ function drawBars (obj) {
     });
 
     svg.call(tip);
+}
+function drawIneqBars (obj) {
+    // Global variables; used by all charts in this visualization
+    var dim = obj.dimensions,  // Bring in chart dimensions
+        margin = dim.margin,
+        width = dim.width - dim.margin.left - dim.margin.right,
+        heightPerTick = dim.heightPerTick;
+
+    // Height will vary for each country, and will be set later.
+    //height = dim.height - dim.margin.top - dim.margin.bottom;
+
+    // Setup x
+    var xScale = d3.scale.linear().range([0, width]).domain(obj.xDomain);
+    var xAxis  = d3.svg.axis().scale(xScale).orient("top").ticks(obj.xTicks).outerTickSize(0);
+
+    // Setup color scale
+    var colorScale = d3.scale.ordinal().range(obj.colorScaleRange);
+
+    d3.csv(obj.dataPath, function(error, _data) {
+        if (error) throw error;
+
+        data = _data;
+        data.forEach(function (d) {
+            d.ValueG = +d.ValueG; // Force numeric; value of general population
+            d.ValueB = +d.ValueB; // Force numeric; value of bottom 40%
+        });
+
+        // Nest objects by country name so we can iterate through them
+        data = d3.nest()
+            .key(function (d) { return d.CountryName; })
+            .map(data);
+
+        debug.data = data;
+
+        // MAIN LOOP here. For each country in the object...
+        for(var i = 0; i < _.size(data); i++) {
+            var countryName = _.keys(data)[i];
+            var subObj = data[countryName];     // Sub-object for each loop iteration
+
+            // Set height of chart based on number of periods
+            var height = _.pluck(subObj, "Period").length * heightPerTick;
+            console.log(countryName + " " + height);
+            console.log(_.pluck(subObj, "Period"));
+            console.log(_.pluck(subObj, "Period").length);
+
+            // Make a div with id "#chart-" + countryName;
+            var css_id = "chart-" + subObj[0].DivName;
+            $("#charts").append("<div id='" + css_id + "' class='height-" + height + "'></div>"); // initializes empty
+
+            // Setup y - each chart will have its own yScale and yAxis
+            var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .2)
+                //.domain(function(d) {return d.Period; } );
+                .domain(_.pluck(subObj, "Period")); // Gets list of property values for period
+
+            var yAxis  = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0)
+            var countryLabel = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
+
+            // Variable for chart DOM element
+            var svg = d3.select("#" + css_id).append("svg")
+                .attr("class", "bar-chart")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+            // Draw grid-lines for x axis
+            svg.selectAll("line.verticalGrid").data(obj.xTicks).enter()
+                .append("line")
+                .attr(
+                    {
+                        "class": "verticalGrid",
+                        "x1": function (d) { return xScale(d); },
+                        "x2": function (d) { return xScale(d); },
+                        "y1": height,
+                        "y2": 0,
+                        "fill": "none",
+                        "stroke": "#fff",
+                        "stroke-width": "0.75px"
+                    });
+
+            // Render x axis
+            svg.append("g")
+                .attr("class", "x axis")
+                .call(xAxis);
+            // Continue line to the left of the axis
+            svg.append("g")
+                .attr("class", "x axis")
+                .append("line")
+                .attr({ "x1": -margin.left,  "x2": 0,  "y1": 0,  "y2": 0 });
+
+            // Render the country name to the left side
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(countryLabel)
+                .append("text")
+                .attr("transform","translate(-" + margin.left + ", 20)")
+                .text(function () { return countryName; });
+
+            // Render y axis
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .attr("transform","translate(0, 0)");
+        }
+    });
 }
