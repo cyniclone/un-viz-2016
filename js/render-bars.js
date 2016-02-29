@@ -76,12 +76,25 @@ function drawIneqBars (obj) {
             svg.append("g")
                 .attr("class", "x axis")
                 .call(xAxis);
+            // Continue line to the left of the axis
+            svg.append("g")
+                .attr("class", "x axis")
+                .append("line")
+                .attr(
+                    {
+                        "x1": -margin.left,
+                        "x2": 0,
+                        "y1": 0,
+                        "y2": 0
+                    });
+
+
             svg.append("g")
                 .attr("class", "y axis")
                 .call(yAxis)
                 .append("text")
                 .attr("transform","translate(-" + margin.left + ", 20)")
-                .text(function (d) {
+                .text(function () {
                     return countryName;
                 });
         }

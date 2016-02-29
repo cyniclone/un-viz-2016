@@ -186,6 +186,9 @@ body {
   color: #000;
   background: #dd1e66;
 }
+.inequality .bar-chartt {
+  border-top: 1px solid rgba(255,255,255,0.7);
+}
 .inequality .bar-chart-holder {
   height: 100px;
 }
