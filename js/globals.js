@@ -571,10 +571,10 @@ charts["inequality"] = {
             top : 0,
             right: 20,
             bottom: 0,
-            left: 200
+            left: 250
         },
-        "width" : 800,
-        "height" : 100
+        "width" : 900,
+        "heightPerTick" : 30
     },
     "radius" : 3,
     "colorScaleRange" : ["#8b1c34", "#FEFEFE"],

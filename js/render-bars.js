@@ -1,26 +1,22 @@
+var debug = {};
+
 function drawIneqBars (obj) {
-    // Global variables; used by all charts
-    // Bring in chart dimensions
-    var dim = obj.dimensions,
+    // Global variables; used by all charts in this visualization
+    var dim = obj.dimensions,  // Bring in chart dimensions
         margin = dim.margin,
         width = dim.width - dim.margin.left - dim.margin.right,
-        height = dim.height - dim.margin.top - dim.margin.bottom;
+        heightPerTick = dim.heightPerTick;
+
+    // Height will vary for each country, and will be set later.
+        //height = dim.height - dim.margin.top - dim.margin.bottom;
 
     // Setup x
-    var xScale = d3.scale.linear().range([0, width]);
+    var xScale = d3.scale.linear().range([0, width]).domain(obj.xDomain);
     var xAxis  = d3.svg.axis().scale(xScale).orient("top").ticks(obj.xTicks).outerTickSize(0);
-
-    // xScale's domain will be the same for all charts; yScale's will vary
-    xScale.domain(obj.xDomain);
-
-    // Setup y
-    var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .2);
-    var yAxis  = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
 
     // Setup color scale
     var colorScale = d3.scale.ordinal().range(obj.colorScaleRange);
 
-    var data; // Global data object
     d3.csv(obj.dataPath, function(error, _data) {
         if (error) throw error;
 
@@ -35,17 +31,30 @@ function drawIneqBars (obj) {
             .key(function (d) { return d.CountryName; })
             .map(data);
 
+        debug.data = data;
+
         // MAIN LOOP here. For each country in the object...
         for(var i = 0; i < _.size(data); i++) {
             var countryName = _.keys(data)[i];
             var subObj = data[countryName];     // Sub-object for each loop iteration
+
+            // Set height of chart based on number of periods
+            var height = _.pluck(subObj, "Period").length * heightPerTick;
+            console.log(countryName + " " + height);
+            console.log(_.pluck(subObj, "Period"));
+            console.log(_.pluck(subObj, "Period").length);
+
+            // Make a div with id "#chart-" + countryName;
             var css_id = "chart-" + subObj[0].DivName;
+            $("#charts").append("<div id='" + css_id + "' class='height-" + height + "'></div>"); // initializes empty
 
-            // Make a div with id "#chart-" + countryName
-            $("#charts").append("<div id='" + css_id + "' class='bar-chart-holder'></div>"); // initializes empty
+            // Setup y - each chart will have its own yScale and yAxis
+            var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .2)
+                //.domain(function(d) {return d.Period; } );
+                .domain(_.pluck(subObj, "Period")); // Gets list of property values for period
 
-            // Our year labels
-            yScale.domain(function(d) { return d.Period; } );
+            var yAxis  = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0)
+            var countryLabel = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
 
             // Variable for chart DOM element
             var svg = d3.select("#" + css_id).append("svg")
@@ -56,8 +65,7 @@ function drawIneqBars (obj) {
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-            // Draw gridlines for x axis
-            //svg.selectAll("line.verticalGrid").data(xScale.ticks(obj.xTicks)).enter()
+            // Draw grid-lines for x axis
             svg.selectAll("line.verticalGrid").data(obj.xTicks).enter()
                 .append("line")
                 .attr(
@@ -72,7 +80,7 @@ function drawIneqBars (obj) {
                         "stroke-width": "0.75px"
                     });
 
-            // Render axes
+            // Render x axis
             svg.append("g")
                 .attr("class", "x axis")
                 .call(xAxis);
@@ -80,23 +88,22 @@ function drawIneqBars (obj) {
             svg.append("g")
                 .attr("class", "x axis")
                 .append("line")
-                .attr(
-                    {
-                        "x1": -margin.left,
-                        "x2": 0,
-                        "y1": 0,
-                        "y2": 0
-                    });
+                .attr({ "x1": -margin.left,  "x2": 0,  "y1": 0,  "y2": 0 });
 
+            // Render the country name to the left side
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(countryLabel)
+                .append("text")
+                .attr("transform","translate(-" + margin.left + ", 20)")
+                .text(function () { return countryName; });
 
+            // Render y axis
             svg.append("g")
                 .attr("class", "y axis")
                 .call(yAxis)
                 .append("text")
-                .attr("transform","translate(-" + margin.left + ", 20)")
-                .text(function () {
-                    return countryName;
-                });
+                .attr("transform","translate(0, 0)");
         }
     });
 
