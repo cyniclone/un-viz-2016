@@ -71,7 +71,6 @@ function drawScatter (obj) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (d) {
-            //TODO make this different for charts["consumption"]
             var s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br>";
             if (obj.customFormat != undefined) {
                 s += obj.customFormat(d3.round(d[yParam], 1));
@@ -185,6 +184,7 @@ function drawScatter (obj) {
             .attr('cx', xMap)
             .attr('cy', yMap)
             .on('mouseover', function (d) {
+                deactivate(d3.selectAll(".active"));    // For IE11 compatibility
                 tip.show(d);
                 activate(d3.selectAll(".c" + d.hash));
             })
@@ -192,6 +192,7 @@ function drawScatter (obj) {
                 tip.hide(d);
                 deactivate(d3.selectAll(".c" + d.hash));
             });
+
 
         if (obj.hasTrend) {
             obj.year = {};
