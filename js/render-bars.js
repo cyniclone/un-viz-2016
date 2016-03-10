@@ -30,7 +30,9 @@ function drawBars (obj) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (d) {
-            var s = d.Value + "%<br>";
+            var s = "";
+            s += "<b>d.CountryName</b><br />";
+            s += d.Value;
             return s;
         });
 
@@ -58,20 +60,27 @@ function drawBars (obj) {
         // Render Axes
         svg.append("g")
             .attr("class", "x axis")
-            //.attr("transform", "translate(0," + 0 + ")")
             .call(xAxis)
             .append("text");
-        svg.append("g")
+
+        var yAxisGroup = svg.append("g")
             .attr("class", "y axis")
-            .call(yAxis)
-            .append("text");
+            .call(yAxis);
+
+        // Classing for highlighting axis labels on mouseover
+        yAxisGroup.selectAll("text")
+            .attr("class", function (d, i) {
+                return data[i].hash;
+            });
 
         // Render bars
         svg.selectAll(".hBar")
             .data(data)
             .enter().append("rect")
+            .attr("class", function(d) {
+                return "hBar " + d.hash
+            })
             .attr({
-                "class" : "hBar",
                 "x" : 0 ,
                 "width" : function(d) { return xScale(d.Value); },
                 "y" : function(d) { return yScale(d.CountryName); },
@@ -83,7 +92,9 @@ function drawBars (obj) {
         svg.selectAll(".hBarText")
             .data(data)
             .enter().append("text")
-            .attr("class", "hBarText")
+            .attr("class", function(d) {
+                return "hBarText " + d.hash
+            })
             .attr("x", function(d) { return xScale(d.Value) + 5; })
             .attr("y", function(d) { return yScale(d.CountryName) + yScale.rangeBand() / 2; })
             .attr("dy", ".35em")

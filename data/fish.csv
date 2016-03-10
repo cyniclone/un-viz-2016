@@ -1,1 +1,26 @@
-CountryName,ValueUnited States,247India,216Mexico,179Tanzania,175Indonesia,150China,131Turkey,131Cameroon,119Australia,111South Africa,103Thailand,99Malawi,98"Congo, Dem. Rep.",93Madagascar,87Brazil,85Greece,80Philippines,77Spain,77Vietnam,76Guinea,75Malaysia,75Japan,74Gabon,71Nigeria,71Kenya,70
+CountryName,Value,hash
+United States,247,768685
+India,216,967ce3
+Mexico,179,41937b
+Tanzania,175,7e380b
+Indonesia,150,35536a
+China,131,d2eaf2
+Turkey,131,d7153e
+Cameroon,119,73a7dd
+Australia,111,ceafb5
+South Africa,103,35fda1
+Thailand,99,a2b7c1
+Malawi,98,0ce65b
+"Congo, Dem. Rep.",93,7c927d
+Madagascar,87,f92bcb
+Brazil,85,37497a
+Greece,80,4902a4
+Philippines,77,806736
+Spain,77,20a8df
+Vietnam,76,681101
+Guinea,75,b47b54
+Malaysia,75,ff3ea3
+Japan,74,fcf29f
+Gabon,71,a06dcd
+Nigeria,71,9742d0
+Kenya,70,a84f56
