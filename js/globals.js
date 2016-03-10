@@ -101,13 +101,10 @@ charts["childMortality"] = {
 
 charts["consumption"] = {
     "n"     : 1,
-    //"customFormat" : d3.format("0,000"),
     "useCustomX" : true,
     "xMin" : 0,
     "xMax" : 3000,
     "useCustomR" : true,
-    //"rMin" : 4,
-    //"rMax" : 32,
     "rRange" : [4, 32],
     "xParam" : "SubPerCapita",
     "yParam" : "AverageSubRate",
