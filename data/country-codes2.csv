@@ -1,269 +1,1 @@
-Sort Order,CountryName,Formal Name,CountryCode
-1,Afghanistan,Islamic State of Afghanistan,AFG
-2,Albania,Republic of Albania,ALB
-3,Algeria,People's Democratic Republic of Algeria,DZA
-4,Andorra,Principality of Andorra,AND
-5,Angola,Republic of Angola,AGO
-6,Antigua and Barbuda,,ATG
-7,Argentina,Argentine Republic,ARG
-8,Armenia,Republic of Armenia,ARM
-9,Australia,Commonwealth of Australia,AUS
-10,Austria,Republic of Austria,AUT
-11,Azerbaijan,Republic of Azerbaijan,AZE
-12,Bahamas,,BHS
-13,Bahrain,Kingdom of Bahrain,BHR
-14,Bangladesh,People's Republic of Bangladesh,BGD
-15,Barbados,,BRB
-16,Belarus,Republic of Belarus,BLR
-17,Belgium,Kingdom of Belgium,BEL
-18,Belize,,BLZ
-19,Benin,Republic of Benin,BEN
-20,Bhutan,Kingdom of Bhutan,BTN
-21,Bolivia,Republic of Bolivia,BOL
-22,Bosnia and Herzegovina,,BIH
-23,Botswana,Republic of Botswana,BWA
-24,Brazil,Federative Republic of Brazil,BRA
-25,Brunei,Negara Brunei Darussalam,BRN
-26,Bulgaria,Republic of Bulgaria,BGR
-27,Burkina Faso,,BFA
-28,Burundi,Republic of Burundi,BDI
-29,Cambodia,Kingdom of Cambodia,KHM
-30,Cameroon,Republic of Cameroon,CMR
-31,Canada,,CAN
-32,Cape Verde,Republic of Cape Verde,CPV
-33,Central African Republic,,CAF
-34,Chad,Republic of Chad,TCD
-35,Chile,Republic of Chile,CHL
-36,China,,
-37,Colombia,Republic of Colombia,COL
-38,Comoros,Union of Comoros,COM
-39,Congo,,
-40,Congo,,
-41,Costa Rica,Republic of Costa Rica,CRI
-42,Cote d'Ivoire (Ivory Coast),Republic of Cote d'Ivoire,CIV
-43,Croatia,Republic of Croatia,HRV
-44,Cuba,Republic of Cuba,CUB
-45,Cyprus,Republic of Cyprus,CYP
-46,Czech Republic,,CZE
-47,Denmark,Kingdom of Denmark,DNK
-48,Djibouti,Republic of Djibouti,DJI
-49,Dominica,Commonwealth of Dominica,DMA
-50,Dominican Republic,,DOM
-51,Ecuador,Republic of Ecuador,ECU
-52,Egypt,Arab Republic of Egypt,EGY
-53,El Salvador,Republic of El Salvador,SLV
-54,Equatorial Guinea,Republic of Equatorial Guinea,GNQ
-55,Eritrea,State of Eritrea,ERI
-56,Estonia,Republic of Estonia,EST
-57,Ethiopia,Federal Democratic Republic of Ethiopia,ETH
-58,Fiji,Republic of the Fiji Islands,FJI
-59,Finland,Republic of Finland,FIN
-60,France,French Republic,FRA
-61,Gabon,Gabonese Republic,GAB
-62,Gambia,,
-63,Georgia,Republic of Georgia,GEO
-64,Germany,Federal Republic of Germany,DEU
-65,Ghana,Republic of Ghana,GHA
-66,Greece,Hellenic Republic,GRC
-67,Grenada,,GRD
-68,Guatemala,Republic of Guatemala,GTM
-69,Guinea,Republic of Guinea,GIN
-70,Guinea-Bissau,Republic of Guinea-Bissau,GNB
-71,Guyana,Co-operative Republic of Guyana,GUY
-72,Haiti,Republic of Haiti,HTI
-73,Honduras,Republic of Honduras,HND
-74,Hungary,Republic of Hungary,HUN
-75,Iceland,Republic of Iceland,ISL
-76,India,Republic of India,IND
-77,Indonesia,Republic of Indonesia,IDN
-78,Iran,Islamic Republic of Iran,IRN
-79,Iraq,Republic of Iraq,IRQ
-80,Ireland,,IRL
-81,Israel,State of Israel,ISR
-82,Italy,Italian Republic,ITA
-83,Jamaica,,JAM
-84,Japan,,JPN
-85,Jordan,Hashemite Kingdom of Jordan,JOR
-86,Kazakhstan,Republic of Kazakhstan,KAZ
-87,Kenya,Republic of Kenya,KEN
-88,Kiribati,Republic of Kiribati,KIR
-89,"Korea, Republic of",,KOR
-90,"Korea, Democratic People's Republic of",,PRK
-91,Kuwait,State of Kuwait,KWT
-92,Kyrgyzstan,Kyrgyz Republic,KGZ
-93,Laos,Lao People's Democratic Republic,LAO
-94,Latvia,Republic of Latvia,LVA
-95,Lebanon,Lebanese Republic,LBN
-96,Lesotho,Kingdom of Lesotho,LSO
-97,Liberia,Republic of Liberia,LBR
-98,Libya,Great Socialist People's Libyan Arab Jamahiriya,LBY
-99,Liechtenstein,Principality of Liechtenstein,LIE
-100,Lithuania,Republic of Lithuania,LTU
-101,Luxembourg,Grand Duchy of Luxembourg,LUX
-102,Macedonia,Republic of Macedonia,MKD
-103,Madagascar,Republic of Madagascar,MDG
-104,Malawi,Republic of Malawi,MWI
-105,Malaysia,,MYS
-106,Maldives,Republic of Maldives,MDV
-107,Mali,Republic of Mali,MLI
-108,Malta,Republic of Malta,MLT
-109,Marshall Islands,Republic of the Marshall Islands,MHL
-110,Mauritania,Islamic Republic of Mauritania,MRT
-111,Mauritius,Republic of Mauritius,MUS
-112,Mexico,United Mexican States,MEX
-113,Micronesia,Federated States of Micronesia,FSM
-114,Moldova,Republic of Moldova,MDA
-115,Monaco,Principality of Monaco,MCO
-116,Mongolia,,MNG
-117,Montenegro,Republic of Montenegro,MNE
-118,Morocco,Kingdom of Morocco,MAR
-119,Mozambique,Republic of Mozambique,MOZ
-120,Myanmar (Burma),Union of Myanmar,MMR
-121,Namibia,Republic of Namibia,NAM
-122,Nauru,Republic of Nauru,NRU
-123,Nepal,,NPL
-124,Netherlands,Kingdom of the Netherlands,NLD
-125,New Zealand,,NZL
-126,Nicaragua,Republic of Nicaragua,NIC
-127,Niger,Republic of Niger,NER
-128,Nigeria,Federal Republic of Nigeria,NGA
-129,Norway,Kingdom of Norway,NOR
-130,Oman,Sultanate of Oman,OMN
-131,Pakistan,Islamic Republic of Pakistan,PAK
-132,Palau,Republic of Palau,PLW
-133,Panama,Republic of Panama,PAN
-134,Papua New Guinea,Independent State of Papua New Guinea,PNG
-135,Paraguay,Republic of Paraguay,PRY
-136,Peru,Republic of Peru,PER
-137,Philippines,Republic of the Philippines,PHL
-138,Poland,Republic of Poland,POL
-139,Portugal,Portuguese Republic,PRT
-140,Qatar,State of Qatar,QAT
-141,Romania,,ROU
-142,Russia,Russian Federation,RUS
-143,Rwanda,Republic of Rwanda,RWA
-144,Saint Kitts and Nevis,Federation of Saint Kitts and Nevis,KNA
-145,Saint Lucia,,LCA
-146,Saint Vincent and the Grenadines,,VCT
-147,Samoa,Independent State of Samoa,WSM
-148,San Marino,Republic of San Marino,SMR
-149,Sao Tome and Principe,Democratic Republic of Sao Tome and Principe,STP
-150,Saudi Arabia,Kingdom of Saudi Arabia,SAU
-151,Senegal,Republic of Senegal,SEN
-152,Serbia,Republic of Serbia,SRB
-153,Seychelles,Republic of Seychelles,SYC
-154,Sierra Leone,Republic of Sierra Leone,SLE
-155,Singapore,Republic of Singapore,SGP
-156,Slovakia,Slovak Republic,SVK
-157,Slovenia,Republic of Slovenia,SVN
-158,Solomon Islands,,SLB
-159,Somalia,,SOM
-160,South Africa,Republic of South Africa,ZAF
-161,Spain,Kingdom of Spain,ESP
-162,Sri Lanka,Democratic Socialist Republic of Sri Lanka,LKA
-163,Sudan,Republic of the Sudan,SDN
-164,Suriname,Republic of Suriname,SUR
-165,Swaziland,Kingdom of Swaziland,SWZ
-166,Sweden,Kingdom of Sweden,SWE
-167,Switzerland,Swiss Confederation,CHE
-168,Syria,Syrian Arab Republic,SYR
-169,Tajikistan,Republic of Tajikistan,TJK
-170,Tanzania,United Republic of Tanzania,TZA
-171,Thailand,Kingdom of Thailand,THA
-172,Timor-Leste (East Timor),Democratic Republic of Timor-Leste,TLS
-173,Togo,Togolese Republic,TGO
-174,Tonga,Kingdom of Tonga,TON
-175,Trinidad and Tobago,Republic of Trinidad and Tobago,TTO
-176,Tunisia,Tunisian Republic,TUN
-177,Turkey,Republic of Turkey,TUR
-178,Turkmenistan,,TKM
-179,Tuvalu,,TUV
-180,Uganda,Republic of Uganda,UGA
-181,Ukraine,,UKR
-182,United Arab Emirates,United Arab Emirates,ARE
-183,United Kingdom,United Kingdom of Great Britain and Northern Ireland,GBR
-184,United States,United States of America,USA
-185,Uruguay,Oriental Republic of Uruguay,URY
-186,Uzbekistan,Republic of Uzbekistan,UZB
-187,Vanuatu,Republic of Vanuatu,VUT
-188,Vatican City,State of the Vatican City,VAT
-189,Venezuela,Bolivarian Republic of Venezuela,VEN
-190,Vietnam,Socialist Republic of Vietnam,VNM
-191,Yemen,Republic of Yemen,YEM
-192,Zambia,Republic of Zambia,ZMB
-193,Zimbabwe,Republic of Zimbabwe,ZWE
-194,Abkhazia,Republic of Abkhazia,GEO
-195,China,,
-196,Nagorno-Karabakh,Nagorno-Karabakh Republic,AZE
-197,Northern Cyprus,Turkish Republic of Northern Cyprus,CYP
-198,Pridnestrovie (Transnistria),Pridnestrovian Moldavian Republic,MDA
-199,Somaliland,Republic of Somaliland,SOM
-200,South Ossetia,Republic of South Ossetia,GEO
-201,Ashmore and Cartier Islands,Territory of Ashmore and Cartier Islands,AUS
-202,Christmas Island,Territory of Christmas Island,CXR
-203,Cocos (Keeling) Islands,Territory of Cocos (Keeling) Islands,CCK
-204,Coral Sea Islands,Coral Sea Islands Territory,AUS
-205,Heard Island and McDonald Islands,Territory of Heard Island and McDonald Islands,HMD
-206,Norfolk Island,Territory of Norfolk Island,NFK
-207,New Caledonia,,NCL
-208,French Polynesia,Overseas Country of French Polynesia,PYF
-209,Mayotte,Departmental Collectivity of Mayotte,MYT
-210,Saint Barthelemy,Collectivity of Saint Barthelemy,GLP
-211,Saint Martin,Collectivity of Saint Martin,GLP
-212,Saint Pierre and Miquelon,Territorial Collectivity of Saint Pierre and Miquelon,SPM
-213,Wallis and Futuna,Collectivity of the Wallis and Futuna Islands,WLF
-214,French Southern and Antarctic Lands,Territory of the French Southern and Antarctic Lands,ATF
-215,Clipperton Island,,PYF
-216,Bouvet Island,,BVT
-217,Cook Islands,,COK
-218,Niue,,NIU
-219,Tokelau,,TKL
-220,Guernsey,Bailiwick of Guernsey,GGY
-221,Isle of Man,,IMN
-222,Jersey,Bailiwick of Jersey,JEY
-223,Anguilla,,AIA
-224,Bermuda,,BMU
-225,British Indian Ocean Territory,,IOT
-226,British Sovereign Base Areas,,
-227,British Virgin Islands,,VGB
-228,Cayman Islands,,CYM
-229,Falkland Islands (Islas Malvinas),,FLK
-230,Gibraltar,,GIB
-231,Montserrat,,MSR
-232,Pitcairn Islands,,PCN
-233,Saint Helena,,SHN
-234,South Georgia & South Sandwich Islands,,SGS
-235,Turks and Caicos Islands,,TCA
-236,Northern Mariana Islands,Commonwealth of The Northern Mariana Islands,MNP
-237,Puerto Rico,Commonwealth of Puerto Rico,PRI
-238,American Samoa,Territory of American Samoa,ASM
-239,Baker Island,,UMI
-240,Guam,Territory of Guam,GUM
-241,Howland Island,,UMI
-242,Jarvis Island,,UMI
-243,Johnston Atoll,,UMI
-244,Kingman Reef,,UMI
-245,Midway Islands,,UMI
-246,Navassa Island,,UMI
-247,Palmyra Atoll,,UMI
-248,U.S. Virgin Islands,United States Virgin Islands,VIR
-249,Wake Island,,UMI
-250,Hong Kong,Hong Kong Special Administrative Region,HKG
-251,Macau,Macau Special Administrative Region,MAC
-252,Faroe Islands,,FRO
-253,Greenland,,GRL
-254,French Guiana,Overseas Region of Guiana,GUF
-255,Guadeloupe,Overseas Region of Guadeloupe,GLP
-256,Martinique,Overseas Region of Martinique,MTQ
-257,Reunion,Overseas Region of Reunion,REU
-258,Aland,,ALA
-259,Aruba,,ABW
-260,Netherlands Antilles,,ANT
-261,Svalbard,,SJM
-262,Ascension,,ASC
-263,Tristan da Cunha,,TAA
-268,Australian Antarctic Territory,,ATA
-269,Ross Dependency,,ATA
-270,Peter I Island,,ATA
-271,Queen Maud Land,,ATA
-272,British Antarctic Territory,,ATA
+Sort Order,CountryCode,Formal Name,CountryName1,AFG,Islamic State of Afghanistan,Afghanistan2,ALB,Republic of Albania,Albania3,DZA,People's Democratic Republic of Algeria,Algeria4,AND,Principality of Andorra,Andorra5,AGO,Republic of Angola,Angola6,ATG,,Antigua and Barbuda7,ARG,Argentine Republic,Argentina8,ARM,Republic of Armenia,Armenia9,AUS,Commonwealth of Australia,Australia10,AUT,Republic of Austria,Austria11,AZE,Republic of Azerbaijan,Azerbaijan12,BHS,,Bahamas13,BHR,Kingdom of Bahrain,Bahrain14,BGD,People's Republic of Bangladesh,Bangladesh15,BRB,,Barbados16,BLR,Republic of Belarus,Belarus17,BEL,Kingdom of Belgium,Belgium18,BLZ,,Belize19,BEN,Republic of Benin,Benin20,BTN,Kingdom of Bhutan,Bhutan21,BOL,Republic of Bolivia,Bolivia22,BIH,,Bosnia and Herzegovina23,BWA,Republic of Botswana,Botswana24,BRA,Federative Republic of Brazil,Brazil25,BRN,Negara Brunei Darussalam,Brunei26,BGR,Republic of Bulgaria,Bulgaria27,BFA,,Burkina Faso28,BDI,Republic of Burundi,Burundi29,KHM,Kingdom of Cambodia,Cambodia30,CMR,Republic of Cameroon,Cameroon31,CAN,,Canada32,CPV,Republic of Cape Verde,Cape Verde33,CAF,,Central African Republic34,TCD,Republic of Chad,Chad35,CHL,Republic of Chile,Chile36,CHN,,China37,COL,Republic of Colombia,Colombia38,COM,Union of Comoros,Comoros39,COG,Congo (Brazzaville),Congo40,COD,"Congo, Democratic Republic of the",Congo41,CRI,Republic of Costa Rica,Costa Rica42,CIV,Republic of Cote d'Ivoire,Cote d'Ivoire (Ivory Coast)43,HRV,Republic of Croatia,Croatia44,CUB,Republic of Cuba,Cuba45,CYP,Republic of Cyprus,Cyprus46,CZE,,Czech Republic47,DNK,Kingdom of Denmark,Denmark48,DJI,Republic of Djibouti,Djibouti49,DMA,Commonwealth of Dominica,Dominica50,DOM,,Dominican Republic51,ECU,Republic of Ecuador,Ecuador52,EGY,Arab Republic of Egypt,Egypt53,SLV,Republic of El Salvador,El Salvador54,GNQ,Republic of Equatorial Guinea,Equatorial Guinea55,ERI,State of Eritrea,Eritrea56,EST,Republic of Estonia,Estonia57,ETH,Federal Democratic Republic of Ethiopia,Ethiopia58,FJI,Republic of the Fiji Islands,Fiji59,FIN,Republic of Finland,Finland60,FRA,French Republic,France61,GAB,Gabonese Republic,Gabon62,GMB,,Gambia63,GEO,Republic of Georgia,Georgia64,DEU,Federal Republic of Germany,Germany65,GHA,Republic of Ghana,Ghana66,GRC,Hellenic Republic,Greece67,GRD,,Grenada68,GTM,Republic of Guatemala,Guatemala69,GIN,Republic of Guinea,Guinea70,GNB,Republic of Guinea-Bissau,Guinea-Bissau71,GUY,Co-operative Republic of Guyana,Guyana72,HTI,Republic of Haiti,Haiti73,HND,Republic of Honduras,Honduras74,HUN,Republic of Hungary,Hungary75,ISL,Republic of Iceland,Iceland76,IND,Republic of India,India77,IDN,Republic of Indonesia,Indonesia78,IRN,Islamic Republic of Iran,Iran79,IRQ,Republic of Iraq,Iraq80,IRL,,Ireland81,ISR,State of Israel,Israel82,ITA,Italian Republic,Italy83,JAM,,Jamaica84,JPN,,Japan85,JOR,Hashemite Kingdom of Jordan,Jordan86,KAZ,Republic of Kazakhstan,Kazakhstan87,KEN,Republic of Kenya,Kenya88,KIR,Republic of Kiribati,Kiribati89,KOR,,"Korea, Republic of"90,PRK,,"Korea, Democratic People's Republic of"91,KWT,State of Kuwait,Kuwait92,KGZ,Kyrgyz Republic,Kyrgyzstan93,LAO,Lao People's Democratic Republic,Laos94,LVA,Republic of Latvia,Latvia95,LBN,Lebanese Republic,Lebanon96,LSO,Kingdom of Lesotho,Lesotho97,LBR,Republic of Liberia,Liberia98,LBY,Great Socialist People's Libyan Arab Jamahiriya,Libya99,LIE,Principality of Liechtenstein,Liechtenstein100,LTU,Republic of Lithuania,Lithuania101,LUX,Grand Duchy of Luxembourg,Luxembourg102,MKD,Republic of Macedonia,Macedonia103,MDG,Republic of Madagascar,Madagascar104,MWI,Republic of Malawi,Malawi105,MYS,,Malaysia106,MDV,Republic of Maldives,Maldives107,MLI,Republic of Mali,Mali108,MLT,Republic of Malta,Malta109,MHL,Republic of the Marshall Islands,Marshall Islands110,MRT,Islamic Republic of Mauritania,Mauritania111,MUS,Republic of Mauritius,Mauritius112,MEX,United Mexican States,Mexico113,FSM,Federated States of Micronesia,Micronesia114,MDA,Republic of Moldova,Moldova115,MCO,Principality of Monaco,Monaco116,MNG,,Mongolia117,MNE,Republic of Montenegro,Montenegro118,MAR,Kingdom of Morocco,Morocco119,MOZ,Republic of Mozambique,Mozambique120,MMR,Union of Myanmar,Myanmar (Burma)121,NAM,Republic of Namibia,Namibia122,NRU,Republic of Nauru,Nauru123,NPL,,Nepal124,NLD,Kingdom of the Netherlands,Netherlands125,NZL,,New Zealand126,NIC,Republic of Nicaragua,Nicaragua127,NER,Republic of Niger,Niger128,NGA,Federal Republic of Nigeria,Nigeria129,NOR,Kingdom of Norway,Norway130,OMN,Sultanate of Oman,Oman131,PAK,Islamic Republic of Pakistan,Pakistan132,PLW,Republic of Palau,Palau133,PAN,Republic of Panama,Panama134,PNG,Independent State of Papua New Guinea,Papua New Guinea135,PRY,Republic of Paraguay,Paraguay136,PER,Republic of Peru,Peru137,PHL,Republic of the Philippines,Philippines138,POL,Republic of Poland,Poland139,PRT,Portuguese Republic,Portugal140,QAT,State of Qatar,Qatar141,ROU,,Romania142,RUS,Russian Federation,Russia143,RWA,Republic of Rwanda,Rwanda144,KNA,Federation of Saint Kitts and Nevis,Saint Kitts and Nevis145,LCA,,Saint Lucia146,VCT,,Saint Vincent and the Grenadines147,WSM,Independent State of Samoa,Samoa148,SMR,Republic of San Marino,San Marino149,STP,Democratic Republic of Sao Tome and Principe,Sao Tome and Principe150,SAU,Kingdom of Saudi Arabia,Saudi Arabia151,SEN,Republic of Senegal,Senegal152,SRB,Republic of Serbia,Serbia153,SYC,Republic of Seychelles,Seychelles154,SLE,Republic of Sierra Leone,Sierra Leone155,SGP,Republic of Singapore,Singapore156,SVK,Slovak Republic,Slovakia157,SVN,Republic of Slovenia,Slovenia158,SLB,,Solomon Islands159,SOM,,Somalia160,ZAF,Republic of South Africa,South Africa161,ESP,Kingdom of Spain,Spain162,LKA,Democratic Socialist Republic of Sri Lanka,Sri Lanka163,SDN,Republic of the Sudan,Sudan164,SUR,Republic of Suriname,Suriname165,SWZ,Kingdom of Swaziland,Swaziland166,SWE,Kingdom of Sweden,Sweden167,CHE,Swiss Confederation,Switzerland168,SYR,Syrian Arab Republic,Syria169,TJK,Republic of Tajikistan,Tajikistan170,TZA,United Republic of Tanzania,Tanzania171,THA,Kingdom of Thailand,Thailand172,TLS,Democratic Republic of Timor-Leste,Timor-Leste (East Timor)173,TGO,Togolese Republic,Togo174,TON,Kingdom of Tonga,Tonga175,TTO,Republic of Trinidad and Tobago,Trinidad and Tobago176,TUN,Tunisian Republic,Tunisia177,TUR,Republic of Turkey,Turkey178,TKM,,Turkmenistan179,TUV,,Tuvalu180,UGA,Republic of Uganda,Uganda181,UKR,,Ukraine182,ARE,United Arab Emirates,United Arab Emirates183,GBR,United Kingdom of Great Britain and Northern Ireland,United Kingdom184,USA,United States of America,United States185,URY,Oriental Republic of Uruguay,Uruguay186,UZB,Republic of Uzbekistan,Uzbekistan187,VUT,Republic of Vanuatu,Vanuatu188,VAT,State of the Vatican City,Vatican City189,VEN,Bolivarian Republic of Venezuela,Venezuela190,VNM,Socialist Republic of Vietnam,Vietnam191,YEM,Republic of Yemen,Yemen192,ZMB,Republic of Zambia,Zambia193,ZWE,Republic of Zimbabwe,Zimbabwe194,GEO,Republic of Abkhazia,Abkhazia196,AZE,Nagorno-Karabakh Republic,Nagorno-Karabakh197,CYP,Turkish Republic of Northern Cyprus,Northern Cyprus198,MDA,Pridnestrovian Moldavian Republic,Pridnestrovie (Transnistria)199,SOM,Republic of Somaliland,Somaliland200,GEO,Republic of South Ossetia,South Ossetia201,AUS,Territory of Ashmore and Cartier Islands,Ashmore and Cartier Islands202,CXR,Territory of Christmas Island,Christmas Island203,CCK,Territory of Cocos (Keeling) Islands,Cocos (Keeling) Islands204,AUS,Coral Sea Islands Territory,Coral Sea Islands205,HMD,Territory of Heard Island and McDonald Islands,Heard Island and McDonald Islands206,NFK,Territory of Norfolk Island,Norfolk Island207,NCL,,New Caledonia208,PYF,Overseas Country of French Polynesia,French Polynesia209,MYT,Departmental Collectivity of Mayotte,Mayotte210,GLP,Collectivity of Saint Barthelemy,Saint Barthelemy211,GLP,Collectivity of Saint Martin,Saint Martin212,SPM,Territorial Collectivity of Saint Pierre and Miquelon,Saint Pierre and Miquelon213,WLF,Collectivity of the Wallis and Futuna Islands,Wallis and Futuna214,ATF,Territory of the French Southern and Antarctic Lands,French Southern and Antarctic Lands215,PYF,,Clipperton Island216,BVT,,Bouvet Island217,COK,,Cook Islands218,NIU,,Niue219,TKL,,Tokelau220,GGY,Bailiwick of Guernsey,Guernsey221,IMN,,Isle of Man222,JEY,Bailiwick of Jersey,Jersey223,AIA,,Anguilla224,BMU,,Bermuda225,IOT,,British Indian Ocean Territory226,,,British Sovereign Base Areas227,VGB,,British Virgin Islands228,CYM,,Cayman Islands229,FLK,,Falkland Islands (Islas Malvinas)230,GIB,,Gibraltar231,MSR,,Montserrat232,PCN,,Pitcairn Islands233,SHN,,Saint Helena234,SGS,,South Georgia & South Sandwich Islands235,TCA,,Turks and Caicos Islands236,MNP,Commonwealth of The Northern Mariana Islands,Northern Mariana Islands237,PRI,Commonwealth of Puerto Rico,Puerto Rico238,ASM,Territory of American Samoa,American Samoa239,UMI,,Baker Island240,GUM,Territory of Guam,Guam241,UMI,,Howland Island242,UMI,,Jarvis Island243,UMI,,Johnston Atoll244,UMI,,Kingman Reef245,UMI,,Midway Islands246,UMI,,Navassa Island247,UMI,,Palmyra Atoll248,VIR,United States Virgin Islands,U.S. Virgin Islands249,UMI,,Wake Island250,HKG,Hong Kong Special Administrative Region,Hong Kong251,MAC,Macau Special Administrative Region,Macau252,FRO,,Faroe Islands253,GRL,,Greenland254,GUF,Overseas Region of Guiana,French Guiana255,GLP,Overseas Region of Guadeloupe,Guadeloupe256,MTQ,Overseas Region of Martinique,Martinique257,REU,Overseas Region of Reunion,Reunion258,ALA,,Aland259,ABW,,Aruba260,ANT,,Netherlands Antilles261,SJM,,Svalbard262,ASC,,Ascension263,TAA,,Tristan da Cunha268,ATA,,Australian Antarctic Territory269,ATA,,Ross Dependency270,ATA,,Peter I Island271,ATA,,Queen Maud Land272,ATA,,British Antarctic Territory
