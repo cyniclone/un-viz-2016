@@ -23,6 +23,7 @@ function populateSelect(path) {
         var select = d3.select("#select-country").append("select").attr("id","dropdown");
 
         select.on("change", function() {
+            $(".d3-tip").css("visibility", "hidden"); // For IE11
             deactivate(d3.selectAll(".scatterdot"));
             deactivate(d3.selectAll(".scatterdot2"));
 
