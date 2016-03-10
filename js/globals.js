@@ -417,7 +417,7 @@ charts["laborf"] = {
     "countryNamesPath" : "data/countrylist/list-labor.csv",
     "dataPath" : "data/labor-f.csv",
     "hasTrend" : true,
-    "trendStroke" : "#fbb900",
+    "trendStroke" : "#222",
     "lm" : {
         slope : 0.1836041,
         intercept : -316.4548911
@@ -445,7 +445,7 @@ charts["laborm"] = {
     "countryNamesPath" : "data/countrylist/list-labor.csv",
     "dataPath" : "data/labor-m.csv",
     "hasTrend" : true,
-    "trendStroke" : "#fbb900",
+    "trendStroke" : "#222",
     "lm" : {
         slope : -0.1194259,
         intercept : 314.7779211

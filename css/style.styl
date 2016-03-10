@@ -18,10 +18,12 @@ h3 font-size 24px
 select
   font-size 14px
   color black
-  float right
+  float left
+  max-width 100%
+  text-overflow ellipsis
 
 #select-title
-  float right
+  float left
   margin-top 0px
   display inline-block
 
@@ -48,7 +50,7 @@ body
   circle.scatterdot.active,
   circle.scatterdot2.active
     stroke-width 2px
-    stroke steelblue
+    stroke #222
     r 6px
     fill #222
     opacity 1
@@ -62,7 +64,9 @@ body
       stroke-opacity 0.8
 
 .zero-hunger /* 2 ZERO HUNGER */
-  background: #dda63a
+  background #dda63a
+  g.tick
+    fill black
 
 .child-mortality /* 3 CHILD MORTALITY */
   background: #48a034
@@ -83,6 +87,10 @@ body
   g.tick
     font-size 12px
     fill white
+  circle.active
+    stroke black
+    fill black
+
 
 /* 5 GENDER EQUALITY */
 .gender
@@ -101,7 +109,7 @@ body
   background #2bbbdd
   g.tick
     font-size 12px
-    fill white
+    fill #222
 
   line.verticalGrid, line.verticalGrid2, line.horizontalGrid, line.horizontalGrid2
     stroke #ccc
@@ -109,8 +117,8 @@ body
   circle.scatterdot.active,
   circle.scatterdot2.active
     stroke-width 2px
-    stroke #68f
-    r 6px
+    stroke #222
+
 
 .energy /* 7 ENERGY ACCESS */
   background #fbbf0f
@@ -130,6 +138,8 @@ body
     stroke: #000;
   .axis text
     font 12px sans-serif
+  g.tick
+    fill #222
   .bar
     shape-rendering geometricPrecision
   .jq-div
@@ -146,6 +156,10 @@ body
   g.tick
     font-size 12px
     fill white
+  circle.active
+    fill black
+    stroke #fbb900
+    stroke-width 1px
 
 .innovation /* 9 INNOVATION */
   background #ee6b2f
@@ -157,7 +171,7 @@ body
     stroke none
   circle.scatterdot.active, circle.scatterdot2.active
     fill #164767
-    stroke #68f
+    stroke #164767
 
 .inequality /* 10 REDUCED INEQUALITIES */
   color #000000
@@ -177,7 +191,6 @@ body
       fill black
 
   circle
-    fill-opacity 0.8
     stroke black
   circle.white
     fill #FEFEFE
@@ -227,6 +240,9 @@ body
   circle.active
     fill white
     stroke steelblue
+  g.tick
+    font-size 12px
+    fill black
 
 .climate /* 13 CLIMATE ACTION */
   background #3a7c46
@@ -239,7 +255,7 @@ body
   circle.active
     fill-opacity 1
     fill #164767
-    stroke #68f
+    stroke #38B3FF
     stroke-width 2px
 
 .fish /* 14 LIFE BELOW WATER */
