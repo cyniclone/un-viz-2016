@@ -82,7 +82,6 @@ function renderMap (obj) {
     function showTooltip(d) {
         moveTooltip();
 
-        // TODO: add value to tooltip
         tooltip.style("display","block")
             .text(function () {
                 var tooltipValue = valueByCountryCode.get(d.properties.id)

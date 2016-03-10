@@ -229,6 +229,13 @@ body
   path:hover, path.highlighted
     fill #4684DF
 
+  #map-legend
+    g.tick line
+      stroke black
+    .axis  path
+      stroke black
+      stroke-width 1px
+
 .consumption /* 12 RESPONSIBLE CONSUMPTION */
   color #000000
   background #b98831
@@ -280,6 +287,13 @@ body
     path:hover, path.highlighted
       fill #4684DF
 
+  #map-legend
+    g.tick line
+      stroke #555
+    .axis  path
+      stroke #555
+      stroke-width 1.5px
+
   .q0-7   /* Choropleth styling */
     fill #EAF2E3
   .q1-7
@@ -316,13 +330,13 @@ body
 
 .partnerships /* 17 PARTNERSHIPS */
   background #164767
-  #page-header
-
-  .axis-description, #how-to-read
-    color white
-
+  #page-header,
+  .axis-description,
   .accent-color
     color #FFD200
+
+  #how-to-read
+    color white
 
   #how-to-read
    li
@@ -374,11 +388,8 @@ div.world-tooltip
 #map-legend
   g.tick
     fill black
-    line
-      stroke #555
   .axis
     path
-      stroke #555
       stroke-width 1.5px
 #map
   font: 12px sans-serif

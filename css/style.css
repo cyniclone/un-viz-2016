@@ -275,6 +275,13 @@ path:hover,
 path.highlighted {
   fill: #4684df;
 }
+#map-legend g.tick line {
+  stroke: #000;
+}
+#map-legend .axis path {
+  stroke: #000;
+  stroke-width: 1px;
+}
 .consumption {
   color: #000;
   background: #b98831;
@@ -334,6 +341,13 @@ path.highlighted {
 .land #map path.highlighted {
   fill: #4684df;
 }
+.land #map-legend g.tick line {
+  stroke: #555;
+}
+.land #map-legend .axis path {
+  stroke: #555;
+  stroke-width: 1.5px;
+}
 .land .q0-7 {
   fill: #eaf2e3;
 }
@@ -382,11 +396,11 @@ path.highlighted {
 }
 .partnerships #page-header,
 .partnerships .axis-description,
-.partnerships #how-to-read {
-  color: #fff;
-}
 .partnerships .accent-color {
   color: #ffd200;
+}
+.partnerships #how-to-read {
+  color: #fff;
 }
 .partnerships #how-to-read li {
   color: #ffd200;
@@ -439,11 +453,7 @@ div.world-tooltip {
 #map-legend g.tick {
   fill: #000;
 }
-#map-legend g.tick line {
-  stroke: #555;
-}
 #map-legend .axis path {
-  stroke: #555;
   stroke-width: 1.5px;
 }
 #map {
