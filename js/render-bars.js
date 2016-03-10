@@ -23,7 +23,7 @@ function drawBars (obj) {
     var yValue = function (d) { return d.CountryName; },              // data  -> value
         yScale = d3.scale.ordinal().rangeRoundBands([height, 0], .5), // value -> display
         yMap = function (d) { return yScale(yValue(d));},             // data  -> display
-        yAxis = d3.svg.axis().scale(yScale).orient("left");
+        yAxis = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
 
     // Initialize d3 tip
     var tip = d3.tip()
@@ -31,8 +31,10 @@ function drawBars (obj) {
         .offset([-10, 0])
         .html(function (d) {
             var s = "";
-            s += "<b>d.CountryName</b><br />";
+            s += "<b>" + d.CountryName + "</b><br />";
             s += d.Value;
+            if (obj.tipText) { s += obj.tipText; }
+
             return s;
         });
 
@@ -70,7 +72,7 @@ function drawBars (obj) {
         // Classing for highlighting axis labels on mouseover
         yAxisGroup.selectAll("text")
             .attr("class", function (d, i) {
-                return data[i].hash;
+                return "c" + data[i].hash;
             });
 
         // Render bars
@@ -78,7 +80,7 @@ function drawBars (obj) {
             .data(data)
             .enter().append("rect")
             .attr("class", function(d) {
-                return "hBar " + d.hash
+                return "hBar c" + d.hash
             })
             .attr({
                 "x" : 0 ,
@@ -87,13 +89,23 @@ function drawBars (obj) {
                 "height" : yScale.rangeBand(),
                 "fill" : "white",
                 "opacity" : 0.75
+            })
+            .on('mouseover', function (d) {
+                deactivate(d3.selectAll(".active"));    // For IE11 compatibility
+                $(".d3-tip").css("visibility", "visible"); // Also for IE
+                tip.show(d);
+                activate(d3.selectAll(".c" + d.hash));
+            })
+            .on('mouseout', function (d) {
+                tip.hide(d);
+                deactivate(d3.selectAll(".c" + d.hash));
             });
 
         svg.selectAll(".hBarText")
             .data(data)
             .enter().append("text")
             .attr("class", function(d) {
-                return "hBarText " + d.hash
+                return "hBarText c" + d.hash
             })
             .attr("x", function(d) { return xScale(d.Value) + 5; })
             .attr("y", function(d) { return yScale(d.CountryName) + yScale.rangeBand() / 2; })

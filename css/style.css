@@ -246,6 +246,9 @@ g.tick {
   font-size: 12px;
   fill: #fff;
 }
+.active {
+  fill: #000;
+}
 .q0-7 {
   fill: #feead8;
 }
@@ -319,6 +322,9 @@ path.highlighted {
 }
 .fish {
   background: #2193d0;
+}
+.fish .active {
+  fill: #000;
 }
 .land {
   background: #59b439;

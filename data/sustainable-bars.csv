@@ -1,26 +1,26 @@
-CountryName,CountryCode,Value
-Pakistan,PAK,101
-Qatar,QAT,92
-Afghanistan,AFG,84
-Bangladesh,BGD,79
-Iran,IRN,76
-Egypt,EGY,74
-Mongolia,MNG,64
-United Arab Emirates,ARE,61
-India,IND,59
-Bahrain,BHR,57
-Nepal,NPL,50
-Ghana,GHA,49
-Jordan,JOR,48
-Bulgaria,BGR,41
-China,CHN,41
-Senegal,SEN,40
-Turkey,TUR,39
-Peru,PER,38
-Mauritius,MUS,37
-Serbia,SRB,36
-Bosnia and Herzegovina,BIH,33
-Guatemala,GTM,33
-Honduras,HND,32
-Oman,OMN,31
-Myanmar,MMR,30
+CountryName,CountryCode,Value,hash
+Pakistan,PAK,101,82d220
+Qatar,QAT,92,83ef3e
+Afghanistan,AFG,84,c69153
+Bangladesh,BGD,79,fa6c37
+Iran,IRN,76,889224
+Egypt,EGY,74,1c39ab
+Mongolia,MNG,64,f54da3
+United Arab Emirates,ARE,61,d115b8
+India,IND,59,967ce3
+Bahrain,BHR,57,3ae11c
+Nepal,NPL,50,0e1d58
+Ghana,GHA,49,317dba
+Jordan,JOR,48,674027
+Bulgaria,BGR,41,5c7772
+China,CHN,41,d2eaf2
+Senegal,SEN,40,d8973b
+Turkey,TUR,39,d7153e
+Peru,PER,38,36c572
+Mauritius,MUS,37,26160d
+Serbia,SRB,36,6d31bf
+Bosnia and Herzegovina,BIH,33,62ac59
+Guatemala,GTM,33,11760e
+Honduras,HND,32,5aa588
+Oman,OMN,31,c14c36
+Myanmar,MMR,30,928b7c

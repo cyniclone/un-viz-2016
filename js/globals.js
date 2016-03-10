@@ -546,6 +546,7 @@ charts["sustainable"] = {
 charts["sustainableBars"] = {
     "hasSuffix" : true,
     "suffix" : " µg",
+    "tipText" : " µg / m³ of air",
     "xDomain" : [0, 100],
     "dataPath" : "data/sustainable-bars.csv",
     "targetDiv" : "#bar-chart",
@@ -586,6 +587,7 @@ charts["fish"] = {
     "targetDiv" : "#bar-chart",
     "xDomain" : [0, 250],
     "xTicks" : 5,
+    "tipText" : " threatened species",
     "dimensions" : {
         "margin" : {
             top : 30,
