@@ -1,4 +1,8 @@
 function renderLine(obj) {
+    // Get values & domain for both kilometers and miles
+    var km = obj.kilometers;
+    var mi = obj.miles;
+
     var dim = obj.dimensions,
         margin = dim.margin,
         width = dim.width - dim.margin.left - dim.margin.right,
@@ -18,7 +22,7 @@ function renderLine(obj) {
     var yAxisLeft = d3.svg.axis().scale(yScaleKm)
         .orient("left")
         .tickFormat(format)
-        .tickValues(obj.kilometers.values)
+        .tickValues(km.values)
         .tickSize(20)
         .tickPadding(10)
         .outerTickSize(0); //remove end ticks
@@ -26,7 +30,7 @@ function renderLine(obj) {
     var yAxisRight = d3.svg.axis().scale(yScaleMi)
         .orient("right")
         .tickFormat(format)
-        .tickValues(obj.miles.values)
+        .tickValues(mi.values)
         .tickSize(20)
         .tickPadding(10)
         .outerTickSize(0); //remove end ticks
@@ -34,9 +38,9 @@ function renderLine(obj) {
     var valueKm = d3.svg.line()
         .x(function(d) { return xScale(d.Year); })
         .y(function(d) { return yScaleKm(d.km); });
-    var valueMi = d3.svg.line()
-        .x(function(d) { return xScale(d.Year); })
-        .y(function(d) { return yScaleMi(d.mi); });
+    //var valueMi = d3.svg.line()
+    //    .x(function(d) { return xScale(d.Year); })
+    //    .y(function(d) { return yScaleMi(d.mi); });
 
     var tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -68,8 +72,8 @@ function renderLine(obj) {
 
         // Scale the range of the data
         xScale.domain(d3.extent(data, function(d) { return d.Year; }));
-        yScaleKm.domain(obj.kilometers.domain);
-        yScaleMi.domain(obj.miles.domain);
+        yScaleKm.domain(km.domain);
+        yScaleMi.domain(mi.domain);
 
         svg.append("path")        // Add the valueline path.
             .style("fill", "none")
@@ -77,10 +81,23 @@ function renderLine(obj) {
             .style("stroke-width", "1.5px")
             .attr("d", valueKm(data));
 
-        //svg.append("path")        // Add the valueline2 path.
-        //    .style("fill", "none")
-        //    .style("stroke", "black")
-        //    .attr("d", valueMi(data));
+        // Render vertical lines
+        svg.selectAll(".vertical-line")
+            .data(data)
+            .enter().append("line")
+            .attr({
+                "class": function (d) {
+                    return "vertical-line " + d.Year;
+                },
+                "x1": function (d) { return xScale(d.Year); },
+                "x2": function (d) { return xScale(d.Year); },
+                "y1": function (d) { return yScaleKm(d.km)},
+                "y2": height,
+                "fill": "none",
+                "stroke": "#fff",
+                "stroke-width": "0.75px",
+                "visibility" : "hidden"
+            })
 
         // Render dots
         svg.selectAll(".circle")
@@ -101,6 +118,9 @@ function renderLine(obj) {
                     .style("fill", "#006A35")
                     .style("stroke", "white");
 
+                // Show connecting vertical line when hovering over circle
+                var sel = ".vertical-line." + d.Year;
+                $(sel).css("visibility", "visible");
                 tip.show(d);
             })
             .on('mouseout', function (d) {
@@ -109,33 +129,36 @@ function renderLine(obj) {
                     .style("fill", "white")
                     .style("stroke", "#006A35")
 
+                var sel = ".vertical-line." + d.Year;
+                $(".vertical-line").css("visibility", "hidden");
                 tip.hide(d);
             });
 
-
-        svg.append("g")            // Add the X Axis
+        // Render x Axis
+        svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
 
+        // Render y Axis (left)
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxisLeft)
             .append("text")
             .style("text-anchor", "beginning")
-            .attr("dy", yScaleKm(obj.kilometers.values[obj.kilometers.values.length-1]))
+            .attr("dy", yScaleKm(km.values[km.values.length-1]))
             .attr("dx", 10)
             .text("Square Kilometers")
 
+        // Render y Axis (right)
         svg.append("g")
             .attr("class", "y axis")
             .attr("transform", "translate(" + width + " ,0)")
             .call(yAxisRight)
             .append("text")
             .style("text-anchor", "end")
-            .attr("dy", yScaleMi(obj.miles.values[obj.miles.values.length-1]))
+            .attr("dy", yScaleMi(mi.values[mi.values.length-1]))
             .attr("dx", -10)
             .text("Square Miles");
     });
-
 }
