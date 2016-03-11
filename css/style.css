@@ -120,6 +120,9 @@ body {
 .gender {
   background: #e44825;
 }
+.gender h4.axis-description {
+  color: #fff;
+}
 .gender g.tick {
   font-size: 12px;
   fill: #fff;
