@@ -143,22 +143,14 @@ function renderLegend(obj) {
     svg.selectAll(".bar")
         .data(data)
         .enter().append("rect")
-        .attr("class", function(d, i) {
-            return "bar " + threshold(d);
-        })
-        .attr("x", function(d, i) {
-            return xScale(d)
-        })
+        .attr("class", function(d) { return "bar " + threshold(d); })
+        .attr("x", function(d) { return xScale(d) })
         .attr("width", function(d, i) {
-            if (!isNaN(xScale(data[i+1] - data[i]))) {
-                return xScale(data[i+1] - data[i])
-            } else { return 0; }
+            var difference = xScale(data[i+1] - data[i]);
+            if (!isNaN(difference)) { return difference; } else { return 0; }
         })
         .attr("y", 0 )
-        .attr("height", 20)
-        .attr("fill", function(d, i) {
-            return "rgb(255, 255, " + 255 / 27 * Math.random() + ")"
-        });
+        .attr("height", 20);
 
     svg.append("g")
         .attr("class", "x axis")
@@ -169,6 +161,4 @@ function renderLegend(obj) {
         .attr("y", margin.bottom + 10)
         .attr("dy", ".71em")
         .text(obj.legendLabel);
-
-
 }

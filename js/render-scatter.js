@@ -70,9 +70,7 @@ function drawScatter (obj) {
     var tip = d3.tip()
         .attr('class', 'd3-tip')
         .style("width", function () {
-            if (obj.value == "consumption") { return "300px"; } else {
-                return "150px";
-            }
+            if (obj.value == "consumption") { return "300px"; } else { return "150px"; }
         })
         .offset([-10, 0])
         .html(function (d) {
