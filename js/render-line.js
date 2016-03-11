@@ -129,7 +129,6 @@ function renderLine(obj) {
                     .style("fill", "white")
                     .style("stroke", "#006A35")
 
-                var sel = ".vertical-line." + d.Year;
                 $(".vertical-line").css("visibility", "hidden");
                 tip.hide(d);
             });

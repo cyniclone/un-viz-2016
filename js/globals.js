@@ -618,6 +618,7 @@ charts["land"] = {
         }
     },
     "tooltipText" : " %",
+    "suffix" : "%",
     "domain" : [16, 26, 36, 48, 60, 75],
     "legendData" : [0, 16, 26, 36, 48, 60, 75, 100],
     "legendLabel" : "Percentage of total country surface"

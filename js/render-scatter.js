@@ -32,6 +32,9 @@ function drawScatter (obj) {
         width = dim.width - dim.margin.left - dim.margin.right,
         height = dim.height - dim.margin.top - dim.margin.bottom;
 
+    // Adjust arrow icon based on chart dimensions
+    $(".arrow-container").css("width", margin.left + "px");
+
     // setup x
     var xValue = function (d) { return d[xParam]; },                    // data  -> value
         xScale = d3.scale.linear().range([0, width]),                // value -> display
@@ -40,8 +43,7 @@ function drawScatter (obj) {
             .tickFormat(d3.format("d"))  // Remove commas from axis
             .ticks(xTicks)
             .tickSize(10)
-            .outerTickSize(0)
-            //.tickPadding(5);
+            .outerTickSize(0);
 
     // setup y
     var yValue = function (d) { return d[yParam]; },                   // data  -> value

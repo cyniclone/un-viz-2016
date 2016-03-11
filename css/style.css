@@ -9,6 +9,19 @@ h1 text-align center,
   color: #000;
 }
 h3 font-size 24px,
+.axis-description {
+  float: left;
+}
+img.arrow {
+  width: 32px;
+  height: 32px;
+  margin-top: 20px;
+  padding-right: 5px;
+  float: right;
+}
+.arrow-container {
+  float: left;
+}
 #how-to-read > ol > li    font-size 18px margin-bottom 12px,
 #info-box {
   font-size: 14px;
@@ -22,7 +35,7 @@ select {
 }
 #select-title {
   float: left;
-  margin-top: 0px;
+  margin-top: 0;
   display: inline-block;
 }
 /*****    TEXT STYLING    *********/
@@ -93,6 +106,9 @@ body {
 .education circle.active {
   stroke: #000;
   fill: #000;
+}
+.education #info-box {
+  margin-top: 10px;
 }
 /* 5 GENDER EQUALITY */
 .gender {
