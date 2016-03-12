@@ -155,6 +155,9 @@ function drawBars (obj) {
 
     svg.call(tip);
 }
+
+/**********************************/
+
 function drawIneqBars (obj) {
     // Global variables; used by all charts in this visualization
     var dim = obj.dimensions,  // Bring in chart dimensions
@@ -197,6 +200,13 @@ function drawIneqBars (obj) {
 
         debug.data = data;
 
+        // Initialize d3 tip - HTML will be modified within loop
+        var tip = d3.tip()
+            .attr("class", "d3-tip")
+            .style("font-size", "16px")
+            .style("width", "400px")
+            .offset([-10, 0]);
+
         // MAIN LOOP here. For each country in the object...
         for(var i = 0; i < _.size(data); i++) {
             var countryName = _.keys(data)[i];
@@ -219,11 +229,7 @@ function drawIneqBars (obj) {
             var countryLabel = d3.svg.axis().scale(yScale).orient("left").outerTickSize(0);
 
             // Initialize d3 tip
-            var tip = d3.tip()
-                .attr("class", "d3-tip")
-                .style("width", "260px")
-                .offset([-10, 0])
-                .html(function (d) {
+            tip.html(function (d) {
                     var s = "";
                     s += "<u>" + d.CountryName + ", " + d.Period +"</u><br />";
                     s += "<span class='tip-info-general'>General Population: " + d.ValueG + "% income growth</span><br />";
