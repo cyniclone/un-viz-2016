@@ -200,7 +200,7 @@ function drawScatter (obj) {
             .attr('cy', yMap)
             .on('mouseover', function (d) {
                 deactivate(d3.selectAll(".active"));    // For IE11 compatibility
-                $(".d3-tip").css("visibility", "visible"); // Also for IE
+                $(".d3-tip").css("visibility", "visible");
                 tip.show(d);
                 activate(d3.selectAll(".c" + d.hash));
             })

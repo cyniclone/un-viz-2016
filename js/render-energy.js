@@ -25,7 +25,7 @@ function drawEnergy (obj, _year) {
         .tickPadding(5)
         .outerTickSize(0);
 
-    obj.yTicks = yAxis.ticks(); console.log(yAxis.ticks());
+    obj.yTicks = yAxis.ticks();
 
     var svg = d3.select("#chart-" + _year).append("svg")
         .attr("class", "viz")

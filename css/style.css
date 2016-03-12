@@ -34,6 +34,7 @@ select {
   color: #000;
   float: left;
   max-width: 100%;
+  margin-bottom: 10px;
   text-overflow: ellipsis;
 }
 #select-title {
@@ -113,9 +114,6 @@ body {
   stroke: #000;
   fill: #000;
 }
-.education #info-box {
-  margin-top: 10px;
-}
 /* 5 GENDER EQUALITY */
 .gender {
   background: #e44825;
@@ -159,9 +157,6 @@ body {
 .energy h2 {
   color: #f28f00;
   font-weight: bold;
-}
-.energy span {
-  margin-left: 20px;
 }
 .energy #page-header {
   color: #222;

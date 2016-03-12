@@ -92,7 +92,8 @@ function drawBars (obj) {
             })
             .on('mouseover', function (d) {
                 deactivate(d3.selectAll(".active"));    // For IE11 compatibility
-                $(".d3-tip").css("visibility", "visible"); // Also for IE
+                $(".d3-tip").css("opacity", "0");
+                $(".d3-tip").css("opacity", "1");
                 tip.show(d);
                 activate(d3.selectAll(".c" + d.hash));
             })
