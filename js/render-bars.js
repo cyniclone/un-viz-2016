@@ -27,7 +27,7 @@ function drawBars (obj) {
 
     // Initialize d3 tip
     var tip = d3.tip()
-        .attr('class', 'd3-tip')
+        .attr('class', 'd3-tip bars')
         .offset([-10, 0])
         .html(function (d) {
             var s = "";
@@ -93,7 +93,7 @@ function drawBars (obj) {
             .on('mouseover', function (d) {
                 deactivate(d3.selectAll(".active"));    // For IE11 compatibility
                 $(".d3-tip").css("opacity", "0");
-                $(".d3-tip").css("opacity", "1");
+                $(".d3-tip.bars").css("opacity", "1");
                 tip.show(d);
                 activate(d3.selectAll(".c" + d.hash));
             })

@@ -70,7 +70,7 @@ function drawScatter (obj) {
 
     // Initialize d3 tip
     var tip = d3.tip()
-        .attr('class', 'd3-tip')
+        .attr('class', 'd3-tip scatter')
         .style("width", function () {
             if (obj.value == "consumption") { return "300px"; } else { return "150px"; }
         })
@@ -200,7 +200,8 @@ function drawScatter (obj) {
             .attr('cy', yMap)
             .on('mouseover', function (d) {
                 deactivate(d3.selectAll(".active"));    // For IE11 compatibility
-                $(".d3-tip").css("visibility", "visible");
+                $(".d3-tip").css("opacity", "0");
+                $(".d3-tip.scatter").css("opacity", "1");
                 tip.show(d);
                 activate(d3.selectAll(".c" + d.hash));
             })
