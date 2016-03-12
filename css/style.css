@@ -192,6 +192,9 @@ body {
   background: #a21b43;
   color: #000;
 }
+.labor h4 {
+  color: #fff;
+}
 .labor g.tick {
   font-size: 12px;
   fill: #fff;
@@ -204,6 +207,9 @@ body {
 .innovation {
   background: #ee6b2f;
   color: #fff;
+}
+.innovation h4 {
+  color: #164767;
 }
 .innovation g.tick {
   font-size: 12px;

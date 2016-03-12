@@ -133,15 +133,10 @@ function drawScatter (obj) {
         // Draw gridlines for x axis
         svg.selectAll("line.verticalGrid" + n).data(xScale.ticks(xTicks)).enter()
             .append("line")
-            .attr(
-                {
+            .attr({
                     "class": "verticalGrid" + n,
-                    "x1": function (d) {
-                        return xScale(d);
-                    },
-                    "x2": function (d) {
-                        return xScale(d);
-                    },
+                    "x1": function (d) { return xScale(d); },
+                    "x2": function (d) { return xScale(d); },
                     "y1": height,
                     "y2": 0,
                     "fill": "none",
@@ -151,22 +146,17 @@ function drawScatter (obj) {
         // Draw gridlines for y axis
         svg.selectAll("line.horizontalGrid" + n).data(yScale.ticks(yTicks)).enter()
             .append("line")
-            .attr(
-                {
+            .attr({
                     "class": "horizontalGrid" + n,
                     "x1": 0,
                     "x2": width,
-                    "y1": function (d) {
-                        return yScale(d);
-                    },
-                    "y2": function (d) {
-                        return yScale(d);
-                    },
+                    "y1": function (d) { return yScale(d); },
+                    "y2": function (d) { return yScale(d); },
                     "fill": "none",
                     "stroke": "#fff",
                     "stroke-width": "0.75px"
-                }
-            );
+
+            });
 
         // Render axes
         svg.append("g")
