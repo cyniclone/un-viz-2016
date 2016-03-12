@@ -70,15 +70,16 @@ function drawScatter (obj) {
 
     // Initialize d3 tip
     var tip = d3.tip()
-        .attr('class', 'd3-tip scatter')
+        .attr('class', 'd3-tip scatter ' + (n+1))
         .style("width", function () {
             if (obj.value == "consumption") { return "300px"; } else { return "150px"; }
         })
         .offset([-10, 0])
         .html(function (d) {
             // Different tooltip for 'consumption' chart
+            var s;
             if (obj.value == "consumption") {
-                var s = "<b><u>" + d.CountryName + "</u></b><br />";
+                s = "<b><u>" + d.CountryName + "</u></b><br />";
                 s += "<b>$" + d[xParam] + "</b> per person per year, energy subsidies<br/>";
                 s += "<b>" + d[yParam] + "%</b> average subsidization rate<br />";
                 s += "<b>" + d[rParam] + "%</b> of GDP";
@@ -86,7 +87,7 @@ function drawScatter (obj) {
                 return s;
             }
 
-            var s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br>";
+            s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br>";
             if (obj.customFormat != undefined) {
                 s += obj.customFormat(d3.round(d[yParam], 1));
                 return s;
@@ -108,13 +109,8 @@ function drawScatter (obj) {
     svg.call(tip);
 
     d3.csv(obj.dataPath, function (error, data) {
-        console.log(data);
         data = data.filter(function(d) {
-            if(isNaN(d[yParam])){
-                return false;
-            }
-            //d[yParam]e = parseInt(d[yParam], 10);
-            return true;
+            return !isNaN(d[yParam]);
         });
 
         data.forEach(function (d) {
@@ -201,7 +197,7 @@ function drawScatter (obj) {
             .on('mouseover', function (d) {
                 deactivate(d3.selectAll(".active"));    // For IE11 compatibility
                 $(".d3-tip").css("opacity", "0");
-                $(".d3-tip.scatter").css("opacity", "1");
+                $(".d3-tip." + (n+1)).css("opacity", "1");
                 tip.show(d);
                 activate(d3.selectAll(".c" + d.hash));
             })

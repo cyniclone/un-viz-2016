@@ -52,10 +52,7 @@ function drawBars (obj) {
         // Sort data
         data.sort(function(a, b) { return d3.ascending(a.Value, b.Value); });
 
-        console.log(data);
-
         // Set scale domains
-        //xScale.domain(d3.extent(data, function(d) { return d.Value; })).nice();
         xScale.domain(obj.xDomain);
         yScale.domain(data.map(function(d) { return d.CountryName; }));
 
@@ -203,7 +200,6 @@ function drawIneqBars (obj) {
         // MAIN LOOP here. For each country in the object...
         for(var i = 0; i < _.size(data); i++) {
             var countryName = _.keys(data)[i];
-            console.log(data);
             var subObj = data[countryName];     // Sub-object for each loop iteration
 
             // Set height of chart based on number of periods
