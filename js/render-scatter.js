@@ -76,9 +76,9 @@ function drawScatter (obj) {
         })
         .offset([-10, 0])
         .html(function (d) {
-            // Different tooltip for 'consumption' chart
+
             var s;
-            if (obj.value == "consumption") {
+            if (obj.value == "consumption") { // Different tooltip for 'consumption' chart
                 s = "<b><u>" + d.CountryName + "</u></b><br />";
                 s += "<b>$" + d[xParam] + "</b> per person per year, energy subsidies<br/>";
                 s += "<b>" + d[yParam] + "%</b> average subsidization rate<br />";
@@ -87,7 +87,8 @@ function drawScatter (obj) {
                 return s;
             }
 
-            s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br>";
+            s = "<b>" + d.CountryName + " - " + d[xParam] + "</b><br/>";
+
             if (obj.customFormat != undefined) {
                 s += obj.customFormat(d3.round(d[yParam], 1));
                 return s;

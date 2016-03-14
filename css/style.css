@@ -219,10 +219,17 @@ body {
 .innovation .y.axis line {
   stroke: none;
 }
-.innovation circle.scatterdot.active,
-.innovation circle.scatterdot2.active {
+.innovation circle {
+  r: 6px;
+  fill-opacity: 0.3;
+  stroke-opacity: 1;
+  stroke-width: 1.5px;
+}
+.innovation circle.active {
+  stroke: #fab600;
   fill: #164767;
-  stroke: #164767;
+  stroke: #fff;
+  r: 7px;
 }
 .inequality {
   color: #000;
@@ -270,7 +277,7 @@ g.tick {
   fill: #fff;
 }
 .active {
-  fill: #000;
+  fill: #0e3367;
 }
 .q0-7 {
   fill: #feead8;
@@ -299,7 +306,7 @@ g.tick {
 }
 path:hover,
 path.highlighted {
-  fill: #4684df;
+  fill: #0e3367;
 }
 #map-legend g.tick line {
   stroke: #000;

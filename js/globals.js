@@ -135,6 +135,7 @@ charts["climate"] = {
     "n"     : 1,
     "value" : "climate",
     "targetDiv" : "#chart",
+    "tipText" : " tons",
     "xTicks" : 10,
     "customFormat" : d3.format("00"),
     "dimensions" : {
@@ -472,7 +473,7 @@ charts["innovation1"] = {
         "width" : 550,
         "height" : 700
     },
-    "radius" : 4,
+    "radius" : 6,
     "countryNamesPath" : "data/countrylist/list-innovation.csv",
     "dataPath" : "data/innovation-1.csv",
     "hasTrend" : true,
@@ -504,7 +505,7 @@ charts["innovation2"] = {
         "width" : 550,
         "height" : 700
     },
-    "radius" : 4,
+    "radius" : 6,
     "countryNamesPath" : "data/countrylist/list-innovation.csv",
     "dataPath" : "data/innovation-2.csv",
     "hasTrend" : true,

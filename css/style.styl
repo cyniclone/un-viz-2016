@@ -190,9 +190,17 @@ body
     fill white
   .y.axis path, .y.axis line
     stroke none
-  circle.scatterdot.active, circle.scatterdot2.active
+
+  circle
+    r 6px
+    fill-opacity 0.3
+    stroke-opacity 1
+    stroke-width 1.5px
+  circle.active
+    stroke #FAB600
     fill #164767
-    stroke #164767
+    stroke white
+    r 7px
 
 .inequality /* 10 REDUCED INEQUALITIES */
   color #000000
@@ -229,7 +237,7 @@ body
     fill white
 
   .active
-    fill black
+    fill #0e3367
 
   .q0-7   /* Choropleth styling */
     fill #FEEAD8
@@ -250,7 +258,7 @@ body
     fill-opacity 0.6
 
   path:hover, path.highlighted
-    fill #4684DF
+    fill #0e3367
 
   #map-legend
     g.tick line
