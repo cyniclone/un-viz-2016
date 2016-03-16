@@ -93,8 +93,9 @@ charts["childMortality"] = {
     "radius" : 5,
     "countryNamesPath" : "data/countrylist/list-child-mortality.csv",
     "dataPath" : "data/child-mortality.csv",
-    "hasTrend" : false,
-    "hasLoess" : true
+    "hasLoess" : true,
+    "loessPath" : "data/loess/loess-child-mortality.csv",
+    "trendStroke" : "#222"
 };
 
 /***** 12 RESPONSIBLE CONSUMPTION AND PRODUCTION ************/
