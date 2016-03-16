@@ -656,7 +656,9 @@ charts["birthRegistration"] = {
     "radius" : 8,
     "countryNamesPath" : "data/countrylist/list-birth-registration.csv",
     "dataPath" : "data/birth-registration.csv",
-    "hasTrend" : false
+    "hasLoess" : true,
+    "loessPath" : "data/loess/loess-birth-registration.csv",
+    "trendStroke" : "#fab600"
 }
 
 /***** 17 PARTNERSHIPS ************/
