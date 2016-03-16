@@ -206,7 +206,11 @@ function drawScatter (obj) {
             drawLine(obj, yScale);
         }
         if (obj.hasLoess) {
-            //drawLoess(data, obj, xMap, yMap);
+            //obj.year = {};
+            //obj.year.begin = d3.min(data, function(d) { return d.Year; });
+            //obj.year.end = d3.max(data, function(d) { return d.Year; });
+
+            drawLoess(obj, xScale, yScale);
         }
         
         // Special labeling for consumption viz
@@ -252,23 +256,25 @@ function drawLine (obj, _yScale) {
     d3.selectAll('.trend').moveToFront();
 }
 
-function drawLoess(_data, chartObj, _xMap, _yMap) {
-    // Render the fitted line
-    d3.select("#chart svg").append('path')
-        .datum(function() {
-            var loess = science.stats.loess();
-            loess.bandwidth(0.25);
+function drawLoess(obj, _xScale, _yScale) {
+    // Load x/y values for loess curve
+    d3.csv(obj.loessPath, function (error, _data) {
 
-            var xValues = _data.map(_xMap);
-            var yValues = _data.map(_yMap);
+        var margin = {}; margin.left = obj.dimensions.margin.left
 
-            var yValuesSmoothed = loess(xValues, yValues);
-
-            return d3.zip(xValues, yValuesSmoothed);
-        })
-        .attr('id', 'trend')
-        .attr('d', d3.svg.line()
-            .interpolate('basis')
-            .x(function(d) { return d[0]; })
-            .y(function(d) { return d[1]; }))
+        // Render the fitted line
+        d3.select("#chart svg").append('path')
+            .datum(_data)
+            .attr('class', 'trend')
+            .attr('d', d3.svg.line()
+                .interpolate('basis')
+                //.x(function(d) { return d[0]; })
+                .x(function(d) { return _xScale(d.x) + margin.left; })
+                //.y(function(d) { return d[1]; }))
+                .y(function(d) { return _yScale(d.y); })
+            )
+            .style("fill", "none")
+            .style("stroke-width", "2px")
+            .style("stroke", obj.trendStroke);
+    });
 }

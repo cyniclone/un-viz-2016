@@ -93,8 +93,9 @@ charts["childMortality"] = {
     "radius" : 5,
     "countryNamesPath" : "data/countrylist/list-child-mortality.csv",
     "dataPath" : "data/child-mortality.csv",
-    "hasTrend" : false,
-    "hasLoess" : true
+    "hasLoess" : true,
+    "loessPath" : "data/loess/loess-child-mortality.csv",
+    "trendStroke" : "#222"
 };
 
 /***** 12 RESPONSIBLE CONSUMPTION AND PRODUCTION ************/
@@ -656,7 +657,9 @@ charts["birthRegistration"] = {
     "radius" : 8,
     "countryNamesPath" : "data/countrylist/list-birth-registration.csv",
     "dataPath" : "data/birth-registration.csv",
-    "hasTrend" : false
+    "hasLoess" : true,
+    "loessPath" : "data/loess/loess-birth-registration.csv",
+    "trendStroke" : "#fab600"
 }
 
 /***** 17 PARTNERSHIPS ************/
